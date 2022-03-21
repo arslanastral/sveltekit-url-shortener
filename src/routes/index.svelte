@@ -1,12 +1,14 @@
-<h2 class="hero-message">Short Links. Big Impact.</h2>
+<script>
+  import Hero from '$lib/hero.svelte';
+</script>
+
+<div class="content">
+  <Hero />
+</div>
 
 <style>
-  .hero-message {
-    font-family: 'Inter';
-    font-weight: 500;
-    letter-spacing: -0.045em;
-    width: 149px;
-    line-height: 32px;
-    color: #000000;
+  .content {
+    display: flex;
+    justify-content: center;
   }
 </style>
