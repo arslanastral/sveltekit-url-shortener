@@ -24,11 +24,12 @@
     background-color: var(--bg-color);
     border-radius: var(--border-radius);
     border: var(--border);
+    margin: var(--margin);
     transition: transform ease-in 0.1s, box-shadow ease-in 0.1s;
   }
 
   button:active {
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
 
   button:hover {
