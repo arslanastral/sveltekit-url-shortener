@@ -14,6 +14,7 @@
     --color: black;
     --bg-color: white;
     --border-radius: 6px;
+    --margin: 6px;
   }
   button {
     font-size: var(--font-size);
