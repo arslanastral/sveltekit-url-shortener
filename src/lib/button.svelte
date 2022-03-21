@@ -24,5 +24,14 @@
     background-color: var(--bg-color);
     border-radius: var(--border-radius);
     border: var(--border);
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.1s;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  button:hover {
+    box-shadow: 0 2px 10px rgba(129, 129, 129, 0.3);
   }
 </style>
