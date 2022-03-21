@@ -1,5 +1,5 @@
 <script>
-  import Button from '$lib/button.svelte';
+  import Login from '$lib/login.svelte';
   import Logo from '$lib/logo.svelte';
   import 'sanitize.css';
   import 'sanitize.css/forms.css';
@@ -9,17 +9,7 @@
 
 <header>
   <Logo />
-  <div class="login-container">
-    <Button title="Log In" --font-size="18px" --padding="10px" --border="1px solid #000000" />
-
-    <Button
-      title="Sign Up"
-      --font-size="18px"
-      --bg-color="#DFED3E"
-      --padding="10px"
-      --border="none"
-    />
-  </div>
+  <Login />
 </header>
 <main>
   <slot />
