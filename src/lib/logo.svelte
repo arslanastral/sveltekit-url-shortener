@@ -1,5 +1,5 @@
 <div class="logo-circle">
-  <div class="logo-text">ink</div>
+  <div class="logo-text">ky</div>
 </div>
 
 <style>
@@ -15,7 +15,7 @@
     font-size: 45px;
     font-family: 'Merriweather';
     position: absolute;
-    left: 16px;
+    left: 22px;
     top: 0px;
   }
 </style>
