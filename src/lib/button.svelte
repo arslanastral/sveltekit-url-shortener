@@ -10,6 +10,11 @@
 <button on:click={onClickFunc}>{title}</button>
 
 <style>
+  :root {
+    --color: black;
+    --bg-color: white;
+    --border-radius: 6px;
+  }
   button {
     font-family: 'Inter';
     font-weight: 400;
