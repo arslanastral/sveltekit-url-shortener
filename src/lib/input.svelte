@@ -1,8 +1,10 @@
 <script>
   import Button from '$lib/button.svelte';
+  import UserInput from '$lib/userinput.svelte';
 </script>
 
 <div class="input-container flex">
+  <UserInput />
   <Button
     title="Shortern"
     --font-size="20px"
@@ -17,7 +19,9 @@
 <style>
   .flex {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .input-container {

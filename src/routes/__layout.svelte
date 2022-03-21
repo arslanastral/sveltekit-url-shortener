@@ -26,6 +26,12 @@
 </main>
 
 <style>
+  :root {
+    font-family: 'Inter';
+    font-weight: 400;
+    letter-spacing: -0.045em;
+  }
+
   header {
     margin-top: 20px;
     display: flex;
