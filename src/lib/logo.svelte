@@ -1,5 +1,4 @@
-<div class="logo-container">
-  <div class="logo-circle" />
+<div class="logo-circle">
   <div class="logo-text">ink</div>
 </div>
 
