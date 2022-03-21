@@ -1,10 +1,11 @@
 <script>
+  import Icon from '@iconify/svelte';
   let URL = '';
 </script>
 
 <div class="address-bar">
-  <span class="url-icon">🌎</span>
-  <input bind:value={URL} placeholder="Your Long URL Here" />
+  <Icon icon="mdi:web" color="#ccc" width="25" height="25" style="margin-left: 15px" />
+  <input bind:value={URL} placeholder="Paste Long URL Here" />
 </div>
 
 <style>
@@ -17,5 +18,10 @@
   input:focus {
     outline: none;
     border: 0;
+  }
+
+  .address-bar {
+    display: flex;
+    align-items: center;
   }
 </style>
