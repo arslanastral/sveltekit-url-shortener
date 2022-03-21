@@ -25,6 +25,6 @@
   header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 </style>
