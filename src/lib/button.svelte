@@ -16,8 +16,6 @@
     --border-radius: 6px;
   }
   button {
-    font-family: 'Inter';
-    font-weight: 400;
     font-size: var(--font-size);
     padding: var(--padding);
     color: var(--color);
@@ -25,6 +23,7 @@
     border-radius: var(--border-radius);
     border: var(--border);
     margin: var(--margin);
+
     transition: transform ease-in 0.1s, box-shadow ease-in 0.1s;
   }
 

@@ -9,7 +9,6 @@
   }
 
   .hero-message {
-    font-family: 'Inter';
     font-size: 28px;
     font-weight: 500;
     letter-spacing: -0.045em;
