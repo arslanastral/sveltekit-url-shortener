@@ -5,7 +5,9 @@
   </div>
   <nav />
 </header>
-<main />
+<main>
+  <slot />
+</main>
 
 <style>
   .logo-circle {
