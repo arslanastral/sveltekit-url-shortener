@@ -10,7 +10,7 @@
     --color="white"
     --bg-color="#3E5DFF"
     --border-radius="29px"
-    --margin="5px"
+    --margin="6px"
   />
 </div>
 
