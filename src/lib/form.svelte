@@ -3,17 +3,19 @@
   import UserInput from '$lib/userinput.svelte';
 </script>
 
-<div class="input-container flex">
-  <UserInput />
-  <Button
-    title="Shortern"
-    --font-size="20px"
-    --padding="8px 18px"
-    --color="white"
-    --bg-color="#3E5DFF"
-    --border-radius="29px"
-  />
-</div>
+<form action="/api" method="post">
+  <div class="input-container flex">
+    <UserInput />
+    <Button
+      title="Shortern"
+      --font-size="20px"
+      --padding="8px 18px"
+      --color="white"
+      --bg-color="#3E5DFF"
+      --border-radius="29px"
+    />
+  </div>
+</form>
 
 <style>
   .flex {
