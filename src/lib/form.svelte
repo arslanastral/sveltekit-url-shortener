@@ -8,6 +8,7 @@
     <UserInput />
     <Button
       title="Shortern"
+      type="submit"
       --font-size="20px"
       --padding="8px 18px"
       --color="white"
