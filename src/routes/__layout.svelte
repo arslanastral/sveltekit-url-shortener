@@ -1,6 +1,6 @@
 <script>
-  import Login from '$lib/login.svelte';
-  import Logo from '$lib/logo.svelte';
+  import Login from '$lib/components/login.svelte';
+  import Logo from '$lib/components/logo.svelte';
   import 'sanitize.css';
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';

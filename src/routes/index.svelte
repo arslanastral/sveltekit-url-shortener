@@ -1,6 +1,6 @@
 <script>
-  import Hero from '$lib/hero.svelte';
-  import Input from '$lib/form.svelte';
+  import Hero from '$lib/components/hero.svelte';
+  import Input from '$lib/components/form.svelte';
 </script>
 
 <div class="content">
