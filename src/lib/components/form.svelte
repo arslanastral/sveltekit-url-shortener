@@ -1,6 +1,6 @@
 <script>
-  import Button from '$lib/button.svelte';
-  import UserInput from '$lib/userinput.svelte';
+  import Button from '$lib/components/button.svelte';
+  import UserInput from '$lib/components/userinput.svelte';
 </script>
 
 <form action="/api" method="post">
