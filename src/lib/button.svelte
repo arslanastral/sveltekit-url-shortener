@@ -4,10 +4,11 @@
   };
 
   export let title = 'Button';
+  export let type = 'button';
   export let onClickFunc = clickTest;
 </script>
 
-<button on:click={onClickFunc}>{title}</button>
+<button on:click={onClickFunc} {type}>{title}</button>
 
 <style>
   :root {
