@@ -5,7 +5,7 @@
 
 <div class="address-bar">
   <Icon icon="mdi:web" color="#ccc" width="25" height="25" style="margin-left: 15px" />
-  <input bind:value={URL} placeholder="Paste Long URL Here" type="url" name="url" />
+  <input bind:value={URL} placeholder="Paste Long URL Here" type="url" name="url" required />
 </div>
 
 <style>
