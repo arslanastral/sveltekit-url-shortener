@@ -1,6 +1,7 @@
 <script>
   import Button from '$lib/components/button.svelte';
-  import Icon from '@iconify/svelte';
+  import WebIcon from '$lib/assets/WebIcon.svelte';
+  import LockIcon from '$lib/assets/LockIcon.svelte';
   let URL = '';
 </script>
 
@@ -8,16 +9,12 @@
   <form class="flex form" action="/api" method="post">
     <div class="input-container flex">
       <div class="flex url-input">
-        <span>
-          <Icon icon="mdi:web" color="#ccc" width="25" height="25" style="margin-left: 15px" />
-        </span>
+        <WebIcon />
         <input bind:value={URL} placeholder="Paste Long URL Here" type="url" name="url" required />
       </div>
 
       <div class="flex password-input">
-        <span>
-          <Icon icon="ant-design:lock-filled" color="#ccc" width="25" height="25" />
-        </span>
+        <LockIcon />
         <input placeholder="Password" type="password" name="password" />
       </div>
     </div>
