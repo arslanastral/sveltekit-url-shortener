@@ -1,11 +1,27 @@
 <script>
   import Button from '$lib/components/button.svelte';
-  import UserInput from '$lib/components/userinput.svelte';
+  import Icon from '@iconify/svelte';
+  let URL = '';
 </script>
 
-<form action="/api" method="post">
-  <div class="input-container flex">
-    <UserInput />
+<div class="form-container">
+  <form class="flex form" action="/api" method="post">
+    <div class="input-container flex">
+      <div class="flex url-input">
+        <span>
+          <Icon icon="mdi:web" color="#ccc" width="25" height="25" style="margin-left: 15px" />
+        </span>
+        <input bind:value={URL} placeholder="Paste Long URL Here" type="url" name="url" required />
+      </div>
+
+      <div class="flex password-input">
+        <span>
+          <Icon icon="ant-design:lock-filled" color="#ccc" width="25" height="25" />
+        </span>
+        <input placeholder="Password" type="password" name="password" />
+      </div>
+    </div>
+
     <Button
       title="Shortern"
       type="submit"
@@ -15,22 +31,49 @@
       --bg-color="#3E5DFF"
       --border-radius="29px"
     />
-  </div>
-</form>
+  </form>
+</div>
 
 <style>
   .flex {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
   }
 
-  .input-container {
+  .form-container {
     width: 800px;
     height: 60px;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 42px;
+  }
+
+  .form {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  input {
+    font-size: 20px;
+    background: none;
+    border: 0;
+    width: 100%;
+  }
+
+  input:focus {
+    outline: none;
+    border: 0;
+  }
+
+  .input-container {
+    width: 80%;
+  }
+
+  .url-input {
+    flex: 2;
+  }
+
+  .password-input {
+    flex: 1;
   }
 </style>
