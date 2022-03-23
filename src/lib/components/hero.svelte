@@ -3,7 +3,7 @@
 <style>
   .hero-container {
     display: flex;
-    width: 800px;
+    width: clamp(320px, 90vw, 800px);
     height: 150px;
     margin-top: 60px;
   }
