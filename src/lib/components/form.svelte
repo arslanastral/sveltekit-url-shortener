@@ -38,7 +38,7 @@
   }
 
   .form-container {
-    width: 800px;
+    width: clamp(320px, 90vw, 800px);
     height: 60px;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.5);
