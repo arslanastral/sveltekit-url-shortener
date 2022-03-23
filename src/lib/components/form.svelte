@@ -88,6 +88,7 @@
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 42px;
+    animation: fadeIn 1s;
   }
 
   .justify-sb {
@@ -97,6 +98,7 @@
   .form {
     width: 100%;
     justify-content: space-between;
+    animation: fadeIn 1s;
   }
 
   input {
@@ -114,6 +116,7 @@
   .url-text {
     font-size: 20px;
     margin-left: 8px;
+    animation: fadeIn 1s;
     width: 100%;
   }
 
