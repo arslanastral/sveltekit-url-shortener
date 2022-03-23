@@ -3,10 +3,22 @@
   import WebIcon from '$lib/assets/WebIcon.svelte';
   import LockIcon from '$lib/assets/LockIcon.svelte';
   let URL = '';
+  let shortenedURL = '';
+
+  async function handleURLSubmit(e) {
+    const request = new Request('/api/shorturl', {
+      method: 'POST',
+      body: new FormData(e.target)
+    });
+    let response = await fetch(request);
+
+    let json = await response.json();
+    shortenedURL = `${window.location.origin}/api/${json.short_url}`;
+  }
 </script>
 
 <div class="form-container">
-  <form class="flex form" action="/api" method="post">
+  <form class="flex form" method="post" on:submit|preventDefault={handleURLSubmit}>
     <div class="input-container flex">
       <div class="flex url-input">
         <WebIcon />
