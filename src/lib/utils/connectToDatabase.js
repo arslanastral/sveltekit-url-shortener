@@ -9,7 +9,7 @@ export const connectToDatabase = async () => {
     console.log('New Mongo Request: Using existing connection');
     return Promise.resolve(dbExists);
   } else {
-    return MongoClient.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    return MongoClient.connect(mongoURI)
       .then((client) => {
         let db = client.db('ky');
         console.log('New Database Connection');
