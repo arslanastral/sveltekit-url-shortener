@@ -22,11 +22,11 @@
   };
 </script>
 
-<div class="form-container flex justify-sb">
+<div class="form-container flex">
   {#if shortenedURL}
     <div class="flex grow">
       <Checkmark />
-      <a class="shortened-link" href={shortenedURL} target="_blank" rel="noopener noreferrer"
+      <a class="shortened-link fadeIn" href={shortenedURL} target="_blank" rel="noopener noreferrer"
         >{shortenedURL}</a
       >
     </div>
@@ -45,7 +45,7 @@
   {:else}
     <form
       autocomplete="off"
-      class="flex form"
+      class="flex fadeIn"
       method="post"
       on:submit|preventDefault={handleURLSubmit}
     >
@@ -80,23 +80,16 @@
     align-items: center;
   }
 
+  .fadeIn {
+    animation: fadeIn 0.5s;
+  }
+
   .form-container {
     width: clamp(320px, 90vw, 800px);
     height: 60px;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 42px;
-    animation: fadeIn 1s;
-  }
-
-  .justify-sb {
-    justify-content: space-between;
-  }
-
-  .form {
-    width: 100%;
-    justify-content: space-between;
-    animation: fadeIn 1s;
   }
 
   input {
@@ -115,7 +108,6 @@
     font-size: 20px;
     margin-left: 8px;
     text-decoration: none;
-    animation: fadeIn 1s;
   }
 
   .shortened-link:hover {
