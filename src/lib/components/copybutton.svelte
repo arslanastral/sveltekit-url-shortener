@@ -1,8 +1,11 @@
 <script>
   import { clickToCopy } from '$lib/utils/clickToCopy';
+
+  let text = 'Copy';
 </script>
 
-<button use:clickToCopy={'.shortened-link'}>Copy</button>
+<button use:clickToCopy={'.shortened-link'} on:copysuccess={() => (text = 'Copied!')}>{text}</button
+>
 
 <style>
   button {
@@ -13,15 +16,10 @@
     border-radius: 29px;
     border: 1px solid #808080;
     margin: 6px;
-
-    transition: transform ease-in 0.1s, box-shadow ease-in 0.1s;
+    transition: transform ease-in 0.1s;
   }
 
   button:active {
     transform: scale(0.9);
-  }
-
-  button:hover {
-    box-shadow: 0 2px 10px rgba(129, 129, 129, 0.3);
   }
 </style>
