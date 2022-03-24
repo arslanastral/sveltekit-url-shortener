@@ -4,7 +4,6 @@
   import WebIcon from '$lib/assets/WebIcon.svelte';
   import LockIcon from '$lib/assets/LockIcon.svelte';
   import Checkmark from '$lib/assets/Checkmark.svelte';
-  let URL = '';
   let shortenedURL = '';
 
   async function handleURLSubmit(e) {
@@ -20,7 +19,6 @@
 
   const back = () => {
     shortenedURL = '';
-    URL = '';
   };
 </script>
 
@@ -52,13 +50,7 @@
       <div class="input-container flex">
         <div class="flex url-input">
           <WebIcon />
-          <input
-            bind:value={URL}
-            placeholder="Paste Long URL Here"
-            type="url"
-            name="url"
-            required
-          />
+          <input placeholder="Paste Long URL Here" type="url" name="url" required />
         </div>
 
         <div class="flex password-input">
