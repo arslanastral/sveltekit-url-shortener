@@ -15,7 +15,7 @@
     let response = await fetch(request);
 
     let json = await response.json();
-    shortenedURL = `${window.location.origin}/api/${json.short_url}`;
+    shortenedURL = `${window.location.origin}/${json.short_url}`;
   }
 
   const back = () => {
