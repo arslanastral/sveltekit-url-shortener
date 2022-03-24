@@ -120,6 +120,14 @@
     width: 100%;
   }
 
+  .url-text a {
+    text-decoration: none;
+  }
+
+  .url-text a:hover {
+    text-decoration: underline;
+  }
+
   .input-container {
     width: 80%;
   }
