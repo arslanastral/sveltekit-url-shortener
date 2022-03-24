@@ -1,8 +1,7 @@
+// @ts-nocheck
 import { MongoClient } from 'mongodb';
 
 let dbExists = null;
-
-let mongoURI = 'mongodb://localhost:27017';
 
 export const connectToDatabase = async () => {
   if (dbExists) {
@@ -10,7 +9,7 @@ export const connectToDatabase = async () => {
     return dbExists;
   } else {
     try {
-      const client = new MongoClient(mongoURI);
+      const client = new MongoClient(import.meta.env.VITE_MONGODB_URI);
       await client.connect();
       let db = client.db('ky');
       console.log('New Database Connection');
