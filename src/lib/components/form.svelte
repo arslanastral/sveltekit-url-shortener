@@ -1,4 +1,5 @@
 <script>
+  import Copybutton from './copybutton.svelte';
   import Button from '$lib/components/button.svelte';
   import WebIcon from '$lib/assets/WebIcon.svelte';
   import LockIcon from '$lib/assets/LockIcon.svelte';
@@ -21,6 +22,37 @@
     shortenedURL = '';
     URL = '';
   };
+
+  export function clickToCopy(node, target) {
+    async function copyText() {
+      let text = target ? document.querySelector(target).innerText : node.innerText;
+
+      try {
+        await navigator.clipboard.writeText(text);
+
+        node.dispatchEvent(
+          new CustomEvent('copysuccess', {
+            bubbles: true
+          })
+        );
+      } catch (error) {
+        node.dispatchEvent(
+          new CustomEvent('copyerror', {
+            bubbles: true,
+            detail: error
+          })
+        );
+      }
+    }
+
+    node.addEventListener('click', copyText);
+
+    return {
+      destroy() {
+        node.removeEventListener('click', copyText);
+      }
+    };
+  }
 </script>
 
 <div class="flex justify-sb form-container">
@@ -29,10 +61,13 @@
       <div class="flex url-input">
         <Checkmark />
         <div class="url-text">
-          <a href={shortenedURL} target="_blank" rel="noopener noreferrer">{shortenedURL}</a>
+          <a class="shortened-link" href={shortenedURL} target="_blank" rel="noopener noreferrer"
+            >{shortenedURL}</a
+          >
         </div>
       </div>
     </div>
+    <Copybutton />
     <Button
       title="Back"
       onClickFunc={back}
