@@ -46,7 +46,12 @@
       --border-radius="29px"
     />
   {:else}
-    <form class="flex form" method="post" on:submit|preventDefault={handleURLSubmit}>
+    <form
+      autocomplete="off"
+      class="flex form"
+      method="post"
+      on:submit|preventDefault={handleURLSubmit}
+    >
       <div class="input-container flex">
         <div class="flex url-input">
           <WebIcon />
