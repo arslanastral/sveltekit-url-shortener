@@ -155,11 +155,11 @@
     width: 100%;
   }
 
-  .url-text a {
+  .shortened-link {
     text-decoration: none;
   }
 
-  .url-text a:hover {
+  .shortened-link:hover {
     text-decoration: underline;
   }
 
