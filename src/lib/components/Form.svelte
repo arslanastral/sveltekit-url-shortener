@@ -1,6 +1,6 @@
 <script>
-  import Copybutton from './copybutton.svelte';
-  import Button from '$lib/components/button.svelte';
+  import Copybutton from './CopyButton.svelte';
+  import Button from '$lib/components/Button.svelte';
   import WebIcon from '$lib/assets/WebIcon.svelte';
   import LockIcon from '$lib/assets/LockIcon.svelte';
   import Checkmark from '$lib/assets/Checkmark.svelte';
