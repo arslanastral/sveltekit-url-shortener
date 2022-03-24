@@ -1,12 +1,16 @@
 <script>
+  import Loading from '$lib/assets/Loading.svelte';
   import Copybutton from './CopyButton.svelte';
   import Button from '$lib/components/Button.svelte';
   import WebIcon from '$lib/assets/WebIcon.svelte';
   import LockIcon from '$lib/assets/LockIcon.svelte';
   import Checkmark from '$lib/assets/Checkmark.svelte';
+
   let shortenedURL = '';
+  let isShrinking = false;
 
   async function handleURLSubmit(e) {
+    isShrinking = true;
     const request = new Request('/api/shorturl', {
       method: 'POST',
       body: new FormData(e.target)
@@ -15,6 +19,8 @@
 
     let json = await response.json();
     shortenedURL = `${window.location.origin}/${json.short_url}`;
+    console.log('finished');
+    isShrinking = false;
   }
 
   const back = () => {
@@ -23,7 +29,9 @@
 </script>
 
 <div class="form-container flex">
-  {#if shortenedURL}
+  {#if isShrinking}
+    <Loading /> <span style="font-size: 20px">nom.. nom</span>
+  {:else if shortenedURL}
     <div class="flex grow">
       <Checkmark />
       <a class="shortened-link fadeIn" href={shortenedURL} target="_blank" rel="noopener noreferrer"
@@ -78,6 +86,10 @@
   .flex {
     display: flex;
     align-items: center;
+  }
+
+  .center {
+    justify-content: center;
   }
 
   .fadeIn {
