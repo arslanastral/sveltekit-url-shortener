@@ -22,18 +22,15 @@
   };
 </script>
 
-<div class="flex justify-sb form-container">
+<div class="form-container flex justify-sb">
   {#if shortenedURL}
-    <div class="input-container flex">
-      <div class="flex url-input">
-        <Checkmark />
-        <div class="url-text">
-          <a class="shortened-link" href={shortenedURL} target="_blank" rel="noopener noreferrer"
-            >{shortenedURL}</a
-          >
-        </div>
-      </div>
+    <div class="flex grow">
+      <Checkmark />
+      <a class="shortened-link" href={shortenedURL} target="_blank" rel="noopener noreferrer"
+        >{shortenedURL}</a
+      >
     </div>
+
     <Copybutton />
     <Button
       title="Back"
@@ -52,13 +49,13 @@
       method="post"
       on:submit|preventDefault={handleURLSubmit}
     >
-      <div class="input-container flex">
-        <div class="flex url-input">
+      <div class="flex">
+        <div class="flex grow-2">
           <WebIcon />
           <input placeholder="Paste Long URL Here" type="url" name="url" required />
         </div>
 
-        <div class="flex password-input">
+        <div class="flex grow">
           <LockIcon />
           <input placeholder="Password" type="password" name="password" />
         </div>
@@ -114,30 +111,22 @@
     border: 0;
   }
 
-  .url-text {
+  .shortened-link {
     font-size: 20px;
     margin-left: 8px;
-    animation: fadeIn 1s;
-    width: 100%;
-  }
-
-  .shortened-link {
     text-decoration: none;
+    animation: fadeIn 1s;
   }
 
   .shortened-link:hover {
     text-decoration: underline;
   }
 
-  .input-container {
-    width: 80%;
-  }
-
-  .url-input {
+  .grow-2 {
     flex: 2;
   }
 
-  .password-input {
+  .grow {
     flex: 1;
   }
 </style>
