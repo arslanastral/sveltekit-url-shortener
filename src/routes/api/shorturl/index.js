@@ -20,9 +20,7 @@ export async function post({ request }) {
   const shortened = await collection.insertOne({ long_url: submittedURL, short_url: nanoid(4) });
   const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
 
-  let result = { short_url: shortenedResult.short_url, long_url: shortenedResult.long_url };
-
   return {
-    body: result
+    body: { short_url: shortenedResult.short_url, long_url: shortenedResult.long_url }
   };
 }
