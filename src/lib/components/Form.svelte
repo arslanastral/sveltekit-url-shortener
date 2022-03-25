@@ -53,11 +53,11 @@
   {:else}
     <form
       autocomplete="off"
-      class="flex fadeIn"
+      class="flex grow fadeIn"
       method="post"
       on:submit|preventDefault={handleURLSubmit}
     >
-      <div class="flex">
+      <div class="flex grow">
         <div class="flex grow-2">
           <WebIcon />
           <input placeholder="Paste Long URL Here" type="url" name="url" required />
@@ -86,10 +86,6 @@
   .flex {
     display: flex;
     align-items: center;
-  }
-
-  .center {
-    justify-content: center;
   }
 
   .fadeIn {
