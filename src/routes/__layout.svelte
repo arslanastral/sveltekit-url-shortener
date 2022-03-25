@@ -1,4 +1,5 @@
 <script>
+  import '$lib/styles/global.css';
   import Login from '$lib/components/Login.svelte';
   import Logo from '$lib/components/Logo.svelte';
   import 'sanitize.css';
@@ -7,7 +8,7 @@
   import 'animate.css';
 </script>
 
-<header>
+<header class="flex">
   <Logo />
   <Login />
 </header>
@@ -23,8 +24,6 @@
   }
 
   header {
-    display: flex;
-    align-items: center;
     justify-content: space-evenly;
   }
 </style>
