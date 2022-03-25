@@ -5,14 +5,12 @@
   let text = 'Copy';
 </script>
 
-<button use:clickToCopy={'.shortened-link'} on:copysuccess={() => (text = 'Copied!')}
+<button class="flex" use:clickToCopy={'.shortened-link'} on:copysuccess={() => (text = 'Copied!')}
   ><CopyIcon /><span>{text}</span></button
 >
 
 <style>
   button {
-    display: flex;
-    align-items: center;
     font-size: 20px;
     padding: 8px 18px;
     color: black;

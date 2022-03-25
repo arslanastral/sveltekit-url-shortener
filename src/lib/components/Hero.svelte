@@ -1,8 +1,7 @@
-<div class="hero-container"><h2 class="hero-message">Short Links. Big Impact.</h2></div>
+<div class="hero-container flex"><h2 class="hero-message">Short Links. Big Impact.</h2></div>
 
 <style>
   .hero-container {
-    display: flex;
     width: clamp(320px, 90vw, 800px);
     height: 150px;
     margin-top: 60px;
