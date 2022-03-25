@@ -83,11 +83,6 @@
 </div>
 
 <style>
-  .flex {
-    display: flex;
-    align-items: center;
-  }
-
   .fadeIn {
     animation: fadeIn 0.5s;
   }
@@ -120,13 +115,5 @@
 
   .shortened-link:hover {
     text-decoration: underline;
-  }
-
-  .grow-2 {
-    flex: 2;
-  }
-
-  .grow {
-    flex: 1;
   }
 </style>
