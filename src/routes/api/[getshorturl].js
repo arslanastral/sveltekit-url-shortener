@@ -14,7 +14,8 @@ export async function get({ params }) {
     };
   } catch (error) {
     return {
-      body: "This short link doesn't exist"
+      body: "This short link doesn't exist",
+      status: 404
     };
   }
 }
