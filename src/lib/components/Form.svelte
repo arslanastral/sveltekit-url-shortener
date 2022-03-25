@@ -93,6 +93,7 @@
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 42px;
+    margin-top: 30px;
   }
 
   input {
