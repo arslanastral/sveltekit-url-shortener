@@ -6,66 +6,97 @@
   import LockIcon from '$lib/assets/LockIcon.svelte';
   import Checkmark from '$lib/assets/Checkmark.svelte';
 
+  let longURL = '';
   let shortenedURL = '';
   let isShrinking = false;
+  let error = '';
+  let password = '';
 
   async function handleURLSubmit(e) {
+    let formData = new FormData();
+    formData.append('url', longURL);
+    formData.append('password', password);
+    if (error) {
+      error = '';
+    }
+
     isShrinking = true;
     const request = new Request('/api/shorturl', {
       method: 'POST',
-      body: new FormData(e.target)
+      body: formData
     });
     let response = await fetch(request);
-
     let json = await response.json();
-    shortenedURL = `${window.location.origin}/${json.short_url}`;
-    console.log('finished');
-    isShrinking = false;
+
+    if (response.ok) {
+      shortenedURL = `${window.location.origin}/${json.short_url}`;
+      console.log('finished');
+      isShrinking = false;
+    } else {
+      isShrinking = false;
+      error = json.error;
+    }
   }
 
   const back = () => {
     shortenedURL = '';
+    longURL = '';
   };
 </script>
 
 <div class="form-container flex">
-  {#if isShrinking}
-    <Loading /> <span style="font-size: 20px">nom.. nom</span>
-  {:else if shortenedURL}
-    <div class="flex grow">
-      <Checkmark />
-      <a class="shortened-link fadeIn" href={shortenedURL} target="_blank" rel="noopener noreferrer"
-        >{shortenedURL}</a
-      >
-    </div>
+  <form
+    autocomplete="off"
+    class="flex grow fadeIn"
+    method="post"
+    on:submit|preventDefault={handleURLSubmit}
+  >
+    {#if isShrinking}
+      <Loading /> <span style="font-size: 20px">Loading</span>
+    {:else if error}
+      <div class="flex grow">
+        <span class="error grow">{error}</span><Button
+          title="Retry"
+          type="submit"
+          --font-size="20px"
+          --padding="8px 18px"
+          --color="white"
+          --bg-color="black"
+          --border-radius="29px"
+        />
+      </div>
+    {:else if shortenedURL}
+      <div class="flex grow">
+        <Checkmark />
+        <a
+          class="shortened-link fadeIn"
+          href={shortenedURL}
+          target="_blank"
+          rel="noopener noreferrer">{shortenedURL}</a
+        >
+      </div>
 
-    <Copybutton />
-    <Button
-      title="Back"
-      onClickFunc={back}
-      type="button"
-      --font-size="20px"
-      --padding="8px 28px"
-      --color="white"
-      --bg-color="black"
-      --border-radius="29px"
-    />
-  {:else}
-    <form
-      autocomplete="off"
-      class="flex grow fadeIn"
-      method="post"
-      on:submit|preventDefault={handleURLSubmit}
-    >
+      <Copybutton />
+      <Button
+        title="Back"
+        onClickFunc={back}
+        type="button"
+        --font-size="20px"
+        --padding="8px 28px"
+        --color="white"
+        --bg-color="black"
+        --border-radius="29px"
+      />
+    {:else}
       <div class="flex grow">
         <div class="flex grow-2">
           <WebIcon />
-          <input placeholder="Paste Long URL Here" type="url" name="url" required />
+          <input bind:value={longURL} placeholder="Paste Long URL Here" type="url" required />
         </div>
 
         <div class="flex grow">
           <LockIcon />
-          <input placeholder="Password" type="password" name="password" />
+          <input bind:value={password} placeholder="Password" type="password" />
         </div>
       </div>
 
@@ -78,8 +109,8 @@
         --bg-color="#3E5DFF"
         --border-radius="29px"
       />
-    </form>
-  {/if}
+    {/if}
+  </form>
 </div>
 
 <style>
@@ -116,5 +147,11 @@
 
   .shortened-link:hover {
     text-decoration: underline;
+  }
+
+  .error {
+    font-size: 20px;
+    color: red;
+    margin-left: 15px;
   }
 </style>
