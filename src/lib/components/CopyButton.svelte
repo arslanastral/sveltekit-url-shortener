@@ -5,8 +5,11 @@
   let text = 'Copy';
 </script>
 
-<button class="flex" use:clickToCopy={'.shortened-link'} on:copysuccess={() => (text = 'Copied!')}
-  ><CopyIcon /><span>{text}</span></button
+<button
+  type="button"
+  class="flex"
+  use:clickToCopy={'.shortened-link'}
+  on:copysuccess={() => (text = 'Copied!')}><CopyIcon /><span>{text}</span></button
 >
 
 <style>
