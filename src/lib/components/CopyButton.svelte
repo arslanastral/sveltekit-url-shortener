@@ -21,6 +21,7 @@
     border-radius: 29px;
     border: 1px solid #808080;
     margin: 6px;
+    cursor: pointer;
     transition: transform ease-in 0.1s;
   }
 

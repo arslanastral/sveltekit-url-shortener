@@ -26,6 +26,7 @@
     border: var(--border);
     margin: var(--margin);
 
+    cursor: pointer;
     transition: transform ease-in 0.1s, box-shadow ease-in 0.1s;
   }
 
