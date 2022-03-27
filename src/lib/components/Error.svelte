@@ -19,6 +19,6 @@
   .error {
     font-size: 20px;
     color: red;
-    margin-left: 15px;
+    margin-left: 20px;
   }
 </style>
