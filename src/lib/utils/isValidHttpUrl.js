@@ -7,5 +7,5 @@ export const isValidHttpUrl = (string, host) => {
     return false;
   }
 
-  return (url.host && url.host !== host && url.protocol === 'http:') || url.protocol === 'https:';
+  return url.host && url.host !== host && (url.protocol === 'http:' || url.protocol === 'https:');
 };
