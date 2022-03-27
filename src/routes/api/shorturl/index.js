@@ -1,10 +1,13 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { isValidHttpUrl } from '$lib/utils/isValidHttpUrl.js';
 import { nanoid } from 'nanoid';
 
 export async function post({ request }) {
   const body = await request.formData();
   const submittedURL = body.get('url');
-  if (submittedURL) {
+  const host = request.headers.get('host');
+
+  if (isValidHttpUrl(submittedURL, host)) {
     try {
       const db = await connectToDatabase();
       const collection = await db.collection('urls');

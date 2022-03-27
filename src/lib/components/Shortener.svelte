@@ -4,7 +4,7 @@
   import Error from './Error.svelte';
   import Shortened from './Shortened.svelte';
 
-  let longURL;
+  let longURL = '';
   let shortenedURL = '';
   let isShortening = false;
   let error = '';
@@ -44,6 +44,7 @@
   }
 
   const back = () => {
+    error = '';
     shortenedURL = '';
     longURL = '';
   };
@@ -59,7 +60,7 @@
     {#if isShortening}
       <Shortening />
     {:else if error}
-      <Error {error} />
+      <Error {longURL} {error} {back} />
     {:else if shortenedURL}
       <Shortened {shortenedURL} {back} />
     {:else}
