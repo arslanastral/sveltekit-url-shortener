@@ -1,11 +1,11 @@
 <script>
   import Hero from '$lib/components/Hero.svelte';
-  import Input from '$lib/components/Form.svelte';
+  import Shortener from '$lib/components/Shortener.svelte';
 </script>
 
 <div class="content">
   <Hero />
-  <Input />
+  <Shortener />
 </div>
 
 <style>
