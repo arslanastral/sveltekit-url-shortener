@@ -3,4 +3,4 @@
 </script>
 
 <LoadingIcon />
-<span style="font-size: 20px">{'Eating Your URL To Make it Short :)'}</span>
+<span style="font-size: 20px">{'Creating Short Link'}</span>
