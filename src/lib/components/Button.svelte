@@ -1,11 +1,7 @@
 <script>
-  const clickTest = () => {
-    console.log("I'm Clicked :)");
-  };
-
   export let title = 'Button';
   export let type = 'button';
-  export let onClickFunc = clickTest;
+  export let onClickFunc = undefined;
 </script>
 
 <button on:click={onClickFunc} {type}>{title}</button>

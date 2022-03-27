@@ -1,7 +1,7 @@
 <script>
   import ShortenerInput from './ShortenerInput.svelte';
   import Shortening from './Shortening.svelte';
-  import Error from './Error.svelte';
+  import ErrorHandler from './ErrorHandler.svelte';
   import Shortened from './Shortened.svelte';
 
   let longURL = '';
@@ -60,7 +60,7 @@
     {#if isShortening}
       <Shortening />
     {:else if error}
-      <Error {longURL} {error} {back} />
+      <ErrorHandler {longURL} {error} {back} />
     {:else if shortenedURL}
       <Shortened {shortenedURL} {back} />
     {:else}
