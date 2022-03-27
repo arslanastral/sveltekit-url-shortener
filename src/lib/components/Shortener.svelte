@@ -9,7 +9,7 @@
 
   let longURL = '';
   let shortenedURL = '';
-  let isShrinking = false;
+  let isShortening = false;
   let error = '';
   let password = '';
 
@@ -21,7 +21,7 @@
       error = '';
     }
 
-    isShrinking = true;
+    isShortening = true;
     const request = new Request('/api/shorturl', {
       method: 'POST',
       body: formData
@@ -32,9 +32,9 @@
     if (response.ok) {
       shortenedURL = `${window.location.origin}/${json.short_url}`;
       console.log('finished');
-      isShrinking = false;
+      isShortening = false;
     } else {
-      isShrinking = false;
+      isShortening = false;
       error = json.error;
     }
   }
@@ -52,7 +52,7 @@
     method="post"
     on:submit|preventDefault={handleURLSubmit}
   >
-    {#if isShrinking}
+    {#if isShortening}
       <Loading /> <span style="font-size: 20px">Loading</span>
     {:else if error}
       <Error {error} />
