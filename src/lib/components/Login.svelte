@@ -16,6 +16,6 @@
 
 <style>
   .login-container {
-    margin-top: 15px;
+    margin: 15px;
   }
 </style>

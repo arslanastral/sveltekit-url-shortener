@@ -4,7 +4,7 @@
 
 <style>
   .logo-circle {
-    margin-top: 20px;
+    margin: 20px;
     width: 70px;
     height: 70px;
     background: #dfed3e;
