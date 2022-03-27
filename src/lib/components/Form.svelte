@@ -1,4 +1,5 @@
 <script>
+  import Error from './Error.svelte';
   import Loading from '$lib/assets/Loading.svelte';
   import Copybutton from './CopyButton.svelte';
   import Button from '$lib/components/Button.svelte';
@@ -54,17 +55,7 @@
     {#if isShrinking}
       <Loading /> <span style="font-size: 20px">Loading</span>
     {:else if error}
-      <div class="flex grow">
-        <span class="error grow">{error}</span><Button
-          title="Retry"
-          type="submit"
-          --font-size="20px"
-          --padding="8px 18px"
-          --color="white"
-          --bg-color="black"
-          --border-radius="29px"
-        />
-      </div>
+      <Error {error} />
     {:else if shortenedURL}
       <div class="flex grow">
         <Checkmark />
@@ -147,11 +138,5 @@
 
   .shortened-link:hover {
     text-decoration: underline;
-  }
-
-  .error {
-    font-size: 20px;
-    color: red;
-    margin-left: 15px;
   }
 </style>
