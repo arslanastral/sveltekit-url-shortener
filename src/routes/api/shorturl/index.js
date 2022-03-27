@@ -1,15 +1,6 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
 import { nanoid } from 'nanoid';
 
-export async function get() {
-  const db = await connectToDatabase();
-  const collection = await db.collection('urls');
-  const urls = await collection.find({}).limit(50).toArray();
-  return {
-    body: { urls }
-  };
-}
-
 export async function post({ request }) {
   const body = await request.formData();
   const submittedURL = body.get('url');
