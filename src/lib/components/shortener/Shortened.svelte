@@ -15,7 +15,7 @@
   >
 </div>
 
-<QRButton />
+<QRButton {shortenedURL} />
 <Copybutton />
 <Button
   title="Back"

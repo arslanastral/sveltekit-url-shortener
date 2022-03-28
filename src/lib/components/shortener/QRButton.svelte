@@ -1,8 +1,25 @@
 <script>
   import QRIcon from '$lib/assets/QRIcon.svelte';
+  import QrCode from './QRCode.svelte';
+
+  export let shortenedURL;
+
+  let toggle = false;
+
+  const toggleOpen = () => {
+    toggle = true;
+  };
+
+  const toggleClose = () => {
+    toggle = false;
+  };
 </script>
 
-<button type="button" class="flex"><QRIcon /><span>{'QR'}</span></button>
+<button on:click={toggleOpen} type="button" class="flex"><QRIcon /><span>{'QR'}</span></button>
+
+{#if toggle}
+  <QrCode {shortenedURL} {toggleClose} />
+{/if}
 
 <style>
   button {
