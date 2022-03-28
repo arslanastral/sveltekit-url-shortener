@@ -1,6 +1,6 @@
 <script>
   import Hero from '$lib/components/Hero.svelte';
-  import Shortener from '$lib/components/Shortener.svelte';
+  import Shortener from '$lib/components/shortener/Shortener.svelte';
 </script>
 
 <div class="content">

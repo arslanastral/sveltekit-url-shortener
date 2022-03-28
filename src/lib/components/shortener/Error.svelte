@@ -1,5 +1,5 @@
 <script>
-  import Button from './Button.svelte';
+  import Button from '../Button.svelte';
 
   export let error;
   export let action = undefined;

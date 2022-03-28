@@ -1,7 +1,7 @@
 <script>
   import Checkmark from '$lib/assets/Checkmark.svelte';
   import Copybutton from './CopyButton.svelte';
-  import Button from './Button.svelte';
+  import Button from '../Button.svelte';
 
   export let shortenedURL = '';
   export let back = null;
