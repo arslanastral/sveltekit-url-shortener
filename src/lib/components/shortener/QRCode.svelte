@@ -1,15 +1,18 @@
 <script>
   import { onMount } from 'svelte';
-  import kjua from 'kjua';
 
   export let toggleClose;
   export let shortenedURL;
   let qr;
   let container;
 
-  onMount(() => {
+  onMount(async () => {
+    const kjua = await import('kjua');
+    const qrGenerator = kjua.default;
+
+    console.log('triggering');
     if (!qr) {
-      qr = kjua({
+      qr = qrGenerator({
         text: shortenedURL,
         fill: 'blue',
         rounded: 100,
