@@ -1,7 +1,8 @@
 <script>
+  import QRIcon from '$lib/assets/QRIcon.svelte';
 </script>
 
-<button type="button" class="flex"><span>{'QR'}</span></button>
+<button type="button" class="flex"><QRIcon /><span>{'QR'}</span></button>
 
 <style>
   button {
