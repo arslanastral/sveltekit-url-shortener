@@ -7,12 +7,11 @@
   let container;
 
   onMount(async () => {
-    const kjua = await import('kjua');
-    const qrGenerator = kjua.default;
+    const { default: kjua } = await import('kjua');
 
     console.log('triggering');
     if (!qr) {
-      qr = qrGenerator({
+      qr = kjua({
         text: shortenedURL,
         fill: 'blue',
         rounded: 100,
