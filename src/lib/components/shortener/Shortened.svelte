@@ -1,4 +1,5 @@
 <script>
+  import QRButton from './QRButton.svelte';
   import Checkmark from '$lib/assets/Checkmark.svelte';
   import Copybutton from './CopyButton.svelte';
   import Button from '../Button.svelte';
@@ -14,6 +15,7 @@
   >
 </div>
 
+<QRButton />
 <Copybutton />
 <Button
   title="Back"
