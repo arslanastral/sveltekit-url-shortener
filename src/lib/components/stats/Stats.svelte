@@ -1,4 +1,7 @@
-<div class="stats-container" />
+<div class="stats-container">
+  <div class="stats-title">Platform Stats</div>
+  <div />
+</div>
 
 <style>
   .stats-container {
