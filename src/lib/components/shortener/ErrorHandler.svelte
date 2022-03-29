@@ -11,7 +11,7 @@
   };
 </script>
 
-<div class="flex grow">
+<div class="flex grow fadeIn">
   {#if isFromSameDomain(longURL)}
     <Error error={`😐 This is already a ky link`} action={back} />
   {:else if error === 'invalid url'}

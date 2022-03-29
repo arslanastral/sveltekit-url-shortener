@@ -78,10 +78,6 @@
 </div>
 
 <style>
-  .fadeIn {
-    animation: fadeIn 0.5s;
-  }
-
   .shortener-container {
     width: clamp(320px, 90vw, 800px);
     height: 60px;
@@ -93,11 +89,9 @@
 
   .shortener-container:hover {
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-    border-color: rgba(223, 225, 229, 0);
   }
 
   .selected {
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
-    border-color: rgba(223, 225, 229, 0);
   }
 </style>
