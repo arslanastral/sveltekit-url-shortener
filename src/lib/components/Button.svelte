@@ -12,6 +12,7 @@
     --bg-color: white;
     --border-radius: 6px;
     --margin: 6px;
+    --transform: scale(0.9);
   }
   button {
     font-size: var(--font-size);
@@ -23,14 +24,15 @@
     margin: var(--margin);
 
     cursor: pointer;
-    transition: transform ease-in 0.1s, box-shadow ease-in 0.1s;
+    transition: transform ease-in 0.1s, background-color ease-in 0.1s, border ease-in 0.1s;
   }
 
   button:active {
-    transform: scale(0.9);
+    transform: var(--transform);
+    background-color: var(--active-bg);
   }
 
   button:hover {
-    box-shadow: 0 2px 10px rgba(129, 129, 129, 0.3);
+    border: var(--hover-border);
   }
 </style>

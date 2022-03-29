@@ -8,25 +8,29 @@
   export let back = null;
 </script>
 
-<div class="flex grow">
-  <Checkmark />
-  <a class="shortened-link fadeIn" href={shortenedURL} target="_blank" rel="noopener noreferrer"
-    >{shortenedURL}</a
-  >
-</div>
+<div class="flex grow fadeIn">
+  <div class="flex grow">
+    <Checkmark />
+    <a class="shortened-link fadeIn" href={shortenedURL} target="_blank" rel="noopener noreferrer"
+      >{shortenedURL}</a
+    >
+  </div>
 
-<QRButton {shortenedURL} />
-<Copybutton />
-<Button
-  title="Back"
-  onClickFunc={back}
-  type="button"
-  --font-size="20px"
-  --padding="8px 28px"
-  --color="white"
-  --bg-color="black"
-  --border-radius="29px"
-/>
+  <QRButton {shortenedURL} />
+  <Copybutton />
+  <Button
+    title="Back"
+    onClickFunc={back}
+    type="button"
+    --font-size="20px"
+    --padding="8px 28px"
+    --color="white"
+    --bg-color="black"
+    --border-radius="29px"
+    --active-bg="#333"
+    --transform="none"
+  />
+</div>
 
 <style>
   .shortened-link {

@@ -7,7 +7,7 @@
   export let password;
 </script>
 
-<div class="flex grow">
+<div class="flex grow fadeIn">
   <div class="flex grow-2">
     <WebIcon />
     <input bind:value={longURL} placeholder="Paste Long URL Here" type="url" required />
@@ -27,6 +27,7 @@
   --color="white"
   --bg-color="#3E5DFF"
   --border-radius="29px"
+  --active-bg="#3E5DFF"
 />
 
 <style>

@@ -28,14 +28,18 @@
     color: black;
     background-color: white;
     border-radius: 29px;
-    border: 1px solid #808080;
+    border: 1px solid #dfe1e5;
     margin: 6px;
     cursor: pointer;
-    transition: transform ease-in 0.1s;
+    transition: border ease-in 0.1s;
+  }
+
+  button:hover {
+    border: 1px solid #808080;
   }
 
   button:active {
-    transform: scale(0.9);
+    background-color: rgb(247, 247, 247);
   }
 
   span {

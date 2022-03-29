@@ -17,6 +17,8 @@
   --color="white"
   --bg-color="black"
   --border-radius="29px"
+  --active-bg="#333"
+  --transform="none"
 />
 
 <style>
