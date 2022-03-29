@@ -6,9 +6,9 @@
 <div class="flex stats-container">
   <div class="flex"><StatsIcon /><span class="stats-title">Platform Stats</span></div>
   <div class="flex box-wrapper">
-    <StatsBox />
-    <StatsBox />
-    <StatsBox />
+    <StatsBox countType="Shortened" --count-color="#3e5dff" />
+    <StatsBox countType="Clicks" --count-color="#FF59A9" />
+    <StatsBox countType="Views" --count-color="#FF902A" />
   </div>
 </div>
 
@@ -16,7 +16,7 @@
   .stats-container {
     width: clamp(320px, 90vw, 800px);
     /* height: 200px; */
-    background: #feffb1;
+    /* background: #feffb1; */
     /* border: 1px solid #dfe1e5; */
     border-radius: 12px;
     margin-top: 50px;
