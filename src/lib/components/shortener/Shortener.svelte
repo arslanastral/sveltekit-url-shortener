@@ -3,6 +3,7 @@
   import Shortening from './Shortening.svelte';
   import ErrorHandler from './ErrorHandler.svelte';
   import Shortened from './Shortened.svelte';
+  import { clickOutside } from '$lib/utils/clickOutside';
 
   let longURL = '';
   let shortenedURL = '';
@@ -53,6 +54,8 @@
 
 <div
   on:click={() => (clicked = true)}
+  use:clickOutside
+  on:click_outside={() => (clicked = false)}
   class="shortener-container flex"
   class:selected={clicked === true}
 >
