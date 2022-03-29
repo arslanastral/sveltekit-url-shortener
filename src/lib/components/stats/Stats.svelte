@@ -9,9 +9,14 @@
 <div class="flex stats-container">
   <div class="flex"><StatsIcon /><span class="stats-title">Platform Stats</span></div>
   <div class="flex box-wrapper">
-    <StatsBox countType="Shortened" --count-color="#3e5dff"><LinkIcon slot="icon" /></StatsBox>
-    <StatsBox countType="Clicks" --count-color="#FF59A9"><ClickIcon slot="icon" /></StatsBox>
-    <StatsBox countType="Views" --count-color="#FF902A"><EyeIcon slot="icon" /></StatsBox>
+    <StatsBox count="78" countType="Shortened" --count-color="#3e5dff"
+      ><LinkIcon slot="icon" /></StatsBox
+    >
+    <StatsBox count="80" countType="Clicks" --count-color="#FF59A9"
+      ><ClickIcon slot="icon" /></StatsBox
+    >
+    <StatsBox count="20" countType="Views" --count-color="#FF902A"><EyeIcon slot="icon" /></StatsBox
+    >
   </div>
 </div>
 
