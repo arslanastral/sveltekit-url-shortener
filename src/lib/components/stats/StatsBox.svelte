@@ -14,11 +14,16 @@
 
 <style>
   .stats-box {
-    width: 210px;
-    height: 140px;
+    width: 200px;
+    height: 130px;
     background: #ffffff;
     border: 1px solid #dfe1e5;
     border-radius: 19px;
+    transition: box-shadow ease-out 0.2s;
+  }
+
+  .stats-box:hover {
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
   }
 
   .info {
