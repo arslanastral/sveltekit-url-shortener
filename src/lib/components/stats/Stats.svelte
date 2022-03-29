@@ -1,14 +1,17 @@
 <script>
   import StatsBox from './StatsBox.svelte';
   import StatsIcon from '$lib/assets/StatsIcon.svelte';
+  import LinkIcon from '$lib/assets/LinkIcon.svelte';
+  import ClickIcon from '$lib/assets/ClickIcon.svelte';
+  import EyeIcon from '$lib/assets/EyeIcon.svelte';
 </script>
 
 <div class="flex stats-container">
   <div class="flex"><StatsIcon /><span class="stats-title">Platform Stats</span></div>
   <div class="flex box-wrapper">
-    <StatsBox countType="Shortened" --count-color="#3e5dff" />
-    <StatsBox countType="Clicks" --count-color="#FF59A9" />
-    <StatsBox countType="Views" --count-color="#FF902A" />
+    <StatsBox countType="Shortened" --count-color="#3e5dff"><LinkIcon slot="icon" /></StatsBox>
+    <StatsBox countType="Clicks" --count-color="#FF59A9"><ClickIcon slot="icon" /></StatsBox>
+    <StatsBox countType="Views" --count-color="#FF902A"><EyeIcon slot="icon" /></StatsBox>
   </div>
 </div>
 
