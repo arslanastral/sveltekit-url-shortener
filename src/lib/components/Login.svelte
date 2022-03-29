@@ -3,7 +3,7 @@
 </script>
 
 <div class="login-container">
-  <Button title="Log In" --font-size="18px" --padding="8px 14px" --border="1px solid #000000" />
+  <Button title="Log In" --font-size="18px" --padding="8px 14px" --border="1px solid #dfe1e5" />
 
   <Button
     title="Sign Up"

@@ -9,6 +9,7 @@
   let isShortening = false;
   let error = '';
   let password = '';
+  let clicked = false;
 
   async function handleURLSubmit(e) {
     let formData = new FormData();
@@ -50,7 +51,11 @@
   };
 </script>
 
-<div class="shortener-container flex">
+<div
+  on:click={() => (clicked = true)}
+  class="shortener-container flex"
+  class:selected={clicked === true}
+>
   <form
     autocomplete="off"
     class="flex grow fadeIn"
@@ -78,8 +83,18 @@
     width: clamp(320px, 90vw, 800px);
     height: 60px;
     background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid #dfe1e5;
     border-radius: 42px;
     margin-top: 30px;
+  }
+
+  .shortener-container:hover {
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
+  }
+
+  .selected {
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    border-color: rgba(223, 225, 229, 0);
   }
 </style>
