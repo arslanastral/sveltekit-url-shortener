@@ -21,6 +21,7 @@ export async function post({ request }) {
       const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
 
       return {
+        status: 200,
         body: { short_url: shortenedResult.short_url, long_url: shortenedResult.long_url }
       };
     } catch (error) {
