@@ -34,7 +34,7 @@
   .count {
     font-weight: 500;
     font-size: 59px;
-    line-height: 55px;
+    line-height: 52px;
     letter-spacing: -0.045em;
 
     color: var(--count-color);
@@ -47,5 +47,9 @@
   .icon {
     justify-content: center;
     margin-right: 8px;
+  }
+
+  .count-type {
+    margin-left: 4px;
   }
 </style>
