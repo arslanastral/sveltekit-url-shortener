@@ -7,7 +7,7 @@ export async function get({ params }) {
     const db = await connectToDatabase();
     const collection = await db.collection('urls');
     const link = await collection.findOne({ short_url: id });
-
+    await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
     return {
       headers: { Location: link.long_url },
       status: 301
