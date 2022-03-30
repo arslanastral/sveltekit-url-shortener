@@ -31,12 +31,16 @@ export async function get() {
     const secured = await collection.countDocuments({ secured: { $eq: true } });
 
     return {
-      body: { shortened: shortened, clicks: clicks, secured: secured },
+      body: {
+        shortened: shortened.toString(),
+        clicks: clicks.toString(),
+        secured: secured.toString()
+      },
       status: 200
     };
   } catch (error) {
     return {
-      body: 'Error Getting Stats',
+      body: { error: 'Error Getting Stats' },
       status: 500
     };
   }
