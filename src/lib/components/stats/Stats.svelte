@@ -10,7 +10,7 @@
   let clicks = '0';
   let secured = '0';
   onMount(async () => {
-    const res = await fetch('http://localhost:3000/api/stats');
+    const res = await fetch(`${window.location.origin}/api/stats`);
     const result = await res.json();
 
     if (res.ok) {
