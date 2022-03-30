@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex stats-box">
-  <div class="flex info grow-2">
+  <div class="flex info grow">
     <div class="flex info-wrapper">
       <span class="count">{count}</span><span class="count-type">{countType}</span>
     </div>
@@ -28,7 +28,7 @@
 
   .info {
     flex-direction: column;
-    align-items: center;
+    margin-left: 10px;
   }
 
   .count {
@@ -45,11 +45,11 @@
     align-items: flex-start;
   }
   .icon {
-    justify-content: center;
+    justify-content: space-around;
     margin-right: 8px;
   }
 
   .count-type {
-    margin-left: 4px;
+    margin-left: 6px;
   }
 </style>
