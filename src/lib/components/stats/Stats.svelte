@@ -5,6 +5,7 @@
   import LinkIcon from '$lib/assets/LinkIcon.svelte';
   import ClickIcon from '$lib/assets/ClickIcon.svelte';
   import ShieldIcon from '$lib/assets/ShieldIcon.svelte';
+  import { formatCount } from '$lib/utils/formatCount';
 
   let shortened = '0';
   let clicks = '0';
@@ -14,9 +15,9 @@
     const result = await res.json();
 
     if (res.ok) {
-      shortened = result.shortened;
-      clicks = result.clicks;
-      secured = result.secured;
+      shortened = formatCount(result.shortened);
+      clicks = formatCount(result.clicks);
+      secured = formatCount(result.secured);
     } else {
       shortened = 'Error';
       clicks = 'Error';
