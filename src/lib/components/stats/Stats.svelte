@@ -1,21 +1,40 @@
 <script>
+  import { onMount } from 'svelte';
   import StatsBox from './StatsBox.svelte';
   import StatsIcon from '$lib/assets/StatsIcon.svelte';
   import LinkIcon from '$lib/assets/LinkIcon.svelte';
   import ClickIcon from '$lib/assets/ClickIcon.svelte';
   import ShieldIcon from '$lib/assets/ShieldIcon.svelte';
+
+  let shortened = '0';
+  let clicks = '0';
+  let secured = '0';
+  onMount(async () => {
+    const res = await fetch('http://localhost:3000/api/stats');
+    const result = await res.json();
+
+    if (res.ok) {
+      shortened = result.shortened;
+      clicks = result.clicks;
+      secured = result.secured;
+    } else {
+      shortened = 'Error';
+      clicks = 'Error';
+      secured = 'Error';
+    }
+  });
 </script>
 
 <div class="flex stats-container">
   <div class="flex"><StatsIcon /><span class="stats-title">Platform Stats</span></div>
   <div class="flex box-wrapper">
-    <StatsBox count="78" countType="Shortened" --count-color="#3e5dff"
+    <StatsBox count={shortened} countType="Shortened" --count-color="#3e5dff"
       ><LinkIcon slot="icon" /></StatsBox
     >
-    <StatsBox count="80" countType="Clicks" --count-color="#FF59A9"
+    <StatsBox count={clicks} countType="Clicks" --count-color="#FF59A9"
       ><ClickIcon slot="icon" /></StatsBox
     >
-    <StatsBox count="20" countType="Secured" --count-color="#FF902A"
+    <StatsBox count={secured} countType="Secured" --count-color="#FF902A"
       ><ShieldIcon slot="icon" /></StatsBox
     >
   </div>
