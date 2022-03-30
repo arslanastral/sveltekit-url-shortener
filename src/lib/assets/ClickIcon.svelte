@@ -1,11 +1,26 @@
 <svg
-  xmlns="http://www.w3.org/2000/svg"
-  aria-hidden="true"
   width="80"
   height="80"
-  viewBox="0 0 20 20"
+  aria-hidden="true"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
   ><path
-    fill="currentColor"
-    d="M7.5 2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5ZM3.6 3.6a.5.5 0 0 1 .7 0L5.7 5a.5.5 0 1 1-.7.7L3.6 4.3a.5.5 0 0 1 0-.7Zm7.8 0a.5.5 0 0 1 0 .7L10 5.7a.5.5 0 1 1-.7-.7l1.4-1.4a.5.5 0 0 1 .7 0ZM2 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm6.6-.2a1 1 0 0 0-1.6.8v9a1 1 0 0 0 1.8.7l2-2.3a1.5 1.5 0 0 1 1.1-.5h3.2a1 1 0 0 0 .7-1.8L8.6 7.3ZM8 17.2V8l7.1 5.9H12a2.5 2.5 0 0 0-1.9.9l-2 2.3Z"
+    d="M22.7 33.2h-9.64a1.36 1.36 0 0 1-1.2-1.2V6.8a1.36 1.36 0 0 1 1.2-1.2h15.2a1.36 1.36 0 0 1 1.2 1.2v22.03"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  /><path
+    d="m18.89 22.86 4.82 13-4.42.58a2 2 0 0 0-1.17.66c-.32.36-1.03 1.12-.6 1.33l8.7 3.97 9.28-3.26a1.34 1.34 0 0 0 .62-1.46l-1.44-7.23a1.4 1.4 0 0 0-1-1.13l-7.75-.85-.8.47-2.67-7.24a2.12 2.12 0 0 0-2.41-1.08 2 2 0 0 0-1.16 2.24Z"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  /><path
+    d="M18.1 26.88a5.18 5.18 0 1 1 7.51-2.89"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   /></svg
 >

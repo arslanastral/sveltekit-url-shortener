@@ -1,11 +1,20 @@
 <svg
-  xmlns="http://www.w3.org/2000/svg"
+  width="70"
+  height="70"
   aria-hidden="true"
-  width="80"
-  height="80"
-  viewBox="0 0 1024 1024"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
   ><path
-    fill="currentColor"
-    d="m716 625-46-45 91-91c75-75 85-186 23-249-63-62-174-52-249 23l-91 91-45-46 90-90c100-100 252-110 340-23 87 88 77 240-23 340l-90 90zm-91 91-90 90c-100 100-252 110-340 23-87-88-77-240 23-340l90-90 46 45-91 91c-75 75-85 186-23 249 63 62 174 52 249-23l91-91 45 46zm0-362 45 45-271 271-45-45 271-271z"
+    d="m4.5 23.16 12.35 12.41 19.38-19.49-3.64-3.65-15.63 15.71-8.7-8.75z"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  /><path
+    d="m20.48 31.92 3.64 3.65L43.5 16.08l-3.64-3.65-3.63 3.65m-15.68 8.36-5.03-5.05-3.63 3.65"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   /></svg
 >
