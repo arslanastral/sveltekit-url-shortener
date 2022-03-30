@@ -3,7 +3,7 @@
   import StatsIcon from '$lib/assets/StatsIcon.svelte';
   import LinkIcon from '$lib/assets/LinkIcon.svelte';
   import ClickIcon from '$lib/assets/ClickIcon.svelte';
-  import EyeIcon from '$lib/assets/EyeIcon.svelte';
+  import ShieldIcon from '$lib/assets/ShieldIcon.svelte';
 </script>
 
 <div class="flex stats-container">
@@ -15,7 +15,8 @@
     <StatsBox count="80" countType="Clicks" --count-color="#FF59A9"
       ><ClickIcon slot="icon" /></StatsBox
     >
-    <StatsBox count="20" countType="Views" --count-color="#FF902A"><EyeIcon slot="icon" /></StatsBox
+    <StatsBox count="20" countType="Secured" --count-color="#FF902A"
+      ><ShieldIcon slot="icon" /></StatsBox
     >
   </div>
 </div>
