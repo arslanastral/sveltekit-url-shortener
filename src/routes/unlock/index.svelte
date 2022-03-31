@@ -11,17 +11,29 @@
 
     return {
       props: {
-        id: url
+        id
       }
     };
   }
 </script>
 
 <script>
+  import Unlock from '$lib/components/unlock/Unlock.svelte';
+
   export let id;
 </script>
 
-<div>Requested ID is: {id} ✨</div>
+<div class="wrapper">
+  <Unlock {id} />
+</div>
 
 <style>
+  .wrapper {
+    background: #6831ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
 </style>
