@@ -24,6 +24,7 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "argon2": "^0.28.5",
+    "bcryptjs": "^2.4.3",
     "kjua": "^0.9.0",
     "mongodb": "^4.4.1",
     "nanoid": "^3.3.1",

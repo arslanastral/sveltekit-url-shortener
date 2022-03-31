@@ -1,5 +1,5 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 
 export async function get({ params }) {
   const id = params.getshorturl;
@@ -53,7 +53,7 @@ export async function post({ request, params }) {
 
     if (link.secured) {
       try {
-        if (await argon2.verify(link.pass, submittedPassword)) {
+        if (await bcrypt.compare(submittedPassword, link.pass)) {
           await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
           return {
             headers: { Location: link.long_url },
