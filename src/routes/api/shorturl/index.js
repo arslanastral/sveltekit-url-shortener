@@ -22,7 +22,7 @@ export async function post({ request }) {
 
           shortened = await collection.insertOne({
             long_url: submittedURL,
-            short_url: nanoid(4) + 'L',
+            short_url: nanoid(4),
             clicks: 0,
             secured: true,
             pass: hash
