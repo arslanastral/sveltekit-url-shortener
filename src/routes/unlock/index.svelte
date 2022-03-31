@@ -2,7 +2,7 @@
   export async function load({ url }) {
     const id = url.searchParams.get('id');
 
-    if (!id) {
+    if (!id || id.length > 4) {
       return {
         status: 302,
         redirect: '/'

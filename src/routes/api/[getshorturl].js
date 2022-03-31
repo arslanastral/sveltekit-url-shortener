@@ -1,4 +1,5 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import argon2 from 'argon2';
 
 export async function get({ params }) {
   const id = params.getshorturl;
@@ -7,9 +8,7 @@ export async function get({ params }) {
     const db = await connectToDatabase();
     const collection = await db.collection('urls');
     const link = await collection.findOne({ short_url: id });
-    console.log(link);
     if (link.secured) {
-      console.log('here now');
       return {
         headers: { Location: `/unlock?id=${id}` },
         status: 301
@@ -24,6 +23,67 @@ export async function get({ params }) {
     return {
       body: "This short link doesn't exist",
       status: 404
+    };
+  }
+}
+
+export async function post({ request, params }) {
+  const body = await request.formData();
+  const submittedPassword = body.get('password');
+  const id = params.getshorturl;
+
+  if (!submittedPassword) {
+    return {
+      body: 'No Password Entered',
+      status: 400
+    };
+  }
+
+  if (id.length > 4) {
+    return {
+      body: 'Bad Request',
+      status: 400
+    };
+  }
+
+  try {
+    const db = await connectToDatabase();
+    const collection = await db.collection('urls');
+    const link = await collection.findOne({ short_url: id });
+
+    if (link.secured) {
+      try {
+        if (await argon2.verify(link.pass, submittedPassword)) {
+          await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
+          return {
+            headers: { Location: link.long_url },
+            status: 301
+          };
+
+          // password match
+        } else {
+          return {
+            body: 'Incorrect Password',
+            status: 400
+          };
+          // password did not match
+        }
+      } catch (err) {
+        return {
+          body: 'Something Went Wrong',
+          status: 500
+        };
+      }
+    } else {
+      return {
+        body: 'This is not a protected link',
+        status: 400
+      };
+    }
+  } catch (error) {
+    return {
+      body: 'Something Went Wrong',
+      status: 500
     };
   }
 }
