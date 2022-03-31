@@ -1,6 +1,6 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
 import { isValidHttpUrl } from '$lib/utils/isValidHttpUrl.js';
-import argon2 from 'argon2';
+import bcrypt from 'bcryptjs';
 import { nanoid } from 'nanoid';
 
 export async function post({ request }) {
@@ -18,7 +18,7 @@ export async function post({ request }) {
       let shortened;
       if (submittedPassword) {
         try {
-          const hash = await argon2.hash(submittedPassword);
+          const hash = await bcrypt.hash(submittedPassword, 10);
 
           shortened = await collection.insertOne({
             long_url: submittedURL,
