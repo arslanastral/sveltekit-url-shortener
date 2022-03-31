@@ -11,7 +11,7 @@ export async function get({ params }) {
     if (link.secured) {
       console.log('here now');
       return {
-        headers: { Location: '/unlock' },
+        headers: { Location: `/unlock?id=${id}` },
         status: 301
       };
     }
