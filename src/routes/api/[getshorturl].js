@@ -7,6 +7,14 @@ export async function get({ params }) {
     const db = await connectToDatabase();
     const collection = await db.collection('urls');
     const link = await collection.findOne({ short_url: id });
+    console.log(link);
+    if (link.secured) {
+      console.log('here now');
+      return {
+        headers: { Location: '/unlock' },
+        status: 301
+      };
+    }
     await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
     return {
       headers: { Location: link.long_url },
