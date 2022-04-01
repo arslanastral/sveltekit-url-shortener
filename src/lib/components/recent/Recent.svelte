@@ -1,5 +1,5 @@
 <div class="recent-container">
-  <div class="flex"><span class="stats-title">Recently Shortened</span></div>
+  <div class="flex"><span class="recent-title">Recently Shortened</span></div>
   <div class="recent-links-container" />
 </div>
 
@@ -19,5 +19,12 @@
     border-radius: 12px;
     width: 100%;
     height: 90%;
+  }
+
+  .recent-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-left: 5px;
+    margin-top: 4px;
   }
 </style>
