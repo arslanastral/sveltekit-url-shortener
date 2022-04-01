@@ -49,6 +49,7 @@
     error = '';
     shortenedURL = '';
     longURL = '';
+    password = '';
   };
 </script>
 
