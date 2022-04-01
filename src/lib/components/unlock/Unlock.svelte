@@ -1,11 +1,12 @@
 <script>
+  import LockIcon from '$lib/assets/LockIcon.svelte';
   import Button from '../Button.svelte';
   export let id;
 </script>
 
 <div class="flex unlock-container">
   <div class="flex info-container">
-    <div class="flex lock-icon" />
+    <div class="flex lock-icon"><LockIcon width="40" height="40" fill="#fff" /></div>
     <div class="title">This Link is Protected</div>
     <div class="subtitle">Use Your Password To Unlock</div>
   </div>
