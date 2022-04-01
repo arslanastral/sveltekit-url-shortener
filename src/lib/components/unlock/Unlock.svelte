@@ -13,7 +13,7 @@
 
   <div class="form-container">
     <form class="flex" method="post" action={`/api/${id}`}>
-      <input placeholder="Password" name="password" type="password" required />
+      <input placeholder="Password" name="password" type="password" required autocomplete="on" />
       <Button
         title="Unlock"
         type="submit"
