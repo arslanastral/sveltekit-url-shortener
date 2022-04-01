@@ -23,8 +23,7 @@
       error = '';
     }
 
-    // Start Loading Animation
-    isShortening = true;
+    isShortening = true; // Start Loading Animation
 
     const request = new Request('/api/shorturl', {
       method: 'POST',
@@ -36,14 +35,10 @@
 
     if (response.ok) {
       shortenedURL = `${window.location.origin}/${json.short_url}`;
-      $RecentStore.push({ long_url: json.long_url, short_url: shortenedURL });
-      console.log($RecentStore);
-      console.log('finished');
-      // Stop Loading Animation
-      isShortening = false;
+      isShortening = false; // Stop Loading Animation
+      $RecentStore = [...$RecentStore, { long_url: json.long_url, short_url: shortenedURL }];
     } else {
-      // Stop Loading Animation if there was an error
-      isShortening = false;
+      isShortening = false; // Stop Loading Animation if there was an error
       error = json.error;
     }
   }
