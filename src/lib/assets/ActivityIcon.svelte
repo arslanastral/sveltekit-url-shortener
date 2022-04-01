@@ -1,8 +1,8 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
-  width="29"
-  height="29"
+  width="31"
+  height="31"
   viewBox="0 0 24 24"
   ><path
     fill="currentColor"
