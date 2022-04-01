@@ -15,7 +15,7 @@
 
   <div class="flex grow">
     <LockIcon />
-    <input bind:value={password} placeholder="Password" type="password" />
+    <input bind:value={password} placeholder="Password" type="password" autocomplete="on" />
   </div>
 </div>
 
