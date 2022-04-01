@@ -1,4 +1,5 @@
 <script>
+  import RecentStore from '$lib/stores/RecentStore';
   import ShortenerInput from './ShortenerInput.svelte';
   import Shortening from './Shortening.svelte';
   import ErrorHandler from './ErrorHandler.svelte';
@@ -35,6 +36,8 @@
 
     if (response.ok) {
       shortenedURL = `${window.location.origin}/${json.short_url}`;
+      $RecentStore.push({ long_url: json.long_url, short_url: shortenedURL });
+      console.log($RecentStore);
       console.log('finished');
       // Stop Loading Animation
       isShortening = false;
