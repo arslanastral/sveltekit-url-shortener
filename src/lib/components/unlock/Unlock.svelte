@@ -4,7 +4,7 @@
   export let id;
 </script>
 
-<div class="flex unlock-container">
+<div class="fadeIn flex unlock-container">
   <div class="flex info-container">
     <div class="flex lock-icon"><LockIcon width="40" height="40" fill="#fff" /></div>
     <div class="title">This Link is Protected</div>
