@@ -1,6 +1,8 @@
-<div class="logo-circle">
-  <div class="logo-text">ky</div>
-</div>
+<a href="/">
+  <div class="logo-circle">
+    <div class="logo-text">ky</div>
+  </div>
+</a>
 
 <style>
   .logo-circle {
@@ -10,6 +12,7 @@
     background: #dfed3e;
     border-radius: 50%;
     position: relative;
+    cursor: pointer;
   }
 
   .logo-text {
@@ -18,5 +21,10 @@
     position: absolute;
     left: 22px;
     top: 0px;
+  }
+
+  a {
+    color: black;
+    text-decoration: none; /* no underline */
   }
 </style>
