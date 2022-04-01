@@ -11,7 +11,7 @@
 <div class="flex grow fadeIn">
   <div class="flex grow">
     <Checkmark />
-    <a class="shortened-link fadeIn" href={shortenedURL} target="_blank" rel="noopener noreferrer"
+    <a class="shortened-link" href={shortenedURL} target="_blank" rel="noopener noreferrer"
       >{shortenedURL}</a
     >
   </div>
