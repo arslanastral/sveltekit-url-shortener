@@ -20,7 +20,8 @@
 
   .recent-links-container {
     margin-top: 10px;
-    background: #3e5dff;
+    background: #ffffff;
+    border: 1px solid #dfe1e5;
     border-radius: 12px;
     width: 100%;
     height: 90%;
