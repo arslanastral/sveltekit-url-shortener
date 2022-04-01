@@ -32,7 +32,7 @@
     <StatsBox count={shortened} countType="Shortened" --count-color="#3e5dff"
       ><LinkIcon slot="icon" /></StatsBox
     >
-    <StatsBox count={clicks} countType="Clicks" --count-color="#FF59A9"
+    <StatsBox count={clicks} countType="Clicks" --count-color="#F21E85"
       ><ClickIcon slot="icon" /></StatsBox
     >
     <StatsBox count={secured} countType="Secured" --count-color="#FF902A"
