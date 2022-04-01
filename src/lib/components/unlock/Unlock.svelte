@@ -5,7 +5,7 @@
 
 <div class="flex unlock-container">
   <div class="flex info-container">
-    <div class="lock-icon" />
+    <div class="flex lock-icon" />
     <div class="title">This Link is Protected</div>
     <div class="subtitle">Use Your Password To Unlock</div>
   </div>
@@ -43,6 +43,7 @@
     height: 76px;
     border-radius: 50%;
     background-color: #3e5dff;
+    justify-content: center;
   }
 
   .title {
@@ -50,7 +51,7 @@
     font-size: 28px;
     line-height: 34px;
     letter-spacing: -0.045em;
-
+    margin-top: 10px;
     color: #000000;
   }
 
@@ -82,7 +83,6 @@
 
   input:focus {
     outline: none;
-    /* border: 0; */
   }
 
   form {
