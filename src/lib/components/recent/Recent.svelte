@@ -1,5 +1,9 @@
+<script>
+  import ActivityIcon from '$lib/assets/ActivityIcon.svelte';
+</script>
+
 <div class="recent-container">
-  <div class="flex"><span class="recent-title">Recently Shortened</span></div>
+  <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
   <div class="recent-links-container" />
 </div>
 
@@ -15,6 +19,7 @@
   }
 
   .recent-links-container {
+    margin-top: 10px;
     background: #3e5dff;
     border-radius: 12px;
     width: 100%;
