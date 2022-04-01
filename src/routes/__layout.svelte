@@ -18,5 +18,6 @@
 <style>
   header {
     justify-content: space-evenly;
+    height: 10vh;
   }
 </style>
