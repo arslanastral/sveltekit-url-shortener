@@ -1,13 +1,18 @@
 <script>
   import LinkButton from './LinkButton.svelte';
-  export let time = 'just now';
+  export let time = '';
   export let longLink = '';
   export let shortLink = '';
   export let isSecure = false;
 </script>
 
 <div class="linkbox flex grow">
-  <div class="link-time">{time}</div>
+  {#if time}
+    <div class="link-time">{time}</div>
+  {:else}
+    <div class="link-time">just now</div>
+  {/if}
+
   <div class="flex link grow-2">
     {#if isSecure}
       <span class="long-link blur">ky://thislinkissecured/</span>
