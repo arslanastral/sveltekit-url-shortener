@@ -1,11 +1,11 @@
 const SHORT_TIME_UNITS = {
-  year: 'y',
+  year: 'yr',
   month: 'm',
   week: 'w',
-  day: 'd',
-  hour: 'h',
+  day: 'day',
+  hour: 'hr',
   minute: 'min',
-  second: 's'
+  second: 'sec'
 };
 
 export function timeAgo(input) {
