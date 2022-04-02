@@ -9,7 +9,12 @@
 <div class="linkbox flex grow">
   <div class="link-time">{time}</div>
   <div class="flex link grow-2">
-    <span class="long-link">{longLink}</span>
+    {#if isSecure}
+      <span class="long-link blur">ky://thislinkissecured/</span>
+    {:else}
+      <span class="long-link">{longLink}</span>
+    {/if}
+
     <a class="short-link" href={shortLink} target="_blank" rel="noopener noreferrer">{shortLink}</a>
   </div>
   {#if isSecure}
@@ -36,6 +41,10 @@
   .link {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .blur {
+    filter: blur(4px);
   }
 
   .long-link {
