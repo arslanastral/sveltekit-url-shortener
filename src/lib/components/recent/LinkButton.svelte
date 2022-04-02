@@ -1,7 +1,12 @@
+<script>
+  import CopyIcon from '$lib/assets/CopyIcon.svelte';
+  import QrIcon from '$lib/assets/QRIcon.svelte';
+</script>
+
 <div class="flex">
-  <button class="qr-button" />
+  <button class="qr-button"><QrIcon /></button>
   <span class="button-seperator" />
-  <button class="copy-button" />
+  <button class="copy-button"><CopyIcon /></button>
 </div>
 
 <style>
