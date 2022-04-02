@@ -7,8 +7,9 @@
   <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
   <div class="recent-links-container">
     <RecentLink />
+    <!-- <RecentLink />
     <RecentLink />
-    <RecentLink />
+    <RecentLink /> -->
   </div>
 </div>
 
@@ -30,7 +31,12 @@
     border-radius: 12px;
     width: 100%;
     height: 90%;
+    overflow-y: hidden;
   }
+
+  /* .recent-links-container:hover {
+    overflow-y: scroll;
+  } */
 
   .recent-title {
     font-size: 22px;

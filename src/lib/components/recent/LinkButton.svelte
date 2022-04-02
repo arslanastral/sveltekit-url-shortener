@@ -3,24 +3,33 @@
   import QrIcon from '$lib/assets/QRIcon.svelte';
 </script>
 
-<div class="flex">
-  <button class="qr-button"><QrIcon /></button>
-  <span class="button-seperator" />
-  <button class="copy-button"><CopyIcon /></button>
-</div>
+<button class="qr-button"><QrIcon fill="#B8B2BF" /></button>
+<button class="copy-button"><CopyIcon fill="#B8B2BF" /></button>
 
 <style>
-  div {
-    background: #ffffff;
-    border: 1px solid #dfe1e5;
-    border-radius: 5px;
-    padding: 8px 18px;
-    justify-content: space-evenly;
+  button {
+    height: 100%;
+    border: 0;
+    transition: 0.1s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color, background-color;
   }
 
-  .button-seperator {
-    height: 100%;
-    width: 1px;
-    background-color: #dfe1e5;
+  .qr-button {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .copy-button {
+    border-left: 1px solid #dfe1e5;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  button:hover {
+    background-color: rgb(245, 245, 245);
+  }
+
+  button:active {
+    background-color: rgb(238, 238, 238);
   }
 </style>
