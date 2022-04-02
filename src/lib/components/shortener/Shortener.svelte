@@ -38,13 +38,13 @@
       isShortening = false; // Stop Loading Animation
       let secured = json.secured || false;
       $RecentStore = [
-        ...$RecentStore,
         {
           long_url: json.long_url,
           short_url: shortenedURL,
           created_at: json.created_at,
           secured: secured
-        }
+        },
+        ...$RecentStore
       ];
     } else {
       isShortening = false; // Stop Loading Animation if there was an error

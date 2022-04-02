@@ -9,7 +9,7 @@
   <div class="fadeIn recent-container">
     <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
     <div class="recent-links-container">
-      {#each $RecentStore.reverse() as link}
+      {#each $RecentStore as link}
         <RecentLink
           time={timeAgo(link.created_at)}
           isSecure={link.secured}
