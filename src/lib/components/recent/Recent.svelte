@@ -38,12 +38,8 @@
     border-radius: 12px;
     width: 100%;
     height: 90%;
-    overflow-y: hidden;
+    overflow-y: auto;
   }
-
-  /* .recent-links-container:hover {
-    overflow-y: scroll;
-  } */
 
   .recent-title {
     font-size: 22px;
