@@ -36,16 +36,13 @@
     if (response.ok) {
       shortenedURL = `${window.location.origin}/${json.short_url}`;
       isShortening = false; // Stop Loading Animation
-      let secured = json.secured || false;
-      $RecentStore = [
-        {
-          long_url: json.long_url,
-          short_url: shortenedURL,
-          created_at: json.created_at,
-          secured: secured
-        },
-        ...$RecentStore
-      ];
+      let newLink = {
+        long_url: json.long_url,
+        short_url: shortenedURL,
+        created_at: json.created_at,
+        secured: json.secured || false
+      };
+      $RecentStore = [newLink, ...$RecentStore];
     } else {
       isShortening = false; // Stop Loading Animation if there was an error
       error = json.error;
