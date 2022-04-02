@@ -1,9 +1,13 @@
+<script>
+  import LinkButton from './LinkButton.svelte';
+</script>
+
 <div class="linkbox flex">
   <div>2m ago</div>
   <div class="flex link">
     <span>https://developer.mozilla.org/en-US/</span><span>http://localhost:3000/rpPt</span>
   </div>
-  <div />
+  <div><LinkButton /></div>
 </div>
 
 <style>
