@@ -43,15 +43,25 @@ export async function post({ request }) {
 
       const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
 
+      const created_at = shortenedResult._id.getTimestamp().toString();
+
       if (submittedPassword) {
         return {
           status: 200,
-          body: { short_url: shortenedResult.short_url }
+          body: {
+            short_url: shortenedResult.short_url,
+            secured: shortenedResult.secured,
+            created_at
+          }
         };
       }
       return {
         status: 200,
-        body: { short_url: shortenedResult.short_url, long_url: shortenedResult.long_url }
+        body: {
+          short_url: shortenedResult.short_url,
+          long_url: shortenedResult.long_url,
+          created_at
+        }
       };
     } catch (error) {
       if (error.code === 11000) {
