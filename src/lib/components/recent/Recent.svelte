@@ -4,20 +4,21 @@
   import RecentLink from './RecentLink.svelte';
 </script>
 
-<div class="recent-container">
-  <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
-  <div class="recent-links-container">
-    {#each $RecentStore.reverse() as link}
-      <RecentLink longLink={link.long_url} shortLink={link.short_url} />
-    {/each}
+{#if $RecentStore.length}
+  <div class="recent-container">
+    <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
+    <div class="recent-links-container">
+      {#each $RecentStore.reverse() as link}
+        <RecentLink longLink={link.long_url} shortLink={link.short_url} />
+      {/each}
+    </div>
   </div>
-</div>
+{/if}
 
 <style>
   .recent-container {
     width: clamp(320px, 90vw, 800px);
     height: 250px;
-
     margin-top: 50px;
     flex-direction: column;
     align-items: flex-start;
