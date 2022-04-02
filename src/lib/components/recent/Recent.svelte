@@ -5,7 +5,7 @@
 </script>
 
 {#if $RecentStore.length}
-  <div class="recent-container">
+  <div class="fadeIn recent-container">
     <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
     <div class="recent-links-container">
       {#each $RecentStore.reverse() as link}
