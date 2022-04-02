@@ -1,21 +1,20 @@
 <script>
   import LinkButton from './LinkButton.svelte';
+  export let time = '2m ago';
+  export let longLink = '';
+  export let shortLink = '';
+  export let isSecure = false;
 </script>
 
 <div class="linkbox flex grow">
-  <div class="link-time">2m ago</div>
+  <div class="link-time">{time}</div>
   <div class="flex link grow-2">
-    <span class="long-link"
-      >https://www.figma.com/file/thO6SBVgzmiNV8SBhpBdaN/Untitled?node-id=2%3A3</span
-    >
-    <a
-      class="short-link"
-      href="http://localhost:3000/rpPt"
-      target="_blank"
-      rel="noopener noreferrer">http://localhost:3000/rpPt</a
-    >
+    <span class="long-link">{longLink}</span>
+    <a class="short-link" href={shortLink} target="_blank" rel="noopener noreferrer">{shortLink}</a>
   </div>
-  <!-- <div class="link-type">Secure</div> -->
+  {#if isSecure}
+    <div class="link-type">Secure</div>
+  {/if}
   <div class="flex button-container"><LinkButton /></div>
 </div>
 
@@ -57,13 +56,13 @@
     text-decoration: underline;
   }
 
-  /* .link-type {
+  .link-type {
     padding: 1px 10px;
     margin: 0px 20px;
     border-radius: 20px;
     border: 1px solid blue;
     font-size: 15px;
-  } */
+  }
 
   .button-container {
     margin-right: 20px;
