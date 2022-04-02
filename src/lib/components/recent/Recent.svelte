@@ -2,6 +2,7 @@
   import RecentStore from '$lib/stores/RecentStore';
   import ActivityIcon from '$lib/assets/ActivityIcon.svelte';
   import RecentLink from './RecentLink.svelte';
+  import { timeAgo } from '$lib/utils/timeAgo';
 </script>
 
 {#if $RecentStore.length}
@@ -10,7 +11,7 @@
     <div class="recent-links-container">
       {#each $RecentStore.reverse() as link}
         <RecentLink
-          time={link.created_at}
+          time={timeAgo(link.created_at)}
           isSecure={link.secured}
           longLink={link.long_url}
           shortLink={link.short_url}
