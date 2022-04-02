@@ -1,10 +1,15 @@
 <script>
   import ActivityIcon from '$lib/assets/ActivityIcon.svelte';
+  import RecentLink from './RecentLink.svelte';
 </script>
 
 <div class="recent-container">
   <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
-  <div class="recent-links-container" />
+  <div class="recent-links-container">
+    <RecentLink />
+    <RecentLink />
+    <RecentLink />
+  </div>
 </div>
 
 <style>
