@@ -9,7 +9,12 @@
     <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
     <div class="recent-links-container">
       {#each $RecentStore.reverse() as link}
-        <RecentLink isSecure={link.secured} longLink={link.long_url} shortLink={link.short_url} />
+        <RecentLink
+          time={link.created_at}
+          isSecure={link.secured}
+          longLink={link.long_url}
+          shortLink={link.short_url}
+        />
       {/each}
     </div>
   </div>

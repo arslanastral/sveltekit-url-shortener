@@ -1,6 +1,6 @@
 <script>
   import LinkButton from './LinkButton.svelte';
-  export let time = '2m ago';
+  export let time = '';
   export let longLink = '';
   export let shortLink = '';
   export let isSecure = false;
