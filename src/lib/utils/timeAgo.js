@@ -21,9 +21,6 @@ export function timeAgo(input) {
     seconds: 1
   };
   const secondsElapsed = (date.getTime() - Date.now()) / 1000;
-  if (!secondsElapsed) {
-    return 'just now';
-  }
   for (let key in ranges) {
     if (ranges[key] < Math.abs(secondsElapsed)) {
       const delta = secondsElapsed / ranges[key];
