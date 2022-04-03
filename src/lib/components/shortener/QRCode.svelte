@@ -15,17 +15,26 @@
   });
 </script>
 
-<div class="qrcontainer center" bind:this={container}>
-  <button on:click={toggleClose} type="button" class="close center">X</button>
+<div class="fadeIn flex overlay">
+  <div class="qrcontainer flex center" bind:this={container}>
+    <button on:click={toggleClose} type="button" class="flex center close">X</button>
+  </div>
 </div>
 
 <style>
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(23, 24, 24, 0.97);
+    justify-content: center;
+  }
+
   .qrcontainer {
     animation: fadeIn 0.5s;
     position: absolute;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
     text-align: center;
     width: 250px;
     height: 250px;
@@ -36,8 +45,6 @@
   }
 
   .center {
-    display: flex;
-    align-items: center;
     justify-content: center;
   }
 

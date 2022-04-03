@@ -1,12 +1,26 @@
 <script>
   import LockIcon from '$lib/assets/LockIcon.svelte';
-
+  import QrCode from '$lib/components/shortener/QRCode.svelte';
   import LinkButton from './LinkButton.svelte';
   export let time = '';
   export let longLink = '';
   export let shortLink = '';
   export let isSecure = false;
+
+  let toggle = false;
+
+  const toggleOpen = () => {
+    toggle = true;
+  };
+
+  const toggleClose = () => {
+    toggle = false;
+  };
 </script>
+
+{#if toggle}
+  <QrCode shortenedURL={shortLink} {toggleClose} />
+{/if}
 
 <div class="linkbox flex grow">
   {#if time}
@@ -31,7 +45,7 @@
       {/if}
     </div>
   </div>
-  <div class="flex button-container"><LinkButton /></div>
+  <div class="flex button-container"><LinkButton {toggleOpen} /></div>
 </div>
 
 <style>
