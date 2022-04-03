@@ -1,4 +1,6 @@
 <script>
+  import LockIcon from '$lib/assets/LockIcon.svelte';
+
   import LinkButton from './LinkButton.svelte';
   export let time = '';
   export let longLink = '';
@@ -20,11 +22,15 @@
       <span class="long-link">{longLink}</span>
     {/if}
 
-    <a class="short-link" href={shortLink} target="_blank" rel="noopener noreferrer">{shortLink}</a>
+    <div class="flex">
+      {#if isSecure}
+        <LockIcon width="18" height="18" fill="#5f6368" />
+      {/if}
+      <a class="short-link" href={shortLink} target="_blank" rel="noopener noreferrer"
+        >{shortLink}</a
+      >
+    </div>
   </div>
-  {#if isSecure}
-    <div class="link-type">Secure</div>
-  {/if}
   <div class="flex button-container"><LinkButton /></div>
 </div>
 
@@ -69,14 +75,6 @@
 
   .short-link:hover {
     text-decoration: underline;
-  }
-
-  .link-type {
-    padding: 1px 10px;
-    margin: 0px 20px;
-    border-radius: 20px;
-    border: 1px solid blue;
-    font-size: 15px;
   }
 
   .button-container {
