@@ -1,12 +1,13 @@
 <script>
   import CopyIcon from '$lib/assets/CopyIcon.svelte';
+  import { clickToCopy } from '$lib/utils/clickToCopy';
   import QrIcon from '$lib/assets/QRIcon.svelte';
-
+  export let shortLink;
   export let toggleOpen;
 </script>
 
 <button on:click={toggleOpen} class="qr-button"><QrIcon fill="#B8B2BF" /></button>
-<button class="copy-button"><CopyIcon fill="#B8B2BF" /></button>
+<button use:clickToCopy={shortLink} class="copy-button"><CopyIcon fill="#B8B2BF" /></button>
 
 <style>
   button {
