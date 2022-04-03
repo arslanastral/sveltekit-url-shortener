@@ -14,6 +14,8 @@
 
 <style>
   .stats-box {
+    /* width: clamp(100px, 30vw, 200px);
+    height: clamp(65px, 20vw, 130px); */
     width: 200px;
     height: 130px;
     background: #ffffff;
