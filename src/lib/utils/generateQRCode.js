@@ -1,4 +1,4 @@
-export async function generateQRCode(text, size = 200) {
+export async function generateQRCode(text, size = 230) {
   const { default: kjua } = await import('kjua');
   return kjua({
     text,
