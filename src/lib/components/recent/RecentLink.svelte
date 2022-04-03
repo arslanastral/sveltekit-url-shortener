@@ -23,12 +23,12 @@
     {/if}
 
     <div class="flex">
-      {#if isSecure}
-        <LockIcon width="18" height="18" fill="#5f6368" />
-      {/if}
       <a class="short-link" href={shortLink} target="_blank" rel="noopener noreferrer"
         >{shortLink}</a
       >
+      {#if isSecure}
+        <LockIcon width="18" height="18" fill="green" />
+      {/if}
     </div>
   </div>
   <div class="flex button-container"><LinkButton /></div>
@@ -69,6 +69,7 @@
   }
 
   .short-link {
+    margin-right: 6px;
     color: black;
     text-decoration: none;
   }
