@@ -2,13 +2,14 @@
   import CopyIcon from '$lib/assets/CopyIcon.svelte';
   import { clickToCopy } from '$lib/utils/clickToCopy';
 
+  export let shortenedURL;
   let text = 'Copy';
 </script>
 
 <button
   type="button"
   class="flex"
-  use:clickToCopy={'.shortened-link'}
+  use:clickToCopy={shortenedURL}
   on:copysuccess={() => (text = 'Copied!')}><CopyIcon /><span>{text}</span></button
 >
 
