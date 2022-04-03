@@ -27,7 +27,7 @@
 </script>
 
 <div class="flex stats-container">
-  <div class="flex"><StatsIcon /><span class="stats-title">Platform Stats</span></div>
+  <div class="flex"><StatsIcon /><span class="stats-title">API Stats</span></div>
   <div class="flex box-wrapper">
     <StatsBox count={shortened} countType="Shortened" --count-color="#3e5dff"
       ><LinkIcon slot="icon" /></StatsBox

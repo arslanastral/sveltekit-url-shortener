@@ -7,7 +7,7 @@
 
 {#if $RecentStore.length}
   <div class="fadeIn recent-container">
-    <div class="flex"><ActivityIcon /><span class="recent-title">Recently Shortened</span></div>
+    <div class="flex"><ActivityIcon /><span class="recent-title">History</span></div>
     <div class="recent-links-container">
       {#each $RecentStore as link}
         <RecentLink
