@@ -1,5 +1,6 @@
 <script>
   import { generateQRCode } from '$lib/utils/generateQRCode';
+  import { clickOutside } from '$lib/utils/clickOutside';
   import { onMount } from 'svelte';
 
   export let toggleClose;
@@ -16,7 +17,12 @@
 </script>
 
 <div class="fadeIn flex overlay">
-  <div class="qrcontainer flex center" bind:this={container}>
+  <div
+    use:clickOutside
+    on:click_outside={toggleClose}
+    class="qrcontainer flex center"
+    bind:this={container}
+  >
     <button on:click={toggleClose} type="button" class="flex center close">X</button>
   </div>
 </div>
