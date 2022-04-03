@@ -18,10 +18,6 @@
   };
 </script>
 
-{#if toggle}
-  <QrCode shortenedURL={shortLink} {toggleClose} />
-{/if}
-
 <div class="linkbox flex grow">
   {#if time}
     <div class="flex link-time">{time}</div>
@@ -47,6 +43,10 @@
   </div>
   <div class="flex button-container"><LinkButton {toggleOpen} /></div>
 </div>
+
+{#if toggle}
+  <QrCode shortenedURL={shortLink} {toggleClose} />
+{/if}
 
 <style>
   .linkbox {
