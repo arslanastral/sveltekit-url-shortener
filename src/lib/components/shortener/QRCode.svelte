@@ -1,4 +1,5 @@
 <script>
+  import { generateQRCode } from '$lib/utils/generateQRCode';
   import { onMount } from 'svelte';
 
   export let toggleClose;
@@ -7,16 +8,8 @@
   let container;
 
   onMount(async () => {
-    const { default: kjua } = await import('kjua');
-
-    console.log('triggering');
     if (!qr) {
-      qr = kjua({
-        text: shortenedURL,
-        fill: 'blue',
-        rounded: 100,
-        size: 200
-      });
+      qr = await generateQRCode(shortenedURL);
       container.appendChild(qr);
     }
   });
