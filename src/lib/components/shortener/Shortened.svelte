@@ -17,7 +17,7 @@
   </div>
 
   <QRButton {shortenedURL} />
-  <Copybutton />
+  <Copybutton {shortenedURL} />
   <Button
     title="Back"
     onClickFunc={back}

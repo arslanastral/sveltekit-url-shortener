@@ -1,9 +1,9 @@
-export function clickToCopy(node, target) {
+export function clickToCopy(node, text) {
   async function copyText() {
-    let text = target ? document.querySelector(target).innerText : node.innerText;
+    let textToCopy = text ? text : node.innerText;
 
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(textToCopy);
 
       node.dispatchEvent(
         new CustomEvent('copysuccess', {
