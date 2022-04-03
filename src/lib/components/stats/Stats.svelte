@@ -63,5 +63,17 @@
   .box-wrapper {
     margin-top: 10px;
     gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (max-width: 466px) {
+    .box-wrapper {
+      justify-content: center;
+    }
+
+    .stats-container {
+      align-items: center;
+    }
   }
 </style>
