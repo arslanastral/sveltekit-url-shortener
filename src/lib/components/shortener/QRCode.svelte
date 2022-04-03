@@ -24,6 +24,7 @@
     bind:this={container}
   >
     <button on:click={toggleClose} type="button" class="flex center close">X</button>
+    <div class="link-text">{shortenedURL}</div>
   </div>
 </div>
 
@@ -42,16 +43,22 @@
     animation: fadeIn 0.5s;
     position: absolute;
     text-align: center;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border: 2px solid blue;
     border-radius: 9px;
     background-color: white;
     color: black;
+    flex-direction: column;
+  }
+
+  .link-text {
+    font-size: 18px;
+    font-weight: 400;
   }
 
   .center {
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   .close {
