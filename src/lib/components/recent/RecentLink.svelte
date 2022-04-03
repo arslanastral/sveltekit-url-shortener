@@ -8,9 +8,9 @@
 
 <div class="linkbox flex grow">
   {#if time}
-    <div class="link-time">{time}</div>
+    <div class="flex link-time">{time}</div>
   {:else}
-    <div class="link-time">just now</div>
+    <div class="flex link-time">just now</div>
   {/if}
 
   <div class="flex link grow-2">
@@ -38,9 +38,10 @@
   }
 
   .link-time {
-    margin: 0 20px;
+    width: 100px;
     font-size: 14px;
     color: #9c9c9c;
+    justify-content: center;
   }
 
   .link {
