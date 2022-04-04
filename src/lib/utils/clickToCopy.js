@@ -1,28 +1,9 @@
-export function clickToCopy(node, text) {
-  async function copyText() {
-    try {
-      await navigator.clipboard.writeText(text);
-
-      node.dispatchEvent(
-        new CustomEvent('copysuccess', {
-          bubbles: true
-        })
-      );
-    } catch (error) {
-      node.dispatchEvent(
-        new CustomEvent('copyerror', {
-          bubbles: true,
-          detail: error
-        })
-      );
-    }
+export async function clickToCopy(node, text) {
+  let target = node.currentTarget;
+  try {
+    await navigator.clipboard.writeText(text);
+    target.dispatchEvent(new CustomEvent('copysuccess'));
+  } catch (error) {
+    target.dispatchEvent(new CustomEvent('copyerror'));
   }
-
-  node.addEventListener('click', copyText);
-
-  return {
-    destroy() {
-      node.removeEventListener('click', copyText);
-    }
-  };
 }

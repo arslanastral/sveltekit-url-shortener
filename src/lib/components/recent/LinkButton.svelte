@@ -7,7 +7,9 @@
 </script>
 
 <button on:click={toggleOpen} class="qr-button"><QrIcon fill="#B8B2BF" /></button>
-<button use:clickToCopy={shortLink} class="copy-button"><CopyIcon fill="#B8B2BF" /></button>
+<button on:click={(e) => clickToCopy(e, shortLink)} class="copy-button"
+  ><CopyIcon fill="#B8B2BF" /></button
+>
 
 <style>
   button {
