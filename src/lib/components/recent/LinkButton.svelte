@@ -1,15 +1,35 @@
 <script>
   import CopyIcon from '$lib/assets/CopyIcon.svelte';
+  import SuccessIcon from '$lib/assets/SuccessIcon.svelte';
   import { clickToCopy } from '$lib/utils/clickToCopy';
   import QrIcon from '$lib/assets/QRIcon.svelte';
+
   export let shortLink;
   export let toggleOpen;
+
+  let copied = false;
+
+  const copySuccess = () => {
+    copied = true;
+
+    setTimeout(() => {
+      copied = false;
+    }, 1500);
+  };
 </script>
 
 <button on:click={toggleOpen} class="qr-button"><QrIcon fill="#B8B2BF" /></button>
-<button on:click={(e) => clickToCopy(e, shortLink)} class="copy-button"
-  ><CopyIcon fill="#B8B2BF" /></button
+<button
+  on:click={(e) => clickToCopy(e, shortLink)}
+  on:copysuccess={copySuccess}
+  class="copy-button"
 >
+  {#if copied}
+    <SuccessIcon />
+  {:else}
+    <CopyIcon fill="#B8B2BF" />
+  {/if}
+</button>
 
 <style>
   button {

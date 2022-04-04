@@ -1,16 +1,32 @@
 <script>
   import CopyIcon from '$lib/assets/CopyIcon.svelte';
+  import SuccessIcon from '$lib/assets/SuccessIcon.svelte';
   import { clickToCopy } from '$lib/utils/clickToCopy';
 
   export let shortenedURL;
-  let text = 'Copy';
+  let copied = false;
+
+  const handleCopySuccess = () => {
+    copied = true;
+    setTimeout(() => {
+      copied = false;
+    }, 1500);
+  };
 </script>
 
 <button
   type="button"
   class="flex"
   on:click={(e) => clickToCopy(e, shortenedURL)}
-  on:copysuccess={() => (text = 'Copied!')}><CopyIcon /><span>{text}</span></button
+  on:copysuccess={handleCopySuccess}
+>
+  {#if copied}
+    <SuccessIcon />
+  {:else}
+    <CopyIcon />
+  {/if}
+
+  <span>Copy</span></button
 >
 
 <style>
