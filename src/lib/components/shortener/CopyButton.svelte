@@ -9,7 +9,7 @@
 <button
   type="button"
   class="flex"
-  use:clickToCopy={shortenedURL}
+  on:click={(e) => clickToCopy(e, shortenedURL)}
   on:copysuccess={() => (text = 'Copied!')}><CopyIcon /><span>{text}</span></button
 >
 
