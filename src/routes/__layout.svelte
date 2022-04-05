@@ -1,6 +1,6 @@
 <script>
   import '$lib/styles/global.css';
-  import Login from '$lib/components/Login.svelte';
+  import LoginButton from '$lib/components/login/LoginButton.svelte';
   import Logo from '$lib/components/Logo.svelte';
   import 'sanitize.css';
   import 'sanitize.css/forms.css';
@@ -9,7 +9,7 @@
 
 <header class="flex">
   <Logo />
-  <Login />
+  <LoginButton />
 </header>
 <main>
   <slot />
