@@ -74,5 +74,6 @@
     width: 30px;
     height: 30px;
     text-align: center;
+    cursor: pointer;
   }
 </style>
