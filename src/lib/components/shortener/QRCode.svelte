@@ -23,7 +23,12 @@
     class="qrcontainer flex center"
     bind:this={container}
   >
-    <button on:click={toggleClose} type="button" class="flex center close">X</button>
+    <button
+      on:click={toggleClose}
+      type="button"
+      class="flex center close"
+      aria-label="close-QR-code">X</button
+    >
     <div class="link-text">{shortenedURL}</div>
   </div>
 </div>
