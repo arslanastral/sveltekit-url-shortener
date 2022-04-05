@@ -17,9 +17,11 @@
 
   .logo-text {
     font-size: 45px;
-    font-family: 'Merriweather';
+    font-weight: 500;
+    letter-spacing: -0.15em;
+    left: 20px;
     position: absolute;
-    left: 22px;
+
     top: 0px;
   }
 
