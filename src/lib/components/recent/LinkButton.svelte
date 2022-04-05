@@ -40,6 +40,7 @@
     border: 0;
     transition: 0.1s cubic-bezier(0.3, 0, 0.5, 1);
     transition-property: color, background-color;
+    cursor: pointer;
   }
 
   .qr-button {
