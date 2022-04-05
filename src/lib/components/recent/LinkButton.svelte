@@ -18,11 +18,14 @@
   };
 </script>
 
-<button on:click={toggleOpen} class="qr-button"><QrIcon fill="#B8B2BF" /></button>
+<button on:click={toggleOpen} class="qr-button" aria-label="QR-code"
+  ><QrIcon fill="#B8B2BF" /></button
+>
 <button
   on:click={(e) => clickToCopy(e, shortLink)}
   on:copysuccess={copySuccess}
   class="copy-button"
+  aria-label="copy"
 >
   {#if copied}
     <SuccessIcon />
