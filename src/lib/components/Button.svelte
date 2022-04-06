@@ -22,17 +22,11 @@
     border-radius: var(--border-radius);
     border: var(--border);
     margin: var(--margin);
-
     cursor: pointer;
-    transition: transform ease-in 0.1s, background-color ease-in 0.1s, border ease-in 0.1s;
+    transition: transform ease-out 0.1s, border ease-in 0.1s;
   }
 
   button:active {
     transform: var(--transform);
-    background-color: var(--active-bg);
-  }
-
-  button:hover {
-    border: var(--hover-border);
   }
 </style>

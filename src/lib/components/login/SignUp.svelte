@@ -21,7 +21,6 @@
         --color="white"
         --bg-color="#3E5DFF"
         --border-radius="6px"
-        --active-bg="#3E5DFF"
       />
     </form>
   </div>
