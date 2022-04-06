@@ -13,7 +13,6 @@
       clicks = formatCount(result.clicks);
       secured = formatCount(result.secured);
       return {
-        maxage: 86400,
         props: {
           shortened,
           clicks,
