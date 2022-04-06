@@ -1,19 +1,24 @@
 <script>
   import Button from '../Button.svelte';
+
+  export let title;
+  export let action;
+  export let buttonTitle;
+  export let isForSignUp;
 </script>
 
-<div class="fadeIn flex unlock-container">
-  <div class="flex info-container">
-    <div class="title">Welcome to Ky</div>
-    <div class="subtitle">Short Links. Big Impact</div>
-  </div>
+<div class="fadeIn flex container">
+  <div class="title">{title}</div>
 
   <div class="form-container">
-    <form class="flex" method="post" action={`/api/auth/signin`}>
+    <form class="flex" method="post" {action}>
+      {#if isForSignUp}
+        <input placeholder="Username" name="name" type="text" required autocomplete="on" />
+      {/if}
       <input placeholder="Email" name="email" type="email" required autocomplete="on" />
       <input placeholder="Password" name="password" type="password" required autocomplete="on" />
       <Button
-        title="Sign In"
+        title={buttonTitle}
         type="submit"
         --font-size="20px"
         --padding="8px 18px"
@@ -26,7 +31,7 @@
 </div>
 
 <style>
-  .unlock-container {
+  .container {
     background-color: white;
     width: 386px;
     height: 494px;
@@ -43,19 +48,6 @@
     letter-spacing: -0.045em;
     margin-top: 10px;
     color: #000000;
-  }
-
-  .subtitle {
-    font-weight: 500;
-    font-size: 19px;
-    line-height: 23px;
-    letter-spacing: -0.045em;
-
-    color: #5f5f5f;
-  }
-
-  .info-container {
-    flex-direction: column;
   }
 
   .form-container {
