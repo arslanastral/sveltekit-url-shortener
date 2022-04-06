@@ -1,9 +1,9 @@
 <script>
-  import SignIn from '$lib/components/login/SignIn.svelte';
+  import LogIn from '$lib/components/login/LogIn.svelte';
 </script>
 
 <div class="wrapper">
-  <SignIn />
+  <LogIn />
 </div>
 
 <style>
