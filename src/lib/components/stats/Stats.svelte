@@ -1,29 +1,13 @@
 <script>
-  import { onMount } from 'svelte';
   import StatsBox from './StatsBox.svelte';
   import StatsIcon from '$lib/assets/StatsIcon.svelte';
   import LinkIcon from '$lib/assets/LinkIcon.svelte';
   import ClickIcon from '$lib/assets/ClickIcon.svelte';
   import ShieldIcon from '$lib/assets/ShieldIcon.svelte';
-  import { formatCount } from '$lib/utils/formatCount';
 
-  let shortened = '0';
-  let clicks = '0';
-  let secured = '0';
-  onMount(async () => {
-    const res = await fetch(`${window.location.origin}/api/stats`);
-    const result = await res.json();
-
-    if (res.ok) {
-      shortened = formatCount(result.shortened);
-      clicks = formatCount(result.clicks);
-      secured = formatCount(result.secured);
-    } else {
-      shortened = 'Error';
-      clicks = 'Error';
-      secured = 'Error';
-    }
-  });
+  export let shortened;
+  export let clicks;
+  export let secured;
 </script>
 
 <div class="flex stats-container">
