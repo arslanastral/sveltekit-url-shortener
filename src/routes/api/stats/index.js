@@ -31,6 +31,9 @@ export async function get() {
     const secured = await collection.countDocuments({ secured: { $eq: true } });
 
     return {
+      headers: {
+        'cache-control': 's-maxage=1, stale-while-revalidate=59'
+      },
       body: {
         shortened: shortened.toString(),
         clicks: clicks.toString(),
