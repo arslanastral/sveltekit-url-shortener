@@ -19,7 +19,7 @@
     <StatsBox count={clicks} countType="Clicks" --count-color="#F21E85"
       ><ClickIcon slot="icon" /></StatsBox
     >
-    <StatsBox count={secured} countType="Secured" --count-color="#FF902A"
+    <StatsBox count={secured} countType="Secured" --count-color="#e16b00"
       ><ShieldIcon slot="icon" /></StatsBox
     >
   </div>
