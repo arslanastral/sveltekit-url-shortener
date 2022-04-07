@@ -10,7 +10,6 @@
 
     return {
       props: {
-        isSignedIn: true,
         name: session.user.name,
         email: session.user.email
       }
@@ -33,7 +32,10 @@
 
 <header class="flex">
   <Logo />
-  <LoginButton />
+  {#if !isSignedIn}
+    <LoginButton />
+  {/if}
+  <div>Hello {name}</div>
 </header>
 <main>
   <slot />
