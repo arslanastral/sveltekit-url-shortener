@@ -8,7 +8,7 @@
   export let buttonTitle;
   export let isForSignUp;
 
-  let username = '';
+  let name = '';
   let email = '';
   let password = '';
   let error = '';
@@ -17,7 +17,7 @@
     const res = await fetch(endpoint, {
       method: 'POST',
       body: JSON.stringify({
-        ...(isForSignUp && { username }),
+        ...(isForSignUp && { name }),
         email,
         password
       }),
@@ -26,10 +26,12 @@
       }
     });
 
+    let json = await res.json();
+
     if (res.ok) {
       goto(redirect);
     } else {
-      error = 'error';
+      error = json.error;
     }
   }
 </script>
@@ -40,8 +42,8 @@
   <div class="login-container">
     {#if isForSignUp}
       <input
-        bind:value={username}
-        placeholder="Username"
+        bind:value={name}
+        placeholder="Name"
         name="name"
         type="text"
         required
