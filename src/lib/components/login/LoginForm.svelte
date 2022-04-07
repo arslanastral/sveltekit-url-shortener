@@ -108,8 +108,4 @@
   input:focus {
     outline: none;
   }
-
-  form {
-    flex-direction: column;
-  }
 </style>
