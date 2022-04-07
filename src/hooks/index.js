@@ -5,7 +5,6 @@ export async function handle({ event, resolve }) {
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
 
   event.locals.user = cookies;
-
   if (!cookies.sessionId) {
     event.locals.user.authenticated = false;
   }
@@ -13,8 +12,7 @@ export async function handle({ event, resolve }) {
   const db = await connectToDatabase();
   const collection = await db.collection('users');
 
-  const userSession = await collection.findOne({ sessionId: cookies.sessionId });
-
+  const userSession = await collection.findOne({ sessionId: { $eq: cookies.sessionId } });
   if (userSession) {
     event.locals.user.authenticated = true;
     event.locals.user.name = userSession.name;
@@ -26,14 +24,12 @@ export async function handle({ event, resolve }) {
   return await resolve(event);
 }
 
-export const getSession = async (event) => {
-  return event.locals.user
-    ? {
-        user: {
-          authenticated: true,
-          name: event.locals.user.name,
-          email: event.locals.user.email
-        }
-      }
-    : {};
-};
+export function getSession({ locals }) {
+  return {
+    user: locals.user && {
+      authenticated: locals.user.authenticated,
+      name: locals.user.name,
+      email: locals.user.email
+    }
+  };
+}
