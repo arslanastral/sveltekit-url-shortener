@@ -6,5 +6,6 @@
   isForSignUp={true}
   title="Create Your Account"
   buttonTitle="Sign Up"
-  action="/auth/checkin"
+  endpoint="/auth/signup"
+  redirect="/"
 />

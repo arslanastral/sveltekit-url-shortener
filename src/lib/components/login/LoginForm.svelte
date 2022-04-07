@@ -1,32 +1,79 @@
 <script>
+  import { goto } from '$app/navigation';
   import Button from '../Button.svelte';
 
   export let title;
-  export let action;
+  export let endpoint;
+  export let redirect = '/';
   export let buttonTitle;
   export let isForSignUp;
+
+  let username = '';
+  let email = '';
+  let password = '';
+  let error = '';
+
+  async function handleSubmit() {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify({
+        ...(isForSignUp && { username }),
+        email,
+        password
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (res.ok) {
+      goto(redirect);
+    } else {
+      error = 'error';
+    }
+  }
 </script>
 
 <div class="fadeIn flex container">
   <div class="title">{title}</div>
 
-  <div class="form-container">
-    <form class="flex" method="post" {action}>
-      {#if isForSignUp}
-        <input placeholder="Username" name="name" type="text" required autocomplete="on" />
-      {/if}
-      <input placeholder="Email" name="email" type="email" required autocomplete="on" />
-      <input placeholder="Password" name="password" type="password" required autocomplete="on" />
-      <Button
-        title={buttonTitle}
-        type="submit"
-        --font-size="20px"
-        --padding="8px 18px"
-        --color="white"
-        --bg-color="#3E5DFF"
-        --border-radius="6px"
+  <div class="login-container">
+    {#if isForSignUp}
+      <input
+        bind:value={username}
+        placeholder="Username"
+        name="name"
+        type="text"
+        required
+        autocomplete="on"
       />
-    </form>
+    {/if}
+    <input
+      bind:value={email}
+      placeholder="Email"
+      name="email"
+      type="email"
+      required
+      autocomplete="on"
+    />
+    <input
+      bind:value={password}
+      placeholder="Password"
+      name="password"
+      type="password"
+      required
+      autocomplete="on"
+    />
+    <Button
+      title={buttonTitle}
+      onClickFunc={handleSubmit}
+      type="button"
+      --font-size="20px"
+      --padding="8px 18px"
+      --color="white"
+      --bg-color="#3E5DFF"
+      --border-radius="6px"
+    />
   </div>
 </div>
 
@@ -50,7 +97,7 @@
     color: #000000;
   }
 
-  .form-container {
+  .login-container {
     width: 90%;
   }
 
