@@ -1,4 +1,5 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { isValidEmail } from '$lib/utils/isValidEmail';
 import * as cookie from 'cookie';
 import bcryptjs from 'bcryptjs';
 import { nanoid } from 'nanoid';
@@ -12,6 +13,15 @@ export async function post({ request }) {
       status: 400,
       body: {
         error: 'Missing email or password'
+      }
+    };
+  }
+
+  if (!isValidEmail(email)) {
+    return {
+      status: 400,
+      body: {
+        error: 'Invalid email'
       }
     };
   }
