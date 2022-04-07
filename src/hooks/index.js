@@ -17,6 +17,7 @@ export async function handle({ event, resolve }) {
 
   if (userSession) {
     event.locals.user.authenticated = true;
+    event.locals.user.name = userSession.name;
     event.locals.user.email = userSession.email;
   } else {
     event.locals.user.authenticated = false;
