@@ -22,14 +22,7 @@ export async function handle({ event, resolve }) {
     event.locals.user.authenticated = false;
   }
 
-  const response = await resolve(event);
-
-  return {
-    ...response,
-    headers: {
-      ...response.headers
-    }
-  };
+  return await resolve(event);
 }
 
 export const getSession = async (event) => {
