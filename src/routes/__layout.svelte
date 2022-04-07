@@ -1,23 +1,5 @@
-<script context="module">
-  export async function load({ session }) {
-    if (!session.user.authenticated) {
-      return {
-        props: {
-          isSignedIn: false
-        }
-      };
-    }
-
-    return {
-      props: {
-        name: session.user.name,
-        email: session.user.email
-      }
-    };
-  }
-</script>
-
 <script>
+  import { session } from '$app/stores';
   import '$lib/styles/global.css';
   import LoginButton from '$lib/components/login/LoginButton.svelte';
   import Logo from '$lib/components/Logo.svelte';
@@ -25,17 +7,16 @@
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';
 
-  export let isSignedIn;
-  export let email;
-  export let name;
+  console.log($session);
 </script>
 
 <header class="flex">
   <Logo />
-  {#if !isSignedIn}
+  {#if !$session.user.authenticated}
     <LoginButton />
+  {:else}
+    <div>Hello {$session.user.name}</div>
   {/if}
-  <div>Hello {name}</div>
 </header>
 <main>
   <slot />
