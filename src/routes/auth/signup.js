@@ -1,5 +1,5 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
-let cookie = require('cookie');
+import * as cookie from 'cookie';
 import bcryptjs from 'bcryptjs';
 import { nanoid } from 'nanoid';
 
@@ -32,7 +32,7 @@ export async function post({ request }) {
 
     const hashedPassword = await bcryptjs.hash(password, 10);
 
-    const sessionId = nanoid();
+    const sessionId = nanoid(36);
 
     await collection.insertOne({
       name: name,
