@@ -60,6 +60,7 @@
     width: 136px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 8px;
+    background-color: #fff;
   }
 
   .user-name {
