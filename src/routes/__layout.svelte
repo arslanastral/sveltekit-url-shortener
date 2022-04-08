@@ -6,8 +6,7 @@
   import 'sanitize.css';
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';
-
-  console.log($session.user);
+  import UserInfo from '$lib/components/user/UserInfo.svelte';
 </script>
 
 <header class="flex">
@@ -15,7 +14,7 @@
   {#if !$session.user}
     <LoginButton />
   {:else}
-    <div>Hello {$session.user.name}</div>
+    <UserInfo name={$session.user.name} />
   {/if}
 </header>
 <main>
