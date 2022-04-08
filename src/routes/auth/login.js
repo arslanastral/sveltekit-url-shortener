@@ -68,6 +68,10 @@ export async function post({ request }) {
         status: 200,
         headers,
         body: {
+          user: {
+            name: user.name,
+            email: user.email
+          },
           message: 'signin successful'
         }
       };
