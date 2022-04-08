@@ -7,12 +7,12 @@
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';
 
-  console.log($session);
+  console.log($session.user);
 </script>
 
 <header class="flex">
   <Logo />
-  {#if !$session.user.authenticated}
+  {#if !$session.user}
     <LoginButton />
   {:else}
     <div>Hello {$session.user.name}</div>
