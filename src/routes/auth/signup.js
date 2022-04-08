@@ -56,7 +56,8 @@ export async function post({ request }) {
         httpOnly: true,
         maxAge: 60 * 60 * 24 * 7,
         path: '/',
-        sameSite: 'lax'
+        sameSite: 'strict',
+        secure: true
       })
     };
 
