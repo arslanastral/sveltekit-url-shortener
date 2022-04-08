@@ -65,6 +65,10 @@ export async function post({ request }) {
       status: 201,
       headers,
       body: {
+        user: {
+          name: user.name,
+          email: user.email
+        },
         message: 'User created'
       }
     };
