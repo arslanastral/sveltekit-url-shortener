@@ -25,6 +25,11 @@ export async function handle({ event, resolve }) {
 }
 
 export function getSession({ locals }) {
+  if (!locals.user.authenticated) {
+    return {
+      user: null
+    };
+  }
   return {
     user: locals.user && {
       authenticated: locals.user.authenticated,

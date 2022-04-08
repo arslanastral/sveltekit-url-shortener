@@ -1,5 +1,6 @@
 <script>
   import { goto } from '$app/navigation';
+  import { session } from '$app/stores';
   import Button from '../Button.svelte';
 
   export let title;
@@ -29,6 +30,7 @@
     let json = await res.json();
 
     if (res.ok) {
+      $session.user = json.user;
       goto(redirect);
     } else {
       error = json.error;
