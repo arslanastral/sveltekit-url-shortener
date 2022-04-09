@@ -33,9 +33,7 @@
     {/if}
 
     <div class="flex">
-      <a class="short-link" href={shortLink} target="_blank" rel="noopener noreferrer"
-        >{shortLink}</a
-      >
+      <a rel="external" class="short-link" href={shortLink} target="_blank">{shortLink}</a>
       {#if isSecure}
         <LockIcon width="18" height="18" fill="green" />
       {/if}

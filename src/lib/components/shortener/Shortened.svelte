@@ -11,9 +11,7 @@
 <div class="flex grow fadeIn">
   <div class="flex grow">
     <Checkmark />
-    <a class="shortened-link" href={shortenedURL} target="_blank" rel="noopener noreferrer"
-      >{shortenedURL}</a
-    >
+    <a rel="external" class="shortened-link" href={shortenedURL} target="_blank">{shortenedURL}</a>
   </div>
 
   <QRButton {shortenedURL} />
