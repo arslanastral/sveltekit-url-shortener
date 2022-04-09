@@ -1,5 +1,6 @@
 <script>
   import DownIcon from '$lib/assets/DownIcon.svelte';
+  import { clickOutside } from '$lib/utils/clickOutside';
 
   export let name;
 
@@ -29,13 +30,16 @@
   let isToggled = false;
 
   const toggle = () => {
+    console.log('runnign');
     isToggled = !isToggled;
   };
 </script>
 
 <div class="userinfo flex">
   <div class="user-name">Hey, {name}</div>
-  <button on:click={toggle}><DownIcon /></button>
+  <button use:clickOutside on:click_outside={() => (isToggled = false)} on:click={toggle}
+    ><DownIcon /></button
+  >
 
   {#if isToggled}
     <div class="flex dropdown">
