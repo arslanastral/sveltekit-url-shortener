@@ -3,10 +3,13 @@ import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
 
 export async function handle({ event, resolve }) {
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
+  const sessionId = cookies.sessionId;
 
   event.locals.user = cookies;
-  if (!cookies.sessionId) {
+
+  if (!sessionId) {
     event.locals.user.authenticated = false;
+    return await resolve(event);
   }
 
   const db = await connectToDatabase();
