@@ -21,7 +21,7 @@
       path: '/settings'
     },
     {
-      name: 'Logout',
+      name: 'Logout 👋',
       icon: DownIcon,
       path: '/logout'
     }
@@ -42,7 +42,7 @@
   >
 
   {#if isToggled}
-    <div class="flex dropdown">
+    <div class="fadeIn flex dropdown">
       {#each pages as link}
         <a href={link.path}>{link.name}</a>
       {/each}
@@ -91,6 +91,16 @@
     font-size: 16px;
 
     color: #000000;
+    transition: 0.1s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color, background-color;
+  }
+
+  a:first-child {
+    margin-top: 10px;
+  }
+
+  a:last-child {
+    margin-bottom: 10px;
   }
 
   a:hover {
