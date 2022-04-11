@@ -13,8 +13,6 @@ export async function post({ clientAddress, request }) {
   const submittedURL = body.get('url');
   const submittedPassword = body.get('password');
   const host = request.headers.get('host');
-  console.log(submittedURL);
-  console.log(submittedPassword);
 
   try {
     await limiter(10, clientAddress);
