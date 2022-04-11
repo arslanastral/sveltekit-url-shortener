@@ -7,8 +7,6 @@
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';
   import UserInfo from '$lib/components/user/UserInfo.svelte';
-
-  console.log('session from layout', $session);
 </script>
 
 <header class="flex">

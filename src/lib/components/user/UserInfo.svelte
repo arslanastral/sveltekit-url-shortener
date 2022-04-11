@@ -9,7 +9,6 @@
   let isUserMenuToggled = false;
 
   const toggleUserMenu = () => {
-    console.log('runnign');
     isUserMenuToggled = !isUserMenuToggled;
   };
 </script>
