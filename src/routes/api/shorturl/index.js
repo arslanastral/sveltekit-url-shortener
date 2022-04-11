@@ -1,15 +1,29 @@
 import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
 import { isValidHttpUrl } from '$lib/utils/isValidHttpUrl.js';
+import rateLimiter from 'lambda-rate-limiter';
 import bcrypt from 'bcryptjs';
 import { nanoid } from 'nanoid';
 
-export async function post({ request }) {
+const limiter = rateLimiter({
+  interval: 120000
+}).check;
+
+export async function post({ clientAddress, request }) {
   const body = await request.formData();
   const submittedURL = body.get('url');
   const submittedPassword = body.get('password');
   const host = request.headers.get('host');
   console.log(submittedURL);
   console.log(submittedPassword);
+
+  try {
+    await limiter(10, clientAddress);
+  } catch (error) {
+    return {
+      status: 429,
+      body: { error: 'Too many requests' }
+    };
+  }
 
   if (isValidHttpUrl(submittedURL, host)) {
     try {
