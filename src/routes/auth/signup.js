@@ -7,8 +7,9 @@ import { nanoid } from 'nanoid';
 export async function post({ request }) {
   const body = await request.json();
   const { name, email, password } = await body;
+  const userEmail = email.toString().trim().toLowerCase();
 
-  if (!email || !password) {
+  if (!userEmail || !password) {
     return {
       status: 400,
       body: {
@@ -17,7 +18,7 @@ export async function post({ request }) {
     };
   }
 
-  if (!isValidEmail(email)) {
+  if (!isValidEmail(userEmail)) {
     return {
       status: 400,
       body: {
@@ -29,7 +30,7 @@ export async function post({ request }) {
   try {
     const db = await connectToDatabase();
     const collection = await db.collection('users');
-    const user = await collection.findOne({ email: email });
+    const user = await collection.findOne({ email: userEmail });
 
     if (user) {
       return {
@@ -46,7 +47,7 @@ export async function post({ request }) {
 
     await collection.insertOne({
       name: name,
-      email: email,
+      email: userEmail,
       password: hashedPassword,
       sessionId: sessionId
     });
@@ -67,7 +68,7 @@ export async function post({ request }) {
       body: {
         user: {
           name: name,
-          email: email
+          email: userEmail
         },
         message: 'User created'
       }
