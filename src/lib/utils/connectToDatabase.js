@@ -12,6 +12,9 @@ export const connectToDatabase = async () => {
       const client = new MongoClient(import.meta.env.VITE_MONGODB_URI);
       await client.connect();
       let db = client.db('ky');
+      await db.collection('urls').createIndex({ short_url: 1 }, { unique: true });
+      await db.collection('users').createIndex({ email: 1 }, { unique: true });
+      await db.collection('users').createIndex({ sessionId: 1 }, { unique: true });
       console.log('New Database Connection');
       dbExists = db;
       return dbExists;
