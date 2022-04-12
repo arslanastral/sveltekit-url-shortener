@@ -1,9 +1,8 @@
-import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { useCollection } from '$lib/utils/useCollection';
 
 export async function get() {
   try {
-    const db = await connectToDatabase();
-    const collection = await db.collection('urls');
+    const collection = await useCollection('urls');
 
     let shortened = await collection.countDocuments({ short_url: { $exists: true } });
 

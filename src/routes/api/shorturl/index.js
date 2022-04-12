@@ -1,4 +1,4 @@
-import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { useCollection } from '$lib/utils/useCollection';
 import { isValidHttpUrl } from '$lib/utils/isValidHttpUrl.js';
 import rateLimiter from 'lambda-rate-limiter';
 import bcrypt from 'bcryptjs';
@@ -25,8 +25,7 @@ export async function post({ clientAddress, request }) {
 
   if (isValidHttpUrl(submittedURL, host)) {
     try {
-      const db = await connectToDatabase();
-      const collection = await db.collection('urls');
+      const collection = await useCollection('urls');
       let shortened;
       if (submittedPassword) {
         try {

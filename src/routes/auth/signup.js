@@ -1,4 +1,4 @@
-import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { useCollection } from '$lib/utils/useCollection';
 import { isValidEmail } from '$lib/utils/isValidEmail';
 import * as cookie from 'cookie';
 import bcryptjs from 'bcryptjs';
@@ -28,8 +28,7 @@ export async function post({ request }) {
   }
 
   try {
-    const db = await connectToDatabase();
-    const collection = await db.collection('users');
+    const collection = await useCollection('users');
     const user = await collection.findOne({ email: userEmail });
 
     if (user) {
