@@ -43,7 +43,14 @@
 
   <div class="login-container">
     {#if isForSignUp}
-      <input bind:value={name} placeholder="Name" name="name" type="text" autocomplete="on" />
+      <input
+        bind:value={name}
+        placeholder="Name"
+        name="name"
+        type="text"
+        autocomplete="on"
+        maxlength="20"
+      />
     {/if}
     <input
       bind:value={email}
