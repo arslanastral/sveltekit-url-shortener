@@ -5,31 +5,26 @@ import { nanoid } from 'nanoid';
 export async function createShortUrl(submittedURL, submittedPassword) {
   try {
     const collection = await useCollection('urls');
-    let shortened;
+
+    let hash;
     if (submittedPassword) {
       try {
-        const hash = await bcrypt.hash(submittedPassword, 10);
-
-        shortened = await collection.insertOne({
-          long_url: submittedURL,
-          short_url: nanoid(4),
-          clicks: 0,
-          secured: true,
-          pass: hash
-        });
+        hash = await bcrypt.hash(submittedPassword, 10);
       } catch (err) {
         return {
           status: 500,
           body: { error: 'Error Creating Secure Link' }
         };
       }
-    } else {
-      shortened = await collection.insertOne({
-        long_url: submittedURL,
-        short_url: nanoid(4),
-        clicks: 0
-      });
     }
+
+    let shortened = await collection.insertOne({
+      long_url: submittedURL,
+      short_url: nanoid(4),
+      clicks: 0,
+      secured: hash ? true : false,
+      ...(submittedPassword && { pass: hash })
+    });
 
     const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
 
