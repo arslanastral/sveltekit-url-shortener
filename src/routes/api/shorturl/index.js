@@ -6,11 +6,12 @@ const limiter = rateLimiter({
   interval: 120000
 }).check;
 
-export async function post({ clientAddress, request }) {
+export async function post({ locals, clientAddress, request }) {
   const body = await request.formData();
   const submittedURL = body.get('url');
   const submittedPassword = body.get('password');
   const host = request.headers.get('host');
+  const user = locals.user.email || null;
 
   try {
     await limiter(10, clientAddress);
@@ -22,7 +23,7 @@ export async function post({ clientAddress, request }) {
   }
 
   if (isValidHttpUrl(submittedURL, host)) {
-    const result = await createShortUrl(submittedURL, submittedPassword);
+    const result = await createShortUrl(user, submittedURL, submittedPassword);
 
     return {
       status: result.status,
