@@ -1,5 +1,5 @@
 import * as cookie from 'cookie';
-import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { useCollection } from '$lib/utils/useCollection';
 
 export async function handle({ event, resolve }) {
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
@@ -12,8 +12,7 @@ export async function handle({ event, resolve }) {
     return await resolve(event);
   }
 
-  const db = await connectToDatabase();
-  const collection = await db.collection('users');
+  const collection = await useCollection('users');
 
   const userSession = await collection.findOne({ sessionId: { $eq: cookies.sessionId } });
   if (userSession) {

@@ -1,4 +1,4 @@
-import { connectToDatabase } from '$lib/utils/connectToDatabase';
+import { useCollection } from '$lib/utils/useCollection';
 
 export async function post({ locals }) {
   const sessionId = locals.user.sessionId;
@@ -13,8 +13,7 @@ export async function post({ locals }) {
   }
 
   try {
-    const db = await connectToDatabase();
-    const collection = await db.collection('users');
+    const collection = await useCollection('users');
 
     const userSession = await collection.findOne({ sessionId: { $eq: sessionId } });
 

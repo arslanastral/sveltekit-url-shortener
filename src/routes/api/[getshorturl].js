@@ -1,12 +1,11 @@
-import { connectToDatabase } from '$lib/utils/connectToDatabase.js';
+import { useCollection } from '$lib/utils/useCollection';
 import bcrypt from 'bcryptjs';
 
 export async function get({ params }) {
   const id = params.getshorturl;
 
   try {
-    const db = await connectToDatabase();
-    const collection = await db.collection('urls');
+    const collection = await useCollection('urls');
     const link = await collection.findOne({ short_url: id });
     if (link.secured) {
       return {
@@ -47,8 +46,7 @@ export async function post({ request, params }) {
   }
 
   try {
-    const db = await connectToDatabase();
-    const collection = await db.collection('urls');
+    const collection = await useCollection('urls');
     const link = await collection.findOne({ short_url: id });
 
     if (link.secured) {
