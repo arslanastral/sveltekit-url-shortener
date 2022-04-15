@@ -89,6 +89,7 @@
     background: #ffffff;
     border: 1px solid #dfe1e5;
     border-radius: 42px;
+    margin-bottom: 50px;
     margin-top: 30px;
   }
 
