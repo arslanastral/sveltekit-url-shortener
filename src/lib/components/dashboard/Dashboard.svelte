@@ -1,17 +1,25 @@
+<script>
+  export let index;
+  export let shortLink;
+  export let longLink;
+  export let date;
+  export let clicks;
+</script>
+
 <div class="flex title-container">
   <div class="title">Dashboard</div>
 </div>
 <div class="grow links-wrapper">
   <div class="flex link-container">
-    <span class="index">1.</span>
+    <span class="index">{index}</span>
     <div class="link">
       <div class="long-link">
-        https://directorsblog.nih.gov/2022/04/12/human-brain-compresses-working-memories-into-low-res-summaries/
+        {longLink}
       </div>
-      <div class="short-link">ky.vercel.app/b4w7</div>
+      <div class="short-link">{shortLink}</div>
     </div>
-    <div class="date">22 Nov, 2022</div>
-    <span class="clicks">12</span>
+    <div class="date">{date}</div>
+    <span class="clicks">{clicks}</span>
   </div>
 </div>
 
