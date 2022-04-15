@@ -1,7 +1,11 @@
 <script>
+  import { browser } from '$app/env';
+
+  import { timeAgo } from '$lib/utils/timeAgo';
+
   export let index;
-  export let shortLink;
-  export let longLink;
+  export let short_url;
+  export let long_url;
   export let date;
   export let clicks;
 </script>
@@ -10,11 +14,13 @@
   <span class="index">{index}</span>
   <div class="link">
     <div class="long-link">
-      {longLink}
+      {long_url}
     </div>
-    <div class="short-link">{shortLink}</div>
+    {#if browser}
+      <div class="short-link">{`${window.location.origin}/${short_url}`}</div>
+    {/if}
   </div>
-  <div class="date">{date}</div>
+  <div class="date">{timeAgo(date)}</div>
   <span class="clicks">{clicks}</span>
 </div>
 

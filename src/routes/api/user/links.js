@@ -12,16 +12,22 @@ export async function get({ locals }) {
 
   try {
     const collection = await useCollection('urls');
+
     const links = await collection
       .find({ created_by: currentUser.email })
-      .project({ _id: 0, long_url: 1, short_url: 1, secured: 1, clicks: 1 })
+      .project({
+        date: { $toDate: '$_id' },
+        _id: 0,
+        long_url: 1,
+        short_url: 1,
+        secured: 1,
+        clicks: 1
+      })
       .toArray();
 
     return {
       status: 200,
-      body: {
-        links: links
-      }
+      body: links
     };
   } catch (error) {
     return {
