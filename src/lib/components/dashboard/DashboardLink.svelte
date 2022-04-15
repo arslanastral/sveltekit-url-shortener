@@ -2,6 +2,8 @@
   import { browser } from '$app/env';
   import LockIcon from '$lib/assets/LockIcon.svelte';
   import { timeAgo } from '$lib/utils/timeAgo';
+  import LinkButton from '../recent/LinkButton.svelte';
+  import QrCode from '$lib/components/shortener/QRCode.svelte';
 
   export let index;
   export let short_url;
@@ -9,6 +11,16 @@
   export let date;
   export let clicks;
   export let secured;
+
+  let toggle = false;
+
+  const toggleOpen = () => {
+    toggle = true;
+  };
+
+  const toggleClose = () => {
+    toggle = false;
+  };
 </script>
 
 <div class="flex link-container">
@@ -33,18 +45,23 @@
   </div>
   <div class="date">{timeAgo(date)}</div>
   <span class="clicks">{clicks}</span>
+  <div class="flex button-container"><LinkButton shortLink={short_url} {toggleOpen} /></div>
 </div>
+
+{#if toggle}
+  <QrCode shortenedURL={short_url} {toggleClose} />
+{/if}
 
 <style>
   .link-container {
     width: 100%;
     border-bottom: 1px solid #eaeaea;
+    justify-content: space-evenly;
   }
 
   .index {
     width: 20px;
     height: 20px;
-    margin: 50px;
     font-weight: 500;
     font-size: 19px;
   }
@@ -91,5 +108,11 @@
   .clicks {
     margin: 20px;
     font-size: 19px;
+  }
+
+  .button-container {
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid #dfe1e5;
   }
 </style>
