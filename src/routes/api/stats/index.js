@@ -1,12 +1,23 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function get() {
+export async function get({ locals }) {
+  const user = locals.user;
+
+  let shortenedCountQuery;
+
+  if (user.authenticated) {
+    shortenedCountQuery = { created_by: user.email };
+  } else {
+    shortenedCountQuery = { short_url: { $exists: true } };
+  }
+
   try {
     const collection = await useCollection('urls');
 
-    let shortened = await collection.countDocuments({ short_url: { $exists: true } });
+    let shortened = await collection.countDocuments(shortenedCountQuery);
 
     const clicksPipeline = [
+      { $match: shortenedCountQuery },
       {
         $group: {
           _id: '',
@@ -27,7 +38,10 @@ export async function get() {
 
     let clicks = aggregateClicks[0].clicks;
 
-    const secured = await collection.countDocuments({ secured: { $eq: true } });
+    const secured = await collection.countDocuments({
+      secured: { $eq: true },
+      ...(user.authenticated && shortenedCountQuery)
+    });
 
     return {
       headers: {
