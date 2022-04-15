@@ -11,6 +11,10 @@
   export let date;
   export let clicks;
   export let secured;
+  let shortLink = '';
+  if (browser) {
+    shortLink = `${window.location.origin}/${short_url}`;
+  }
 
   let toggle = false;
 
@@ -29,27 +33,21 @@
     <div class="long-link">
       <img src={`https://www.google.com/s2/favicons?domain=${long_url}`} alt="favicon" />{long_url}
     </div>
-    {#if browser}
-      <div class="flex">
-        <a
-          rel="external"
-          href={`${window.location.origin}/${short_url}`}
-          target="_blank"
-          class="short-link">{`${window.location.origin}/${short_url}`}</a
-        >
-        {#if secured}
-          <LockIcon width="18" height="18" fill="green" />
-        {/if}
-      </div>
-    {/if}
+
+    <div class="flex">
+      <a rel="external" href={shortLink} target="_blank" class="short-link">{shortLink}</a>
+      {#if secured}
+        <LockIcon width="18" height="18" fill="green" />
+      {/if}
+    </div>
   </div>
   <div class="date">{timeAgo(date)}</div>
   <span class="clicks">{clicks}</span>
-  <div class="flex button-container"><LinkButton shortLink={short_url} {toggleOpen} /></div>
+  <div class="flex button-container"><LinkButton {shortLink} {toggleOpen} /></div>
 </div>
 
 {#if toggle}
-  <QrCode shortenedURL={short_url} {toggleClose} />
+  <QrCode shortenedURL={shortLink} {toggleClose} />
 {/if}
 
 <style>
