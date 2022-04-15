@@ -1,3 +1,7 @@
+<script>
+  import DashboardLink from './DashboardLink.svelte';
+</script>
+
 <div class="flex title-container">
   <div class="title">Dashboard</div>
 </div>
