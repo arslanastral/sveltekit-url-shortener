@@ -8,10 +8,11 @@
   export let shortened;
   export let clicks;
   export let secured;
+  export let title = 'API Stats';
 </script>
 
 <div class="flex stats-container">
-  <div class="flex"><StatsIcon /><span class="stats-title">API Stats</span></div>
+  <div class="flex"><StatsIcon /><span class="stats-title">{title}</span></div>
   <div class="flex box-wrapper">
     <StatsBox count={shortened} countType="Shortened" --count-color="#3e5dff"
       ><LinkIcon slot="icon" /></StatsBox
