@@ -6,7 +6,7 @@
   export let error;
 </script>
 
-<Stats title="At a glance" shortened="10" clicks="20" secured="4" />
+<Stats shortened="10" clicks="20" secured="4" />
 
 <div class="flex title-container">
   <div class="title">Dashboard</div>

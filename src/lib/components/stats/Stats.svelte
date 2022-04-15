@@ -4,11 +4,12 @@
   import LinkIcon from '$lib/assets/LinkIcon.svelte';
   import ClickIcon from '$lib/assets/ClickIcon.svelte';
   import ShieldIcon from '$lib/assets/ShieldIcon.svelte';
+  import { session } from '$app/stores';
 
   export let shortened;
   export let clicks;
   export let secured;
-  export let title = 'API Stats';
+  let title = $session.user ? 'At a glance' : 'API Stats';
 </script>
 
 <div class="flex stats-container">
