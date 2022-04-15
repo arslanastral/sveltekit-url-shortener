@@ -60,7 +60,6 @@
   .short-link {
     text-decoration: none;
     color: black;
-    line-height: 15px;
     font-weight: 500;
     font-size: 19px;
   }
