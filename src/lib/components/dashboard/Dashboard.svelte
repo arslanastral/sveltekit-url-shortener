@@ -5,7 +5,9 @@
   <div class="flex link-container">
     <span class="index">1.</span>
     <div class="link">
-      <div class="long-link">https://www.passportjs.org/packages...</div>
+      <div class="long-link">
+        https://directorsblog.nih.gov/2022/04/12/human-brain-compresses-working-memories-into-low-res-summaries/
+      </div>
       <div class="short-link">ky.vercel.app/b4w7</div>
     </div>
     <div class="date">22 Nov, 2022</div>
@@ -32,6 +34,7 @@
 
   .link-container {
     width: 100%;
+    border-bottom: 1px solid #eaeaea;
   }
 
   .index {
@@ -44,16 +47,25 @@
     margin: 20px;
   }
 
+  .long-link {
+    font-size: 17px;
+    color: #636363;
+    display: inline-block;
+    width: clamp(200px, 40vw, 900px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .short-link {
+    line-height: 15px;
     font-weight: 500;
     font-size: 19px;
   }
 
   .date {
-    margin: 20px;
-
+    margin: 40px;
     font-size: 17px;
-
     color: #555555;
   }
 
