@@ -1,4 +1,5 @@
 <script context="module">
+  import { getStats } from '$lib/utils/getStats';
   export async function load({ session, fetch }) {
     if (!session.user) {
       return {
@@ -8,12 +9,14 @@
     }
 
     const res = await fetch('/api/user/links');
+    const { shortened, clicks, secured } = await getStats(fetch);
 
     if (res.ok) {
       const links = await res.json();
       return {
         props: {
-          links
+          links,
+          stats: { shortened, clicks, secured }
         }
       };
     } else {
@@ -31,10 +34,11 @@
 
   export let links;
   export let error;
+  export let stats;
 </script>
 
 <div class="wrapper">
-  <Dashboard {links} {error} />
+  <Dashboard {stats} {links} {error} />
 </div>
 
 <style>

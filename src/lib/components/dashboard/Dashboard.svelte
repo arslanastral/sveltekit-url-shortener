@@ -4,11 +4,14 @@
   import DashboardLink from './DashboardLink.svelte';
   export let links;
   export let error;
+  export let stats;
 </script>
 
-<Stats shortened="10" clicks="20" secured="4" />
+<div class="flex container">
+  <Stats {...stats} />
+</div>
 
-<div class="flex title-container">
+<div class="flex container">
   <div class="title">Dashboard</div>
 </div>
 <div class="grow links-wrapper">
@@ -28,9 +31,11 @@
 </div>
 
 <style>
-  .title-container {
+  .container {
     width: 80%;
+    margin-top: 50px;
   }
+
   .title {
     font-size: 35px;
     font-weight: bold;

@@ -1,36 +1,14 @@
 <script context="module">
-  import { formatCount } from '$lib/utils/formatCount';
+  import { getStats } from '$lib/utils/getStats';
   export async function load({ fetch }) {
-    const res = await fetch('/api/stats');
-
-    let shortened;
-    let clicks;
-    let secured;
-
-    if (res.ok) {
-      const result = await res.json();
-      shortened = formatCount(result.shortened);
-      clicks = formatCount(result.clicks);
-      secured = formatCount(result.secured);
-      return {
-        props: {
-          shortened,
-          clicks,
-          secured
-        }
-      };
-    } else {
-      shortened = '0';
-      clicks = '0';
-      secured = '0';
-      return {
-        props: {
-          shortened,
-          clicks,
-          secured
-        }
-      };
-    }
+    const { shortened, clicks, secured } = await getStats(fetch);
+    return {
+      props: {
+        shortened,
+        clicks,
+        secured
+      }
+    };
   }
 </script>
 
