@@ -17,7 +17,12 @@
       {long_url}
     </div>
     {#if browser}
-      <div class="short-link">{`${window.location.origin}/${short_url}`}</div>
+      <a
+        rel="external"
+        href={`${window.location.origin}/${short_url}`}
+        target="_blank"
+        class="short-link">{`${window.location.origin}/${short_url}`}</a
+      >
     {/if}
   </div>
   <div class="date">{timeAgo(date)}</div>
@@ -38,6 +43,8 @@
 
   .link {
     margin: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .long-link {
@@ -51,9 +58,15 @@
   }
 
   .short-link {
+    text-decoration: none;
+    color: black;
     line-height: 15px;
     font-weight: 500;
     font-size: 19px;
+  }
+
+  .short-link:hover {
+    text-decoration: underline;
   }
 
   .date {
