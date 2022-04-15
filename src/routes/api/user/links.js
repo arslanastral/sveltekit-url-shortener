@@ -15,6 +15,7 @@ export async function get({ locals }) {
 
     const links = await collection
       .find({ created_by: currentUser.email })
+      .sort({ _id: -1 })
       .project({
         date: { $toDate: '$_id' },
         _id: 0,
