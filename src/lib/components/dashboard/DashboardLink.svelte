@@ -57,6 +57,7 @@
   }
 
   .date {
+    width: clamp(80px, 40vw, 100px);
     margin: 40px;
     font-size: 17px;
     color: #555555;
