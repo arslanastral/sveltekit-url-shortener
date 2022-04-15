@@ -1,21 +1,40 @@
 <script context="module">
-  export async function load({ session }) {
+  export async function load({ session, fetch }) {
     if (!session.user) {
       return {
         status: 302,
         redirect: '/login'
       };
     }
-    return {};
+
+    const res = await fetch('/api/user/links');
+
+    if (res.ok) {
+      const links = await res.json();
+      return {
+        props: {
+          links
+        }
+      };
+    } else {
+      return {
+        props: {
+          error: 'Error loading links'
+        }
+      };
+    }
   }
 </script>
 
 <script>
   import Dashboard from '$lib/components/dashboard/Dashboard.svelte';
+
+  export let links;
+  export let error;
 </script>
 
 <div class="wrapper">
-  <Dashboard />
+  <Dashboard {links} {error} />
 </div>
 
 <style>

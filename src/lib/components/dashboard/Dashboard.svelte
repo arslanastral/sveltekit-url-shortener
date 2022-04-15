@@ -1,11 +1,23 @@
 <script>
   import DashboardLink from './DashboardLink.svelte';
+  export let links;
+  export let error;
 </script>
 
 <div class="flex title-container">
   <div class="title">Dashboard</div>
 </div>
-<div class="grow links-wrapper" />
+<div class="grow links-wrapper">
+  {#if error}
+    <div>{error}</div>
+  {/if}
+
+  {#if links}
+    {#each links as link, i}
+      <DashboardLink index={(i + 1).toString()} {...link} />
+    {/each}
+  {/if}
+</div>
 
 <style>
   .title-container {
