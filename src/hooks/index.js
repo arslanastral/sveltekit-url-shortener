@@ -15,10 +15,12 @@ export async function handle({ event, resolve }) {
   const collection = await useCollection('users');
 
   const userSession = await collection.findOne({ sessionId: { $eq: cookies.sessionId } });
+  const created_at = userSession._id.getTimestamp().toString();
   if (userSession) {
     event.locals.user.authenticated = true;
     event.locals.user.name = userSession.name;
     event.locals.user.email = userSession.email;
+    event.locals.user.createdAt = created_at;
   } else {
     event.locals.user.authenticated = false;
   }
