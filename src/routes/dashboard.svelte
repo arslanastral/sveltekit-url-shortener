@@ -46,6 +46,6 @@
     align-items: center;
     flex-direction: column;
     min-height: 90vh;
-    min-width: 100vw;
+    /* min-width: 100vw; */
   }
 </style>
