@@ -9,6 +9,7 @@
       <div class="short-link">ky.vercel.app/b4w7</div>
     </div>
     <div class="date">22 Nov, 2022</div>
+    <span class="clicks">12</span>
   </div>
 </div>
 
@@ -54,5 +55,10 @@
     font-size: 17px;
 
     color: #555555;
+  }
+
+  .clicks {
+    margin: 20px;
+    font-size: 19px;
   }
 </style>
