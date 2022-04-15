@@ -1,6 +1,6 @@
 <script>
   import { browser } from '$app/env';
-
+  import LockIcon from '$lib/assets/LockIcon.svelte';
   import { timeAgo } from '$lib/utils/timeAgo';
 
   export let index;
@@ -8,6 +8,7 @@
   export let long_url;
   export let date;
   export let clicks;
+  export let secured;
 </script>
 
 <div class="flex link-container">
@@ -17,12 +18,17 @@
       <img src={`https://www.google.com/s2/favicons?domain=${long_url}`} alt="favicon" />{long_url}
     </div>
     {#if browser}
-      <a
-        rel="external"
-        href={`${window.location.origin}/${short_url}`}
-        target="_blank"
-        class="short-link">{`${window.location.origin}/${short_url}`}</a
-      >
+      <div class="flex">
+        <a
+          rel="external"
+          href={`${window.location.origin}/${short_url}`}
+          target="_blank"
+          class="short-link">{`${window.location.origin}/${short_url}`}</a
+        >
+        {#if secured}
+          <LockIcon width="18" height="18" fill="green" />
+        {/if}
+      </div>
     {/if}
   </div>
   <div class="date">{timeAgo(date)}</div>
@@ -64,6 +70,7 @@
   }
 
   .short-link {
+    margin-right: 6px;
     text-decoration: none;
     color: black;
     font-weight: 500;
