@@ -14,7 +14,7 @@
   <span class="index">{index}</span>
   <div class="link">
     <div class="long-link">
-      {long_url}
+      <img src={`https://www.google.com/s2/favicons?domain=${long_url}`} alt="favicon" />{long_url}
     </div>
     {#if browser}
       <a
@@ -36,15 +36,21 @@
   }
 
   .index {
-    margin: 20px;
+    width: 20px;
+    height: 20px;
+    margin: 50px;
     font-weight: 500;
     font-size: 19px;
   }
 
   .link {
-    margin: 20px;
+    margin: 20px 20px 20px 0;
     display: flex;
     flex-direction: column;
+  }
+
+  img {
+    margin-right: 10px;
   }
 
   .long-link {
