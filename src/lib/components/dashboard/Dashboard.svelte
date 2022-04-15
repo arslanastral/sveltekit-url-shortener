@@ -1,6 +1,7 @@
 <script>
-  import Stats from '../stats/Stats.svelte';
+  import LinksIcon from '$lib/assets/LinksIcon.svelte';
 
+  import Stats from '../stats/Stats.svelte';
   import DashboardLink from './DashboardLink.svelte';
   export let links;
   export let error;
@@ -8,11 +9,15 @@
 </script>
 
 <div class="flex container">
+  <div class="main-title">Dashboard</div>
+</div>
+<div class="flex container">
   <Stats {...stats} />
 </div>
 
 <div class="flex container">
-  <div class="title">Dashboard</div>
+  <LinksIcon />
+  <div class="title">Your Links</div>
 </div>
 <div class="grow links-wrapper">
   {#if error}
@@ -24,20 +29,24 @@
       <DashboardLink index={(i + 1).toString()} {...link} />
     {/each}
   {:else}
-    <div class="no-links">
-      You haven't shortned any links yet. When you do they will appear here.
-    </div>
+    <div class="no-links">You haven't shortned any links yet. When you do they will show here.</div>
   {/if}
 </div>
 
 <style>
   .container {
     width: 80%;
-    margin-top: 50px;
+    margin-top: 20px;
+  }
+
+  .main-title {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 10px 0;
   }
 
   .title {
-    font-size: 35px;
+    font-size: 22px;
     font-weight: bold;
     margin: 10px 0;
   }
