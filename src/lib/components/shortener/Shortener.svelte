@@ -100,4 +100,24 @@
   .selected {
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
   }
+
+  @media only screen and (max-width: 720px) {
+    .shortener-container {
+      flex-direction: column;
+      height: 300px;
+    }
+
+    form {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .selected {
+      box-shadow: none;
+    }
+
+    .shortener-container:hover {
+      box-shadow: none;
+    }
+  }
 </style>
