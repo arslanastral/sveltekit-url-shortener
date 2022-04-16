@@ -1,5 +1,5 @@
 <script>
-  import { session } from '$app/stores';
+  import { navigating, session } from '$app/stores';
   import '$lib/styles/global.css';
   import LoginButton from '$lib/components/login/LoginButton.svelte';
   import 'sanitize.css';
@@ -7,6 +7,7 @@
   import 'sanitize.css/typography.css';
   import UserInfo from '$lib/components/user/UserInfo.svelte';
   import Navigation from '$lib/components/Navigation.svelte';
+  import LoadingIcon from '$lib/assets/LoadingIcon.svelte';
 </script>
 
 <header class="flex">
@@ -19,6 +20,13 @@
   {/if}
 </header>
 <main>
+  {#if $navigating}
+    <div class="loading">
+      <LoadingIcon />
+    </div>
+  {:else}
+    <!-- else content here -->
+  {/if}
   <slot />
 </main>
 
@@ -28,5 +36,13 @@
     margin: 0 auto;
     justify-content: space-between;
     height: 90px;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 90px);
+    min-width: 100vw;
   }
 </style>
