@@ -27,5 +27,6 @@
     max-width: 1560px;
     margin: 0 auto;
     justify-content: space-between;
+    height: 90px;
   }
 </style>
