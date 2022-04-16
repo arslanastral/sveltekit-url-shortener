@@ -39,6 +39,7 @@
   }
 
   .loading {
+    background-color: #fafafa;
     display: flex;
     justify-content: center;
     align-items: center;
