@@ -23,7 +23,8 @@
 
 <style>
   header {
-    justify-content: space-evenly;
-    height: 10vh;
+    max-width: 1560px;
+    margin: 0 auto;
+    justify-content: space-between;
   }
 </style>
