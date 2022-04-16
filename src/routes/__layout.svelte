@@ -25,9 +25,8 @@
       <LoadingIcon />
     </div>
   {:else}
-    <!-- else content here -->
+    <slot />
   {/if}
-  <slot />
 </main>
 
 <style>
