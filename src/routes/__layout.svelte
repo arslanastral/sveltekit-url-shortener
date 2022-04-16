@@ -2,15 +2,16 @@
   import { session } from '$app/stores';
   import '$lib/styles/global.css';
   import LoginButton from '$lib/components/login/LoginButton.svelte';
-  import Logo from '$lib/components/Logo.svelte';
   import 'sanitize.css';
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';
   import UserInfo from '$lib/components/user/UserInfo.svelte';
+  import Navigation from '$lib/components/Navigation.svelte';
 </script>
 
 <header class="flex">
-  <Logo />
+  <Navigation />
+
   {#if !$session.user}
     <LoginButton />
   {:else}

@@ -2,26 +2,30 @@
   let pages = [
     {
       name: 'Dashboard',
-      path: '/dashboard'
+      path: '/dashboard',
+      class: 'page-link'
     },
     {
       name: 'Analytics',
-      path: '/analytics'
+      path: '/analytics',
+      class: 'page-link'
     },
     {
       name: 'Settings',
       path: '/settings'
+      // class: 'page-link'
     },
     {
       name: 'Logout 👋',
       path: '/logout'
+      // class: 'logout-link'
     }
   ];
 </script>
 
 <div class="fadeIn flex dropdown">
   {#each pages as link}
-    <a href={link.path}>{link.name}</a>
+    <a class={link.class} href={link.path}>{link.name}</a>
   {/each}
 </div>
 
@@ -61,5 +65,15 @@
   a:hover {
     background-color: black;
     color: white;
+  }
+
+  .page-link {
+    display: none;
+  }
+
+  @media only screen and (max-width: 750px) {
+    .page-link {
+      display: inline;
+    }
   }
 </style>
