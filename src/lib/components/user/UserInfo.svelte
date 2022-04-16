@@ -29,6 +29,7 @@
 <style>
   .userinfo {
     position: relative;
+    margin: 20px;
   }
 
   .user-name {
