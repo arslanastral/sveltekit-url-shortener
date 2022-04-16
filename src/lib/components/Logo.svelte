@@ -6,9 +6,9 @@
 
 <style>
   .logo-circle {
-    margin: 20px;
-    width: 70px;
-    height: 70px;
+    margin: 15px;
+    width: 60px;
+    height: 60px;
     background: #dfed3e;
     border-radius: 50%;
     position: relative;
@@ -16,10 +16,10 @@
   }
 
   .logo-text {
-    font-size: 45px;
+    font-size: 38px;
     font-weight: 500;
     letter-spacing: -0.15em;
-    left: 20px;
+    left: 18px;
     position: absolute;
 
     top: 0px;
