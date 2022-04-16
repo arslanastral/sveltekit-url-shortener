@@ -37,7 +37,7 @@
   export let stats;
 </script>
 
-<div class="wrapper">
+<div class="fadeIn wrapper">
   <Dashboard {stats} {links} {error} />
 </div>
 
@@ -50,6 +50,5 @@
     align-items: center;
     flex-direction: column;
     min-height: 90vh;
-    /* min-width: 100vw; */
   }
 </style>

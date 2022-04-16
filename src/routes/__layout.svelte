@@ -44,6 +44,5 @@
     justify-content: center;
     align-items: center;
     height: calc(100vh - 90px);
-    min-width: 100vw;
   }
 </style>
