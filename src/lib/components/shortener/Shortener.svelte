@@ -6,8 +6,8 @@
   import Shortened from './Shortened.svelte';
   import { clickOutside } from '$lib/utils/clickOutside';
 
-  let longURL = '';
-  let shortenedURL = '';
+  let long_url = '';
+  let short_url = '';
   let isShortening = false;
   let error = '';
   let password = '';
@@ -15,7 +15,7 @@
 
   async function handleURLSubmit(e) {
     let formData = new FormData();
-    formData.append('url', longURL);
+    formData.append('url', long_url);
     formData.append('password', password);
 
     //If Error Retry
@@ -34,11 +34,11 @@
     let json = await response.json();
 
     if (response.ok) {
-      shortenedURL = `${window.location.origin}/${json.short_url}`;
+      short_url = `${window.location.origin}/${json.short_url}`;
       isShortening = false; // Stop Loading Animation
       let newLink = {
         long_url: json.long_url,
-        short_url: shortenedURL,
+        short_url: short_url,
         created_at: json.created_at,
         secured: json.secured || false
       };
@@ -51,8 +51,8 @@
 
   const back = () => {
     error = '';
-    shortenedURL = '';
-    longURL = '';
+    short_url = '';
+    long_url = '';
     password = '';
   };
 </script>
@@ -73,11 +73,11 @@
     {#if isShortening}
       <Shortening />
     {:else if error}
-      <ErrorHandler {longURL} {error} {back} />
-    {:else if shortenedURL}
-      <Shortened {shortenedURL} {back} />
+      <ErrorHandler {long_url} {error} {back} />
+    {:else if short_url}
+      <Shortened {short_url} {back} />
     {:else}
-      <ShortenerInput bind:longURL bind:password />
+      <ShortenerInput bind:long_url bind:password />
     {/if}
   </form>
 </div>

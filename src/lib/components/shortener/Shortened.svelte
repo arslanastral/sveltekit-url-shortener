@@ -4,19 +4,19 @@
   import Copybutton from './CopyButton.svelte';
   import Button from '../Button.svelte';
 
-  export let shortenedURL = '';
+  export let short_url = '';
   export let back = null;
 </script>
 
 <div class="shortened flex grow fadeIn">
   <div class="flex grow">
     <Checkmark />
-    <a rel="external" class="shortened-link" href={shortenedURL} target="_blank">{shortenedURL}</a>
+    <a rel="external" class="shortened-link" href={short_url} target="_blank">{short_url}</a>
   </div>
 
   <div class="shortened-buttons flex">
-    <QRButton {shortenedURL} />
-    <Copybutton {shortenedURL} />
+    <QRButton {short_url} />
+    <Copybutton {short_url} />
     <Button
       title="Back"
       onClickFunc={back}

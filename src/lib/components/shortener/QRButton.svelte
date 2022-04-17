@@ -2,7 +2,7 @@
   import QRIcon from '$lib/assets/QRIcon.svelte';
   import QrCode from './QRCode.svelte';
 
-  export let shortenedURL;
+  export let short_url;
 
   let toggle = false;
 
@@ -18,7 +18,7 @@
 <button on:click={toggleOpen} type="button" class="flex"><QRIcon /><span>{'QR'}</span></button>
 
 {#if toggle}
-  <QrCode {shortenedURL} {toggleClose} />
+  <QrCode {short_url} {toggleClose} />
 {/if}
 
 <style>

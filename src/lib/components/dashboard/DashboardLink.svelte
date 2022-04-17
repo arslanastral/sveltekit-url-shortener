@@ -4,6 +4,7 @@
   import { timeAgo } from '$lib/utils/timeAgo';
   import LinkButton from '../recent/LinkButton.svelte';
   import QrCode from '$lib/components/shortener/QRCode.svelte';
+  import Edit from './Edit.svelte';
 
   export let index;
   export let short_url;
@@ -11,19 +12,29 @@
   export let date;
   export let clicks;
   export let secured;
+
+  export let qrToggle = false;
+  export let editToggle = false;
+
   let shortLink = '';
   if (browser) {
     shortLink = `${window.location.origin}/${short_url}`;
   }
 
-  let toggle = false;
-
-  const toggleOpen = () => {
-    toggle = true;
+  const toggleQR = () => {
+    qrToggle = true;
   };
 
-  const toggleClose = () => {
-    toggle = false;
+  const toggleQRClose = () => {
+    qrToggle = false;
+  };
+
+  const toggleEdit = () => {
+    editToggle = true;
+  };
+
+  const toggleEditClose = () => {
+    editToggle = false;
   };
 </script>
 
@@ -43,11 +54,15 @@
   </div>
   <div class="date">{timeAgo(date)}</div>
   <span class="clicks">{clicks}</span>
-  <div class="flex"><LinkButton {shortLink} {toggleOpen} /></div>
+  <div class="flex"><LinkButton short_url={shortLink} {toggleQR} {toggleEdit} /></div>
 </div>
 
-{#if toggle}
-  <QrCode shortenedURL={shortLink} {toggleClose} />
+{#if qrToggle}
+  <QrCode short_url={shortLink} toggleClose={toggleQRClose} />
+{/if}
+
+{#if editToggle}
+  <Edit {short_url} {toggleEditClose} />
 {/if}
 
 <style>

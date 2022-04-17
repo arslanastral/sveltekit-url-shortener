@@ -3,14 +3,14 @@
   import WebIcon from '$lib/assets/WebIcon.svelte';
   import LockIcon from '$lib/assets/LockIcon.svelte';
 
-  export let longURL;
+  export let long_url;
   export let password;
 </script>
 
 <div class="input-container flex grow fadeIn">
   <div class="input-wrapper flex grow-2">
     <WebIcon />
-    <input bind:value={longURL} placeholder="Paste Long URL Here" type="url" required />
+    <input bind:value={long_url} placeholder="Paste Long URL Here" type="url" required />
   </div>
 
   <div class="input-wrapper flex grow">

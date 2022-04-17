@@ -1,12 +1,16 @@
 <script>
-  export let toggleClose;
+  export let toggleEditClose;
+  import { clickOutside } from '$lib/utils/clickOutside';
   export let short_url;
 </script>
 
 <div class="fadeIn flex overlay">
-  <div use:clickOutside on:click_outside={toggleClose} class="edit-container flex center">
-    <button on:click={toggleClose} type="button" class="flex center close" aria-label="close-edit"
-      >X</button
+  <div use:clickOutside on:click_outside={toggleEditClose} class="edit-container flex center">
+    <button
+      on:click={toggleEditClose}
+      type="button"
+      class="flex center close"
+      aria-label="close-edit">X</button
     >
   </div>
 </div>

@@ -6,8 +6,9 @@
   import EditIcon from '$lib/assets/EditIcon.svelte';
   import { session } from '$app/stores';
 
-  export let shortLink;
-  export let toggleOpen;
+  export let short_url;
+  export let toggleQR;
+  export let toggleEdit;
 
   let copied = false;
 
@@ -22,14 +23,16 @@
 
 <div class="button-container">
   {#if $session.user}
-    <button class="edit-button" aria-label="edit"><EditIcon fill="#B8B2BF" /></button>
+    <button on:click={toggleEdit} class="edit-button" aria-label="edit"
+      ><EditIcon fill="#B8B2BF" /></button
+    >
   {/if}
 
-  <button on:click={toggleOpen} class="qr-button" aria-label="QR-code"
+  <button on:click={toggleQR} class="qr-button" aria-label="QR-code"
     ><QrIcon fill="#B8B2BF" /></button
   >
   <button
-    on:click={(e) => clickToCopy(e, shortLink)}
+    on:click={(e) => clickToCopy(e, short_url)}
     on:copysuccess={copySuccess}
     class="copy-button"
     aria-label="copy"

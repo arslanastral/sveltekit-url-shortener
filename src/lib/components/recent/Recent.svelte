@@ -11,10 +11,10 @@
     <div class="recent-links-container">
       {#each $RecentStore as link}
         <RecentLink
-          time={timeAgo(link.created_at)}
+          date={timeAgo(link.created_at)}
           isSecure={link.secured}
-          longLink={link.long_url}
-          shortLink={link.short_url}
+          long_url={link.long_url}
+          short_url={link.short_url}
         />
       {/each}
     </div>

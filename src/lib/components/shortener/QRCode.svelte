@@ -4,13 +4,13 @@
   import { onMount } from 'svelte';
 
   export let toggleClose;
-  export let shortenedURL;
+  export let short_url;
   let qr;
   let container;
 
   onMount(async () => {
     if (!qr) {
-      qr = await generateQRCode(shortenedURL);
+      qr = await generateQRCode(short_url);
       container.appendChild(qr);
     }
   });
@@ -29,7 +29,7 @@
       class="flex center close"
       aria-label="close-QR-code">X</button
     >
-    <div class="link-text">{shortenedURL}</div>
+    <div class="link-text">{short_url}</div>
   </div>
 </div>
 
