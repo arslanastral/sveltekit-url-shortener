@@ -2,12 +2,11 @@
   import CheckIcon from '$lib/assets/CheckIcon.svelte';
 
   export let selected = false;
-  export let name = '';
-
+  export let color;
   export let selectColor;
 </script>
 
-<button on:click={() => selectColor(name)} class="flex">
+<button on:click={() => selectColor(color)} class="flex">
   {#if selected}
     <CheckIcon />
   {/if}
