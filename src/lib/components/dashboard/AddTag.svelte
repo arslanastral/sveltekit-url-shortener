@@ -2,6 +2,7 @@
   import CheckIcon from '$lib/assets/CheckIcon.svelte';
   import TagIcon from '$lib/assets/TagIcon.svelte';
   import Button from '../Button.svelte';
+  import Tags from './Tags.svelte';
 </script>
 
 <div class="flex tag-container">
@@ -30,6 +31,9 @@
       --bg-color="#3E5DFF"
       --border-radius="14px"
     />
+  </div>
+  <div class="current-tags">
+    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
   </div>
 </div>
 
@@ -95,5 +99,9 @@
 
   .red {
     background: #81ffbb;
+  }
+
+  .current-tags {
+    margin-top: 10px;
   }
 </style>
