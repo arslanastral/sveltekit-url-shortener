@@ -32,7 +32,7 @@
       --border-radius="14px"
     />
   </div>
-  <div class="current-tags">
+  <div class="flex current-tags">
     <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
   </div>
 </div>
