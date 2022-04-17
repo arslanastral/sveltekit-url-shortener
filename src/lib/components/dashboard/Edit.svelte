@@ -31,7 +31,7 @@
     animation: fadeIn 0.5s;
     position: absolute;
     text-align: center;
-    width: 600px;
+    width: clamp(430px, 70vw, 800px);
     height: 400px;
     border-radius: 9px;
     background-color: white;
