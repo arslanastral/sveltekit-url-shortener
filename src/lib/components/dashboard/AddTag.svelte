@@ -2,7 +2,7 @@
   import TagIcon from '$lib/assets/TagIcon.svelte';
   import Button from '../Button.svelte';
   import TagColor from './TagColor.svelte';
-  import Tags from './Tags.svelte';
+  import Tag from './Tag.svelte';
 
   let TAG_COLORS = [
     {
