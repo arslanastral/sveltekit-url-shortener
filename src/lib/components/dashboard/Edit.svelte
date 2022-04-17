@@ -17,8 +17,14 @@
     </div>
     <div class="flex tag-container">
       <span class="tag-title">TAGS</span>
-      <div class="tag-input">
+      <div class="flex tag-input">
         <input type="text" placeholder="Add a tag" />
+        <div class="flex circles">
+          <span class="yellow" />
+          <span class="blue" />
+          <span class="green" />
+          <span class="red" />
+        </div>
       </div>
     </div>
   </div>
@@ -111,6 +117,7 @@
     color: black;
     border: 1px solid rgb(104, 104, 104);
     border-radius: 20px;
+    justify-content: space-between;
   }
 
   input {
@@ -123,5 +130,32 @@
   input:focus {
     outline: none;
     border: 0;
+  }
+
+  .circles {
+    justify-content: space-evenly;
+  }
+
+  .circles * {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+
+  .yellow {
+    background: #eaffad;
+  }
+
+  .blue {
+    background: #81caff;
+  }
+
+  .green {
+    background: #ff9a6f;
+  }
+
+  .red {
+    background: #81ffbb;
   }
 </style>
