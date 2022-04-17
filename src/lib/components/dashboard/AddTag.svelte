@@ -6,7 +6,7 @@
 
   let tags = [];
 
-  let tag = '';
+  let newTag = '';
 
   let TAG_COLORS = [
     {
@@ -42,15 +42,21 @@
   };
 
   const addTag = () => {
-    if (tag.length) {
-      tags.push({
-        name: tag,
-        color: getCurrentColor()
-      });
+    if (newTag.length) {
+      tags = [
+        ...tags,
+        {
+          name: newTag,
+          color: getCurrentColor()
+        }
+      ];
 
-      console.log(tags);
-      tag = '';
+      newTag = '';
     }
+  };
+
+  const onKeyPress = (e) => {
+    if (e.charCode === 13) addTag();
   };
 </script>
 
@@ -60,7 +66,7 @@
     <div class="flex inputs-wrapper">
       <div class="flex input-box">
         <TagIcon />
-        <input bind:value={tag} type="text" placeholder="Add a tag" />
+        <input on:keypress={onKeyPress} bind:value={newTag} type="text" placeholder="Add a tag" />
       </div>
       <div class="flex center">
         {#each TAG_COLORS as tagColor}
@@ -85,11 +91,11 @@
     />
   </div>
   <div class="flex current-tags">
-    {#if tags.length}
-      {#each tags as tag}
-        <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" />
-      {/each}
-    {/if}
+    {#each tags as tag}
+      <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" />
+    {:else}
+      <span>No tags added yet</span>
+    {/each}
   </div>
 </div>
 
