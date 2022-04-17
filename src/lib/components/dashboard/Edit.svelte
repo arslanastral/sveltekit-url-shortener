@@ -1,5 +1,6 @@
 <script>
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
+  import Button from '../Button.svelte';
   export let toggleEditClose;
   export let short_url;
 </script>
@@ -18,13 +19,24 @@
     <div class="flex tag-container">
       <span class="tag-title">TAGS</span>
       <div class="flex tag-input">
-        <input type="text" placeholder="Add a tag" />
-        <div class="flex circles">
-          <span class="yellow" />
-          <span class="blue" />
-          <span class="green" />
-          <span class="red" />
+        <div class="flex inputs-wrapper">
+          <input type="text" placeholder="Add a tag" />
+          <div class="flex circles">
+            <span class="yellow" />
+            <span class="blue" />
+            <span class="green" />
+            <span class="red" />
+          </div>
         </div>
+        <Button
+          title="ADD"
+          type="button"
+          --font-size="20px"
+          --padding="8px 18px"
+          --color="white"
+          --bg-color="#3E5DFF"
+          --border-radius="29px"
+        />
       </div>
     </div>
   </div>
@@ -108,7 +120,7 @@
     font-weight: 600;
     font-size: 19px;
     letter-spacing: -0.035em;
-
+    margin-bottom: 5px;
     color: #404040;
   }
 
