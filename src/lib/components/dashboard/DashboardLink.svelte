@@ -43,7 +43,7 @@
   </div>
   <div class="date">{timeAgo(date)}</div>
   <span class="clicks">{clicks}</span>
-  <div class="flex button-container"><LinkButton {shortLink} {toggleOpen} /></div>
+  <div class="flex"><LinkButton {shortLink} {toggleOpen} /></div>
 </div>
 
 {#if toggle}
