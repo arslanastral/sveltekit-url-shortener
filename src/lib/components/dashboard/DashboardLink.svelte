@@ -62,7 +62,7 @@
 {/if}
 
 {#if editToggle}
-  <Edit {short_url} {toggleEditClose} />
+  <Edit short_url={shortLink} {toggleEditClose} />
 {/if}
 
 <style>
