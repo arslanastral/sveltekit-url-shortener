@@ -33,7 +33,6 @@
     text-align: center;
     width: 600px;
     height: 400px;
-    border: 2px solid blue;
     border-radius: 9px;
     background-color: white;
     color: black;
@@ -47,9 +46,9 @@
   .close {
     font-weight: bold;
     position: absolute;
-    top: -15px;
-    right: -15px;
-    background-color: blue;
+    top: 10px;
+    right: 10px;
+    background-color: black;
     color: white;
     padding: 10px;
     border-radius: 50%;
