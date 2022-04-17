@@ -1,7 +1,7 @@
 <script>
-  import CloseIcon from '$lib/assets/CloseIcon.svelte';
-  import TagIcon from '$lib/assets/TagIcon.svelte';
   import Button from '../Button.svelte';
+  import CloseIcon from '$lib/assets/CloseIcon.svelte';
+  import AddTag from './AddTag.svelte';
   export let toggleEditClose;
   export let short_url;
 </script>
@@ -17,33 +17,7 @@
       <span class="title">Editing</span>
       <a target="_blank" href={short_url} class="title-url">{short_url}</a>
     </div>
-    <div class="flex tag-container">
-      <span class="tag-title">TAGS</span>
-      <div class="flex tag-input">
-        <div class="flex inputs-wrapper">
-          <div class="flex input-box">
-            <TagIcon />
-            <input type="text" placeholder="Add a tag" />
-          </div>
-
-          <div class="flex circles">
-            <span class="yellow" />
-            <span class="blue" />
-            <span class="green" />
-            <span class="red" />
-          </div>
-        </div>
-        <Button
-          title="ADD"
-          type="button"
-          --font-size="20px"
-          --padding="8px 18px"
-          --color="white"
-          --bg-color="#3E5DFF"
-          --border-radius="29px"
-        />
-      </div>
-    </div>
+    <AddTag />
   </div>
 </div>
 
@@ -74,7 +48,6 @@
   .control-bar {
     width: 95%;
     margin: 0 auto;
-    /* height: 25px; */
     border-bottom: 1px solid black;
     justify-content: flex-end;
   }
@@ -112,67 +85,5 @@
 
   .title-url:hover {
     text-decoration: underline;
-  }
-
-  .tag-container {
-    width: 55%;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 30px auto 0 22px;
-  }
-
-  .tag-title {
-    font-weight: 600;
-    font-size: 19px;
-    letter-spacing: -0.035em;
-    margin-bottom: 5px;
-    color: #404040;
-  }
-
-  .tag-input {
-    background: white;
-    color: black;
-    border: 1px solid rgb(104, 104, 104);
-    border-radius: 20px;
-    justify-content: space-between;
-  }
-
-  input {
-    width: 100%;
-    font-size: 20px;
-    background: none;
-    border: 0;
-  }
-
-  input:focus {
-    outline: none;
-    border: 0;
-  }
-
-  .circles {
-    justify-content: space-evenly;
-  }
-
-  .circles * {
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-    margin: 5px;
-  }
-
-  .yellow {
-    background: #eaffad;
-  }
-
-  .blue {
-    background: #81caff;
-  }
-
-  .green {
-    background: #ff9a6f;
-  }
-
-  .red {
-    background: #81ffbb;
   }
 </style>
