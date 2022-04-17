@@ -6,6 +6,10 @@
 
   let tags = [];
 
+  let editing = false;
+  let oldTag = '';
+  //   let oldTagColor = '';
+
   let newTag = '';
 
   let TAG_COLORS = [
@@ -42,11 +46,26 @@
   };
 
   const addTag = () => {
-    if (newTag.length) {
+    let sanitizedTag = newTag.trim();
+
+    if (editing && sanitizedTag.length) {
+      tags = tags.map((tag) => {
+        if (tag.name === oldTag) {
+          tag.name = sanitizedTag;
+          tag.color = getCurrentColor();
+          newTag = '';
+          editing = false;
+        }
+        return tag;
+      });
+      return;
+    }
+
+    if (sanitizedTag.length) {
       tags = [
         ...tags,
         {
-          name: newTag,
+          name: sanitizedTag,
           color: getCurrentColor()
         }
       ];
@@ -56,7 +75,16 @@
   };
 
   const deleteTag = (name) => {
+    editing = false;
+    newTag = '';
     tags = tags.filter((tag) => tag.name !== name);
+  };
+
+  const editTag = (name, color) => {
+    editing = true;
+    selectColor(color);
+    oldTag = name;
+    newTag = name;
   };
 
   const onKeyPress = (e) => {
@@ -84,7 +112,7 @@
       </div>
     </div>
     <Button
-      title="ADD"
+      title={editing ? 'Update' : 'Add'}
       onClickFunc={addTag}
       type="button"
       --font-size="20px"
@@ -96,7 +124,15 @@
   </div>
   <div class="flex current-tags">
     {#each tags as tag}
-      <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" {deleteTag} />
+      <Tag
+        editable={true}
+        tag={tag.name}
+        --bg-color={tag.color}
+        --color="black"
+        color={tag.color}
+        {deleteTag}
+        {editTag}
+      />
     {:else}
       <span>No tags added yet</span>
     {/each}

@@ -1,11 +1,13 @@
 <script>
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
   export let tag;
+  export let color;
   export let editable = false;
   export let deleteTag;
+  export let editTag;
 </script>
 
-<div class="flex tag">
+<div on:click={() => editTag(tag, color)} class="flex tag">
   {tag}
 
   {#if editable}
