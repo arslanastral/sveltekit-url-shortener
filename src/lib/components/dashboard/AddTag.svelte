@@ -55,6 +55,10 @@
     }
   };
 
+  const deleteTag = (name) => {
+    tags = tags.filter((tag) => tag.name !== name);
+  };
+
   const onKeyPress = (e) => {
     if (e.charCode === 13) addTag();
   };
@@ -92,7 +96,7 @@
   </div>
   <div class="flex current-tags">
     {#each tags as tag}
-      <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" />
+      <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" {deleteTag} />
     {:else}
       <span>No tags added yet</span>
     {/each}
