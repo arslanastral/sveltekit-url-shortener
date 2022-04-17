@@ -5,13 +5,15 @@
 </script>
 
 <div class="fadeIn flex overlay">
-  <div class="edit-container flex center">
-    <button
-      on:click={toggleEditClose}
-      type="button"
-      class="flex center close"
-      aria-label="close-edit"><CloseIcon width="30" height="30" /></button
-    >
+  <div class="edit-container  flex">
+    <div class="flex control-bar">
+      <button on:click={toggleEditClose} type="button" class="close" aria-label="close-edit"
+        ><CloseIcon width="30" height="30" /></button
+      >
+    </div>
+    <div class="flex info-bar">
+      <span class="title">Editing</span> <span class="title-url">{short_url}</span>
+    </div>
   </div>
 </div>
 
@@ -36,6 +38,15 @@
     background-color: white;
     color: black;
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .control-bar {
+    width: 95%;
+    margin: 0 auto;
+    /* height: 25px; */
+    border-bottom: 1px solid black;
+    justify-content: flex-end;
   }
 
   .center {
@@ -43,19 +54,28 @@
   }
 
   .close {
-    /* font-weight: bold; */
-    position: absolute;
-    top: 5px;
-    right: 2px;
-    /* background-color: black;
-    color: white;
-    padding: 10px;
-    border-radius: 50%; */
     border: none;
-    padding: none;
-    /* width: 30px;
-    height: 30px;
-    text-align: center; */
+    padding: 10px 0;
     cursor: pointer;
+  }
+
+  .info-bar {
+    width: 95%;
+    margin: 0 auto;
+
+    justify-content: space-between;
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 37px;
+    color: #000000;
+    letter-spacing: -0.035em;
+  }
+
+  .title-url {
+    font-size: 25px;
+    color: #2602ff;
+    letter-spacing: -0.035em;
   }
 </style>
