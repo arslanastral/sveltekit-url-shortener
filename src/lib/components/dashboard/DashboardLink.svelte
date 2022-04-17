@@ -107,10 +107,4 @@
     margin: 20px;
     font-size: 19px;
   }
-
-  .button-container {
-    margin-right: 20px;
-    border-radius: 5px;
-    border: 1px solid #dfe1e5;
-  }
 </style>
