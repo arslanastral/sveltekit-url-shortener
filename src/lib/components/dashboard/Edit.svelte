@@ -52,10 +52,6 @@
     justify-content: flex-end;
   }
 
-  .center {
-    justify-content: space-evenly;
-  }
-
   .close {
     border: none;
     padding: 10px 0;

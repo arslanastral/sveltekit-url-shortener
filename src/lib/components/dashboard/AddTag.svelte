@@ -1,8 +1,43 @@
 <script>
-  import CheckIcon from '$lib/assets/CheckIcon.svelte';
   import TagIcon from '$lib/assets/TagIcon.svelte';
   import Button from '../Button.svelte';
+  import TagColor from './TagColor.svelte';
   import Tags from './Tags.svelte';
+
+  let color = '#eaffad';
+
+  let colors = [
+    {
+      background: '#eaffad',
+      name: 'yellow',
+      selected: true
+    },
+
+    {
+      background: '#81caff',
+      name: 'blue',
+      selected: false
+    },
+
+    {
+      background: '#ff9a6f',
+      name: 'green',
+      selected: false
+    },
+
+    {
+      background: '#81ffbb',
+      name: 'red',
+      selected: false
+    }
+  ];
+
+  const selectColor = (name) => {
+    colors = colors.map((color) => {
+      color.selected = color.name === name;
+      return color;
+    });
+  };
 </script>
 
 <div class="flex tag-container">
@@ -13,13 +48,15 @@
         <TagIcon />
         <input type="text" placeholder="Add a tag" />
       </div>
-      <div class="flex circles">
-        <button class="flex yellow">
-          <CheckIcon />
-        </button>
-        <button class="flex blue" />
-        <button class="flex green" />
-        <button class="flex red" />
+      <div class="flex center">
+        {#each colors as color}
+          <TagColor
+            --bg-color={color.background}
+            selected={color.selected}
+            name={color.name}
+            {selectColor}
+          />
+        {/each}
       </div>
     </div>
     <Button
@@ -66,6 +103,10 @@
     justify-content: space-between;
   }
 
+  .center {
+    justify-content: space-evenly;
+  }
+
   input {
     width: 100%;
     font-size: 20px;
@@ -76,34 +117,6 @@
   input:focus {
     outline: none;
     border: 0;
-  }
-
-  .circles {
-    justify-content: space-evenly;
-  }
-
-  .circles * {
-    width: 27px;
-    height: 27px;
-    border-radius: 50%;
-    margin: 5px;
-    border: none;
-  }
-
-  .yellow {
-    background: #eaffad;
-  }
-
-  .blue {
-    background: #81caff;
-  }
-
-  .green {
-    background: #ff9a6f;
-  }
-
-  .red {
-    background: #81ffbb;
   }
 
   .current-tags {
