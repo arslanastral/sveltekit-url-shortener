@@ -1,6 +1,7 @@
 <script>
-  import { clickOutside } from '$lib/utils/clickOutside';
+  import CloseIcon from '$lib/assets/CloseIcon.svelte';
 
+  import { clickOutside } from '$lib/utils/clickOutside';
   export let toggleEditClose;
   export let short_url;
 </script>
@@ -11,7 +12,7 @@
       on:click={toggleEditClose}
       type="button"
       class="flex center close"
-      aria-label="close-edit">X</button
+      aria-label="close-edit"><CloseIcon width="30" height="30" /></button
     >
   </div>
 </div>
@@ -44,18 +45,19 @@
   }
 
   .close {
-    font-weight: bold;
+    /* font-weight: bold; */
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: black;
+    top: 5px;
+    right: 2px;
+    /* background-color: black;
     color: white;
     padding: 10px;
-    border-radius: 50%;
+    border-radius: 50%; */
     border: none;
-    width: 30px;
+    padding: none;
+    /* width: 30px;
     height: 30px;
-    text-align: center;
+    text-align: center; */
     cursor: pointer;
   }
 </style>
