@@ -4,6 +4,10 @@
   import TagColor from './TagColor.svelte';
   import Tag from './Tag.svelte';
 
+  export let tags = [];
+
+  let tag = '';
+
   let TAG_COLORS = [
     {
       color: '#eaffad',
@@ -40,7 +44,7 @@
     <div class="flex inputs-wrapper">
       <div class="flex input-box">
         <TagIcon />
-        <input type="text" placeholder="Add a tag" />
+        <input bind:value={tag} type="text" placeholder="Add a tag" />
       </div>
       <div class="flex center">
         {#each TAG_COLORS as tagColor}
@@ -64,12 +68,9 @@
     />
   </div>
   <div class="flex current-tags">
-    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
-    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
-    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
-    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
-    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
-    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
+    {#each tags as tag}
+      <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" />
+    {/each}
   </div>
 </div>
 
