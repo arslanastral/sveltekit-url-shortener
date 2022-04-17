@@ -3,6 +3,8 @@
   import SuccessIcon from '$lib/assets/SuccessIcon.svelte';
   import { clickToCopy } from '$lib/utils/clickToCopy';
   import QrIcon from '$lib/assets/QRIcon.svelte';
+  import EditIcon from '$lib/assets/EditIcon.svelte';
+  import { session } from '$app/stores';
 
   export let shortLink;
   export let toggleOpen;
@@ -17,6 +19,10 @@
     }, 1500);
   };
 </script>
+
+{#if $session.user}
+  <button class="edit-button" aria-label="edit"><EditIcon fill="#B8B2BF" /></button>
+{/if}
 
 <button on:click={toggleOpen} class="qr-button" aria-label="QR-code"
   ><QrIcon fill="#B8B2BF" /></button
@@ -43,9 +49,13 @@
     cursor: pointer;
   }
 
-  .qr-button {
+  .edit-button {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-right: 1px solid #dfe1e5;
+  }
+
+  .qr-button {
   }
 
   .copy-button {
