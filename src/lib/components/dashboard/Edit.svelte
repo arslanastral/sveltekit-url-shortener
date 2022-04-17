@@ -1,13 +1,11 @@
 <script>
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
-
-  import { clickOutside } from '$lib/utils/clickOutside';
   export let toggleEditClose;
   export let short_url;
 </script>
 
 <div class="fadeIn flex overlay">
-  <div use:clickOutside on:click_outside={toggleEditClose} class="edit-container flex center">
+  <div class="edit-container flex center">
     <button
       on:click={toggleEditClose}
       type="button"
