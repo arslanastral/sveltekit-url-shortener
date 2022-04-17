@@ -2,14 +2,16 @@
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
   export let tag;
   export let editable = false;
-  export let onDelete = undefined;
+  export let deleteTag;
 </script>
 
 <div class="flex tag">
   {tag}
 
   {#if editable}
-    <button class="flex" on:click={onDelete}><CloseIcon width="18" height="18" /></button>
+    <button class="flex" on:click={() => deleteTag(tag)}
+      ><CloseIcon width="18" height="18" /></button
+    >
   {/if}
 </div>
 
