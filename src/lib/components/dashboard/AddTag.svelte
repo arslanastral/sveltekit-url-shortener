@@ -4,7 +4,7 @@
   import TagColor from './TagColor.svelte';
   import Tag from './Tag.svelte';
 
-  export let tags = [];
+  let tags = [];
 
   let tag = '';
 
@@ -36,6 +36,22 @@
       return colors;
     });
   };
+
+  const getCurrentColor = () => {
+    return TAG_COLORS.find((color) => color.selected).color;
+  };
+
+  const addTag = () => {
+    if (tag.length) {
+      tags.push({
+        name: tag,
+        color: getCurrentColor()
+      });
+
+      console.log(tags);
+      tag = '';
+    }
+  };
 </script>
 
 <div class="flex tag-container">
@@ -59,6 +75,7 @@
     </div>
     <Button
       title="ADD"
+      onClickFunc={addTag}
       type="button"
       --font-size="20px"
       --color="white"
@@ -68,9 +85,11 @@
     />
   </div>
   <div class="flex current-tags">
-    {#each tags as tag}
-      <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" />
-    {/each}
+    {#if tags.length}
+      {#each tags as tag}
+        <Tag editable={true} tag={tag.name} --bg-color={tag.color} --color="black" />
+      {/each}
+    {/if}
   </div>
 </div>
 
