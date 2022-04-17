@@ -14,7 +14,7 @@
       >
     </div>
     <div class="flex info-bar">
-      <span class="title">Editing</span>
+      <span class="title">Edit</span>
       <a target="_blank" href={short_url} class="title-url">{short_url}</a>
     </div>
     <AddTag />
