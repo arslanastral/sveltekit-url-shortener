@@ -34,6 +34,11 @@
   </div>
   <div class="flex current-tags">
     <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
+    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
+    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
+    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
+    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
+    <Tags editable={true} tag="Email" --bg-color="#eaffad" --color="black" />
   </div>
 </div>
 
@@ -103,5 +108,7 @@
 
   .current-tags {
     margin-top: 10px;
+    width: 100%;
+    flex-wrap: wrap;
   }
 </style>
