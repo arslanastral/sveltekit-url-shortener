@@ -24,7 +24,8 @@ export async function createShortUrl(creator, submittedURL, submittedPassword) {
       clicks: 0,
       secured: hash ? true : false,
       ...(submittedPassword && { pass: hash }),
-      created_by: creator || 'anon'
+      created_by: creator || 'anon',
+      ...(creator && { tags: [] })
     });
 
     const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
@@ -34,6 +35,7 @@ export async function createShortUrl(creator, submittedURL, submittedPassword) {
     if (submittedPassword) {
       return {
         status: 200,
+
         body: {
           short_url: shortenedResult.short_url,
           secured: shortenedResult.secured,
@@ -44,12 +46,13 @@ export async function createShortUrl(creator, submittedURL, submittedPassword) {
     }
     return {
       status: 200,
-      body: {
-        short_url: shortenedResult.short_url,
-        long_url: shortenedResult.long_url,
-        created_by: shortenedResult.created_by,
-        created_at
-      }
+      body: { shortenedResult }
+      // body: {
+      //   short_url: shortenedResult.short_url,
+      //   long_url: shortenedResult.long_url,
+      //   created_by: shortenedResult.created_by,
+      //   created_at
+      // }
     };
   } catch (error) {
     if (error.code === 11000) {
