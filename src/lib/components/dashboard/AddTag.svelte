@@ -4,38 +4,32 @@
   import TagColor from './TagColor.svelte';
   import Tags from './Tags.svelte';
 
-  let color = '#eaffad';
-
-  let colors = [
+  let TAG_COLORS = [
     {
-      background: '#eaffad',
-      name: 'yellow',
+      color: '#eaffad',
       selected: true
     },
 
     {
-      background: '#81caff',
-      name: 'blue',
+      color: '#81caff',
       selected: false
     },
 
     {
-      background: '#ff9a6f',
-      name: 'green',
+      color: '#ff9a6f',
       selected: false
     },
 
     {
-      background: '#81ffbb',
-      name: 'red',
+      color: '#81ffbb',
       selected: false
     }
   ];
 
   const selectColor = (name) => {
-    colors = colors.map((color) => {
-      color.selected = color.name === name;
-      return color;
+    TAG_COLORS = TAG_COLORS.map((colors) => {
+      colors.selected = colors.color === name;
+      return colors;
     });
   };
 </script>
@@ -49,12 +43,12 @@
         <input type="text" placeholder="Add a tag" />
       </div>
       <div class="flex center">
-        {#each colors as color}
+        {#each TAG_COLORS as tagColor}
           <TagColor
-            --bg-color={color.background}
-            selected={color.selected}
-            name={color.name}
+            --bg-color={tagColor.color}
+            selected={tagColor.selected}
             {selectColor}
+            color={tagColor.color}
           />
         {/each}
       </div>
