@@ -1,5 +1,6 @@
 <script>
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
+  import TagIcon from '$lib/assets/TagIcon.svelte';
   import Button from '../Button.svelte';
   export let toggleEditClose;
   export let short_url;
@@ -20,7 +21,11 @@
       <span class="tag-title">TAGS</span>
       <div class="flex tag-input">
         <div class="flex inputs-wrapper">
-          <input type="text" placeholder="Add a tag" />
+          <div class="flex input-box">
+            <TagIcon />
+            <input type="text" placeholder="Add a tag" />
+          </div>
+
           <div class="flex circles">
             <span class="yellow" />
             <span class="blue" />
@@ -110,7 +115,7 @@
   }
 
   .tag-container {
-    width: 50%;
+    width: 55%;
     flex-direction: column;
     align-items: flex-start;
     margin: 30px auto 0 22px;
@@ -133,7 +138,7 @@
   }
 
   input {
-    width: 50%;
+    width: 100%;
     font-size: 20px;
     background: none;
     border: 0;
