@@ -3,7 +3,7 @@
   import { clickOutside } from '$lib/utils/clickOutside';
   import { onMount } from 'svelte';
 
-  export let toggleClose;
+  export let toggleQRClose;
   export let short_url;
   let qr;
   let container;
@@ -19,12 +19,12 @@
 <div class="fadeIn flex overlay">
   <div
     use:clickOutside
-    on:click_outside={toggleClose}
+    on:click_outside={toggleQRClose}
     class="qrcontainer flex center"
     bind:this={container}
   >
     <button
-      on:click={toggleClose}
+      on:click={toggleQRClose}
       type="button"
       class="flex center close"
       aria-label="close-QR-code">X</button

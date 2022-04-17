@@ -4,21 +4,21 @@
 
   export let short_url;
 
-  let toggle = false;
+  export let qrToggle = false;
 
-  const toggleOpen = () => {
-    toggle = true;
+  const toggleQR = () => {
+    qrToggle = true;
   };
 
-  const toggleClose = () => {
-    toggle = false;
+  const toggleQRClose = () => {
+    qrToggle = false;
   };
 </script>
 
-<button on:click={toggleOpen} type="button" class="flex"><QRIcon /><span>{'QR'}</span></button>
+<button on:click={toggleQR} type="button" class="flex"><QRIcon /><span>{'QR'}</span></button>
 
-{#if toggle}
-  <QrCode {short_url} {toggleClose} />
+{#if qrToggle}
+  <QrCode {short_url} {toggleQRClose} />
 {/if}
 
 <style>
