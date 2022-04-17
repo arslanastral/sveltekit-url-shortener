@@ -12,7 +12,14 @@
       >
     </div>
     <div class="flex info-bar">
-      <span class="title">Editing</span> <span class="title-url">{short_url}</span>
+      <span class="title">Editing</span>
+      <a target="_blank" href={short_url} class="title-url">{short_url}</a>
+    </div>
+    <div class="flex tag-container">
+      <span class="tag-title">TAGS</span>
+      <div class="tag-input">
+        <input type="text" placeholder="Add a tag" />
+      </div>
     </div>
   </div>
 </div>
@@ -74,8 +81,47 @@
   }
 
   .title-url {
+    text-decoration: none;
     font-size: 25px;
     color: #2602ff;
     letter-spacing: -0.035em;
+  }
+
+  .title-url:hover {
+    text-decoration: underline;
+  }
+
+  .tag-container {
+    width: 50%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 30px auto 0 22px;
+  }
+
+  .tag-title {
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.035em;
+
+    color: #404040;
+  }
+
+  .tag-input {
+    background: white;
+    color: black;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 20px;
+  }
+
+  input {
+    width: 50%;
+    font-size: 20px;
+    background: none;
+    border: 0;
+  }
+
+  input:focus {
+    outline: none;
+    border: 0;
   }
 </style>
