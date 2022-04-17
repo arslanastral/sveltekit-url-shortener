@@ -22,7 +22,8 @@ export async function get({ locals }) {
         long_url: 1,
         short_url: 1,
         secured: 1,
-        clicks: 1
+        clicks: 1,
+        tags: 1
       })
       .toArray();
 
