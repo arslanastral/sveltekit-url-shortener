@@ -1,7 +1,7 @@
 <script>
   import Error from './Error.svelte';
 
-  export let longURL;
+  export let long_url;
   export let error;
   export let back;
 
@@ -12,7 +12,7 @@
 </script>
 
 <div class="flex grow fadeIn">
-  {#if isFromSameDomain(longURL)}
+  {#if isFromSameDomain(long_url)}
     <Error error={`😐 This is already a ky link`} action={back} />
   {:else if error === 'invalid url'}
     <Error error={`❌ This is not a valid URL`} action={back} />

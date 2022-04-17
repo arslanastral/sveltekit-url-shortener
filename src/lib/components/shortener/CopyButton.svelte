@@ -3,7 +3,7 @@
   import SuccessIcon from '$lib/assets/SuccessIcon.svelte';
   import { clickToCopy } from '$lib/utils/clickToCopy';
 
-  export let shortenedURL;
+  export let short_url;
   let copied = false;
 
   const handleCopySuccess = () => {
@@ -17,7 +17,7 @@
 <button
   type="button"
   class="flex"
-  on:click={(e) => clickToCopy(e, shortenedURL)}
+  on:click={(e) => clickToCopy(e, short_url)}
   on:copysuccess={handleCopySuccess}
 >
   {#if copied}
