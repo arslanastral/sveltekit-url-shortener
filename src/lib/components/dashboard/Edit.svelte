@@ -1,6 +1,7 @@
 <script>
-  export let toggleEditClose;
   import { clickOutside } from '$lib/utils/clickOutside';
+
+  export let toggleEditClose;
   export let short_url;
 </script>
 

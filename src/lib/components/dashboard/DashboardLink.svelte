@@ -13,13 +13,13 @@
   export let clicks;
   export let secured;
 
-  export let qrToggle = false;
-  export let editToggle = false;
-
   let shortLink = '';
   if (browser) {
     shortLink = `${window.location.origin}/${short_url}`;
   }
+
+  export let qrToggle = false;
+  export let editToggle = false;
 
   const toggleQR = () => {
     qrToggle = true;
@@ -58,7 +58,7 @@
 </div>
 
 {#if qrToggle}
-  <QrCode short_url={shortLink} toggleClose={toggleQRClose} />
+  <QrCode short_url={shortLink} {toggleQRClose} />
 {/if}
 
 {#if editToggle}

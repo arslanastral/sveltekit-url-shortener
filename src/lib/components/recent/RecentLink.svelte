@@ -7,14 +7,14 @@
   export let short_url = '';
   export let isSecure = false;
 
-  let toggle = false;
+  export let qrToggle = false;
 
-  const toggleOpen = () => {
-    toggle = true;
+  const toggleQR = () => {
+    qrToggle = true;
   };
 
-  const toggleClose = () => {
-    toggle = false;
+  const toggleQRClose = () => {
+    qrToggle = false;
   };
 </script>
 
@@ -39,11 +39,11 @@
       {/if}
     </div>
   </div>
-  <div class="flex"><LinkButton {short_url} {toggleOpen} /></div>
+  <div class="flex"><LinkButton {short_url} {toggleQR} /></div>
 </div>
 
-{#if toggle}
-  <QrCode {short_url} {toggleClose} />
+{#if qrToggle}
+  <QrCode {short_url} {toggleQRClose} />
 {/if}
 
 <style>

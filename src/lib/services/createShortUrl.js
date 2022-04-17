@@ -46,13 +46,12 @@ export async function createShortUrl(creator, submittedURL, submittedPassword) {
     }
     return {
       status: 200,
-      body: { shortenedResult }
-      // body: {
-      //   short_url: shortenedResult.short_url,
-      //   long_url: shortenedResult.long_url,
-      //   created_by: shortenedResult.created_by,
-      //   created_at
-      // }
+      body: {
+        short_url: shortenedResult.short_url,
+        long_url: shortenedResult.long_url,
+        created_by: shortenedResult.created_by,
+        created_at
+      }
     };
   } catch (error) {
     if (error.code === 11000) {
