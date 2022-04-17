@@ -57,16 +57,13 @@
     cursor: pointer;
   }
 
-  .edit-button {
+  div > button:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-right: 1px solid #dfe1e5;
   }
 
-  .qr-button {
-  }
-
-  .copy-button {
+  div > button:last-child {
     border-left: 1px solid #dfe1e5;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;

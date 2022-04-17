@@ -39,7 +39,7 @@
       {/if}
     </div>
   </div>
-  <div class="flex button-container"><LinkButton {shortLink} {toggleOpen} /></div>
+  <div class="flex"><LinkButton {shortLink} {toggleOpen} /></div>
 </div>
 
 {#if toggle}
