@@ -89,11 +89,4 @@
   .short-link:hover {
     text-decoration: underline;
   }
-
-  .button-container {
-    margin-right: 20px;
-    height: 48%;
-    border-radius: 5px;
-    border: 1px solid #dfe1e5;
-  }
 </style>

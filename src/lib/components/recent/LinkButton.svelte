@@ -20,27 +20,35 @@
   };
 </script>
 
-{#if $session.user}
-  <button class="edit-button" aria-label="edit"><EditIcon fill="#B8B2BF" /></button>
-{/if}
-
-<button on:click={toggleOpen} class="qr-button" aria-label="QR-code"
-  ><QrIcon fill="#B8B2BF" /></button
->
-<button
-  on:click={(e) => clickToCopy(e, shortLink)}
-  on:copysuccess={copySuccess}
-  class="copy-button"
-  aria-label="copy"
->
-  {#if copied}
-    <SuccessIcon />
-  {:else}
-    <CopyIcon fill="#B8B2BF" />
+<div class="button-container">
+  {#if $session.user}
+    <button class="edit-button" aria-label="edit"><EditIcon fill="#B8B2BF" /></button>
   {/if}
-</button>
+
+  <button on:click={toggleOpen} class="qr-button" aria-label="QR-code"
+    ><QrIcon fill="#B8B2BF" /></button
+  >
+  <button
+    on:click={(e) => clickToCopy(e, shortLink)}
+    on:copysuccess={copySuccess}
+    class="copy-button"
+    aria-label="copy"
+  >
+    {#if copied}
+      <SuccessIcon />
+    {:else}
+      <CopyIcon fill="#B8B2BF" />
+    {/if}
+  </button>
+</div>
 
 <style>
+  .button-container {
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid #dfe1e5;
+  }
+
   button {
     height: 100%;
     border: 0;
