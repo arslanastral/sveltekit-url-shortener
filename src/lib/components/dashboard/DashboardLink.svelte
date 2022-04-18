@@ -5,6 +5,7 @@
   import LinkButton from '../recent/LinkButton.svelte';
   import QrCode from '$lib/components/shortener/QRCode.svelte';
   import Edit from './Edit.svelte';
+  import Tag from './Tag.svelte';
 
   export let index;
   export let short_url;
@@ -52,6 +53,14 @@
         <LockIcon width="18" height="18" fill="green" />
       {/if}
     </div>
+
+    {#if tags.length}
+      <div class="flex tags">
+        {#each tags as tag}
+          <Tag tag={tag.name} --bg-color={tag.color} --color={'black'} />
+        {/each}
+      </div>
+    {/if}
   </div>
   <div class="date">{timeAgo(date)}</div>
   <span class="clicks">{clicks}</span>
@@ -110,6 +119,10 @@
 
   .short-link:hover {
     text-decoration: underline;
+  }
+
+  .tags {
+    flex-wrap: wrap;
   }
 
   .date {
