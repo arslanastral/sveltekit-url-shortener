@@ -53,10 +53,17 @@
     return TAG_COLORS.find((color) => color.selected).color;
   };
 
+  const tagExist = (name) => {
+    return tags.some((tag) => tag.name === name);
+  };
+
   const addTag = () => {
     let sanitizedTag = newTag.trim();
 
-    if (editing && sanitizedTag.length) {
+    if (editing) {
+      if (tagExist(sanitizedTag)) {
+        return;
+      }
       tags = tags.map((tag) => {
         if (tag.name === oldTag) {
           tag.name = sanitizedTag;
@@ -71,6 +78,9 @@
     }
 
     if (sanitizedTag.length) {
+      if (tagExist(sanitizedTag)) {
+        return;
+      }
       tags = [
         ...tags,
         {
