@@ -5,9 +5,14 @@
   export let editable = false;
   export let deleteTag;
   export let editTag;
+  export let oldTag;
 </script>
 
-<div on:click={() => editTag(tag, color)} class="flex tag">
+<div
+  on:click|self={() => editTag(tag, color)}
+  class:dropshadow={oldTag === tag}
+  class="flex tag fadeIn"
+>
   {tag}
 
   {#if editable}
@@ -25,9 +30,17 @@
     color: var(--color);
     padding: 2px 15px;
     justify-content: space-evenly;
+    transition: background-color ease-in-out 0.2s;
+  }
+
+  .dropshadow {
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
+    border: 1px solid black;
   }
 
   button {
+    width: 100%;
+    height: 100%;
     margin-left: 6px;
     padding: 0;
     border: 0;
