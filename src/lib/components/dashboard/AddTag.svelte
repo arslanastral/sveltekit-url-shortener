@@ -61,12 +61,9 @@
     let sanitizedTag = newTag.trim();
 
     if (editing) {
-      if (tagExist(sanitizedTag)) {
-        return;
-      }
       tags = tags.map((tag) => {
         if (tag.name === oldTag) {
-          tag.name = sanitizedTag;
+          tag.name = tagExist(sanitizedTag) ? tag.name : sanitizedTag;
           tag.color = getCurrentColor();
           newTag = '';
           oldTag = '';
