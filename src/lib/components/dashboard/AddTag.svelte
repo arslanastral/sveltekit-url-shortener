@@ -8,7 +8,6 @@
 
   let editing = false;
   let oldTag = '';
-  //   let oldTagColor = '';
 
   let newTag = '';
 
@@ -39,6 +38,15 @@
       colors.selected = colors.color === name;
       return colors;
     });
+
+    if (editing) {
+      tags = tags.map((tag) => {
+        if (tag.name === oldTag) {
+          tag.color = getCurrentColor();
+        }
+        return tag;
+      });
+    }
   };
 
   const getCurrentColor = () => {
@@ -54,6 +62,7 @@
           tag.name = sanitizedTag;
           tag.color = getCurrentColor();
           newTag = '';
+          oldTag = '';
           editing = false;
         }
         return tag;
@@ -75,12 +84,20 @@
   };
 
   const deleteTag = (name) => {
-    editing = false;
+    if (editing) {
+      return;
+    }
     newTag = '';
+    oldTag = '';
     tags = tags.filter((tag) => tag.name !== name);
   };
 
   const editTag = (name, color) => {
+    console.log('i gets triggered');
+    if (editing) {
+      return;
+    }
+
     editing = true;
     selectColor(color);
     oldTag = name;
@@ -111,16 +128,18 @@
         {/each}
       </div>
     </div>
-    <Button
-      title={editing ? 'Update' : 'Add'}
-      onClickFunc={addTag}
-      type="button"
-      --font-size="20px"
-      --color="white"
-      --padding="8px 18px"
-      --bg-color="#3E5DFF"
-      --border-radius="14px"
-    />
+    <div class="fadeIn">
+      <Button
+        title={editing ? 'Update' : 'Add'}
+        onClickFunc={addTag}
+        type="button"
+        --font-size="20px"
+        --color="white"
+        --padding="8px 18px"
+        --bg-color="#3E5DFF"
+        --border-radius="14px"
+      />
+    </div>
   </div>
   <div class="flex current-tags">
     {#each tags as tag}
@@ -132,6 +151,7 @@
         color={tag.color}
         {deleteTag}
         {editTag}
+        {oldTag}
       />
     {:else}
       <span>No tags added yet</span>

@@ -20,5 +20,10 @@
     margin: 5px;
     border: none;
     background-color: var(--bg-color);
+    transition: transform ease-out 0.1s, border ease-in 0.1s;
+  }
+
+  button:active {
+    transform: scale(0.8);
   }
 </style>
