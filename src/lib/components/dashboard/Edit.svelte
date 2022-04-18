@@ -22,6 +22,7 @@
     <div class="flex action-button">
       <Button
         title={'Discard'}
+        onClickFunc={toggleEditClose}
         type="button"
         --font-size="20px"
         --color="white"
