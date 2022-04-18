@@ -8,12 +8,8 @@
   export let oldTag;
 </script>
 
-<div
-  on:click|self={() => editTag(tag, color)}
-  class:dropshadow={oldTag === tag}
-  class="flex tag fadeIn"
->
-  {tag}
+<div class:dropshadow={oldTag === tag} class="flex tag fadeIn">
+  <span on:click|self={() => editTag(tag, color)} class="tag-name">{tag}</span>
 
   {#if editable}
     <button class="flex" on:click={() => deleteTag(tag)}
@@ -33,14 +29,20 @@
     transition: background-color ease-in-out 0.2s;
   }
 
+  .tag-name {
+    max-width: 60px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .dropshadow {
     /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
     border: 1px solid black;
   }
 
   button {
-    width: 100%;
-    height: 100%;
     margin-left: 6px;
     padding: 0;
     border: 0;
