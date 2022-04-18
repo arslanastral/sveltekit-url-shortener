@@ -18,6 +18,27 @@
       <a target="_blank" href={short_url} class="title-url">{short_url}</a>
     </div>
     <AddTag />
+
+    <div class="flex action-button">
+      <Button
+        title={'Discard'}
+        type="button"
+        --font-size="20px"
+        --color="white"
+        --padding="8px 20px"
+        --bg-color="black"
+        --border-radius="50px"
+      />
+      <Button
+        title={'Save'}
+        type="button"
+        --font-size="20px"
+        --color="black"
+        --padding="8px 25px"
+        --bg-color="#E5EA12"
+        --border-radius="50px"
+      />
+    </div>
   </div>
 </div>
 
@@ -81,5 +102,13 @@
 
   .title-url:hover {
     text-decoration: underline;
+  }
+
+  .action-button {
+    width: 95%;
+    margin: 15px auto;
+    justify-content: flex-end;
+    height: 200px;
+    align-items: flex-end;
   }
 </style>
