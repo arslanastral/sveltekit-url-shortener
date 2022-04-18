@@ -76,6 +76,7 @@
 
     if (sanitizedTag.length) {
       if (tagExist(sanitizedTag)) {
+        newTag = '';
         return;
       }
       tags = [
