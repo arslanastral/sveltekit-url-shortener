@@ -21,7 +21,7 @@
   };
 </script>
 
-<div class="button-container">
+<div class:border-multi={$session.user} class="button-container">
   {#if $session.user}
     <button on:click={toggleEdit} class="edit-button" aria-label="edit"
       ><EditIcon fill="#B8B2BF" /></button
@@ -47,10 +47,11 @@
     border-radius: 5px;
     border: 1px solid #dfe1e5;
     overflow: hidden;
+    height: 37px;
   }
 
   button {
-    height: 33px;
+    height: 100%;
     border: 0;
     transition: 0.1s cubic-bezier(0.3, 0, 0.5, 1);
     transition-property: color, background-color;
@@ -61,7 +62,7 @@
     border-right: 1px solid #dfe1e5;
   }
 
-  div > button:last-child {
+  .border-multi > button:last-child {
     border-left: 1px solid #dfe1e5;
   }
 
