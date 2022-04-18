@@ -25,13 +25,9 @@
   {#if $session.user}
     <button on:click={toggleEdit} class="edit-button" aria-label="edit"
       ><EditIcon fill="#B8B2BF" /></button
-    >
-  {/if}
-
-  <button on:click={toggleQR} class="qr-button" aria-label="QR-code"
+    >{/if}<button on:click={toggleQR} class="qr-button" aria-label="QR-code"
     ><QrIcon fill="#B8B2BF" /></button
-  >
-  <button
+  ><button
     on:click={(e) => clickToCopy(e, short_url)}
     on:copysuccess={copySuccess}
     class="copy-button"
@@ -50,10 +46,11 @@
     margin-right: 20px;
     border-radius: 5px;
     border: 1px solid #dfe1e5;
+    overflow: hidden;
   }
 
   button {
-    height: 100%;
+    height: 33px;
     border: 0;
     transition: 0.1s cubic-bezier(0.3, 0, 0.5, 1);
     transition-property: color, background-color;
@@ -61,15 +58,11 @@
   }
 
   div > button:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
     border-right: 1px solid #dfe1e5;
   }
 
   div > button:last-child {
     border-left: 1px solid #dfe1e5;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
 
   button:hover {
