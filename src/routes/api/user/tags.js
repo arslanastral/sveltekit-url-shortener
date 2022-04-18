@@ -16,13 +16,15 @@ export async function patch({ locals, request }) {
   try {
     const collection = await useCollection('urls');
 
-    const link = await collection.find({ short_url: short_url });
+    const link = await collection.findOne({ short_url: short_url });
 
     if (link) {
       let updatedLink = await collection.updateOne(
         { short_url: short_url },
         { $set: { tags: tags } }
       );
+
+      console.log(updatedLink);
 
       return {
         status: 200,

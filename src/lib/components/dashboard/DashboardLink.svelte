@@ -12,6 +12,7 @@
   export let date;
   export let clicks;
   export let secured;
+  export let tags;
 
   let shortLink = '';
   if (browser) {
@@ -62,7 +63,7 @@
 {/if}
 
 {#if editToggle}
-  <Edit short_url={shortLink} {toggleEditClose} />
+  <Edit short_url={shortLink} {toggleEditClose} {tags} shortId={short_url} />
 {/if}
 
 <style>

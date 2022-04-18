@@ -4,7 +4,8 @@
   import TagColor from './TagColor.svelte';
   import Tag from './Tag.svelte';
 
-  let tags = [];
+  export let setTags;
+  export let tags;
 
   let editing = false;
   let oldTag = '';
@@ -47,6 +48,8 @@
         return tag;
       });
     }
+
+    setTags(tags);
   };
 
   const getCurrentColor = () => {
@@ -89,6 +92,7 @@
 
       newTag = '';
     }
+    setTags(tags);
   };
 
   const deleteTag = (name) => {
@@ -98,6 +102,7 @@
     newTag = '';
     oldTag = '';
     tags = tags.filter((tag) => tag.name !== name);
+    setTags(tags);
   };
 
   const editTag = (name, color) => {

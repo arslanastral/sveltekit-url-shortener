@@ -4,6 +4,33 @@
   import AddTag from './AddTag.svelte';
   export let toggleEditClose;
   export let short_url;
+  export let shortId;
+  export let tags;
+
+  async function handleEdit() {
+    const res = await fetch('/api/user/tags', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        short_url: shortId,
+        tags
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    let json = await res.json();
+
+    if (res.ok) {
+      toggleEditClose();
+    } else {
+      console.log(json.error);
+    }
+  }
+
+  const setTags = (newtags) => {
+    tags = newtags;
+  };
 </script>
 
 <div class="fadeIn flex overlay">
@@ -17,7 +44,7 @@
       <span class="title">Edit</span>
       <a target="_blank" href={short_url} class="title-url">{short_url}</a>
     </div>
-    <AddTag />
+    <AddTag {setTags} {tags} />
 
     <div class="flex action-button">
       <Button
@@ -32,6 +59,7 @@
       />
       <Button
         title={'Save'}
+        onClickFunc={handleEdit}
         type="button"
         --font-size="20px"
         --color="black"
