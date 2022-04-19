@@ -2,9 +2,10 @@
   export let width = '25';
   export let height = '25';
   export let fill = '#ccc';
+  export let style = '';
 </script>
 
-<span style="margin-left: 15px;">
+<span {style}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"

@@ -14,7 +14,7 @@
   </div>
 
   <div class="input-wrapper flex grow">
-    <LockIcon />
+    <LockIcon style="margin-left: 15px;" />
     <input bind:value={password} placeholder="Password" type="password" autocomplete="on" />
   </div>
 </div>

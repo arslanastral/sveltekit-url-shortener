@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    height: calc(100vh - 90px);
     min-width: 100vw;
   }
 </style>
