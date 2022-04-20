@@ -31,14 +31,17 @@
 
 <script>
   import Dashboard from '$lib/components/dashboard/Dashboard.svelte';
+  import Links from '$lib/stores/LinkStore';
 
   export let links;
   export let error;
   export let stats;
+
+  $Links = links;
 </script>
 
 <div class="fadeIn wrapper">
-  <Dashboard {stats} {links} {error} />
+  <Dashboard {stats} links={$Links} {error} />
 </div>
 
 <style>
