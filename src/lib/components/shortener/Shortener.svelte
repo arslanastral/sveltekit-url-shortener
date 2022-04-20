@@ -5,6 +5,7 @@
   import ErrorHandler from './ErrorHandler.svelte';
   import Shortened from './Shortened.svelte';
   import { clickOutside } from '$lib/utils/clickOutside';
+  import { session } from '$app/stores';
 
   let long_url = '';
   let short_url = '';
@@ -40,9 +41,11 @@
         long_url: json.long_url,
         short_url: short_url,
         created_at: json.created_at,
-        secured: json.secured || false
+        secured: json.secured
       };
-      $RecentStore = [newLink, ...$RecentStore];
+      if (!$session.user) {
+        $RecentStore = [newLink, ...$RecentStore];
+      }
     } else {
       isShortening = false; // Stop Loading Animation if there was an error
       error = json.error;
