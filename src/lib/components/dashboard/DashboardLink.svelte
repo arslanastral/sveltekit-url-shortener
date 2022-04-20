@@ -10,7 +10,7 @@
   export let index;
   export let short_url;
   export let long_url;
-  export let date;
+  export let created_at;
   export let clicks;
   export let secured;
   export let tags;
@@ -62,7 +62,7 @@
       </div>
     {/if}
   </div>
-  <div class="date">{timeAgo(date)}</div>
+  <div class="date">{timeAgo(created_at)}</div>
   <span class="clicks">{clicks}</span>
   <div class="flex"><LinkButton short_url={shortLink} {toggleQR} {toggleEdit} /></div>
 </div>
