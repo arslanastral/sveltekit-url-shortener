@@ -2,6 +2,8 @@
   import Button from '../Button.svelte';
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
   import AddTag from './AddTag.svelte';
+  import Links from '$lib/stores/LinkStore';
+
   export let toggleEditClose;
   export let short_url;
   export let shortId;
@@ -20,8 +22,11 @@
     });
 
     let json = await res.json();
-
-    if (res.ok) {
+    const links = await fetch('/api/user/links');
+    let newLinks = await links.json();
+    if (res.ok && links.ok) {
+      console.log('newlinks:', newLinks);
+      $Links = newLinks;
       toggleEditClose();
     } else {
       console.log(json.error);
