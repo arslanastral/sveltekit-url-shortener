@@ -6,6 +6,7 @@
   import QrCode from '$lib/components/shortener/QRCode.svelte';
   import Edit from './Edit.svelte';
   import Tag from './Tag.svelte';
+  import { page } from '$app/stores';
 
   export let index;
   export let short_url;
@@ -15,10 +16,7 @@
   export let secured;
   export let tags;
 
-  let shortLink = '';
-  if (browser) {
-    shortLink = `${window.location.origin}/${short_url}`;
-  }
+  let shortLink = `${$page.url.origin}/${short_url}`;
 
   export let qrToggle = false;
   export let editToggle = false;
