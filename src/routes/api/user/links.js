@@ -17,7 +17,7 @@ export async function get({ locals }) {
       .find({ created_by: currentUser.email })
       .sort({ _id: -1 })
       .project({
-        date: { $toDate: '$_id' },
+        created_at: { $toDate: '$_id' },
         _id: 0,
         long_url: 1,
         short_url: 1,
