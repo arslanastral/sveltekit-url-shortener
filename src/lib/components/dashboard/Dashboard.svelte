@@ -26,7 +26,7 @@
 
   {#if links.length}
     {#each links as link, i}
-      <DashboardLink index={(i + 1).toString()} {...link} />
+      <DashboardLink index={i + 1} {...link} />
     {/each}
   {:else}
     <div class="no-links">You haven't shortned any links yet. When you do they will show here.</div>
