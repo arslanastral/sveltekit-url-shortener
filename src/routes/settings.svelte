@@ -24,9 +24,8 @@
     background-repeat: repeat;
     background-color: #fafafa;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 90vh;
   }
 </style>
