@@ -52,8 +52,7 @@
     background-color: #fafafa;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    align-items: flex-start;
     min-height: 90vh;
   }
 </style>
