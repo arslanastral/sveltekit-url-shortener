@@ -1,4 +1,8 @@
-<span style="margin-left: 15px">
+<script>
+  export let style = 'margin-left: 15px';
+</script>
+
+<span {style}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
