@@ -16,7 +16,7 @@
       return {
         props: {
           links,
-          stats: { shortened, clicks, secured }
+          StatsData: { shortened, clicks, secured }
         }
       };
     } else {
@@ -32,16 +32,18 @@
 <script>
   import Dashboard from '$lib/components/dashboard/Dashboard.svelte';
   import Links from '$lib/stores/LinkStore';
+  import StatsStore from '$lib/stores/StatsStore';
 
   export let links;
   export let error;
-  export let stats;
+  export let StatsData;
 
   $Links = links;
+  $StatsStore = StatsData;
 </script>
 
 <div class="fadeIn wrapper">
-  <Dashboard {stats} links={$Links} {error} />
+  <Dashboard stats={$StatsStore} links={$Links} {error} />
 </div>
 
 <style>
