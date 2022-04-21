@@ -24,7 +24,9 @@
   <Logo />
   {#if $session.user}
     {#each pages as page}
-      <a class="link" class:selected={path === page.path} href={page.path}>{page.name}</a>
+      <a sveltekit:prefetch class="link" class:selected={path === page.path} href={page.path}
+        >{page.name}</a
+      >
     {/each}
   {/if}
 </nav>
