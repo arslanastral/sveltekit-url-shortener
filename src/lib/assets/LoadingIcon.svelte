@@ -1,5 +1,7 @@
 <script>
   export let style = 'margin-left: 15px';
+  export let width = '60px';
+  export let height = '60px';
 </script>
 
 <span {style}>
@@ -7,8 +9,8 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     style="margin: auto; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; display: block; shape-rendering: auto;"
-    width="60px"
-    height="60px"
+    {width}
+    {height}
     viewBox="0 0 100 100"
     preserveAspectRatio="xMidYMid"
   >
