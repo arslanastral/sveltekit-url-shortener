@@ -10,39 +10,51 @@
 
 <div class="flex container">
   <div class="main-title">Dashboard</div>
-</div>
-<div class="flex container">
-  <Stats {...stats} />
-</div>
 
-<div class="flex container">
-  <LinksIcon />
-  <div class="title">Your Links</div>
-</div>
-<div class="grow links-wrapper">
-  {#if error}
-    <div>{error}</div>
-  {/if}
+  <div class="flex stats">
+    <Stats {...stats} />
+  </div>
 
-  {#if links.length}
-    {#each links as link, i}
-      <DashboardLink index={i + 1} {...link} />
-    {/each}
-  {:else}
-    <div class="no-links">You haven't shortned any links yet. When you do they will show here.</div>
-  {/if}
+  <div class="links-container">
+    <div class="flex">
+      <LinksIcon />
+      <div class="title">Your Links</div>
+    </div>
+    <div class="grow links-wrapper">
+      {#if error}
+        <div>{error}</div>
+      {/if}
+
+      {#if links.length}
+        {#each links as link, i}
+          <DashboardLink index={i + 1} {...link} />
+        {/each}
+      {:else}
+        <div class="no-links">
+          You haven't shortned any links yet. When you do they will show here.
+        </div>
+      {/if}
+    </div>
+  </div>
 </div>
 
 <style>
   .container {
     width: 80%;
     margin-top: 20px;
+    flex-direction: column;
   }
 
   .main-title {
+    width: 100%;
     font-size: 35px;
     font-weight: bold;
     margin: 10px 0;
+  }
+
+  .links-container {
+    width: 100%;
+    margin-top: 50px;
   }
 
   .title {
@@ -50,8 +62,13 @@
     font-weight: bold;
     margin: 10px 0;
   }
+
+  .stats {
+    margin-top: 10px;
+    width: 100%;
+  }
+
   .links-wrapper {
-    width: 80%;
     margin-bottom: 20px;
     background: #ffffff;
     box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.25);
