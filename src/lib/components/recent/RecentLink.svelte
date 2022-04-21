@@ -16,15 +16,12 @@
   const toggleQRClose = () => {
     qrToggle = false;
   };
+
+  $: timeAgo = date ? date : 'just now';
 </script>
 
 <div class="linkbox flex grow">
-  {#if date}
-    <div class="flex link-date">{date}</div>
-  {:else}
-    <div class="flex link-date">just now</div>
-  {/if}
-
+  <div class="flex link-date">{timeAgo}</div>
   <div class="flex link grow-2">
     {#if isSecure}
       <span class="long-link blur">ky://thislinkissecured/</span>
