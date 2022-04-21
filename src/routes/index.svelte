@@ -4,9 +4,7 @@
     const { shortened, clicks, secured } = await getStats(fetch);
     return {
       props: {
-        shortened,
-        clicks,
-        secured
+        StatsData: { shortened, clicks, secured }
       }
     };
   }
@@ -18,16 +16,17 @@
   import Stats from '$lib/components/stats/Stats.svelte';
   import Recent from '$lib/components/recent/Recent.svelte';
   import Backdrop from '$lib/components/Backdrop.svelte';
+  import StatsStore from '$lib/stores/StatsStore';
 
-  export let shortened;
-  export let clicks;
-  export let secured;
+  export let StatsData;
+
+  $StatsStore = StatsData;
 </script>
 
 <div class="content">
   <Hero />
   <Shortener />
-  <Stats {shortened} {clicks} {secured} />
+  <Stats {...$StatsStore} />
   <Recent />
   <Backdrop />
 </div>
