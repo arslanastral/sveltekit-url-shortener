@@ -48,7 +48,7 @@
   <div class="edit-container  flex">
     <div class:loading class="flex control-bar">
       {#if loading}
-        <LoadingIcon style="margin-left: 0" />
+        <LoadingIcon style="margin-left: 0" width="50px" height="50px" />
       {/if}
 
       <button on:click={toggleEditClose} type="button" class="close" aria-label="close-edit"
