@@ -3,13 +3,17 @@
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
   import AddTag from './AddTag.svelte';
   import Links from '$lib/stores/LinkStore';
+  import LoadingIcon from '$lib/assets/LoadingIcon.svelte';
 
   export let toggleEditClose;
   export let short_url;
   export let shortId;
   export let tags;
 
+  let loading = false;
+
   async function handleEdit() {
+    loading = true;
     const res = await fetch('/api/user/tags', {
       method: 'PATCH',
       body: JSON.stringify({
@@ -27,8 +31,10 @@
     if (res.ok && links.ok) {
       console.log('newlinks:', newLinks);
       $Links = newLinks;
+      loading = false;
       toggleEditClose();
     } else {
+      loading = false;
       console.log(json.error);
     }
   }
@@ -40,7 +46,11 @@
 
 <div class="fadeIn flex overlay">
   <div class="edit-container  flex">
-    <div class="flex control-bar">
+    <div class:loading class="flex control-bar">
+      {#if loading}
+        <LoadingIcon />
+      {/if}
+
       <button on:click={toggleEditClose} type="button" class="close" aria-label="close-edit"
         ><CloseIcon width="30" height="30" /></button
       >
@@ -105,6 +115,10 @@
     margin: 0 auto;
     border-bottom: 1px solid black;
     justify-content: flex-end;
+  }
+
+  .loading {
+    justify-content: space-between;
   }
 
   .close {
