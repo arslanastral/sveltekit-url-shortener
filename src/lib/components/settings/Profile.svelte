@@ -43,11 +43,11 @@
   }
 
   .input-container {
-    margin-top: 40px;
+    margin-top: 30px;
   }
 
   .user-info {
-    margin: 10px 0;
+    margin: 30px 0;
   }
   .welcome {
     margin-bottom: 30px;
@@ -67,12 +67,7 @@
 
   .title {
     font-size: 28px;
-    /* font-weight: 500; */
     display: block;
-  }
-
-  .user-info {
-    margin-bottom: 30px;
   }
 
   .detail {
