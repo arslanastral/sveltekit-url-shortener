@@ -15,7 +15,7 @@
   import SettingsNav from '$lib/components/settings/SettingsNav.svelte';
 </script>
 
-<div class="wrapper">
+<div class="fadeIn wrapper">
   <div class="flex container">
     <div class="main-title">Settings</div>
     <SettingsNav />
