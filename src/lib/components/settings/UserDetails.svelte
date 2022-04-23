@@ -5,7 +5,7 @@
   import Button from '../Button.svelte';
 </script>
 
-<div class="user-info flex">
+<div class="info-container flex">
   <div class="welcome">
     <span class="welcome-title">Welcome, {$session.user.name}</span>
     <span class="welcome-info">To change your settings, click on the edit button</span>
@@ -26,29 +26,31 @@
     <span class="detail">{$session.user.joined}</span>
   </div>
 
-  <div class="change-button">
-    <Button
-      title="Edit"
-      onClickFunc={() => goto('/settings/profile')}
-      type="button"
-      --font-size="20px"
-      --padding="4px 25px"
-      --color="white"
-      --bg-color="#0000f4"
-      --border-radius="29px"
-    />
-  </div>
+  <Button
+    title="Edit"
+    onClickFunc={() => goto('/settings/profile')}
+    type="button"
+    --font-size="20px"
+    --padding="4px 25px"
+    --color="white"
+    --bg-color="#0000f4"
+    --border-radius="29px"
+  />
 </div>
 
 <style>
-  .user-info {
+  .info-container {
     flex-direction: column;
     align-items: flex-start;
-    margin: 30px 20px 20px 30px;
+    margin: 60px;
+  }
+
+  .user-info {
+    margin: 30px 0;
   }
 
   .welcome {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 
   .welcome-title {
@@ -79,6 +81,6 @@
   }
 
   .change-button {
-    margin-left: 20px;
+    margin-left: 0px;
   }
 </style>

@@ -5,43 +5,50 @@
   import Button from '../Button.svelte';
 </script>
 
-<div class="user-info flex">
+<div class="info-container flex">
   <div class="welcome">
     <span class="welcome-title">Profile</span>
     <span class="welcome-info">To save your profile, click on change button</span>
   </div>
 
-  <div class="user-info">
-    <span class="title">Name</span>
-    <input class="detail" type="text" placeholder={$session.user.name} />
+  <div class="input-container">
+    <div class="user-info">
+      <span class="title">Name</span>
+      <input class="detail" type="text" placeholder={$session.user.name} />
+    </div>
+
+    <div class="user-info">
+      <span class="title">Email</span>
+      <input class="detail" type="email" placeholder={$session.user.email} />
+    </div>
   </div>
 
-  <div class="user-info">
-    <span class="title">Email</span>
-    <input class="detail" type="email" placeholder={$session.user.email} />
-  </div>
-
-  <div class="change-button">
-    <Button
-      title="Change"
-      onClickFunc={() => goto('/settings/profile')}
-      type="button"
-      --font-size="20px"
-      --padding="4px 18px"
-      --color="white"
-      --bg-color="#0000f4"
-      --border-radius="29px"
-    />
-  </div>
+  <Button
+    title="Change"
+    onClickFunc={() => goto('/settings/profile')}
+    type="button"
+    --font-size="20px"
+    --padding="4px 18px"
+    --color="white"
+    --bg-color="#0000f4"
+    --border-radius="29px"
+  />
 </div>
 
 <style>
-  .user-info {
+  .info-container {
     flex-direction: column;
     align-items: flex-start;
-    margin: 30px;
+    margin: 60px;
   }
 
+  .input-container {
+    margin-top: 40px;
+  }
+
+  .user-info {
+    margin: 10px 0;
+  }
   .welcome {
     margin-bottom: 30px;
   }
@@ -84,9 +91,5 @@
   input:focus {
     outline: none;
     border: 1px solid #3710e6;
-  }
-
-  .change-button {
-    margin-left: 20px;
   }
 </style>
