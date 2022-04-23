@@ -1,5 +1,10 @@
+<script>
+  import SettingsNav from './SettingsNav.svelte';
+</script>
+
 <div class="flex container">
   <div class="main-title">Settings</div>
+  <SettingsNav />
   <div class="settings-container flex"><span>In Progress</span></div>
 </div>
 
