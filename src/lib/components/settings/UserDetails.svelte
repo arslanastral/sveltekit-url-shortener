@@ -20,7 +20,7 @@
 
   <div class="user-info">
     <span class="title">Joined</span>
-    <span class="detail">24 August 2020</span>
+    <span class="detail">{$session.user.joined}</span>
   </div>
 </div>
 
