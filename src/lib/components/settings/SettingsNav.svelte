@@ -3,7 +3,7 @@
 
   let pages = [
     {
-      name: 'My Details',
+      name: 'Now',
       path: '/settings'
     },
     {
