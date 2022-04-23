@@ -1,5 +1,6 @@
 import * as cookie from 'cookie';
 import { useCollection } from '$lib/utils/useCollection';
+import { formatDate } from '$lib/utils/formatDate';
 
 export async function handle({ event, resolve }) {
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
@@ -18,10 +19,11 @@ export async function handle({ event, resolve }) {
 
   if (userSession) {
     const created_at = userSession._id.getTimestamp().toString();
+    const formattedDate = formatDate(created_at);
     event.locals.user.authenticated = true;
     event.locals.user.name = userSession.name;
     event.locals.user.email = userSession.email;
-    event.locals.user.createdAt = created_at;
+    event.locals.user.createdAt = formattedDate;
   } else {
     event.locals.user.authenticated = false;
   }
