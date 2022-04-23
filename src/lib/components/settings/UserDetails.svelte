@@ -3,7 +3,7 @@
 </script>
 
 <div class="user-info flex">
-  <div>Welcome, {session.user.name}</div>
+  <div>Welcome, {$session.user.name}</div>
   <div class="user-info__name flex">
     <span>Name</span>
     <h1>{$session.user.name}</h1>
