@@ -11,7 +11,6 @@ export async function get({ locals }) {
   return {
     status: 200,
     body: {
-      authenticated: currentUser.authenticated,
       name: currentUser.name,
       email: currentUser.email,
       created_at: currentUser.createdAt
