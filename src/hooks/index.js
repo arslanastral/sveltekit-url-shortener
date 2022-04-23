@@ -39,7 +39,8 @@ export function getSession({ locals }) {
     user: locals.user && {
       authenticated: locals.user.authenticated,
       name: locals.user.name,
-      email: locals.user.email
+      email: locals.user.email,
+      joined: locals.user.createdAt
     }
   };
 }
