@@ -36,17 +36,18 @@
     color: rgb(39, 39, 39);
     font-size: 18px;
     padding: 3px 10px;
+    border-radius: 20px;
+    transition: 0.1s cubic-bezier(0.3, 0, 0.5, 1);
+    transition-property: color, background-color;
   }
 
   a:hover {
     color: beige;
     background-color: black;
-    border-radius: 20px;
   }
 
   .selected {
     color: beige;
     background-color: black;
-    border-radius: 20px;
   }
 </style>
