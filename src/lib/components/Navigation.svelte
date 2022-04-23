@@ -18,13 +18,15 @@
   ];
 
   $: path = $page.url.pathname;
+
+  console.log(path);
 </script>
 
 <nav class="flex">
   <Logo />
   {#if $session.user}
     {#each pages as page}
-      <a sveltekit:prefetch class="link" class:selected={path === page.path} href={page.path}
+      <a sveltekit:prefetch class="link" class:selected={path.includes(page.path)} href={page.path}
         >{page.name}</a
       >
     {/each}
