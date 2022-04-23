@@ -1,11 +1,14 @@
 <script>
+  import { goto } from '$app/navigation';
+
   import { session } from '$app/stores';
+  import Button from '../Button.svelte';
 </script>
 
 <div class="user-info flex">
   <div class="welcome">
     <span class="welcome-title">Profile</span>
-    <span class="welcome-info">To edit your profile, click on save button</span>
+    <span class="welcome-info">To save your profile, click on change button</span>
   </div>
 
   <div class="user-info">
@@ -17,13 +20,26 @@
     <span class="title">Email</span>
     <input class="detail" type="email" placeholder={$session.user.email} />
   </div>
+
+  <div class="change-button">
+    <Button
+      title="Change"
+      onClickFunc={() => goto('/settings/profile')}
+      type="button"
+      --font-size="20px"
+      --padding="4px 18px"
+      --color="white"
+      --bg-color="#0000f4"
+      --border-radius="29px"
+    />
+  </div>
 </div>
 
 <style>
   .user-info {
     flex-direction: column;
     align-items: flex-start;
-    margin: 30px 20px 20px 30px;
+    margin: 30px;
   }
 
   .welcome {
@@ -44,7 +60,7 @@
 
   .title {
     font-size: 28px;
-    font-weight: 500;
+    /* font-weight: 500; */
     display: block;
   }
 
@@ -53,7 +69,7 @@
   }
 
   .detail {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: normal;
   }
 
@@ -68,5 +84,9 @@
   input:focus {
     outline: none;
     border: 1px solid #3710e6;
+  }
+
+  .change-button {
+    margin-left: 20px;
   }
 </style>
