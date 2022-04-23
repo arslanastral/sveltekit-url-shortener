@@ -8,7 +8,7 @@
 <div class="info-container flex">
   <div class="welcome">
     <span class="welcome-title">Profile</span>
-    <span class="welcome-info">To save your profile, click on change button</span>
+    <span class="welcome-info">To edit your profile, click update</span>
   </div>
 
   <div class="input-container">
@@ -24,7 +24,7 @@
   </div>
 
   <Button
-    title="Change"
+    title="Update"
     onClickFunc={() => goto('/settings/profile')}
     type="button"
     --font-size="20px"

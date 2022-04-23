@@ -8,7 +8,7 @@
 <div class="info-container flex">
   <div class="welcome">
     <span class="welcome-title">Welcome, {$session.user.name}</span>
-    <span class="welcome-info">To change your settings, click on the edit button</span>
+    <span class="welcome-info">To update your info, click on the edit button</span>
   </div>
 
   <div class="user-info">
