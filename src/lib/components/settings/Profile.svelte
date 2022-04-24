@@ -3,6 +3,47 @@
 
   import { session } from '$app/stores';
   import Button from '../Button.svelte';
+
+  let name = '';
+  let email = '';
+
+  async function handleName() {
+    let nameRes;
+    let emailRes;
+
+    if (name) {
+      nameRes = await fetch('/api/user/account/name', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          name
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+
+    if (email) {
+      emailRes = await fetch('/api/user/account/email', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          email
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+
+    let nameJson = await nameRes.json();
+    let emailJson = await emailRes.json();
+
+    if (nameRes.ok || emailRes.ok) {
+      console.log('changed');
+    } else {
+      console.log(nameJson.error, emailJson.error);
+    }
+  }
 </script>
 
 <div class="container flex">
@@ -14,12 +55,12 @@
   <div class="info-container flex">
     <div class="user-info">
       <span class="title">Name</span>
-      <input type="text" placeholder={$session.user.name} />
+      <input bind:value={name} type="text" placeholder={$session.user.name} />
     </div>
 
     <div class="user-info">
       <span class="title">Email</span>
-      <input type="email" placeholder={$session.user.email} />
+      <input bind:value={email} type="email" placeholder={$session.user.email} />
     </div>
 
     <Button
