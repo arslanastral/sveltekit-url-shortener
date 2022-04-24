@@ -3,6 +3,21 @@
 
   import { session } from '$app/stores';
   import Button from '../Button.svelte';
+
+  async function handleAccountDeletion() {
+    const res = await fetch('/api/user/account/delete', {
+      method: 'DELETE'
+    });
+
+    let json = await res.json();
+
+    if (res.ok) {
+      console.log(json.status);
+      $session.user = null;
+    } else {
+      console.log('error');
+    }
+  }
 </script>
 
 <div class="container flex">
@@ -38,7 +53,7 @@
 
       <Button
         title="Delete"
-        onClickFunc={() => goto('/settings/profile')}
+        onClickFunc={handleAccountDeletion}
         type="button"
         --font-size="20px"
         --padding="4px 18px"

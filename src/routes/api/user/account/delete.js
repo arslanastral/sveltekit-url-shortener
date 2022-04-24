@@ -24,6 +24,9 @@ export async function del({ locals }) {
       await users.deleteOne({ email: currentUser });
 
       return {
+        headers: {
+          'set-cookie': 'sessionId=deleted; path=/; Max-Age=0'
+        },
         status: 200,
         body: {
           status: 'User Account Successfully Deleted'
