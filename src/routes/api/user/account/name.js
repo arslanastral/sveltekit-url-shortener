@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function post({ locals, request }) {
+export async function patch({ locals, request }) {
   const body = await request.json();
   const { name } = await body;
   const currentUser = locals.user.email || null;
