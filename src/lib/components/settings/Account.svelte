@@ -5,17 +5,17 @@
   import Button from '../Button.svelte';
 </script>
 
-<div class="info-container flex">
-  <div class="welcome">
-    <span class="welcome-title">Account</span>
-    <span class="welcome-info">Warning: Actions on this page can be destructive</span>
+<div class="container flex">
+  <div class="header">
+    <span class="header-title">Account</span>
+    <span class="header-info">Warning: Actions on this page can be destructive</span>
   </div>
 
-  <div class="input-container">
-    <div class="user-info">
+  <div class="info-container">
+    <div class="user-info flex">
       <span class="title">Password</span>
-      <input class="detail" type="password" placeholder="Old Password" />
-      <input class="detail" type="password" placeholder="New Password" />
+      <input type="password" placeholder="Old Password" />
+      <input type="password" placeholder="New Password" />
     </div>
 
     <Button
@@ -32,8 +32,7 @@
     <div class="delete-container">
       <div class="user-info">
         <span class="title">Delete Your Account</span>
-        <span class="welcome-info"
-          >This will permanently delete your account and all your links</span
+        <span class="header-info">This will permanently delete your account and all your links</span
         >
       </div>
 
@@ -52,30 +51,42 @@
 </div>
 
 <style>
-  .info-container {
+  .container {
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    margin: 60px;
   }
 
-  .input-container {
-    margin-top: 40px;
+  .header {
+    width: 100%;
+    color: white;
+    margin-bottom: 20px;
+    background-color: black;
+    padding: 40px 60px;
   }
 
-  .user-info {
-    margin: 20px 0;
-  }
-
-  .welcome-title {
+  .header-title {
     display: block;
     font-size: 30px;
   }
 
-  .welcome-info {
-    color: rgb(80, 80, 80);
+  .header-info {
+    color: rgb(156, 156, 156);
     font-weight: normal;
     font-size: 17px;
     letter-spacing: -0.025em;
+  }
+
+  .info-container {
+    padding: 0 60px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 30px 0;
   }
 
   .title {
@@ -83,13 +94,8 @@
     display: block;
   }
 
-  .detail {
-    font-size: 20px;
-    font-weight: normal;
-  }
-
   .delete-container {
-    margin-top: 50px;
+    margin: 50px 0;
   }
 
   input {
@@ -97,7 +103,7 @@
     background: none;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    width: 60%;
+    width: 100%;
     margin: 10px 0;
   }
 
