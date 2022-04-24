@@ -1,44 +1,47 @@
 <script>
   import { goto } from '$app/navigation';
-
   import { session } from '$app/stores';
   import Button from '../Button.svelte';
 </script>
 
-<div class="container flex">
-  <div class="header">
-    <span class="header-title">Welcome, {$session.user.name}</span>
-    <span class="header-info">To update your info, click on the edit button</span>
+{#if $session.user}
+  <div class="container flex">
+    <div class="header">
+      <span class="header-title">Welcome, {$session.user.name}</span>
+      <span class="header-info">To update your info, click on the edit button</span>
+    </div>
+
+    <div class="info-container flex">
+      <div class="user-info">
+        <span class="title">Name</span>
+        <span class="detail">{$session.user.name}</span>
+      </div>
+
+      <div class="user-info">
+        <span class="title">Email</span>
+        <span class="detail">{$session.user.email}</span>
+      </div>
+
+      <div class="user-info">
+        <span class="title">Joined</span>
+        <span class="detail">{$session.user.joined}</span>
+      </div>
+
+      <Button
+        title="Edit"
+        onClickFunc={() => goto('/settings/profile')}
+        type="button"
+        --font-size="20px"
+        --padding="4px 25px"
+        --color="white"
+        --bg-color="#0000f4"
+        --border-radius="29px"
+      />
+    </div>
   </div>
-
-  <div class="info-container flex">
-    <div class="user-info">
-      <span class="title">Name</span>
-      <span class="detail">{$session.user.name}</span>
-    </div>
-
-    <div class="user-info">
-      <span class="title">Email</span>
-      <span class="detail">{$session.user.email}</span>
-    </div>
-
-    <div class="user-info">
-      <span class="title">Joined</span>
-      <span class="detail">{$session.user.joined}</span>
-    </div>
-
-    <Button
-      title="Edit"
-      onClickFunc={() => goto('/settings/profile')}
-      type="button"
-      --font-size="20px"
-      --padding="4px 25px"
-      --color="white"
-      --bg-color="#0000f4"
-      --border-radius="29px"
-    />
-  </div>
-</div>
+{:else}
+  <span>...Loading</span>
+{/if}
 
 <style>
   .container {
