@@ -5,64 +5,72 @@
   import Button from '../Button.svelte';
 </script>
 
-<div class="info-container flex">
-  <div class="welcome">
-    <span class="welcome-title">Profile</span>
-    <span class="welcome-info">To edit your profile, click update</span>
+<div class="container flex">
+  <div class="header">
+    <span class="header-title">Profile</span>
+    <span class="header-info">To edit your profile, click update</span>
   </div>
 
-  <div class="input-container">
+  <div class="info-container flex">
     <div class="user-info">
       <span class="title">Name</span>
-      <input class="detail" type="text" placeholder={$session.user.name} />
+      <input type="text" placeholder={$session.user.name} />
     </div>
 
     <div class="user-info">
       <span class="title">Email</span>
-      <input class="detail" type="email" placeholder={$session.user.email} />
+      <input type="email" placeholder={$session.user.email} />
     </div>
-  </div>
 
-  <Button
-    title="Update"
-    onClickFunc={() => goto('/settings/profile')}
-    type="button"
-    --font-size="20px"
-    --padding="4px 18px"
-    --color="white"
-    --bg-color="#0000f4"
-    --border-radius="29px"
-  />
+    <Button
+      title="Update"
+      onClickFunc={() => goto('/settings/profile')}
+      type="button"
+      --font-size="20px"
+      --padding="4px 18px"
+      --color="white"
+      --bg-color="#0000f4"
+      --border-radius="29px"
+    />
+  </div>
 </div>
 
 <style>
-  .info-container {
+  .container {
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
-    margin: 60px;
   }
 
-  .input-container {
-    margin-top: 30px;
+  .header {
+    width: 100%;
+    color: white;
+    margin-bottom: 20px;
+    background-color: black;
+    padding: 40px 60px;
   }
 
-  .user-info {
-    margin: 30px 0;
-  }
-  .welcome {
-    margin-bottom: 30px;
-  }
-
-  .welcome-title {
+  .header-title {
     display: block;
     font-size: 30px;
   }
 
-  .welcome-info {
-    color: rgb(80, 80, 80);
+  .header-info {
+    color: rgb(156, 156, 156);
     font-weight: normal;
     font-size: 17px;
     letter-spacing: -0.025em;
+  }
+
+  .info-container {
+    padding: 0 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+
+  .user-info {
+    margin: 30px 0;
   }
 
   .title {
@@ -70,14 +78,9 @@
     display: block;
   }
 
-  .detail {
-    font-size: 20px;
-    font-weight: normal;
-  }
-
   input {
-    font-size: 20px;
-    background: none;
+    font-size: 25px;
+    /* background: none; */
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     width: 100%;
