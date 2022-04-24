@@ -1,6 +1,5 @@
 <script context="module">
-  import { getStats } from '$lib/utils/getStats';
-  export async function load({ session, fetch }) {
+  export async function load({ session }) {
     if (!session.user) {
       return {
         status: 302,
