@@ -4,6 +4,9 @@
   import { session } from '$app/stores';
   import Button from '../Button.svelte';
 
+  let oldPass;
+  let newPass;
+
   async function handleAccountDeletion() {
     const res = await fetch('/api/user/account/delete', {
       method: 'DELETE'
@@ -14,6 +17,30 @@
     if (res.ok) {
       console.log(json.status);
       $session.user = null;
+    } else {
+      console.log('error');
+    }
+  }
+
+  async function handlePasswordChange() {
+    const res = await fetch('/api/user/account/password', {
+      method: 'PUT',
+      body: JSON.stringify({
+        oldPass,
+        newPass
+      })
+    });
+
+    let json = await res.json();
+
+    if (res.ok) {
+      if (json.status === 'Password Changed Successfully') {
+        console.log('changed');
+      }
+
+      if (json.status === 'Password Not Matched') {
+        console.log('password not matching');
+      }
     } else {
       console.log('error');
     }
@@ -29,13 +56,13 @@
   <div class="info-container">
     <div class="user-info flex">
       <span class="title">Password</span>
-      <input type="password" placeholder="Old Password" />
-      <input type="password" placeholder="New Password" />
+      <input bind:value={oldPass} type="password" placeholder="Old Password" />
+      <input bind:value={newPass} type="password" placeholder="New Password" />
     </div>
 
     <Button
       title="Change"
-      onClickFunc={() => goto('/settings/profile')}
+      onClickFunc={handlePasswordChange}
       type="button"
       --font-size="20px"
       --padding="4px 18px"
