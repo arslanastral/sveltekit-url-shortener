@@ -65,7 +65,7 @@
 
     <Button
       title="Update"
-      onClickFunc={() => goto('/settings/profile')}
+      onClickFunc={handleName}
       type="button"
       --font-size="20px"
       --padding="4px 18px"
