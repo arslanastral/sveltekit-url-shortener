@@ -72,7 +72,7 @@ export async function post({ request, params, clientAddress }) {
               metadata: { short_url: id, created_by: link.created_by },
               ua: request.headers.get('user-agent'),
               ip: clientAddress,
-              ref: request.headers.get('referer'),
+              ref: null,
               timestamp: new Date(),
               clicks: 1
             });
