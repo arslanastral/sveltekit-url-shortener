@@ -1,11 +1,13 @@
 import { useCollection } from '$lib/utils/useCollection';
 import bcrypt from 'bcryptjs';
 
-export async function get({ params }) {
+export async function get({ params, request, clientAddress }) {
   const id = params.getshorturl;
 
   try {
     const collection = await useCollection('urls');
+    const analytics = await useCollection('analytics');
+
     const link = await collection.findOne({ short_url: id });
     if (link.secured) {
       return {
@@ -13,6 +15,18 @@ export async function get({ params }) {
         status: 301
       };
     }
+
+    if (!(link.created_by === 'anon')) {
+      await analytics.insertOne({
+        metadata: { short_url: id, created_by: link.created_by },
+        ua: request.headers.get('user-agent'),
+        ip: clientAddress,
+        ref: request.headers.get('referer'),
+        timestamp: new Date(),
+        clicks: 1
+      });
+    }
+
     await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
     return {
       headers: { Location: link.long_url },
@@ -26,7 +40,7 @@ export async function get({ params }) {
   }
 }
 
-export async function post({ request, params }) {
+export async function post({ request, params, clientAddress }) {
   const body = await request.formData();
   const submittedPassword = body.get('password');
   const id = params.getshorturl;
@@ -47,11 +61,23 @@ export async function post({ request, params }) {
 
   try {
     const collection = await useCollection('urls');
+    const analytics = await useCollection('analytics');
     const link = await collection.findOne({ short_url: id });
 
     if (link.secured) {
       try {
         if (await bcrypt.compare(submittedPassword, link.pass)) {
+          if (!(link.created_by === 'anon')) {
+            await analytics.insertOne({
+              metadata: { short_url: id, created_by: link.created_by },
+              ua: request.headers.get('user-agent'),
+              ip: clientAddress,
+              ref: request.headers.get('referer'),
+              timestamp: new Date(),
+              clicks: 1
+            });
+          }
+
           await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
           return {
             headers: { Location: link.long_url },
