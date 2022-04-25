@@ -63,7 +63,9 @@
   </div>
   <div class="date">{timeAgo(created_at)}</div>
   <div class="clicks flex"><ClicksIcon /><span>{clicks}</span></div>
-  <div class="flex"><LinkButton short_url={shortLink} {toggleQR} {toggleEdit} /></div>
+  <div class="button-container flex">
+    <LinkButton short_url={shortLink} {toggleQR} {toggleEdit} />
+  </div>
 </div>
 
 {#if qrToggle}
@@ -136,5 +138,9 @@
     margin: 10px;
     align-items: flex-end;
     font-size: 19px;
+  }
+
+  .button-container {
+    margin: 10px;
   }
 </style>
