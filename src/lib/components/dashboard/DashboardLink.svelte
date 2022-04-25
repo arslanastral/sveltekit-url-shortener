@@ -7,6 +7,7 @@
   import Edit from './Edit.svelte';
   import Tag from './Tag.svelte';
   import { page } from '$app/stores';
+  import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
 
   export let index;
   export let short_url;
@@ -61,7 +62,7 @@
     {/if}
   </div>
   <div class="date">{timeAgo(created_at)}</div>
-  <span class="clicks">{clicks}</span>
+  <div class="clicks flex"><ClicksIcon /><span>{clicks}</span></div>
   <div class="flex"><LinkButton short_url={shortLink} {toggleQR} {toggleEdit} /></div>
 </div>
 
@@ -131,7 +132,9 @@
   }
 
   .clicks {
-    margin: 20px;
+    width: 40px;
+    margin: 10px;
+    align-items: flex-end;
     font-size: 19px;
   }
 </style>
