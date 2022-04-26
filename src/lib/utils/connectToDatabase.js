@@ -15,15 +15,6 @@ export const connectToDatabase = async () => {
       await db.collection('urls').createIndex({ short_url: 1 }, { unique: true });
       await db.collection('users').createIndex({ email: 1 }, { unique: true });
       await db.collection('users').createIndex({ sessionId: 1 });
-      await db.createCollection('analytics', {
-        timeseries: {
-          timeField: 'timestamp',
-          metaField: 'metadata',
-          granularity: 'hours'
-        },
-
-        expireAfterSeconds: 604800
-      });
       console.log('New Database Connection');
       dbExists = db;
       return dbExists;
