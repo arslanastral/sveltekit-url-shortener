@@ -60,7 +60,6 @@ export async function post({ request, params, clientAddress }) {
 
   try {
     const collection = await useCollection('urls');
-    const analytics = await useCollection('analytics');
     const link = await collection.findOne({ short_url: id });
 
     if (link.secured) {
