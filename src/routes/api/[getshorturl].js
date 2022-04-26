@@ -18,10 +18,10 @@ export async function get({ params, request, clientAddress }) {
 
     if (!(link.created_by === 'anon')) {
       await collectAnalytics(
-        link.created_by,
-        clientAddress,
         id,
+        link.created_by,
         request.headers.get('user-agent'),
+        clientAddress,
         request.headers.get('referer')
       );
     }
