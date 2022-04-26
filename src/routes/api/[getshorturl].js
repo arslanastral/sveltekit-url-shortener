@@ -1,4 +1,5 @@
 import { useCollection } from '$lib/utils/useCollection';
+import { collectAnalytics } from '$lib/services/collectAnalytics';
 import bcrypt from 'bcryptjs';
 
 export async function get({ params, request, clientAddress }) {
@@ -6,7 +7,6 @@ export async function get({ params, request, clientAddress }) {
 
   try {
     const collection = await useCollection('urls');
-    const analytics = await useCollection('analytics');
 
     const link = await collection.findOne({ short_url: id });
     if (link.secured) {
@@ -17,14 +17,13 @@ export async function get({ params, request, clientAddress }) {
     }
 
     if (!(link.created_by === 'anon')) {
-      await analytics.insertOne({
-        metadata: { short_url: id, created_by: link.created_by },
-        ua: request.headers.get('user-agent'),
-        ip: clientAddress,
-        ref: request.headers.get('referer'),
-        timestamp: new Date(),
-        clicks: 1
-      });
+      await collectAnalytics(
+        link.created_by,
+        clientAddress,
+        id,
+        request.headers.get('user-agent'),
+        request.headers.get('referer')
+      );
     }
 
     await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
@@ -68,14 +67,13 @@ export async function post({ request, params, clientAddress }) {
       try {
         if (await bcrypt.compare(submittedPassword, link.pass)) {
           if (!(link.created_by === 'anon')) {
-            await analytics.insertOne({
-              metadata: { short_url: id, created_by: link.created_by },
-              ua: request.headers.get('user-agent'),
-              ip: clientAddress,
-              ref: null,
-              timestamp: new Date(),
-              clicks: 1
-            });
+            await collectAnalytics(
+              id,
+              link.created_by,
+              request.headers.get('user-agent'),
+              clientAddress,
+              null
+            );
           }
 
           await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
