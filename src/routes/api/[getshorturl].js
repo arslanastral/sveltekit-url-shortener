@@ -2,8 +2,15 @@ import { useCollection } from '$lib/utils/useCollection';
 import { collectAnalytics } from '$lib/services/collectAnalytics';
 import bcrypt from 'bcryptjs';
 
-export async function get({ params, request, clientAddress }) {
+export async function get({ params, request }) {
   const id = params.getshorturl;
+  let location;
+
+  if (import.meta.env.VITE_NODE_ENV === 'development') {
+    location = 'Saturn';
+  } else {
+    location = request.headers.get('x-vercel-ip-country');
+  }
 
   try {
     const collection = await useCollection('urls');
@@ -21,7 +28,7 @@ export async function get({ params, request, clientAddress }) {
         id,
         link.created_by,
         request.headers.get('user-agent'),
-        clientAddress,
+        location,
         request.headers.get('referer')
       );
     }
@@ -39,10 +46,18 @@ export async function get({ params, request, clientAddress }) {
   }
 }
 
-export async function post({ request, params, clientAddress }) {
+export async function post({ request, params }) {
   const body = await request.formData();
   const submittedPassword = body.get('password');
   const id = params.getshorturl;
+
+  let location;
+
+  if (import.meta.env.VITE_NODE_ENV === 'development') {
+    location = 'Saturn';
+  } else {
+    location = request.headers.get('x-vercel-ip-country');
+  }
 
   if (!submittedPassword) {
     return {
@@ -70,7 +85,7 @@ export async function post({ request, params, clientAddress }) {
               id,
               link.created_by,
               request.headers.get('user-agent'),
-              clientAddress,
+              location,
               null
             );
           }
