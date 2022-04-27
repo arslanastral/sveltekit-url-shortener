@@ -11,13 +11,28 @@
 </script>
 
 <script>
-  import SettingsNav from '$lib/components/settings/SettingsNav.svelte';
+  import PageNavigation from '$lib/components/PageNavigation.svelte';
+
+  let pages = [
+    {
+      name: 'Now',
+      path: '/settings'
+    },
+    {
+      name: 'Profile',
+      path: '/settings/profile'
+    },
+    {
+      name: 'Account',
+      path: '/settings/account'
+    }
+  ];
 </script>
 
 <div class="fadeIn wrapper">
   <div class="flex container">
     <div class="main-title">Settings</div>
-    <SettingsNav />
+    <PageNavigation {pages} />
     <div class="settings-container flex">
       <slot />
     </div>
