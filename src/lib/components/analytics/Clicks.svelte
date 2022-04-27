@@ -1,11 +1,14 @@
 <script>
   export let clicks = '0';
-  export let title = 'Clicks Today';
+  export let title = 'Today';
 </script>
 
 <div class="container flex">
   <div class="count">{clicks}</div>
-  <div class="title">{title}</div>
+  <div class="title flex">
+    <span>Clicks</span>
+    {title}
+  </div>
 </div>
 
 <style>
@@ -20,18 +23,22 @@
   }
 
   .count {
-    margin-left: 12px;
+    margin: 0px 0 5px 13px;
     width: 100%;
     color: #ffd977;
     font-size: 52px;
     line-height: 50px;
+    letter-spacing: -0.075em;
   }
 
   .title {
-    margin-left: 12px;
-    width: 60%;
+    margin-left: 13px;
     color: #ffffff;
-    line-height: 18px;
+    line-height: 19px;
     font-size: 16px;
+    letter-spacing: -0.035em;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
   }
 </style>
