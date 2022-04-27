@@ -16,11 +16,22 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    border-radius: 14px;
   }
 
   .count {
+    margin-left: 12px;
     width: 100%;
     color: #ffd977;
     font-size: 52px;
+    line-height: 50px;
+  }
+
+  .title {
+    margin-left: 12px;
+    width: 60%;
+    color: #ffffff;
+    line-height: 18px;
+    font-size: 16px;
   }
 </style>
