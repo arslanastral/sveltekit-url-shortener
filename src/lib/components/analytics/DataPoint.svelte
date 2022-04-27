@@ -27,11 +27,12 @@
   }
 
   .data {
-    margin-left: 12px;
+    margin: 5px 0 2px 12px;
     width: 100%;
     font-size: 24px;
     letter-spacing: -0.045em;
     color: #6d6d6d;
+    line-height: 22px;
   }
 
   .name {
