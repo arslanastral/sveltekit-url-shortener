@@ -13,7 +13,8 @@
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
-  import { CurrentData } from '$lib/stores/HighlightsStore';
+  import { TodayData, WeeklyData, AllData } from '$lib/stores/HighlightsStore';
+  import { page } from '$app/stores';
 
   let pages = [
     {
@@ -31,11 +32,9 @@
   ];
 
   let data = {
-    clickCount: '0',
-    clickTitle: 'Today',
-    topLocation: 'No Data',
-    topSource: 'No Data',
-    topDevice: 'No Data'
+    '/analytics': $TodayData,
+    '/analytics/weekly': $WeeklyData,
+    '/analytics/all': $AllData
   };
 </script>
 
@@ -44,7 +43,7 @@
     <div class="main-title">Analytics</div>
     <PageNavigation {pages} />
     <div class="analytics-container flex">
-      <Highlights {...$CurrentData} />
+      <Highlights {...data[$page.url.pathname]} />
       <slot />
     </div>
   </div>

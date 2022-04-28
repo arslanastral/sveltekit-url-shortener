@@ -1,13 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const CurrentData = writable({
-  clickCount: '0',
-  clickTitle: 'Today',
-  topLocation: 'No Data',
-  topSource: 'No Data',
-  topDevice: 'No Data'
-});
-
 export const TodayData = writable({
   clickCount: '0',
   clickTitle: 'Today',
