@@ -12,6 +12,7 @@
 
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
+  import Highlights from '$lib/components/analytics/Highlights.svelte';
 
   let pages = [
     {
@@ -27,6 +28,14 @@
       path: '/analytics/all'
     }
   ];
+
+  let data = {
+    clickCount: '0',
+    clickTitle: 'Today',
+    topLocation: 'No Data',
+    topSource: 'No Data',
+    topDevice: 'No Data'
+  };
 </script>
 
 <div class="fadeIn wrapper">
@@ -34,6 +43,7 @@
     <div class="main-title">Analytics</div>
     <PageNavigation {pages} />
     <div class="analytics-container flex">
+      <Highlights {...data} />
       <slot />
     </div>
   </div>
