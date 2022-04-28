@@ -13,6 +13,7 @@
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
+  import { CurrentData } from '$lib/stores/HighlightsStore';
 
   let pages = [
     {
@@ -43,7 +44,7 @@
     <div class="main-title">Analytics</div>
     <PageNavigation {pages} />
     <div class="analytics-container flex">
-      <Highlights {...data} />
+      <Highlights {...$CurrentData} />
       <slot />
     </div>
   </div>
