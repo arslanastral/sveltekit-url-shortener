@@ -15,6 +15,7 @@
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import { TodayData, WeeklyData, AllData } from '$lib/stores/HighlightsStore';
   import { page } from '$app/stores';
+  import UserLinks from '$lib/components/analytics/UserLinks.svelte';
 
   let pages = [
     {
@@ -44,7 +45,9 @@
     <PageNavigation {pages} />
     <div class="analytics-container flex">
       <Highlights {...data[$page.url.pathname]} />
-      <div class="data-container" />
+      <div class="data-container">
+        <UserLinks />
+      </div>
       <slot />
     </div>
   </div>
@@ -78,6 +81,7 @@
     margin-top: 30px;
     overflow: hidden;
     align-items: flex-start;
+    flex-direction: column;
   }
 
   .data-container {
