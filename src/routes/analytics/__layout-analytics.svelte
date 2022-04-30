@@ -44,6 +44,7 @@
     <PageNavigation {pages} />
     <div class="analytics-container flex">
       <Highlights {...data[$page.url.pathname]} />
+      <div class="data-container" />
       <slot />
     </div>
   </div>
@@ -77,5 +78,10 @@
     margin-top: 30px;
     overflow: hidden;
     align-items: flex-start;
+  }
+
+  .data-container {
+    width: 100%;
+    margin-top: 30px;
   }
 </style>
