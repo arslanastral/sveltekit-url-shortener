@@ -79,7 +79,6 @@
   .analytics-container {
     width: 100%;
     margin-top: 30px;
-    overflow: hidden;
     align-items: flex-start;
     flex-direction: column;
   }
