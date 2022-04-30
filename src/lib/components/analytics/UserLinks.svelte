@@ -1,4 +1,28 @@
-<div class="links-container" />
+<script>
+  import Links from '$lib/stores/LinkStore';
+  import Link from '../Link.svelte';
+</script>
+
+<div class="links-container">
+  {#if $Links.length}
+    {#each $Links as link, i}
+      <div class="link flex">
+        <Link
+          secured={link.secured}
+          long_url={link.long_url}
+          shortLink={link.short_url}
+          tags={link.tags}
+        />
+      </div>
+    {/each}
+  {:else}
+    <div class="link flex">
+      <div class="no-links">
+        You haven't shortned any links yet. When you do they will show here.
+      </div>
+    </div>
+  {/if}
+</div>
 
 <style>
   .links-container {
@@ -7,5 +31,9 @@
     border-radius: 24px;
     min-height: 550px;
     width: 40%;
+  }
+
+  .link {
+    margin: 10px;
   }
 </style>
