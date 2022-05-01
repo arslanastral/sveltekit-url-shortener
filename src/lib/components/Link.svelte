@@ -1,11 +1,15 @@
 <script>
+  import { page } from '$app/stores';
+
   import LockIcon from '$lib/assets/LockIcon.svelte';
   import Tag from './dashboard/Tag.svelte';
 
   export let tags;
-  export let shortLink;
+  export let short_url;
   export let long_url;
   export let secured;
+
+  let shortLink = `${$page.url.origin}/${short_url}`;
 </script>
 
 <div class="link">

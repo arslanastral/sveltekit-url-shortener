@@ -10,7 +10,7 @@
         <Link
           secured={link.secured}
           long_url={link.long_url}
-          shortLink={link.short_url}
+          short_url={link.short_url}
           tags={link.tags}
         />
       </div>
