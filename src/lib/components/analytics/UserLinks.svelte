@@ -6,12 +6,12 @@
 <div class="links-container">
   {#if $Links.length}
     {#each $Links as link, i}
-      <div class="link flex">
+      <div class="link-wrapper flex">
         <Link
           secured={link.secured}
           long_url={link.long_url}
           short_url={link.short_url}
-          tags={link.tags}
+          --margin="20px 20px 20px 20px"
         />
       </div>
     {/each}
@@ -31,7 +31,7 @@
     width: 40%;
   }
 
-  .link {
+  .link-wrapper {
     width: 100%;
     border-bottom: 1px solid #eaeaea;
   }
