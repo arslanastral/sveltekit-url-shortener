@@ -1,4 +1,6 @@
 <script>
+  import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
+
   import Links from '$lib/stores/LinkStore';
   import Link from '../Link.svelte';
 </script>
@@ -13,6 +15,7 @@
           short_url={link.short_url}
           --margin="20px 20px 20px 20px"
         />
+        <div class="clicks flex"><ClicksIcon /><span>{link.clicks}</span></div>
       </div>
     {/each}
   {:else}
@@ -34,11 +37,19 @@
   .link-wrapper {
     width: 100%;
     border-bottom: 1px solid #eaeaea;
+    justify-content: space-between;
   }
 
   .no-links {
     font-size: 20px;
     color: #636363;
     margin: 20px;
+  }
+
+  .clicks {
+    width: 40px;
+    margin: 10px 30px 10px 10px;
+    align-items: flex-end;
+    font-size: 19px;
   }
 </style>
