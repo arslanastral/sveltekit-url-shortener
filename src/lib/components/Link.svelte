@@ -24,7 +24,7 @@
     {/if}
   </div>
 
-  {#if tags.length}
+  {#if tags && tags.length}
     <div class="flex tags">
       {#each tags as tag}
         <Tag tag={tag.name} --bg-color={tag.color} --color={'black'} />
@@ -35,7 +35,7 @@
 
 <style>
   .link {
-    margin: 20px 20px 20px 0;
+    margin: var(--margin);
     display: flex;
     flex-direction: column;
   }
