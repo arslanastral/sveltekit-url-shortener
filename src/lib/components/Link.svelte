@@ -48,7 +48,7 @@
     font-size: 17px;
     color: #636363;
     display: inline-block;
-    width: clamp(200px, 40vw, 900px);
+    width: var(--width);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -39,7 +39,14 @@
 
 <div class="flex link-container">
   <span class="index">{index}</span>
-  <Link {short_url} {long_url} {secured} {tags} --margin="20px 20px 20px 0" />
+  <Link
+    {short_url}
+    {long_url}
+    {secured}
+    {tags}
+    --margin="20px 20px 20px 0"
+    --width="clamp(200px, 40vw, 900px)"
+  />
   <div class="date">{timeAgo(created_at)}</div>
   <div class="clicks flex"><ClicksIcon /><span>{clicks}</span></div>
   <div class="button-container flex">
