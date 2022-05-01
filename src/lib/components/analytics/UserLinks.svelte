@@ -16,10 +16,8 @@
       </div>
     {/each}
   {:else}
-    <div class="link flex">
-      <div class="no-links">
-        You haven't shortned any links yet. When you do they will show here.
-      </div>
+    <div class="flex">
+      <div class="no-links">You haven't shortened any links yet.</div>
     </div>
   {/if}
 </div>
