@@ -1,12 +1,28 @@
 <script context="module">
-  export async function load({ session }) {
+  export async function load({ session, fetch }) {
     if (!session.user) {
       return {
         status: 302,
         redirect: '/login'
       };
     }
-    return {};
+
+    const res = await fetch('/api/user/links');
+
+    if (res.ok) {
+      const links = await res.json();
+      return {
+        props: {
+          links
+        }
+      };
+    } else {
+      return {
+        props: {
+          error: 'Error loading links'
+        }
+      };
+    }
   }
 </script>
 
@@ -16,6 +32,11 @@
   import { TodayData, WeeklyData, AllData } from '$lib/stores/HighlightsStore';
   import { page } from '$app/stores';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
+  import Links from '$lib/stores/LinkStore';
+
+  export let links;
+
+  $Links = links;
 
   let pages = [
     {
