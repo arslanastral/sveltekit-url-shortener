@@ -34,6 +34,13 @@
   }
 
   .link {
-    margin: 10px;
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .no-links {
+    font-size: 20px;
+    color: #636363;
+    margin: 20px;
   }
 </style>
