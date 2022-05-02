@@ -38,6 +38,7 @@
     margin: var(--margin);
     display: flex;
     flex-direction: column;
+    width: var(--width);
   }
 
   img {
@@ -48,7 +49,7 @@
     font-size: 17px;
     color: #636363;
     display: inline-block;
-    width: var(--width);
+    width: var(--link-width);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -14,6 +14,7 @@
           long_url={link.long_url}
           short_url={link.short_url}
           --margin="20px 20px 20px 20px"
+          --width="70%"
         />
         <div class="clicks flex"><ClicksIcon /><span>{link.clicks}</span></div>
       </div>
