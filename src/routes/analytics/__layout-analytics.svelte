@@ -67,7 +67,7 @@
     <PageNavigation {pages} />
     <div class="analytics-container flex">
       <Highlights {...data[$page.url.pathname]} />
-      <div class="data-container">
+      <div class="data-container flex">
         <UserLinks />
         <Chart />
       </div>
@@ -109,5 +109,6 @@
   .data-container {
     width: 100%;
     margin-top: 30px;
+    gap: 30px;
   }
 </style>
