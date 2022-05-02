@@ -45,7 +45,7 @@
     {secured}
     {tags}
     --margin="20px 20px 20px 0"
-    --width="clamp(200px, 40vw, 900px)"
+    --link-width="clamp(200px, 40vw, 900px)"
   />
   <div class="date">{timeAgo(created_at)}</div>
   <div class="clicks flex"><ClicksIcon /><span>{clicks}</span></div>
