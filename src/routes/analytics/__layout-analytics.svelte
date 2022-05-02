@@ -33,6 +33,7 @@
   import { page } from '$app/stores';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Links from '$lib/stores/LinkStore';
+  import Chart from '$lib/components/analytics/Chart.svelte';
 
   export let links;
 
@@ -68,6 +69,7 @@
       <Highlights {...data[$page.url.pathname]} />
       <div class="data-container">
         <UserLinks />
+        <Chart />
       </div>
       <slot />
     </div>
