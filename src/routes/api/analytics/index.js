@@ -14,7 +14,10 @@ export async function get({ locals }) {
     const collection = await useCollection('analytics');
 
     const links = await collection
-      .find({ 'metadata.created_by': currentUser.email })
+      .find({
+        'metadata.created_by': currentUser.email,
+        timestamp: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) }
+      })
       .sort({ _id: -1 })
       .project({
         _id: 0
