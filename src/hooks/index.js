@@ -15,7 +15,7 @@ export async function handle({ event, resolve }) {
 
   const collection = await useCollection('users');
 
-  const userSession = await collection.findOne({ sessionId: { $eq: cookies.sessionId } });
+  const userSession = await collection.findOne({ sessionId: cookies.sessionId });
 
   if (userSession) {
     const created_at = userSession._id.getTimestamp().toString();
