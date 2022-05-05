@@ -1,3 +1,5 @@
+import { useCollection } from '$lib/utils/useCollection';
+
 export async function get({ locals }) {
   const currentUser = locals.user;
 
@@ -8,8 +10,25 @@ export async function get({ locals }) {
     };
   }
 
-  return {
-    status: 200,
-    body: 'Analytics Endpoint'
-  };
+  try {
+    const collection = await useCollection('analytics');
+
+    const links = await collection
+      .find({ 'metadata.created_by': currentUser.email })
+      .sort({ _id: -1 })
+      .project({
+        _id: 0
+      })
+      .toArray();
+
+    return {
+      status: 200,
+      body: links
+    };
+  } catch (error) {
+    return {
+      status: 500,
+      body: { error: 'Internal Server Error' }
+    };
+  }
 }
