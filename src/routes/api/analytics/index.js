@@ -3,6 +3,7 @@ import { useCollection } from '$lib/utils/useCollection';
 export async function get({ locals, url }) {
   const currentUser = locals.user;
   const time = url.searchParams.get('time');
+  const id = url.searchParams.get('id');
 
   if (!currentUser.authenticated) {
     return {
@@ -20,14 +21,25 @@ export async function get({ locals, url }) {
   }
 
   let timeQuery = { timestamp: { $gte: timeFilter } };
+  let linkQuery = { 'metadata.short_url': id };
 
   try {
     const collection = await useCollection('analytics');
+
+    let link = await collection.findOne(linkQuery);
+
+    if (!link) {
+      return {
+        status: 404,
+        body: { error: 'Link not found' }
+      };
+    }
 
     let analyticsPipeline = [
       {
         $match: {
           'metadata.created_by': currentUser.email,
+          ...(id && linkQuery),
           ...(time !== 'all' && timeQuery)
         }
       },
