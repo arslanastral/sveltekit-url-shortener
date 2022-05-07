@@ -31,26 +31,79 @@ export async function get({ locals, url }) {
           ...(time !== 'all' && timeQuery)
         }
       },
+
       {
-        $group: {
-          _id: {
-            location: '$location'
-          },
-          count: {
-            $sum: 1
-          }
-        }
-      },
-      {
-        $sort: {
-          count: -1
-        }
-      },
-      {
-        $project: {
-          _id: 0,
-          count: '$count',
-          location: '$_id.location'
+        $facet: {
+          clicks: [
+            { $group: { _id: '$clicks', count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+              $project: {
+                _id: 0,
+                count: '$count'
+              }
+            }
+          ],
+          location: [
+            { $group: { _id: '$location', count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+              $project: {
+                _id: 0,
+                count: '$count',
+                name: '$_id'
+              }
+            }
+          ],
+          browser: [
+            { $group: { _id: '$info.browser', count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+              $project: {
+                _id: 0,
+                count: '$count',
+                name: '$_id'
+              }
+            }
+          ],
+          source: [
+            { $group: { _id: '$ref', count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+              $project: {
+                _id: 0,
+                count: '$count',
+                name: {
+                  $cond: { if: { $eq: ['$_id', null] }, then: 'Direct', else: '$_id' }
+                }
+              }
+            }
+          ],
+          OS: [
+            { $group: { _id: '$info.os', count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+              $project: {
+                _id: 0,
+                count: '$count',
+                name: '$_id'
+              }
+            }
+          ],
+          device: [
+            { $group: { _id: '$info.device', count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            {
+              $project: {
+                _id: 0,
+                count: '$count',
+
+                name: {
+                  $cond: { if: { $eq: ['$_id', null] }, then: 'Desktop', else: '$_id' }
+                }
+              }
+            }
+          ]
         }
       }
     ];
