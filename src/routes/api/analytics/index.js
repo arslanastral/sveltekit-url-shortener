@@ -26,13 +26,15 @@ export async function get({ locals, url }) {
   try {
     const collection = await useCollection('analytics');
 
-    let link = await collection.findOne(linkQuery);
+    if (id) {
+      let link = await collection.findOne(linkQuery);
 
-    if (!link) {
-      return {
-        status: 404,
-        body: { error: 'Link not found' }
-      };
+      if (!link) {
+        return {
+          status: 404,
+          body: { error: 'Link not found' }
+        };
+      }
     }
 
     let analyticsPipeline = [
