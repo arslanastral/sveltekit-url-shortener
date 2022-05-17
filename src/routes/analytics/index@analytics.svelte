@@ -12,19 +12,20 @@
     if (res.ok) {
       const data = await res.json();
 
-      let highlights = {
-        clickCount: data[0].clicks[0].count.toString(),
-        clickTitle: 'Today',
-        topLocation: data[0].location[0].name.toString(),
-        topSource: data[0].source[0].name.toString(),
-        topDevice: data[0].device[0].name.toString()
-      };
-
-      return {
-        props: {
-          highlights
-        }
-      };
+      if (data[0].clicks) {
+        let highlights = {
+          clickCount: data[0].clicks[0].count.toString(),
+          clickTitle: 'Today',
+          topLocation: data[0].location[0].name.toString(),
+          topSource: data[0].source[0].name.toString(),
+          topDevice: data[0].device[0].name.toString()
+        };
+        return {
+          props: {
+            highlights
+          }
+        };
+      }
     } else {
       return {
         props: {
