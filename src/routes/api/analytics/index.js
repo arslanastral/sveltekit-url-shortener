@@ -88,7 +88,23 @@ export async function get({ locals, url }) {
                 _id: 0,
                 count: '$count',
                 name: {
-                  $cond: { if: { $eq: ['$_id', null] }, then: 'Direct', else: '$_id' }
+                  $cond: [
+                    {
+                      $or: [
+                        {
+                          $eq: ['$_id', null]
+                        },
+                        {
+                          $eq: ['$_id', 'http://localhost:3000/analytics']
+                        },
+                        {
+                          $eq: ['$_id', 'http://localhost:3000/']
+                        }
+                      ]
+                    },
+                    'Direct',
+                    '$_id'
+                  ]
                 }
               }
             }
