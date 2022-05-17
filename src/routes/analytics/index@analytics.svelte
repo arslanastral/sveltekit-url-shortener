@@ -11,18 +11,10 @@
 
     if (res.ok) {
       const data = await res.json();
-
-      if (data[0].clicks) {
-        let highlights = {
-          clickCount: data[0].clicks[0].count.toString(),
-          clickTitle: 'Today',
-          topLocation: data[0].location[0].name.toString(),
-          topSource: data[0].source[0].name.toString(),
-          topDevice: data[0].device[0].name.toString()
-        };
+      if (Object.keys(data).length) {
         return {
           props: {
-            highlights
+            data
           }
         };
       }
@@ -39,7 +31,7 @@
 <script>
   import { TodayData } from '$lib/stores/HighlightsStore';
 
-  export let highlights;
+  export let data;
 
-  $TodayData = highlights;
+  $TodayData = data;
 </script>

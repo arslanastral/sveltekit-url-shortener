@@ -130,9 +130,24 @@ export async function get({ locals, url }) {
 
     const links = await collection.aggregate(analyticsPipeline).toArray();
 
+    // if (links[0].clicks) {
+    //   return {
+    //     status: 200,
+    //     body: {}
+    //   };
+    // }
+
+    let highlights = {
+      clickCount: links[0].clicks[0].count.toString(),
+      clickTitle: 'Today',
+      topLocation: links[0].location[0].name.toString(),
+      topSource: links[0].source[0].name.toString(),
+      topDevice: links[0].device[0].name.toString()
+    };
+
     return {
       status: 200,
-      body: links
+      body: highlights
     };
   } catch (error) {
     return {
