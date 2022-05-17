@@ -59,6 +59,8 @@
     '/analytics/weekly': $WeeklyData,
     '/analytics/all': $AllData
   };
+
+  let highlightsData = data[$page.url.pathname];
 </script>
 
 <div class="fadeIn wrapper">
@@ -66,7 +68,12 @@
     <div class="main-title">Analytics</div>
     <PageNavigation {pages} />
     <div class="analytics-container flex">
-      <Highlights {...data[$page.url.pathname]} />
+      {#if highlightsData}
+        <Highlights {...highlightsData} />
+      {:else}
+        <Highlights />
+      {/if}
+
       <div class="data-container flex">
         <UserLinks />
         <Chart />
