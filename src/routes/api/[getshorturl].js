@@ -4,12 +4,24 @@ import bcrypt from 'bcryptjs';
 
 export async function get({ params, request }) {
   const id = params.getshorturl;
+  const referer = request.headers.get('referer');
+  const refererURL = new URL(referer);
+  const host = request.headers.get('host');
+
+  console.log(host);
   let location;
+  let source;
 
   if (import.meta.env.VITE_NODE_ENV === 'development') {
     location = 'Saturn';
   } else {
     location = request.headers.get('x-vercel-ip-country');
+  }
+
+  if (refererURL.host === host) {
+    source = null;
+  } else {
+    source = referer;
   }
 
   try {
@@ -29,7 +41,7 @@ export async function get({ params, request }) {
         link.created_by,
         request.headers.get('user-agent'),
         location,
-        request.headers.get('referer')
+        source
       );
     }
 
