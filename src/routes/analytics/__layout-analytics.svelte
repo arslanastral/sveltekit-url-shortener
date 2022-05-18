@@ -28,7 +28,7 @@
 
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
-  import Highlights from '$lib/components/analytics/Highlights.svelte';
+
   import { TodayData, WeeklyData, AllData } from '$lib/stores/HighlightsStore';
   import { page } from '$app/stores';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
@@ -53,14 +53,6 @@
       path: '/analytics/all'
     }
   ];
-
-  let data = {
-    '/analytics': $TodayData,
-    '/analytics/weekly': $WeeklyData,
-    '/analytics/all': $AllData
-  };
-
-  let highlightsData = data[$page.url.pathname];
 </script>
 
 <div class="fadeIn wrapper">
@@ -68,17 +60,11 @@
     <div class="main-title">Analytics</div>
     <PageNavigation {pages} />
     <div class="analytics-container flex">
-      {#if highlightsData}
-        <Highlights {...highlightsData} />
-      {:else}
-        <Highlights />
-      {/if}
-
+      <slot />
       <div class="data-container flex">
         <UserLinks />
         <Chart />
       </div>
-      <slot />
     </div>
   </div>
 </div>
