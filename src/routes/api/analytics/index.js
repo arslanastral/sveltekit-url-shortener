@@ -137,9 +137,19 @@ export async function get({ locals, url }) {
       };
     }
 
+    let highlightsTitle;
+
+    if (time === 'week') {
+      highlightsTitle = 'This Week';
+    } else if (time === 'all') {
+      highlightsTitle = 'All Time';
+    } else {
+      highlightsTitle = 'Today';
+    }
+
     let highlights = {
       clickCount: links[0].clicks[0].count.toString(),
-      clickTitle: 'Today',
+      clickTitle: highlightsTitle,
       topLocation: links[0].location[0].name.toString(),
       topSource: links[0].source[0].name.toString(),
       topDevice: links[0].device[0].name.toString()
