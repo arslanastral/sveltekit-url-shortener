@@ -18,13 +18,8 @@
           }
         };
       }
-    } else {
-      return {
-        props: {
-          error: 'Error loading highlights'
-        }
-      };
     }
+    return {};
   }
 </script>
 
