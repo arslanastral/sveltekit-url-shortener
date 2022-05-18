@@ -25,8 +25,14 @@
 
 <script>
   import { TodayData } from '$lib/stores/HighlightsStore';
-
+  import Highlights from '$lib/components/analytics/Highlights.svelte';
   export let data;
 
   $TodayData = data;
 </script>
+
+{#if $TodayData}
+  <Highlights {...$TodayData} />
+{:else}
+  <Highlights />
+{/if}
