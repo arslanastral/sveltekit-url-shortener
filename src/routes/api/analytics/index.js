@@ -130,12 +130,12 @@ export async function get({ locals, url }) {
 
     const links = await collection.aggregate(analyticsPipeline).toArray();
 
-    // if (links[0].clicks) {
-    //   return {
-    //     status: 200,
-    //     body: {}
-    //   };
-    // }
+    if (!links[0].clicks.length) {
+      return {
+        status: 200,
+        body: {}
+      };
+    }
 
     let highlights = {
       clickCount: links[0].clicks[0].count.toString(),
