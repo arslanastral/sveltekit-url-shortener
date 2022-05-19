@@ -152,7 +152,9 @@ export async function get({ locals, url }) {
       clickTitle: highlightsTitle,
       topLocation: links[0].location[0].name.toString(),
       topSource: links[0].source[0].name.toString(),
-      topDevice: links[0].device[0].name.toString()
+      topDevice: links[0].device[0].name.toString(),
+      topBrowser: links[0].browser[0].name.toString(),
+      topOS: links[0].OS[0].name.toString()
     };
 
     return {
