@@ -1,0 +1,12 @@
+import { useCollection } from '$lib/utils/useCollection';
+
+export async function get({ locals }) {
+  const currentUser = locals.user;
+
+  if (!currentUser.authenticated) {
+    return {
+      status: 401,
+      body: { error: 'Unauthorized' }
+    };
+  }
+}
