@@ -5,10 +5,8 @@ import bcrypt from 'bcryptjs';
 export async function get({ params, request }) {
   const id = params.getshorturl;
   const referer = request.headers.get('referer');
-  const refererURL = new URL(referer);
   const host = request.headers.get('host');
 
-  console.log(host);
   let location;
   let source;
 
@@ -18,10 +16,14 @@ export async function get({ params, request }) {
     location = request.headers.get('x-vercel-ip-country');
   }
 
-  if (refererURL.host === host) {
-    source = null;
-  } else {
-    source = referer;
+  if (referer) {
+    const refererURL = new URL(referer);
+
+    if (refererURL.host === host) {
+      source = null;
+    } else {
+      source = referer;
+    }
   }
 
   try {
@@ -46,6 +48,7 @@ export async function get({ params, request }) {
     }
 
     await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
+
     return {
       headers: { Location: link.long_url },
       status: 301
