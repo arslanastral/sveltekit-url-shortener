@@ -15,8 +15,8 @@ export async function get({ locals, url }) {
 
   let timeQuery = { timestamp: { $gte: timeFilter } };
 
-  let hourlyQuery = { hour: { $hour: '$timestamp' } };
-  let weeklyQuery = { day: { $dayOfMonth: '$timestamp' } };
+  let hourlyData = { hour: { $hour: '$timestamp' } };
+  let weeklyData = { day: { $dayOfMonth: '$timestamp' } };
 
   try {
     const collection = await useCollection('analytics');
@@ -43,7 +43,7 @@ export async function get({ locals, url }) {
 
       {
         $group: {
-          _id: { ...(time === 'weekly' && weeklyQuery), ...(time !== 'weekly' && hourlyQuery) },
+          _id: { ...(time === 'weekly' && weeklyData), ...(time !== 'weekly' && hourlyData) },
           count: { $sum: 1 }
         }
       },
@@ -57,11 +57,11 @@ export async function get({ locals, url }) {
       }
     ];
 
-    const links = await collection.aggregate(analyticsPipeline).toArray();
+    const activity = await collection.aggregate(analyticsPipeline).toArray();
 
     return {
       status: 200,
-      body: links
+      body: activity
     };
   } catch (error) {
     return {
