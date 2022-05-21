@@ -11,6 +11,10 @@ export async function get({ locals, url }) {
     };
   }
 
+  let timeFilter = new Date(new Date().setHours(0, 0, 0, 0));
+
+  let timeQuery = { timestamp: { $gte: timeFilter } };
+
   let hourlyQuery = { hour: { $hour: '$timestamp' } };
   let weeklyQuery = { day: { $dayOfMonth: '$timestamp' } };
 
@@ -31,9 +35,9 @@ export async function get({ locals, url }) {
     let analyticsPipeline = [
       {
         $match: {
-          'metadata.created_by': currentUser.email
+          'metadata.created_by': currentUser.email,
           //   ...(id && linkQuery),
-          //   ...(time !== 'all' && timeQuery)
+          ...(time !== 'weekly' && timeQuery)
         }
       },
 
