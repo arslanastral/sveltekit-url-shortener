@@ -1,7 +1,8 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function get({ locals }) {
+export async function get({ locals, url }) {
   const currentUser = locals.user;
+  const time = url.searchParams.get('time');
 
   if (!currentUser.authenticated) {
     return {
@@ -9,6 +10,9 @@ export async function get({ locals }) {
       body: { error: 'Unauthorized' }
     };
   }
+
+  let hourlyQuery = { hour: { $hour: '$timestamp' } };
+  let weeklyQuery = { day: { $dayOfMonth: '$timestamp' } };
 
   try {
     const collection = await useCollection('analytics');
@@ -35,7 +39,7 @@ export async function get({ locals }) {
 
       {
         $group: {
-          _id: { day: { $dayOfMonth: '$timestamp' }, hour: { $hour: '$timestamp' } },
+          _id: { ...(time === 'weekly' && weeklyQuery), ...(time !== 'weekly' && hourlyQuery) },
           count: { $sum: 1 }
         }
       },
