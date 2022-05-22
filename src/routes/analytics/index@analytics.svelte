@@ -48,7 +48,7 @@
 
 <div class="data-container flex">
   <UserLinks />
-  <Chart />
+  <Chart data={$Activity} />
 </div>
 
 <style>
