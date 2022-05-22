@@ -5,12 +5,14 @@
     { count: 4, hour: 4 },
     { count: 2, hour: 1 }
   ];
+
+  let chart;
 </script>
 
 <div class="chart-container flex">
   <div class="chart-title">Click Activity</div>
   <div class="chart">
-    <svg class="chart-svg">
+    <svg class="chart-svg" bind:this={chart}>
       <g class="x-axis" />
       <g class="y-axis" />
     </svg>
