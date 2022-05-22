@@ -28,9 +28,8 @@
 
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
-  import UserLinks from '$lib/components/analytics/UserLinks.svelte';
+
   import Links from '$lib/stores/LinkStore';
-  import Chart from '$lib/components/analytics/Chart.svelte';
 
   export let links;
 
@@ -58,10 +57,6 @@
     <PageNavigation {pages} />
     <div class="analytics-container flex">
       <slot />
-      <div class="data-container flex">
-        <UserLinks />
-        <Chart />
-      </div>
     </div>
   </div>
 </div>
@@ -94,11 +89,5 @@
     margin-top: 30px;
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .data-container {
-    width: 100%;
-    margin-top: 30px;
-    gap: 30px;
   }
 </style>
