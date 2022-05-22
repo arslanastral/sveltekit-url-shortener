@@ -1,6 +1,11 @@
 <div class="chart-container flex">
   <div class="chart-title">Click Activity</div>
-  <div class="chart">Hello</div>
+  <div class="chart">
+    <svg class="chart-svg">
+      <g class="x-axis" />
+      <g class="y-axis" />
+    </svg>
+  </div>
 </div>
 
 <style>
