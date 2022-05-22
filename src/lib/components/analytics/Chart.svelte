@@ -55,6 +55,26 @@
       .call(xAxis);
 
     svg.select('.x-axis').select('path').remove();
+
+    const yAxis = d3
+      .axisLeft(yScale)
+      .ticks(8)
+
+      .tickSize(-dimensions.width - 50);
+    svg
+      .select('.y-axis')
+      .attr('font-family', 'Inter')
+      .attr('font-size', '0.9rem')
+      .attr('color', '#615b5b')
+      .call(yAxis)
+      .call((g) => g.select('.domain').remove())
+      .call((g) =>
+        g
+          .selectAll('.tick:not(:first-of-type) line')
+          .attr('stroke-opacity', 0.5)
+          .attr('stroke-dasharray', '2,2')
+      )
+      .call((g) => g.selectAll('.tick text').attr('x', 35).attr('dy', -7));
   });
 </script>
 
