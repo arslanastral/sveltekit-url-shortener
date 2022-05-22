@@ -26,6 +26,12 @@
       .range([0, dimensions.width])
       .padding(0.4);
 
+    const yScale = d3
+      .scaleLinear()
+      .domain([d3.min(data.map((d) => d.count)), d3.max(data.map((d) => d.count))])
+      .range([dimensions.height, 0])
+      .nice();
+
     const xAxis = d3
       .axisBottom(xScale)
 
