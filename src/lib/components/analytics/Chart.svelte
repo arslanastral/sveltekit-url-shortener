@@ -25,6 +25,30 @@
       ])
       .range([0, dimensions.width])
       .padding(0.4);
+
+    const xAxis = d3
+      .axisBottom(xScale)
+
+      .tickValues(
+        xScale.domain().filter(function (d, i) {
+          const MIN_WIDTH = 70;
+          let skip = Math.round((MIN_WIDTH * data.length) / dimensions.width);
+          skip = Math.max(2, skip);
+          return !(i % skip);
+        })
+      )
+      .tickPadding(20);
+    svg
+      .select('.x-axis')
+      .style('transform', `translate(50px,${dimensions.height}px)`)
+      .attr('font-family', 'Inter')
+      .attr('font-size', '1rem')
+      .attr('color', '#615b5b')
+      .transition()
+      .duration(300)
+      .call(xAxis);
+
+    svg.select('.x-axis').select('path').remove();
   });
 </script>
 
