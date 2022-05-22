@@ -3,6 +3,7 @@ import { useCollection } from '$lib/utils/useCollection';
 export async function get({ locals, url }) {
   const currentUser = locals.user;
   const time = url.searchParams.get('time');
+  const id = url.searchParams.get('id');
 
   if (!currentUser.authenticated) {
     return {
@@ -14,6 +15,7 @@ export async function get({ locals, url }) {
   let timeFilter = new Date(new Date().setHours(0, 0, 0, 0));
 
   let timeQuery = { timestamp: { $gte: timeFilter } };
+  let linkQuery = { 'metadata.short_url': id };
 
   let hourlyData = { hour: { $hour: '$timestamp' } };
   let weeklyData = { day: { $dayOfMonth: '$timestamp' } };
@@ -21,22 +23,22 @@ export async function get({ locals, url }) {
   try {
     const collection = await useCollection('analytics');
 
-    // if (id) {
-    //   let link = await collection.findOne(linkQuery);
+    if (id) {
+      let link = await collection.findOne(linkQuery);
 
-    //   if (!link) {
-    //     return {
-    //       status: 404,
-    //       body: { error: 'Link not found' }
-    //     };
-    //   }
-    // }
+      if (!link) {
+        return {
+          status: 404,
+          body: { error: 'Link not found' }
+        };
+      }
+    }
 
     let analyticsPipeline = [
       {
         $match: {
           'metadata.created_by': currentUser.email,
-          //   ...(id && linkQuery),
+          ...(id && linkQuery),
           ...(time !== 'weekly' && timeQuery)
         }
       },
