@@ -10,6 +10,10 @@
   ];
 
   let chart;
+  const dimensions = {
+    width: 800,
+    height: 400
+  };
 
   onMount(() => {
     const svg = d3.select(chart);
