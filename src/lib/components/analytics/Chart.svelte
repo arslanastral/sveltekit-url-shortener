@@ -1,5 +1,6 @@
 <div class="chart-container flex">
   <div class="chart-title">Click Activity</div>
+  <div class="chart">Hello</div>
 </div>
 
 <style>
@@ -19,5 +20,11 @@
     font-size: 26px;
     letter-spacing: -0.045em;
     color: #000000;
+  }
+
+  .chart {
+    width: clamp(200px, 45vw, 800px);
+    height: 400px;
+    margin-top: 20px;
   }
 </style>
