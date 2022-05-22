@@ -1,9 +1,9 @@
 <script>
   let data = [
-    { count: 10, hour: 4 },
-    { count: 5, hour: 4 },
-    { count: 5, hour: 4 },
-    { count: 2, hour: 4 }
+    { count: 10, hour: 6 },
+    { count: 5, hour: 5 },
+    { count: 4, hour: 4 },
+    { count: 2, hour: 1 }
   ];
 </script>
 
