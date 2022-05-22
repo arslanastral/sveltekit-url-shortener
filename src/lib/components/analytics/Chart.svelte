@@ -32,4 +32,10 @@
     height: 400px;
     margin-top: 20px;
   }
+
+  .chart-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible !important;
+  }
 </style>
