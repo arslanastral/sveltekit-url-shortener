@@ -28,9 +28,6 @@
 
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
-
-  import { TodayData, WeeklyData, AllData } from '$lib/stores/HighlightsStore';
-  import { page } from '$app/stores';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Links from '$lib/stores/LinkStore';
   import Chart from '$lib/components/analytics/Chart.svelte';
