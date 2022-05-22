@@ -24,7 +24,7 @@
 
       const yScale = d3
         .scaleLinear()
-        .domain([0, d3.max(data.map((d) => d.count)) + 20])
+        .domain([0, d3.max(data.map((d) => d.count)) + 5])
         .range([dimensions.height, 0])
         .nice();
 
