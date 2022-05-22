@@ -11,7 +11,7 @@
 
   let chart;
   const dimensions = {
-    width: 800,
+    width: 700,
     height: 400
   };
 
@@ -75,6 +75,26 @@
           .attr('stroke-dasharray', '2,2')
       )
       .call((g) => g.selectAll('.tick text').attr('x', 35).attr('dy', -7));
+
+    svg
+      .selectAll('.bar')
+      .data(data)
+      .join('rect')
+      .attr('class', 'bar')
+      .style('transform', 'scale(1,-1)')
+      .attr('rx', 1)
+      .attr('x', (value) => xScale(value.hour) + 50)
+      .attr('y', -dimensions.height)
+      .attr('width', xScale.bandwidth())
+      .on('mouseover', function (event, d) {
+        d3.select(this).attr('fill', 'greenyellow');
+      })
+      .on('mouseout', function () {
+        d3.select(this).attr('fill', 'blue');
+      })
+      .transition()
+      .attr('height', (value) => dimensions.height - yScale(value.count))
+      .attr('fill', 'blue');
   });
 </script>
 
