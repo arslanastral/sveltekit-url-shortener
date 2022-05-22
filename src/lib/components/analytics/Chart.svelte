@@ -1,3 +1,12 @@
+<script>
+  let data = [
+    { count: 10, hour: 4 },
+    { count: 5, hour: 4 },
+    { count: 5, hour: 4 },
+    { count: 2, hour: 4 }
+  ];
+</script>
+
 <div class="chart-container flex">
   <div class="chart-title">Click Activity</div>
   <div class="chart">
