@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
 
-  let data = [{ count: 12, hour: 7 }];
+  export let data = [];
 
   let chart;
   const dimensions = {
