@@ -1,4 +1,7 @@
 <script>
+  import { onMount } from 'svelte';
+  import * as d3 from 'd3';
+
   let data = [
     { count: 10, hour: 6 },
     { count: 5, hour: 5 },
@@ -7,6 +10,10 @@
   ];
 
   let chart;
+
+  onMount(() => {
+    const svg = d3.select(chart);
+  });
 </script>
 
 <div class="chart-container flex">
