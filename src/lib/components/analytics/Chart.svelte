@@ -40,11 +40,12 @@
           })
         )
         .tickPadding(20);
+
       svg
         .select('.x-axis')
         .style('transform', `translate(50px,${dimensions.height}px)`)
-        .attr('font-family', 'Inter')
-        .attr('font-size', '1rem')
+        .style('font-family', 'Inter')
+        .style('font-size', '1rem')
         .attr('color', '#615b5b')
         .transition()
         .duration(300)
@@ -59,8 +60,8 @@
         .tickSize(-dimensions.width - 50);
       svg
         .select('.y-axis')
-        .attr('font-family', 'Inter')
-        .attr('font-size', '0.9rem')
+        .style('font-family', 'Inter')
+        .style('font-size', '0.9rem')
         .attr('color', '#615b5b')
         .call(yAxis)
         .call((g) => g.select('.domain').remove())
@@ -70,7 +71,7 @@
             .attr('stroke-opacity', 0.5)
             .attr('stroke-dasharray', '2,2')
         )
-        .call((g) => g.selectAll('.tick text').attr('x', 35).attr('dy', -7));
+        .call((g) => g.selectAll('.tick text').attr('x', 10).attr('dy', -7));
 
       svg
         .selectAll('.bar')
