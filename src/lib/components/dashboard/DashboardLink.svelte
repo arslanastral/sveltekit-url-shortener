@@ -48,7 +48,9 @@
     --link-width="clamp(200px, 40vw, 900px)"
   />
   <div class="date">{timeAgo(created_at)}</div>
-  <div class="clicks flex"><ClicksIcon /><span>{clicks}</span></div>
+  <div class="clicks flex">
+    <ClicksIcon width="30" height="30" /><span class="click-count">{clicks}</span>
+  </div>
   <div class="button-container flex">
     <LinkButton short_url={shortLink} {toggleQR} {toggleEdit} />
   </div>
@@ -84,10 +86,14 @@
   }
 
   .clicks {
-    width: 40px;
+    width: 80px;
     margin: 10px;
     align-items: flex-end;
     font-size: 19px;
+  }
+
+  .click-count {
+    line-height: 23px;
   }
 
   .button-container {
