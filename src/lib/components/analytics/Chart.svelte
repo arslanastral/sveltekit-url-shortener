@@ -7,7 +7,7 @@
   let chart;
   const dimensions = {
     width: 700,
-    height: 400
+    height: 370
   };
 
   onMount(() => {
@@ -45,11 +45,12 @@
         .select('.x-axis')
         .style('transform', `translate(50px,${dimensions.height}px)`)
         .style('font-family', 'Inter')
-        .style('font-size', '1rem')
-        .attr('color', '#615b5b')
+        .style('font-size', '0.9rem')
+        .attr('color', '#808385')
         .transition()
         .duration(300)
-        .call(xAxis);
+        .call(xAxis)
+        .call((g) => g.selectAll('.tick line').attr('color', '#e8ebed'));
 
       svg.select('.x-axis').select('path').remove();
 
@@ -62,7 +63,7 @@
         .select('.y-axis')
         .style('font-family', 'Inter')
         .style('font-size', '0.9rem')
-        .attr('color', '#615b5b')
+        .attr('color', '#808385')
         .call(yAxis)
         .call((g) => g.select('.domain').remove())
         .call((g) =>
@@ -70,6 +71,14 @@
             .selectAll('.tick:not(:first-of-type) line')
             .attr('stroke-opacity', 0.5)
             .attr('stroke-dasharray', '2,2')
+            .attr('color', '#b5b5b5')
+        )
+        .call((g) =>
+          g
+            .selectAll('.tick:first-of-type line')
+            // .attr('stroke-opacity', 0.5)
+            // .attr('stroke-dasharray', '2,2')
+            .attr('color', '#e8ebed')
         )
         .call((g) => g.selectAll('.tick text').attr('x', 10).attr('dy', -7));
 
