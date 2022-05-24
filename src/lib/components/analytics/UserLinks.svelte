@@ -16,7 +16,9 @@
           --margin="20px 20px 20px 20px"
           --width="70%"
         />
-        <div class="clicks flex"><ClicksIcon /><span>{link.clicks}</span></div>
+        <div class="clicks flex">
+          <ClicksIcon width="30" height="30" /><span class="click-count">{link.clicks}</span>
+        </div>
       </div>
     {/each}
   {:else}
@@ -48,9 +50,13 @@
   }
 
   .clicks {
-    width: 40px;
+    width: 80px;
     margin: 10px 30px 10px 10px;
     align-items: flex-end;
     font-size: 19px;
+  }
+
+  .click-count {
+    line-height: 22px;
   }
 </style>
