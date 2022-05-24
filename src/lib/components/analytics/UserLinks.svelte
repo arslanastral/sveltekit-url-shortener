@@ -53,6 +53,7 @@
     width: 80px;
     margin: 10px 30px 10px 10px;
     align-items: flex-end;
+    justify-content: flex-end;
     font-size: 19px;
   }
 
