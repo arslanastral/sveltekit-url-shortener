@@ -6,6 +6,7 @@
 </script>
 
 <div class="links-container">
+  <div class="header flex"><span>Links</span><span>Total Clicks</span></div>
   {#if $Links.length}
     {#each $Links as link, i}
       <div class="link-wrapper flex">
@@ -35,6 +36,19 @@
     border-radius: 24px;
     min-height: 550px;
     width: 40%;
+  }
+
+  .header {
+    border-radius: 24px 24px 0 0;
+    height: 80px;
+    width: 100%;
+    color: blue;
+    border-bottom: 1px solid #eaeaea;
+    justify-content: space-between;
+  }
+
+  .header span {
+    margin: 20px;
   }
 
   .link-wrapper {
