@@ -28,7 +28,7 @@ export function timeAgo(input) {
       if (time[0].type === 'literal') {
         return 'just now';
       } else {
-        let newTime = `${time[0].value}${SHORT_TIME_UNITS[time[0].unit]} ago`;
+        let newTime = `${time[0].value} ${SHORT_TIME_UNITS[time[0].unit]} ago`;
         return newTime;
       }
     }
