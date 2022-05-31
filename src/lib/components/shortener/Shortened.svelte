@@ -1,16 +1,26 @@
 <script>
   import QRButton from './QRButton.svelte';
   import Checkmark from '$lib/assets/Checkmark.svelte';
+
   import Copybutton from './CopyButton.svelte';
   import Button from '../Button.svelte';
+  import LockIcon from '$lib/assets/LockIcon.svelte';
 
   export let short_url = '';
+  export let isSecured = false;
   export let back = null;
 </script>
 
 <div class="shortened flex grow fadeIn">
   <div class="flex grow">
-    <Checkmark />
+    {#if !isSecured}
+      <Checkmark />
+    {:else}
+      <div class="secure-indicator flex">
+        <LockIcon width="17" height="17" fill="white" />
+      </div>
+    {/if}
+
     <a rel="external" class="shortened-link" href={short_url} target="_blank">{short_url}</a>
   </div>
 
@@ -40,6 +50,15 @@
 
   .shortened-link:hover {
     text-decoration: underline;
+  }
+
+  .secure-indicator {
+    margin-left: 15px;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #8ecc5d;
   }
 
   @media only screen and (max-width: 720px) {

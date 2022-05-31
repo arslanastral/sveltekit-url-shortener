@@ -10,6 +10,7 @@
   let long_url = '';
   let short_url = '';
   let isShortening = false;
+  let isSecured = false;
   let error = '';
   let password = '';
   let clicked = false;
@@ -36,6 +37,9 @@
 
     if (response.ok) {
       short_url = `${window.location.origin}/${json.short_url}`;
+      if (json.secured) {
+        isSecured = true;
+      }
       isShortening = false; // Stop Loading Animation
       let newLink = {
         long_url: json.long_url,
@@ -57,6 +61,7 @@
     short_url = '';
     long_url = '';
     password = '';
+    isSecured = false;
   };
 </script>
 
@@ -78,7 +83,7 @@
     {:else if error}
       <ErrorHandler {long_url} {error} {back} />
     {:else if short_url}
-      <Shortened {short_url} {back} />
+      <Shortened {short_url} {isSecured} {back} />
     {:else}
       <ShortenerInput bind:long_url bind:password />
     {/if}
