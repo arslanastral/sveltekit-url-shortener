@@ -107,12 +107,16 @@
 
 <div class="chart-container flex">
   <div class="chart-title">Click Activity</div>
-  <div class="chart">
-    <svg class="chart-svg" bind:this={chart}>
-      <g class="x-axis" />
-      <g class="y-axis" />
-    </svg>
-  </div>
+  {#if data.length}
+    <div class="chart">
+      <svg class="chart-svg" bind:this={chart}>
+        <g class="x-axis" />
+        <g class="y-axis" />
+      </svg>
+    </div>
+  {:else}
+    <span class="no-data">There is as yet insufficient data for a meaningful chart</span>
+  {/if}
 </div>
 
 <style>
@@ -123,6 +127,15 @@
     min-height: 550px;
     width: 60%;
     flex-direction: column;
+  }
+
+  .no-data {
+    margin-top: 160px;
+    font-size: 1.2rem;
+    font-family: Inter;
+    color: #808385;
+    text-align: center;
+    padding: 20px;
   }
 
   .chart-title {
