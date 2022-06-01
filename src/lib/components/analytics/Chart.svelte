@@ -16,7 +16,7 @@
 
       const xScale = d3
         .scaleBand()
-        .domain(d3.range(1, 24))
+        .domain(d3.range(1, d3.max(data.map((d) => d.hour)) + 1))
         .range([0, dimensions.width])
         .padding(0.4);
 
