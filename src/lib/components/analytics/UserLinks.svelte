@@ -37,6 +37,7 @@
     height: 550px;
     overflow-y: auto;
     width: 40%;
+    position: relative;
   }
 
   .header {
@@ -44,8 +45,14 @@
     height: 80px;
     width: 100%;
     color: blue;
+    background-color: white;
     border-bottom: 1px solid #eaeaea;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 
   .header span {
