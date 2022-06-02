@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
-  import { each } from 'svelte/internal';
 
   export let data = [];
 
@@ -30,7 +29,6 @@
 
       const xAxis = d3
         .axisBottom(xScale)
-
         .tickValues(
           xScale.domain().filter(function (d, i) {
             const MIN_WIDTH = 70;
