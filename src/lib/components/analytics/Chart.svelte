@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
+  import { each } from 'svelte/internal';
 
   export let data = [];
 
@@ -12,6 +13,7 @@
 
   onMount(() => {
     if (data.length) {
+      console.log(data);
       const svg = d3.select(chart);
 
       const xScale = d3
@@ -33,11 +35,17 @@
           xScale.domain().filter(function (d, i) {
             const MIN_WIDTH = 70;
             let skip = Math.round((MIN_WIDTH * data.length) / dimensions.width);
-            skip = Math.max(2, skip);
+            skip = Math.max(1, skip);
             return !(i % skip);
           })
         )
-        .tickPadding(20);
+        .tickPadding(20)
+        .tickFormat((t) => {
+          const date = new Date();
+          date.setHours(t, 0, 0, 0);
+          const formatTime = d3.timeFormat('%H:%M %p');
+          return formatTime(date);
+        });
 
       svg
         .select('.x-axis')
