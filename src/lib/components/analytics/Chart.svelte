@@ -12,7 +12,11 @@
   };
 
   onMount(() => {
-    let timeFormat = $page.url.pathname === '/analytics' ? '%I:%M %p' : '%A';
+    let timeFormat = {
+      '/analytics': '%I:%M %p',
+      '/analytics/weekly': '%A',
+      '/analytics/all': '%x'
+    };
 
     if (data.length) {
       console.log(data);
@@ -44,7 +48,7 @@
         .tickFormat((t) => {
           const date = new Date(t);
           date.setMinutes(0, 0, 0);
-          const formatTime = d3.timeFormat(timeFormat);
+          const formatTime = d3.timeFormat(timeFormat[$page.url.pathname]);
           return formatTime(date);
         });
 

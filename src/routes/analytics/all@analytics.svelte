@@ -7,14 +7,17 @@
       };
     }
 
-    const res = await fetch('/api/analytics?time=all');
+    const res = await fetch('/api/analytics?time=week');
+    const activity = await fetch('/api/analytics/activity?time=weekly');
 
-    if (res.ok) {
+    if (res.ok && activity.ok) {
       const data = await res.json();
+      const activityData = await activity.json();
       if (Object.keys(data).length) {
         return {
           props: {
-            data
+            data,
+            activityData
           }
         };
       }
@@ -28,10 +31,12 @@
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
-
+  import { Activity } from '$lib/stores/ActivityStore';
   export let data;
+  export let activityData;
 
   $AllData = data;
+  $Activity = activityData;
 </script>
 
 {#if $AllData}
@@ -42,7 +47,7 @@
 
 <div class="data-container flex">
   <UserLinks />
-  <Chart />
+  <Chart data={$Activity} />
 </div>
 
 <style>
