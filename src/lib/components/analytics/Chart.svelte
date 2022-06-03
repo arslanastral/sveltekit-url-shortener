@@ -12,12 +12,14 @@
 
   onMount(() => {
     if (data.length) {
+      // console.log(d3.max(['"2022-06-03T05:05:16.271Z"', '"2022-06-01T05:05:16.271Z"']));
+
       console.log(data);
       const svg = d3.select(chart);
 
       const xScale = d3
         .scaleBand()
-        .domain(d3.range(1, d3.max(data.map((d) => d.hour)) + 1))
+        .domain(data.map((d) => d.date))
         .range([0, dimensions.width])
         .padding(0.4);
 
@@ -33,15 +35,15 @@
           xScale.domain().filter(function (d, i) {
             const MIN_WIDTH = 70;
             let skip = Math.round((MIN_WIDTH * data.length) / dimensions.width);
-            skip = Math.max(1, skip);
+            skip = Math.max(2, skip);
             return !(i % skip);
           })
         )
         .tickPadding(20)
         .tickFormat((t) => {
-          const date = new Date();
-          date.setHours(t, 0, 0, 0);
-          const formatTime = d3.timeFormat('%H:%M %p');
+          const date = new Date(t);
+          date.setMinutes(0, 0, 0);
+          const formatTime = d3.timeFormat('%I:%M %p');
           return formatTime(date);
         });
 
@@ -93,7 +95,7 @@
         .attr('class', 'bar')
         .style('transform', 'scale(1,-1)')
         .attr('rx', 1)
-        .attr('x', (value) => xScale(value.hour) + 50)
+        .attr('x', (value) => xScale(value.date) + 50)
         .attr('y', -dimensions.height)
         .attr('width', xScale.bandwidth())
         .on('mouseover', function (event, d) {
