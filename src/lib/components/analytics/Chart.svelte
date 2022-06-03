@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import * as d3 from 'd3';
+  import { page } from '$app/stores';
 
   export let data = [];
 
@@ -11,9 +12,9 @@
   };
 
   onMount(() => {
-    if (data.length) {
-      // console.log(d3.max(['"2022-06-03T05:05:16.271Z"', '"2022-06-01T05:05:16.271Z"']));
+    let timeFormat = $page.url.pathname === '/analytics' ? '%I:%M %p' : '%A';
 
+    if (data.length) {
       console.log(data);
       const svg = d3.select(chart);
 
@@ -43,7 +44,7 @@
         .tickFormat((t) => {
           const date = new Date(t);
           date.setMinutes(0, 0, 0);
-          const formatTime = d3.timeFormat('%I:%M %p');
+          const formatTime = d3.timeFormat(timeFormat);
           return formatTime(date);
         });
 
