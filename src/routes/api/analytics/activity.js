@@ -46,15 +46,15 @@ export async function get({ locals, url }) {
       {
         $group: {
           _id: { ...(time === 'weekly' && weeklyData), ...(time !== 'weekly' && hourlyData) },
-          count: { $sum: 1 }
+          count: { $sum: 1 },
+          date: { $first: '$timestamp' }
         }
       },
       {
         $project: {
           _id: 0,
           count: '$count',
-          day: '$_id.day',
-          hour: '$_id.hour'
+          date: '$date'
         }
       }
     ];
