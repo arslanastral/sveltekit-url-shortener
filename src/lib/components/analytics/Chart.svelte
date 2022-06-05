@@ -19,12 +19,25 @@
     };
 
     if (data.length) {
-      console.log(data);
+      let minDate = d3.min(data, (d) => new Date(d.date).setMinutes(0, 0, 0));
+      let maxDate = d3.max(data, (d) => new Date(d.date).setMinutes(0, 0, 0));
+
+      let min = d3.timeDay.floor(new Date(minDate));
+      let max = d3.timeDay.ceil(new Date(maxDate));
+
+      let minDay = d3.timeDay.floor(new Date(new Date().setDate(new Date().getDate() - 6)));
+
+      const domain = {
+        '/analytics': d3.timeHour.range(min, max, 1).map((d) => d.toString()),
+        '/analytics/weekly': d3.timeDay.range(minDay, max, 1).map((d) => d.toString()),
+        '/analytics/all': d3.timeDay.range(minDay, max, 1).map((d) => d.toString())
+      };
+
       const svg = d3.select(chart);
 
       const xScale = d3
         .scaleBand()
-        .domain(data.map((d) => d.date))
+        .domain(domain[$page.url.pathname])
         .range([0, dimensions.width])
         .padding(0.4);
 
@@ -38,9 +51,9 @@
         .axisBottom(xScale)
         .tickValues(
           xScale.domain().filter(function (d, i) {
-            const MIN_WIDTH = 70;
+            const MIN_WIDTH = 60;
             let skip = Math.round((MIN_WIDTH * data.length) / dimensions.width);
-            skip = Math.max(2, skip);
+            skip = Math.max(3, skip);
             return !(i % skip);
           })
         )
@@ -100,7 +113,16 @@
         .attr('class', 'bar')
         .style('transform', 'scale(1,-1)')
         .attr('rx', 1)
-        .attr('x', (value) => xScale(value.date) + 50)
+        .attr('x', (value) => {
+          let xDate = {
+            '/analytics': new Date(new Date(value.date).setMinutes(0, 0, 0)).toString(),
+            '/analytics/weekly': new Date(new Date(value.date).setHours(0, 0, 0, 0)).toString(),
+            '/analytics/all': new Date(new Date(value.date).setHours(0, 0, 0, 0)).toString()
+          };
+
+          // console.log(new Date(new Date(value.date).setMinutes(0, 0, 0)).toString());
+          return xScale(xDate[$page.url.pathname]) + 50;
+        })
         .attr('y', -dimensions.height)
         .attr('width', xScale.bandwidth())
         .on('mouseover', function (event, d) {
