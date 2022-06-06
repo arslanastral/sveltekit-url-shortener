@@ -12,32 +12,37 @@
   };
 
   onMount(() => {
-    let timeFormat = {
-      '/analytics': '%I:%M %p',
-      '/analytics/weekly': '%A',
-      '/analytics/all': '%x'
-    };
-
     if (data.length) {
-      let minDate = d3.min(data, (d) => new Date(d.date).setMinutes(0, 0, 0));
-      let maxDate = d3.max(data, (d) => new Date(d.date).setMinutes(0, 0, 0));
+      let minDate = d3.min(data, (d) => new Date(d.date));
+      let maxDate = d3.max(data, (d) => new Date(d.date));
 
-      let min = d3.timeDay.floor(new Date(minDate));
-      let max = d3.timeDay.ceil(new Date(maxDate));
+      let minTime = d3.timeDay.floor(minDate);
+      let maxTime = d3.timeDay.ceil(maxDate);
+      let week = d3.timeDay.floor(d3.timeDay.offset(new Date(), -6));
 
-      let minDay = d3.timeDay.floor(new Date(new Date().setDate(new Date().getDate() - 6)));
-
-      const domain = {
-        '/analytics': d3.timeHour.range(min, max, 1).map((d) => d.toString()),
-        '/analytics/weekly': d3.timeDay.range(minDay, max, 1).map((d) => d.toString()),
-        '/analytics/all': d3.timeDay.range(minDay, max, 1).map((d) => d.toString())
+      let config = {
+        '/analytics': {
+          tickFormat: '%I:%M %p',
+          domain: d3.timeHour.range(minTime, maxTime, 1).map((d) => d.toString()),
+          ticks: 3
+        },
+        '/analytics/weekly': {
+          tickFormat: '%A',
+          domain: d3.timeDay.range(week, maxTime, 1).map((d) => d.toString()),
+          ticks: 1
+        },
+        '/analytics/all': {
+          tickFormat: '%x',
+          domain: d3.timeDay.range(week, maxTime, 1).map((d) => d.toString()),
+          ticks: 2
+        }
       };
 
       const svg = d3.select(chart);
 
       const xScale = d3
         .scaleBand()
-        .domain(domain[$page.url.pathname])
+        .domain(config[$page.url.pathname].domain)
         .range([0, dimensions.width])
         .padding(0.4);
 
@@ -51,9 +56,9 @@
         .axisBottom(xScale)
         .tickValues(
           xScale.domain().filter(function (d, i) {
-            const MIN_WIDTH = 60;
+            const MIN_WIDTH = 70;
             let skip = Math.round((MIN_WIDTH * data.length) / dimensions.width);
-            skip = Math.max(3, skip);
+            skip = Math.max(config[$page.url.pathname].ticks, skip);
             return !(i % skip);
           })
         )
@@ -61,7 +66,7 @@
         .tickFormat((t) => {
           const date = new Date(t);
           date.setMinutes(0, 0, 0);
-          const formatTime = d3.timeFormat(timeFormat[$page.url.pathname]);
+          const formatTime = d3.timeFormat(config[$page.url.pathname].tickFormat);
           return formatTime(date);
         });
 
@@ -119,8 +124,6 @@
             '/analytics/weekly': new Date(new Date(value.date).setHours(0, 0, 0, 0)).toString(),
             '/analytics/all': new Date(new Date(value.date).setHours(0, 0, 0, 0)).toString()
           };
-
-          // console.log(new Date(new Date(value.date).setMinutes(0, 0, 0)).toString());
           return xScale(xDate[$page.url.pathname]) + 50;
         })
         .attr('y', -dimensions.height)
