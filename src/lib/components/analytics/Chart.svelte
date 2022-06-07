@@ -23,7 +23,7 @@
       let config = {
         '/analytics': {
           tickFormat: '%I:%M %p',
-          domain: d3.timeHour.range(minTime, maxTime, 1).map((d) => d.toString()),
+          domain: d3.timeHour.range(minTime, maxDate, 1).map((d) => d.toString()),
           ticks: 3
         },
         '/analytics/weekly': {
