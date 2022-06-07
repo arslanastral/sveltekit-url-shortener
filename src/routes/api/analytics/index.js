@@ -1,4 +1,5 @@
 import { useCollection } from '$lib/utils/useCollection';
+import { countryCodes } from '$lib/utils/countryCodes';
 
 export async function get({ locals, url }) {
   const currentUser = locals.user;
@@ -147,10 +148,19 @@ export async function get({ locals, url }) {
       highlightsTitle = 'Today';
     }
 
+    let location = links[0].location[0].name.toString();
+    let countryName;
+
+    if (import.meta.env.VITE_NODE_ENV === 'development') {
+      countryName = 'Saturn';
+    } else {
+      countryName = countryCodes.filter((country) => country.code === location)[0].name;
+    }
+
     let highlights = {
       clickCount: links[0].clicks[0].count.toString(),
       clickTitle: highlightsTitle,
-      topLocation: links[0].location[0].name.toString(),
+      topLocation: countryName,
       topSource: links[0].source[0].name.toString(),
       topDevice: links[0].device[0].name.toString(),
       topBrowser: links[0].browser[0].name.toString(),
