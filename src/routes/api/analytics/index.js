@@ -148,6 +148,8 @@ export async function get({ locals, url }) {
       highlightsTitle = 'Today';
     }
 
+    //TODO REFACTOR
+
     let location = links[0].location[0].name.toString();
     let countryName;
 
@@ -157,11 +159,26 @@ export async function get({ locals, url }) {
       countryName = countryCodes.filter((country) => country.code === location)[0].name;
     }
 
+    let source = links[0].source[0].name.toString();
+    let sourceName;
+
+    if (source === 'Direct') {
+      sourceName = 'Direct';
+    } else {
+      let host = new URL(source).host;
+
+      if (host.slice(0, 4) === 'www.') {
+        sourceName = host.slice(4, host.length);
+      } else {
+        sourceName = host;
+      }
+    }
+
     let highlights = {
       clickCount: links[0].clicks[0].count.toString(),
       clickTitle: highlightsTitle,
       topLocation: countryName,
-      topSource: links[0].source[0].name.toString(),
+      topSource: sourceName,
       topDevice: links[0].device[0].name.toString(),
       topBrowser: links[0].browser[0].name.toString(),
       topOS: links[0].OS[0].name.toString()
