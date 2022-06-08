@@ -10,8 +10,7 @@
 
   onMount(async () => {
     if (!qr) {
-      qr = await generateQRCode(short_url);
-      container.appendChild(qr);
+      qr = await generateQRCode(short_url, container);
     }
   });
 </script>
