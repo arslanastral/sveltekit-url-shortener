@@ -1,6 +1,17 @@
 <script>
   import { onMount } from 'svelte';
-  import * as d3 from 'd3';
+  import {
+    select,
+    min,
+    max,
+    timeDay,
+    timeHour,
+    scaleLinear,
+    scaleBand,
+    axisBottom,
+    axisLeft,
+    timeFormat
+  } from 'd3';
   import { page } from '$app/stores';
 
   export let data = [];
@@ -13,47 +24,44 @@
 
   onMount(() => {
     if (data.length) {
-      let minDate = d3.min(data, (d) => new Date(d.date));
-      let maxDate = d3.max(data, (d) => new Date(d.date));
+      let minDate = min(data, (d) => new Date(d.date));
+      let maxDate = max(data, (d) => new Date(d.date));
 
-      let minTime = d3.timeDay.floor(minDate);
-      let maxTime = d3.timeDay.ceil(maxDate);
-      let week = d3.timeDay.floor(d3.timeDay.offset(new Date(), -6));
+      let minTime = timeDay.floor(minDate);
+      let maxTime = timeDay.ceil(maxDate);
+      let week = timeDay.floor(timeDay.offset(new Date(), -6));
 
       let config = {
         '/analytics': {
           tickFormat: '%I:%M %p',
-          domain: d3.timeHour.range(minTime, maxDate, 1).map((d) => d.toString()),
+          domain: timeHour.range(minTime, maxDate, 1).map((d) => d.toString()),
           ticks: 3
         },
         '/analytics/weekly': {
           tickFormat: '%A',
-          domain: d3.timeDay.range(week, maxTime, 1).map((d) => d.toString()),
+          domain: timeDay.range(week, maxTime, 1).map((d) => d.toString()),
           ticks: 1
         },
         '/analytics/all': {
           tickFormat: '%x',
-          domain: d3.timeDay.range(week, maxTime, 1).map((d) => d.toString()),
+          domain: timeDay.range(week, maxTime, 1).map((d) => d.toString()),
           ticks: 2
         }
       };
 
-      const svg = d3.select(chart);
+      const svg = select(chart);
 
-      const xScale = d3
-        .scaleBand()
+      const xScale = scaleBand()
         .domain(config[$page.url.pathname].domain)
         .range([0, dimensions.width])
         .padding(0.4);
 
-      const yScale = d3
-        .scaleLinear()
-        .domain([0, d3.max(data.map((d) => d.count)) + 5])
+      const yScale = scaleLinear()
+        .domain([0, max(data.map((d) => d.count)) + 5])
         .range([dimensions.height, 0])
         .nice();
 
-      const xAxis = d3
-        .axisBottom(xScale)
+      const xAxis = axisBottom(xScale)
         .tickValues(
           xScale.domain().filter(function (d, i) {
             const MIN_WIDTH = 70;
@@ -66,7 +74,7 @@
         .tickFormat((t) => {
           const date = new Date(t);
           date.setMinutes(0, 0, 0);
-          const formatTime = d3.timeFormat(config[$page.url.pathname].tickFormat);
+          const formatTime = timeFormat(config[$page.url.pathname].tickFormat);
           return formatTime(date);
         });
 
@@ -83,8 +91,7 @@
 
       svg.select('.x-axis').select('path').remove();
 
-      const yAxis = d3
-        .axisLeft(yScale)
+      const yAxis = axisLeft(yScale)
         .ticks(8)
 
         .tickSize(-dimensions.width - 50);
@@ -129,10 +136,10 @@
         .attr('y', -dimensions.height)
         .attr('width', xScale.bandwidth())
         .on('mouseover', function (event, d) {
-          d3.select(this).attr('fill', 'greenyellow');
+          select(this).attr('fill', 'greenyellow');
         })
         .on('mouseout', function () {
-          d3.select(this).attr('fill', 'blue');
+          select(this).attr('fill', 'blue');
         })
         .transition()
         .attr('height', (value) => dimensions.height - yScale(value.count))
