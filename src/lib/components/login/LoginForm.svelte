@@ -69,16 +69,18 @@
       autocomplete="on"
     />
     <div class="error">{error}</div>
-    <Button
-      title={buttonTitle}
-      onClickFunc={handleSubmit}
-      type="button"
-      --font-size="20px"
-      --padding="8px 18px"
-      --color="white"
-      --bg-color="#3E5DFF"
-      --border-radius="6px"
-    />
+    <div class="auth-button flex grow">
+      <Button
+        title={buttonTitle}
+        onClickFunc={handleSubmit}
+        type="button"
+        --font-size="20px"
+        --padding="8px 18px"
+        --color="white"
+        --bg-color="#3E5DFF"
+        --border-radius="6px"
+      />
+    </div>
   </div>
 </div>
 
@@ -119,5 +121,10 @@
     color: red;
     font-size: 14px;
     margin: 10px 0;
+  }
+
+  .auth-button {
+    margin-top: 20px;
+    justify-content: center;
   }
 </style>
