@@ -9,6 +9,15 @@ export async function post({ request }) {
   const { name, email, password } = await body;
   const userEmail = email.toString().trim().toLowerCase();
 
+  if (!name) {
+    return {
+      status: 400,
+      body: {
+        error: 'Name cannot be empty'
+      }
+    };
+  }
+
   if (!userEmail || !password) {
     return {
       status: 400,

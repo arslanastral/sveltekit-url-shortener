@@ -68,6 +68,7 @@
       required
       autocomplete="on"
     />
+    <div class="error">{error}</div>
     <Button
       title={buttonTitle}
       onClickFunc={handleSubmit}
@@ -112,5 +113,11 @@
     border-radius: 6px;
     width: 100%;
     margin-bottom: 20px;
+  }
+
+  .error {
+    color: red;
+    font-size: 14px;
+    margin: 10px 0;
   }
 </style>
