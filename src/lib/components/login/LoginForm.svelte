@@ -113,8 +113,4 @@
     width: 100%;
     margin-bottom: 20px;
   }
-
-  input:focus {
-    outline: none;
-  }
 </style>
