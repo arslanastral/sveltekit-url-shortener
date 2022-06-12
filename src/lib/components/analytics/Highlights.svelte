@@ -28,5 +28,6 @@
 <style>
   .highlights {
     gap: 20px;
+    flex-wrap: wrap;
   }
 </style>
