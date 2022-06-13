@@ -18,7 +18,7 @@
 
   let chart;
   const dimensions = {
-    width: 700,
+    width: 350,
     height: 370
   };
 
@@ -168,7 +168,8 @@
     box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.25);
     border-radius: 24px;
     min-height: 550px;
-    width: 60%;
+    width: clamp(350px, 45vw, 900px);
+    min-width: 350px;
     flex-direction: column;
   }
 
@@ -191,7 +192,7 @@
   }
 
   .chart {
-    width: clamp(200px, 45vw, 800px);
+    width: clamp(350px, 45vw, 800px);
     height: 400px;
     margin-top: 20px;
   }

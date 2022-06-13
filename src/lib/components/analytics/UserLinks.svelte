@@ -36,7 +36,8 @@
     border-radius: 24px;
     height: 550px;
     overflow-y: auto;
-    width: 40%;
+    width: clamp(350px, 45vw, 600px);
+    min-width: 350px;
     position: relative;
   }
 
