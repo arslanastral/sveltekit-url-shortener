@@ -36,7 +36,7 @@
         '/analytics': {
           tickFormat: '%I:%M %p',
           domain: timeHour.range(minTime, maxDate, 1).map((d) => d.toString()),
-          ticks: 3
+          ticks: 2
         },
         '/analytics/weekly': {
           tickFormat: '%A',
@@ -46,7 +46,7 @@
         '/analytics/all': {
           tickFormat: '%x',
           domain: timeDay.range(week, maxTime, 1).map((d) => d.toString()),
-          ticks: 2
+          ticks: 1
         }
       };
 
@@ -65,13 +65,13 @@
       const xAxis = axisBottom(xScale)
         .tickValues(
           xScale.domain().filter(function (d, i) {
-            const MIN_WIDTH = 20;
-            let skip = Math.round((MIN_WIDTH * data.length) / width);
+            const MIN_WIDTH = 100;
+            let skip = Math.round((MIN_WIDTH * xScale.domain().length) / width);
             skip = Math.max(config[$page.url.pathname].ticks, skip);
             return !(i % skip);
           })
         )
-        .tickPadding(20)
+        .tickPadding(15)
         .tickFormat((t) => {
           const date = new Date(t);
           date.setMinutes(0, 0, 0);
