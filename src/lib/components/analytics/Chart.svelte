@@ -30,7 +30,7 @@
 
       let minTime = timeDay.floor(minDate);
       let maxTime = timeDay.ceil(maxDate);
-      let week = timeDay.floor(timeDay.offset(new Date(), -6));
+      let week = timeDay.floor(timeDay.offset(new Date(), -7));
 
       let config = {
         '/analytics': {
