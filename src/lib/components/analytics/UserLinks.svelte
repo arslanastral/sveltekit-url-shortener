@@ -83,4 +83,10 @@
   .click-count {
     line-height: 22px;
   }
+
+  @media only screen and (max-width: 835px) {
+    .links-container {
+      width: clamp(350px, 85vw, 900px);
+    }
+  }
 </style>
