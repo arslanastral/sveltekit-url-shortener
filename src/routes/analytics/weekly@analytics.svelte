@@ -56,4 +56,10 @@
     margin-top: 30px;
     gap: 30px;
   }
+
+  @media only screen and (max-width: 835px) {
+    .data-container {
+      flex-direction: column;
+    }
+  }
 </style>
