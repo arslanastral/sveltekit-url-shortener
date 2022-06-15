@@ -69,14 +69,15 @@
     width: 100%;
     border-bottom: 1px solid #eaeaea;
     justify-content: space-evenly;
+    flex-wrap: wrap;
   }
 
-  .index {
+  /* .index {
     width: 20px;
     height: 20px;
     font-weight: 500;
     font-size: 19px;
-  }
+  } */
 
   .date {
     width: clamp(80px, 40vw, 100px);
