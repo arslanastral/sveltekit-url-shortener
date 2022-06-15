@@ -46,4 +46,10 @@
     letter-spacing: -0.045em;
     color: #000000;
   }
+
+  @media only screen and (max-width: 560px) {
+    .container {
+      width: 100%;
+    }
+  }
 </style>
