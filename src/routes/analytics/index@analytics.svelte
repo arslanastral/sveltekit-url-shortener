@@ -7,7 +7,7 @@
       };
     }
 
-    const res = await fetch('/api/analytics');
+    const res = await fetch('/api/analytics/highlights');
     const activity = await fetch('/api/analytics/activity');
 
     if (res.ok && activity.ok) {
