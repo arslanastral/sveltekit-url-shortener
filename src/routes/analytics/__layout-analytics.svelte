@@ -27,11 +27,13 @@
 </script>
 
 <script>
-  import PageNavigation from '$lib/components/PageNavigation.svelte';
+  import Button from '$lib/components/Button.svelte';
 
+  import PageNavigation from '$lib/components/PageNavigation.svelte';
   import Links from '$lib/stores/LinkStore';
 
   export let links;
+  export let id;
 
   $Links = links;
 
@@ -53,7 +55,13 @@
 
 <div class="fadeIn wrapper">
   <div class="flex container">
-    <div class="main-title">Analytics</div>
+    <div class="link-header flex">
+      <div class="main-title">Analytics</div>
+      {#if id}
+        <div class="current-sample">{`ky.vercel.app/${id}`}</div>
+      {/if}
+    </div>
+
     <PageNavigation {pages} />
     <div class="analytics-container flex">
       <slot />
@@ -77,11 +85,21 @@
     flex-direction: column;
   }
 
-  .main-title {
+  .link-header {
     width: 100%;
+  }
+
+  .main-title {
     font-size: 35px;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 10px 10px 10px 0;
+  }
+
+  .current-sample {
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 2px 12px;
   }
 
   .analytics-container {
