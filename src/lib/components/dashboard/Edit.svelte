@@ -27,7 +27,6 @@
 
     let updatedLink = await res.json();
 
-    console.log(updatedLink);
     if (res.ok) {
       let linkLocation = $Links.findIndex((link) => link.short_url === shortId);
       $Links[linkLocation] = updatedLink;
@@ -35,7 +34,6 @@
       toggleEditClose();
     } else {
       loading = false;
-      console.log(updatedLink.error);
     }
   }
 
