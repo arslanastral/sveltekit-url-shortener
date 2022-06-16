@@ -1,15 +1,29 @@
 <script>
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
-
+  import { CurrentSample, Activity } from '$lib/stores/ActivityStore';
   import Links from '$lib/stores/LinkStore';
   import Link from '../Link.svelte';
+
+  const handleSampleSelect = async (link) => {
+    $CurrentSample = link;
+
+    const activitySample = await fetch(`/api/analytics/activity?id=${link}`);
+
+    let activity = await activitySample.json();
+
+    if (activitySample.ok) {
+      $Activity = activity;
+    } else {
+      $Activity = [];
+    }
+  };
 </script>
 
 <div class="links-container">
   <div class="header flex"><span>Links</span><span>Total Clicks</span></div>
   {#if $Links.length}
     {#each $Links as link, i}
-      <div class="link-wrapper flex">
+      <div on:click={() => handleSampleSelect(link.short_url)} class="link-wrapper flex">
         <Link
           secured={link.secured}
           long_url={link.long_url}
