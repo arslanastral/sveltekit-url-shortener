@@ -25,19 +25,17 @@
       }
     });
 
-    let json = await res.json();
-    const links = await fetch('/api/user/links');
-    let newLinks = await links.json();
+    let updatedLink = await res.json();
 
-    console.log(json);
-    if (res.ok && links.ok) {
-      console.log('newlinks:', newLinks);
-      $Links = newLinks;
+    console.log(updatedLink);
+    if (res.ok) {
+      let linkLocation = $Links.findIndex((link) => link.short_url === shortId);
+      $Links[linkLocation] = updatedLink;
       loading = false;
       toggleEditClose();
     } else {
       loading = false;
-      console.log(json.error);
+      console.log(updatedLink.error);
     }
   }
 
