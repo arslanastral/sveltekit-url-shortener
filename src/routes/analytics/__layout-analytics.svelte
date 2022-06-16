@@ -27,13 +27,11 @@
 </script>
 
 <script>
-  import Button from '$lib/components/Button.svelte';
-
   import PageNavigation from '$lib/components/PageNavigation.svelte';
+  import { CurrentSample } from '$lib/stores/ActivityStore';
   import Links from '$lib/stores/LinkStore';
 
   export let links;
-  export let id;
 
   $Links = links;
 
@@ -57,8 +55,8 @@
   <div class="flex container">
     <div class="link-header flex">
       <div class="main-title">Analytics</div>
-      {#if id}
-        <div class="current-sample">{`ky.vercel.app/${id}`}</div>
+      {#if $CurrentSample}
+        <div class="current-sample">{`ky.vercel.app/${$CurrentSample}`}</div>
       {/if}
     </div>
 
