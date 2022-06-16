@@ -16,31 +16,31 @@ export async function patch({ locals, request }) {
   try {
     const collection = await useCollection('urls');
 
-    const link = await collection.findOne({ short_url: short_url });
+    let updated = await collection.findOneAndUpdate(
+      { short_url: short_url },
+      { $set: { tags: tags } },
+      { returnDocument: 'after' }
+    );
 
-    if (link) {
-      let updated = await collection.findOneAndUpdate(
-        { short_url: short_url },
-        { $set: { tags: tags } }
-      );
+    let updatedLink = updated.value;
 
-      let updatedLink = updated.value;
-
+    if (!updatedLink) {
       return {
-        status: 200,
-        body: {
-          long_url: updatedLink.long_url,
-          short_url: updatedLink.short_url,
-          clicks: updatedLink.clicks,
-          secured: updatedLink.secured,
-          tags: updatedLink.tags,
-          created_at: updatedLink._id.getTimestamp()
-        }
+        status: 400,
+        body: { error: 'No such link' }
       };
     }
+
     return {
-      status: 400,
-      body: { error: 'No such link' }
+      status: 200,
+      body: {
+        long_url: updatedLink.long_url,
+        short_url: updatedLink.short_url,
+        clicks: updatedLink.clicks,
+        secured: updatedLink.secured,
+        tags: updatedLink.tags,
+        created_at: updatedLink._id.getTimestamp()
+      }
     };
   } catch (error) {
     return {
