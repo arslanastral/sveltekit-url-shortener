@@ -28,6 +28,8 @@
     let json = await res.json();
     const links = await fetch('/api/user/links');
     let newLinks = await links.json();
+
+    console.log(json);
     if (res.ok && links.ok) {
       console.log('newlinks:', newLinks);
       $Links = newLinks;
