@@ -19,19 +19,22 @@ export async function patch({ locals, request }) {
     const link = await collection.findOne({ short_url: short_url });
 
     if (link) {
-      let updatedLink = await collection.updateOne(
+      let updated = await collection.findOneAndUpdate(
         { short_url: short_url },
         { $set: { tags: tags } }
       );
 
-      console.log(updatedLink);
+      let updatedLink = updated.value;
 
       return {
         status: 200,
         body: {
-          short_url: updatedLink.short_url,
           long_url: updatedLink.long_url,
-          tags: updatedLink.tags
+          short_url: updatedLink.short_url,
+          clicks: updatedLink.clicks,
+          secured: updatedLink.secured,
+          tags: updatedLink.tags,
+          created_at: updatedLink._id.getTimestamp()
         }
       };
     }
