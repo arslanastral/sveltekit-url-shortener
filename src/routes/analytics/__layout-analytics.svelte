@@ -28,6 +28,7 @@
 
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
+  import { page } from '$app/stores';
   import { CurrentSample } from '$lib/stores/ActivityStore';
   import Links from '$lib/stores/LinkStore';
 
@@ -56,7 +57,7 @@
     <div class="link-header flex">
       <div class="main-title">Analytics</div>
       {#if $CurrentSample}
-        <div class="current-sample">{`ky.vercel.app/${$CurrentSample}`}</div>
+        <div class="current-sample">{`${$page.url.origin}/${$CurrentSample}`}</div>
       {/if}
     </div>
 
