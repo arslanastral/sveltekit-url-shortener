@@ -12,7 +12,13 @@ export async function get({ locals, url }) {
     };
   }
 
-  let timeFilter = new Date(new Date().setHours(0, 0, 0, 0));
+  let timeFilter;
+
+  if (time === 'weekly') {
+    timeFilter = new Date(new Date().setDate(new Date().getDate() - 7));
+  } else {
+    timeFilter = new Date(new Date().setHours(0, 0, 0, 0));
+  }
 
   let timeQuery = { timestamp: { $gte: timeFilter } };
   let linkQuery = { 'metadata.short_url': id };
@@ -39,13 +45,16 @@ export async function get({ locals, url }) {
         $match: {
           'metadata.created_by': currentUser.email,
           ...(id && linkQuery),
-          ...(time !== 'weekly' && timeQuery)
+          ...(time !== 'all' && timeQuery)
         }
       },
 
       {
         $group: {
-          _id: { ...(time === 'weekly' && weeklyData), ...(time !== 'weekly' && hourlyData) },
+          _id: {
+            ...((time === 'weekly' || time === 'all') && weeklyData),
+            ...(time !== 'weekly' && hourlyData)
+          },
           count: { $sum: 1 },
           date: { $first: '$timestamp' }
         }
