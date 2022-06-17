@@ -50,6 +50,10 @@
       path: '/analytics/all'
     }
   ];
+
+  const removeSample = () => {
+    $CurrentSample = '';
+  };
 </script>
 
 <div class="fadeIn wrapper">
@@ -58,6 +62,7 @@
       <div class="main-title">Analytics</div>
       {#if $CurrentSample}
         <div class="current-sample">{`${$page.url.origin}/${$CurrentSample}`}</div>
+        <button on:click={removeSample}>Close</button>
       {/if}
     </div>
 
