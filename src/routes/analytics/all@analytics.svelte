@@ -40,9 +40,9 @@
 </script>
 
 {#if $AllData}
-  <Highlights {...$AllData} />
+  <Highlights {...$AllData} clickTitle="All Time" />
 {:else}
-  <Highlights />
+  <Highlights clickTitle="All Time" />
 {/if}
 
 <div class="data-container flex">

@@ -40,9 +40,9 @@
 </script>
 
 {#if $WeeklyData}
-  <Highlights {...$WeeklyData} />
+  <Highlights {...$WeeklyData} clickTitle="This Week" />
 {:else}
-  <Highlights />
+  <Highlights clickTitle="This Week" />
 {/if}
 
 <div class="data-container flex">

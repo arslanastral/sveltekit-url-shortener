@@ -42,9 +42,9 @@
 </script>
 
 {#if Object.keys($TodayData).length}
-  <Highlights {...$TodayData} />
+  <Highlights {...$TodayData} clickTitle="Today" />
 {:else}
-  <Highlights />
+  <Highlights clickTitle="Today" />
 {/if}
 
 <div class="data-container flex">
