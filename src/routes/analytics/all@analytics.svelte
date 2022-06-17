@@ -13,7 +13,7 @@
     if (highlights.ok && activity.ok) {
       const highlightsdata = await highlights.json();
       const activityData = await activity.json();
-      if (Object.keys(highlights).length) {
+      if (Object.keys(highlightsdata).length) {
         return {
           props: {
             highlightsdata,
@@ -34,6 +34,8 @@
   import { Activity } from '$lib/stores/ActivityStore';
   export let highlightsdata;
   export let activityData;
+
+  console.log(highlightsdata);
 
   $AllHighlightsData = highlightsdata;
   $HighlightsData = $AllHighlightsData;
