@@ -5,6 +5,9 @@
   import Link from '../Link.svelte';
 
   const handleSampleSelect = async (link) => {
+    if ($CurrentSample === link) {
+      return;
+    }
     $CurrentSample = link;
 
     const activitySample = await fetch(`/api/analytics/activity?id=${link}`);
