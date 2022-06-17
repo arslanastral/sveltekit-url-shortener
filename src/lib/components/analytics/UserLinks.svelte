@@ -80,6 +80,10 @@
     justify-content: space-between;
   }
 
+  .link-wrapper:hover {
+    background-color: #e7e7e7;
+  }
+
   .no-links {
     font-size: 20px;
     color: #636363;
