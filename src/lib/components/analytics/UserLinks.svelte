@@ -1,6 +1,7 @@
 <script>
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
   import { CurrentSample, Activity, LinkActivity } from '$lib/stores/ActivityStore';
+  import { TodayData } from '$lib/stores/HighlightsStore';
   import Links from '$lib/stores/LinkStore';
   import Link from '../Link.svelte';
 
@@ -11,14 +12,19 @@
     $CurrentSample = link;
 
     const activitySample = await fetch(`/api/analytics/activity?id=${link}`);
+    const highlightsSample = await fetch(`/api/analytics/highlights?id=${link}`);
 
     let activity = await activitySample.json();
+    let highlights = await highlightsSample.json();
 
-    if (activitySample.ok) {
+    if (activitySample.ok && highlightsSample.ok) {
       $LinkActivity = activity;
       $Activity = $LinkActivity;
+
+      $TodayData = highlights;
     } else {
       $Activity = [];
+      $TodayData = {};
     }
   };
 </script>
