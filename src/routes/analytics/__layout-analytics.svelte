@@ -29,7 +29,7 @@
 <script>
   import PageNavigation from '$lib/components/PageNavigation.svelte';
   import { page } from '$app/stores';
-  import { CurrentSample } from '$lib/stores/ActivityStore';
+  import { Activity, AllActivity, CurrentSample } from '$lib/stores/ActivityStore';
   import Links from '$lib/stores/LinkStore';
 
   export let links;
@@ -53,6 +53,7 @@
 
   const removeSample = () => {
     $CurrentSample = '';
+    $Activity = $AllActivity;
   };
 </script>
 
