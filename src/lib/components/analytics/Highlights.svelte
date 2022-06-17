@@ -8,7 +8,7 @@
   import DataPoint from '$lib/components/analytics/DataPoint.svelte';
 
   export let clickCount = '0';
-  export let clickTitle = 'Today';
+  export let clickTitle = '';
   export let topLocation = 'No Data';
   export let topSource = 'No Data';
   export let topDevice = 'No Data';
