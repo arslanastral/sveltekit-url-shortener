@@ -7,16 +7,16 @@
       };
     }
 
-    const res = await fetch('/api/analytics/highlights');
+    const highlights = await fetch('/api/analytics/highlights');
     const activity = await fetch('/api/analytics/activity');
 
-    if (res.ok && activity.ok) {
-      const data = await res.json();
+    if (highlights.ok && activity.ok) {
+      const highlightsdata = await highlights.json();
       const activityData = await activity.json();
-      if (Object.keys(data).length) {
+      if (Object.keys(highlightsdata).length) {
         return {
           props: {
-            data,
+            highlightsdata,
             activityData
           }
         };
@@ -27,24 +27,24 @@
 </script>
 
 <script>
-  import { TodayData, CurrentData } from '$lib/stores/HighlightsStore';
+  import { TodayHighlights, CurrentHighlights } from '$lib/stores/HighlightsStore';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
   import { Activity, AllActivity } from '$lib/stores/ActivityStore';
 
-  export let data;
+  export let highlightsdata;
   export let activityData;
 
-  $TodayData = data;
-  $CurrentData = $TodayData;
+  $TodayHighlights = highlightsdata;
+  $CurrentHighlights = $TodayHighlights;
 
   $AllActivity = activityData;
   $Activity = $AllActivity;
 </script>
 
-{#if Object.keys($CurrentData).length}
-  <Highlights {...$CurrentData} clickTitle="Today" />
+{#if Object.keys($CurrentHighlights).length}
+  <Highlights {...$CurrentHighlights} clickTitle="Today" />
 {:else}
   <Highlights clickTitle="Today" />
 {/if}
