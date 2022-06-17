@@ -1,15 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const TodayHighlights = writable({});
+export const HighlightsData = writable({});
 
-export const WeeklyHighlights = writable({});
+export const AllHighlightsData = writable({});
 
-export const AllHighlights = writable({});
-
-export const TodayHighlightsLink = writable({});
-
-export const WeeklyHighlightsLink = writable({});
-
-export const AllHighlightsLink = writable({});
-
-export const CurrentHighlights = writable({});
+export const LinkHighlightsData = writable({});
