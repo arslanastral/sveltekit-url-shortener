@@ -30,6 +30,7 @@
   import PageNavigation from '$lib/components/PageNavigation.svelte';
   import { page } from '$app/stores';
   import { Activity, AllActivity, CurrentSample } from '$lib/stores/ActivityStore';
+  import { HighlightsData, AllHighlightsData } from '$lib/stores/HighlightsStore';
   import Links from '$lib/stores/LinkStore';
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
 
@@ -53,6 +54,8 @@
   ];
 
   const removeSample = () => {
+    $HighlightsData = $AllHighlightsData;
+
     $CurrentSample = '';
     $Activity = $AllActivity;
   };
