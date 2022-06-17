@@ -31,7 +31,7 @@
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
-  import { Activity } from '$lib/stores/ActivityStore';
+  import { Activity, AllActivity } from '$lib/stores/ActivityStore';
   export let highlightsdata;
   export let activityData;
 
@@ -40,7 +40,8 @@
   $AllHighlightsData = highlightsdata;
   $HighlightsData = $AllHighlightsData;
 
-  $Activity = activityData;
+  $AllActivity = activityData;
+  $Activity = $AllActivity;
 </script>
 
 {#if Object.keys($HighlightsData).length}
