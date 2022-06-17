@@ -15,7 +15,7 @@ export async function get({ locals, url }) {
 
   let timeFilter;
 
-  if (time === 'week') {
+  if (time === 'weekly') {
     timeFilter = new Date(new Date().setDate(new Date().getDate() - 7));
   } else {
     timeFilter = new Date(new Date().setHours(0, 0, 0, 0));
@@ -140,7 +140,7 @@ export async function get({ locals, url }) {
 
     let highlightsTitle;
 
-    if (time === 'week') {
+    if (time === 'weekly') {
       highlightsTitle = 'This Week';
     } else if (time === 'all') {
       highlightsTitle = 'All Time';
