@@ -27,7 +27,7 @@
 </script>
 
 <script>
-  import { WeeklyHighlights, CurrentHighlights } from '$lib/stores/HighlightsStore';
+  import { HighlightsData, AllHighlightsData } from '$lib/stores/HighlightsStore';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
@@ -35,14 +35,14 @@
   export let highlightsdata;
   export let activityData;
 
-  $WeeklyHighlights = highlightsdata;
+  $AllHighlightsData = highlightsdata;
+  $HighlightsData = $AllHighlightsData;
 
-  $CurrentHighlights = $WeeklyHighlights;
   $Activity = activityData;
 </script>
 
-{#if $CurrentHighlights}
-  <Highlights {...$CurrentHighlights} clickTitle="This Week" />
+{#if $HighlightsData}
+  <Highlights {...$HighlightsData} clickTitle="This Week" />
 {:else}
   <Highlights clickTitle="This Week" />
 {/if}

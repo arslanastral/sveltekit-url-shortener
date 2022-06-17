@@ -27,7 +27,7 @@
 </script>
 
 <script>
-  import { TodayHighlights, CurrentHighlights } from '$lib/stores/HighlightsStore';
+  import { HighlightsData, AllHighlightsData } from '$lib/stores/HighlightsStore';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
@@ -36,15 +36,15 @@
   export let highlightsdata;
   export let activityData;
 
-  $TodayHighlights = highlightsdata;
-  $CurrentHighlights = $TodayHighlights;
+  $AllHighlightsData = highlightsdata;
+  $HighlightsData = $AllHighlightsData;
 
   $AllActivity = activityData;
   $Activity = $AllActivity;
 </script>
 
-{#if Object.keys($CurrentHighlights).length}
-  <Highlights {...$CurrentHighlights} clickTitle="Today" />
+{#if Object.keys($HighlightsData).length}
+  <Highlights {...$HighlightsData} clickTitle="Today" />
 {:else}
   <Highlights clickTitle="Today" />
 {/if}
