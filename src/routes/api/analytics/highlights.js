@@ -138,16 +138,6 @@ export async function get({ locals, url }) {
       };
     }
 
-    let highlightsTitle;
-
-    if (time === 'weekly') {
-      highlightsTitle = 'This Week';
-    } else if (time === 'all') {
-      highlightsTitle = 'All Time';
-    } else {
-      highlightsTitle = 'Today';
-    }
-
     //TODO REFACTOR
 
     let location = links[0].location[0].name.toString();
@@ -176,7 +166,6 @@ export async function get({ locals, url }) {
 
     let highlights = {
       clickCount: links[0].clicks[0].count.toString(),
-      clickTitle: highlightsTitle,
       topLocation: countryName,
       topSource: sourceName,
       topDevice: links[0].device[0].name.toString(),

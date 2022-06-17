@@ -41,7 +41,7 @@
   $Activity = $AllActivity;
 </script>
 
-{#if $TodayData}
+{#if Object.keys($TodayData).length}
   <Highlights {...$TodayData} />
 {:else}
   <Highlights />
