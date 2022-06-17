@@ -1,6 +1,6 @@
 <script>
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
-  import { CurrentSample, Activity } from '$lib/stores/ActivityStore';
+  import { CurrentSample, Activity, LinkActivity } from '$lib/stores/ActivityStore';
   import Links from '$lib/stores/LinkStore';
   import Link from '../Link.svelte';
 
@@ -12,7 +12,8 @@
     let activity = await activitySample.json();
 
     if (activitySample.ok) {
-      $Activity = activity;
+      $LinkActivity = activity;
+      $Activity = $LinkActivity;
     } else {
       $Activity = [];
     }
