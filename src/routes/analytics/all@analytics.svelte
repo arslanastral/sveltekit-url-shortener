@@ -43,7 +43,7 @@
   $Activity = activityData;
 </script>
 
-{#if $HighlightsData}
+{#if Object.keys($HighlightsData).length}
   <Highlights {...$HighlightsData} clickTitle="All Time" />
 {:else}
   <Highlights clickTitle="All Time" />
