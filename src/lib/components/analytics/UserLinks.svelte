@@ -1,9 +1,32 @@
 <script>
+  import { page } from '$app/stores';
+
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
   import { CurrentSample, Activity, LinkActivity } from '$lib/stores/ActivityStore';
   import { LinkHighlightsData, HighlightsData } from '$lib/stores/HighlightsStore';
   import Links from '$lib/stores/LinkStore';
   import Link from '../Link.svelte';
+
+  let pages = [
+    {
+      name: 'Today',
+      path: '/analytics'
+    },
+    {
+      name: 'This Week',
+      path: '/analytics/weekly'
+    },
+    {
+      name: 'All Time',
+      path: '/analytics/all'
+    }
+  ];
+
+  let queryStrings = {
+    '/analytics': '',
+    '/analytics/weekly': '&time=weekly',
+    '/analytics/all': '&time=all'
+  };
 
   const handleSampleSelect = async (link) => {
     if ($CurrentSample === link) {
@@ -11,8 +34,12 @@
     }
     $CurrentSample = link;
 
-    const activitySample = await fetch(`/api/analytics/activity?id=${link}`);
-    const highlightsSample = await fetch(`/api/analytics/highlights?id=${link}`);
+    const activitySample = await fetch(
+      `/api/analytics/activity?id=${link}${queryStrings[$page.url.pathname]}`
+    );
+    const highlightsSample = await fetch(
+      `/api/analytics/highlights?id=${link}${queryStrings[$page.url.pathname]}`
+    );
 
     let activity = await activitySample.json();
     let highlights = await highlightsSample.json();
