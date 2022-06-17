@@ -31,11 +31,12 @@
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
-  import { Activity, AllActivity } from '$lib/stores/ActivityStore';
+  import { Activity, AllActivity, CurrentSample } from '$lib/stores/ActivityStore';
+
+  $CurrentSample = '';
+
   export let highlightsdata;
   export let activityData;
-
-  console.log(highlightsdata);
 
   $AllHighlightsData = highlightsdata;
   $HighlightsData = $AllHighlightsData;
