@@ -1,7 +1,7 @@
 <script>
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
   import { CurrentSample, Activity, LinkActivity } from '$lib/stores/ActivityStore';
-  import { TodayData } from '$lib/stores/HighlightsStore';
+  import { TodayHighlights, CurrentHighlights } from '$lib/stores/HighlightsStore';
   import Links from '$lib/stores/LinkStore';
   import Link from '../Link.svelte';
 
@@ -21,10 +21,11 @@
       $LinkActivity = activity;
       $Activity = $LinkActivity;
 
-      $TodayData = highlights;
+      $TodayHighlights = highlights;
+      $CurrentHighlights = $TodayHighlights;
     } else {
       $Activity = [];
-      $TodayData = {};
+      $CurrentHighlights = {};
     }
   };
 </script>
