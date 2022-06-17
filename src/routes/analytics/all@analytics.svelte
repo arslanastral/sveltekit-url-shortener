@@ -7,16 +7,16 @@
       };
     }
 
-    const res = await fetch('/api/analytics/highlights?time=all');
+    const highlights = await fetch('/api/analytics/highlights?time=all');
     const activity = await fetch('/api/analytics/activity?time=weekly');
 
-    if (res.ok && activity.ok) {
-      const data = await res.json();
+    if (highlights.ok && activity.ok) {
+      const highlightsdata = await highlights.json();
       const activityData = await activity.json();
-      if (Object.keys(data).length) {
+      if (Object.keys(highlights).length) {
         return {
           props: {
-            data,
+            highlightsdata,
             activityData
           }
         };
@@ -27,20 +27,22 @@
 </script>
 
 <script>
-  import { AllData } from '$lib/stores/HighlightsStore';
+  import { AllHighlights, CurrentHighlights } from '$lib/stores/HighlightsStore';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
   import Chart from '$lib/components/analytics/Chart.svelte';
   import { Activity } from '$lib/stores/ActivityStore';
-  export let data;
+  export let highlightsdata;
   export let activityData;
 
-  $AllData = data;
+  $AllHighlights = highlightsdata;
+  $CurrentHighlights = $AllHighlights;
+
   $Activity = activityData;
 </script>
 
-{#if $AllData}
-  <Highlights {...$AllData} clickTitle="All Time" />
+{#if $CurrentHighlights}
+  <Highlights {...$CurrentHighlights} clickTitle="All Time" />
 {:else}
   <Highlights clickTitle="All Time" />
 {/if}
