@@ -55,9 +55,9 @@
 
   const removeSample = () => {
     $HighlightsData = $AllHighlightsData;
-
-    $CurrentSample = '';
+    console.log($AllActivity);
     $Activity = $AllActivity;
+    $CurrentSample = '';
   };
 </script>
 
