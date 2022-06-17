@@ -31,6 +31,7 @@
   import { page } from '$app/stores';
   import { Activity, AllActivity, CurrentSample } from '$lib/stores/ActivityStore';
   import Links from '$lib/stores/LinkStore';
+  import CloseIcon from '$lib/assets/CloseIcon.svelte';
 
   export let links;
 
@@ -62,8 +63,12 @@
     <div class="link-header flex">
       <div class="main-title">Analytics</div>
       {#if $CurrentSample}
-        <div class="current-sample">{`${$page.url.origin}/${$CurrentSample}`}</div>
-        <button on:click={removeSample}>Close</button>
+        <div class="current-sample flex fadeIn">
+          <div>{`${$page.url.origin}/${$CurrentSample}`}</div>
+          <button class="flex" on:click={removeSample} aria-label="close link sample"
+            ><CloseIcon width="22" height="22" /></button
+          >
+        </div>
       {/if}
     </div>
 
@@ -104,7 +109,7 @@
     background-color: white;
     border-radius: 20px;
     border: 1px solid black;
-    padding: 2px 12px;
+    padding: 1px 10px;
   }
 
   .analytics-container {
@@ -112,5 +117,16 @@
     margin-top: 30px;
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  button {
+    margin-left: 6px;
+    padding: 0;
+    border: none;
+    transition: transform ease-out 0.1s;
+  }
+
+  button:active {
+    transform: scale(0.9);
   }
 </style>
