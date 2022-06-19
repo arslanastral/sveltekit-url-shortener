@@ -1,5 +1,5 @@
 <script>
-  import { RecentStore } from '$lib/stores/RecentStore';
+  import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
   import ShortenerInput from './ShortenerInput.svelte';
   import Shortening from './Shortening.svelte';
   import ErrorHandler from './ErrorHandler.svelte';
@@ -49,6 +49,8 @@
       };
       if (!$session.user) {
         $RecentStore = [newLink, ...$RecentStore];
+      } else {
+        $UserRecentStore = [newLink, ...$UserRecentStore];
       }
     } else {
       isShortening = false; // Stop Loading Animation if there was an error
