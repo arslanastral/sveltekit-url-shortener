@@ -1,5 +1,5 @@
 <script>
-  import RecentStore from '$lib/stores/RecentStore';
+  import { RecentStore } from '$lib/stores/RecentStore';
   import ShortenerInput from './ShortenerInput.svelte';
   import Shortening from './Shortening.svelte';
   import ErrorHandler from './ErrorHandler.svelte';
