@@ -159,7 +159,7 @@
 
 <div class="chart-container flex">
   <div class="chart-title">Click Activity</div>
-  {#if data.length}
+  {#if data && data.length}
     <div class="chart" bind:clientWidth={width}>
       <svg class="chart-svg" bind:this={chart}>
         <g class="x-axis" />
