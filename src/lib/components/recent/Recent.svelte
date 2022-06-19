@@ -1,5 +1,5 @@
 <script>
-  import { RecentStore } from '$lib/stores/RecentStore';
+  import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
   import ActivityIcon from '$lib/assets/ActivityIcon.svelte';
   import RecentLink from './RecentLink.svelte';
   import { timeAgo } from '$lib/utils/timeAgo';
