@@ -52,7 +52,7 @@
     <ClicksIcon width="30" height="30" /><span class="click-count">{clicks}</span>
   </div>
   <div class="button-container flex">
-    <LinkButton short_url={shortLink} {toggleQR} {toggleEdit} />
+    <LinkButton short_url={shortLink} {toggleQR} {toggleEdit} canEdit={true} />
   </div>
 </div>
 

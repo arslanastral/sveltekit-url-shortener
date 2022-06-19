@@ -9,6 +9,7 @@
   export let short_url;
   export let toggleQR;
   export let toggleEdit;
+  export let canEdit = false;
 
   let copied = false;
 
@@ -21,8 +22,8 @@
   };
 </script>
 
-<div class:border-multi={$session.user} class="button-container">
-  {#if $session.user}
+<div class="button-container">
+  {#if canEdit}
     <button on:click={toggleEdit} class="edit-button" aria-label="edit"
       ><EditIcon fill="#B8B2BF" /></button
     >{/if}<button on:click={toggleQR} class="qr-button" aria-label="QR-code"
