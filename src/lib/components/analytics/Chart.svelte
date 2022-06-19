@@ -24,7 +24,7 @@
   $: drawChart(chart, data, width - 150, height);
 
   const drawChart = (chart, data, width, height) => {
-    if (data.length) {
+    if (data && data.length) {
       let minDate = min(data, (d) => new Date(d.date));
       let maxDate = max(data, (d) => new Date(d.date));
 
