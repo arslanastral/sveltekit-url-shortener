@@ -29,7 +29,12 @@
   <Hero />
   <Shortener />
   <Stats {...$StatsStore} />
-  <Recent />
+  {#if $session.user}
+    <Recent data={$UserRecentStore} />
+  {:else}
+    <Recent data={$RecentStore} />
+  {/if}
+
   <Backdrop />
 </div>
 
