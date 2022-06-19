@@ -17,6 +17,8 @@
   import Recent from '$lib/components/recent/Recent.svelte';
   import Backdrop from '$lib/components/Backdrop.svelte';
   import StatsStore from '$lib/stores/StatsStore';
+  import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
+  import { session } from '$app/stores';
 
   export let StatsData;
 

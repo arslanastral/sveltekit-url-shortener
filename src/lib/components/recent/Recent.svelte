@@ -1,16 +1,16 @@
 <script>
-  import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
   import ActivityIcon from '$lib/assets/ActivityIcon.svelte';
   import RecentLink from './RecentLink.svelte';
   import { timeAgo } from '$lib/utils/timeAgo';
-  import { session } from '$app/stores';
+
+  export let data;
 </script>
 
-{#if $RecentStore.length}
+{#if data.length}
   <div class="fadeIn recent-container">
     <div class="flex"><ActivityIcon /><span class="recent-title">History</span></div>
     <div class="recent-links-container">
-      {#each $RecentStore as link}
+      {#each data as link}
         <RecentLink
           date={timeAgo(link.created_at)}
           isSecure={link.secured}
