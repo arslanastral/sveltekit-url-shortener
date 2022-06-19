@@ -3,6 +3,7 @@
   import ActivityIcon from '$lib/assets/ActivityIcon.svelte';
   import RecentLink from './RecentLink.svelte';
   import { timeAgo } from '$lib/utils/timeAgo';
+  import { session } from '$app/stores';
 </script>
 
 {#if $RecentStore.length}
