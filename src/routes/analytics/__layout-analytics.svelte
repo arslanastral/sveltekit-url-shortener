@@ -54,9 +54,14 @@
   ];
 
   const removeSample = () => {
-    $HighlightsData = $AllHighlightsData;
-    console.log($AllActivity);
-    $Activity = $AllActivity;
+    if ($AllHighlightsData) {
+      $HighlightsData = $AllHighlightsData;
+    }
+
+    if ($AllActivity) {
+      $Activity = $AllActivity;
+    }
+
     $CurrentSample = '';
   };
 </script>
