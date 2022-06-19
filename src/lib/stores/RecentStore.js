@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 
 export const RecentStore = writable((browser && JSON.parse(localStorage.getItem('history'))) || []);
 export const UserRecentStore = writable(
-  (browser && JSON.parse(localStorage.getItem('userhistory'))) || []
+  (browser && JSON.parse(localStorage.getItem('userHistory'))) || []
 );
 
 if (browser) {
@@ -12,6 +12,6 @@ if (browser) {
   });
 
   UserRecentStore.subscribe((value) => {
-    localStorage.history = JSON.stringify(value);
+    localStorage.userHistory = JSON.stringify(value);
   });
 }
