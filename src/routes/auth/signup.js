@@ -18,11 +18,20 @@ export async function post({ request }) {
     };
   }
 
-  if (!userEmail || !password) {
+  if (!userEmail) {
     return {
       status: 400,
       body: {
-        error: 'Missing email or password'
+        error: 'Missing email'
+      }
+    };
+  }
+
+  if (!password) {
+    return {
+      status: 400,
+      body: {
+        error: 'Missing password'
       }
     };
   }
