@@ -22,10 +22,12 @@
         <span class="detail">{$session.user.email}</span>
       </div>
 
-      <div class="user-info">
-        <span class="title">Joined</span>
-        <span class="detail">{$session.user.joined}</span>
-      </div>
+      {#if $session.user.joined}
+        <div class="user-info">
+          <span class="title">Joined</span>
+          <span class="detail">{$session.user.joined}</span>
+        </div>
+      {/if}
 
       <Button
         title="Edit"
