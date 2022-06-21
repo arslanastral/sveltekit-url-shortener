@@ -93,8 +93,8 @@
 <style>
   .container {
     background-color: white;
-    width: 386px;
-    height: 494px;
+    width: 400px;
+    height: 596px;
     box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.25);
     border-radius: 18px;
     flex-direction: column;
