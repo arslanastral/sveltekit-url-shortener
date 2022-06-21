@@ -7,5 +7,5 @@
   title="Log in to Ky"
   buttonTitle="Log In"
   endpoint="/auth/login"
-  redirect="/"
+  redirect="/dashboard"
 />

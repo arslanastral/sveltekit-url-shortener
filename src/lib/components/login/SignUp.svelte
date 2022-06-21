@@ -7,5 +7,5 @@
   title="Create Your Account"
   buttonTitle="Sign Up"
   endpoint="/auth/signup"
-  redirect="/"
+  redirect="/dashboard"
 />
