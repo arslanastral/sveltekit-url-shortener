@@ -1,21 +1,5 @@
-<script context="module">
-  export async function load({ session }) {
-    if (session.user) {
-      return {
-        status: 302,
-        redirect: '/'
-      };
-    }
-    return {};
-  }
-</script>
-
-<script>
-  import LogIn from '$lib/components/login/LogIn.svelte';
-</script>
-
 <div class="wrapper">
-  <LogIn />
+  <slot />
 </div>
 
 <style>
@@ -26,13 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 90px);
+    height: 100vh;
     min-width: 100vw;
-  }
-
-  @media only screen and (max-height: 610px) {
-    .wrapper {
-      align-items: flex-start;
-    }
   }
 </style>
