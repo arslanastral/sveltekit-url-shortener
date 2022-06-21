@@ -83,9 +83,9 @@
     </div>
 
     {#if isForSignUp}
-      <div>Already have an account? <a href="/login">Login</a></div>
+      <div class="existing-auth">Already have an account? <a href="/login">Log in</a></div>
     {:else}
-      <div>Dont have an account? <a href="/signup">Signup</a></div>
+      <div class="existing-auth">Dont have an account? <a href="/signup">Sign up</a></div>
     {/if}
   </div>
 </div>
@@ -127,6 +127,10 @@
     color: red;
     font-size: 14px;
     margin: 10px 0;
+  }
+
+  .existing-auth {
+    margin-top: 15px;
   }
 
   .auth-button {
