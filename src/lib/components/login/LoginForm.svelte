@@ -1,7 +1,7 @@
 <script>
   import { goto } from '$app/navigation';
   import { session } from '$app/stores';
-
+  import Logo from '../Logo.svelte';
   export let title;
   export let endpoint;
   export let redirect = '/';
@@ -38,7 +38,10 @@
 </script>
 
 <div class="fadeIn flex container">
-  <div class="title">{title}</div>
+  <div class="info-header flex">
+    <Logo />
+    <div class="title">{title}</div>
+  </div>
 
   <div class="login-container">
     {#if isForSignUp}
@@ -92,6 +95,10 @@
     border-radius: 18px;
     flex-direction: column;
     justify-content: space-around;
+  }
+
+  .info-header {
+    flex-direction: column;
   }
 
   .title {
