@@ -1,7 +1,6 @@
 <script>
   import { goto } from '$app/navigation';
   import { session } from '$app/stores';
-  import Button from '../Button.svelte';
 
   export let title;
   export let endpoint;
@@ -74,9 +73,13 @@
     </button>
   </div>
   {#if isForSignUp}
-    <div class="existing-auth">Already have an account? <a href="/login">Log in</a></div>
+    <div class="existing-auth">
+      Already have an account? <a class="link" href="/login">Log in</a>
+    </div>
   {:else}
-    <div class="existing-auth">Dont have an account? <a href="/signup">Sign up</a></div>
+    <div class="existing-auth">
+      Dont have an account? <a class="link" href="/signup">Sign up</a>
+    </div>
   {/if}
 </div>
 
@@ -121,6 +124,16 @@
 
   .existing-auth {
     margin-top: 15px;
+    color: grey;
+  }
+
+  .link {
+    color: #3e5dff;
+    text-decoration: none;
+  }
+
+  .link:hover {
+    text-decoration: underline;
   }
 
   .auth-button {
@@ -133,5 +146,10 @@
     color: white;
     height: 40px;
     border-radius: 6px;
+    transition: transform ease-out 0.09s;
+  }
+
+  .auth-button:active {
+    transform: scale(0.97);
   }
 </style>
