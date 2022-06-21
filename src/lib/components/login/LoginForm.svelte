@@ -69,25 +69,15 @@
       autocomplete="on"
     />
     <div class="error">{error}</div>
-    <div class="auth-button flex grow">
-      <Button
-        title={buttonTitle}
-        onClickFunc={handleSubmit}
-        type="button"
-        --font-size="20px"
-        --padding="8px 18px"
-        --color="white"
-        --bg-color="#3E5DFF"
-        --border-radius="6px"
-      />
-    </div>
-
-    {#if isForSignUp}
-      <div class="existing-auth">Already have an account? <a href="/login">Log in</a></div>
-    {:else}
-      <div class="existing-auth">Dont have an account? <a href="/signup">Sign up</a></div>
-    {/if}
+    <button on:click={handleSubmit} class="auth-button flex grow">
+      {buttonTitle}
+    </button>
   </div>
+  {#if isForSignUp}
+    <div class="existing-auth">Already have an account? <a href="/login">Log in</a></div>
+  {:else}
+    <div class="existing-auth">Dont have an account? <a href="/signup">Sign up</a></div>
+  {/if}
 </div>
 
 <style>
@@ -134,7 +124,14 @@
   }
 
   .auth-button {
+    font-size: 18px;
+    width: 100%;
     margin-top: 20px;
     justify-content: center;
+    border: none;
+    background-color: #3e5dff;
+    color: white;
+    height: 40px;
+    border-radius: 6px;
   }
 </style>
