@@ -4,7 +4,7 @@
 
 <LoginForm
   isForSignUp={false}
-  title="Log in to Ky"
+  title="Welcome Back"
   buttonTitle="Log In"
   endpoint="/auth/login"
   redirect="/dashboard"
