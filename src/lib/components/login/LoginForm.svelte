@@ -81,6 +81,12 @@
         --border-radius="6px"
       />
     </div>
+
+    {#if isForSignUp}
+      <div>Already have an account? <a href="/login">Login</a></div>
+    {:else}
+      <div>Dont have an account? <a href="/signup">Signup</a></div>
+    {/if}
   </div>
 </div>
 
