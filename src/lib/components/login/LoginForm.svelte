@@ -1,6 +1,7 @@
 <script>
   import { goto } from '$app/navigation';
   import { session } from '$app/stores';
+  import ButtonLoader from '$lib/assets/ButtonLoader.svelte';
   import Logo from '../Logo.svelte';
   export let title;
   export let endpoint;
@@ -12,8 +13,10 @@
   let email = '';
   let password = '';
   let error = '';
+  let isLoading = false;
 
   async function handleSubmit() {
+    isLoading = true;
     const res = await fetch(endpoint, {
       method: 'POST',
       body: JSON.stringify({
@@ -29,9 +32,17 @@
     let json = await res.json();
 
     if (res.ok) {
+      setTimeout(() => {
+        isLoading = false;
+      }, 700);
       $session.user = json.user;
       goto(redirect);
     } else {
+      // artificial delay to avoid flashing
+      setTimeout(() => {
+        isLoading = false;
+      }, 700);
+
       error = json.error;
     }
   }
@@ -72,6 +83,10 @@
     />
     <div class="error">{error}</div>
     <button on:click={handleSubmit} class="auth-button flex grow">
+      {#if isLoading}
+        <ButtonLoader width="40" height="40" />
+      {/if}
+
       {buttonTitle}
     </button>
   </div>
