@@ -1,20 +1,23 @@
 <script context="module">
   import { browser } from '$app/env';
-  import { session } from '$app/stores';
   import { UserRecentStore } from '$lib/stores/RecentStore';
 
-  export async function load({ fetch }) {
+  export async function load({ fetch, session }) {
+    if (!session.user) {
+      return {
+        status: 302,
+        redirect: '/'
+      };
+    }
+
     await fetch('/auth/logout', {
       method: 'POST'
     });
 
     if (browser) {
-      session.set({ user: null });
       UserRecentStore.set([]);
+      window.location.href = '/';
     }
-    return {
-      status: 302,
-      redirect: '/'
-    };
+    return {};
   }
 </script>
