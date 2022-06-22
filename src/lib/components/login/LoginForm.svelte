@@ -84,10 +84,10 @@
     <div class="error">{error}</div>
     <button on:click={handleSubmit} class="auth-button flex grow">
       {#if isLoading}
-        <ButtonLoader width="40" height="40" />
+        <ButtonLoader width="100%" height="100%" />
+      {:else}
+        <span class="fadeIn"> {buttonTitle}</span>
       {/if}
-
-      {buttonTitle}
     </button>
   </div>
   {#if isForSignUp}
