@@ -123,7 +123,9 @@
       </button>
     </div>
 
-    <div class="password-checklist" />
+    {#if isForSignUp}
+      <div class="password-checklist" />
+    {/if}
 
     <div class="error">{error}</div>
     <button on:click={handleSubmit} class="auth-button flex grow">
