@@ -15,6 +15,7 @@
   let password = '';
   let error = '';
   let textToggled = false;
+  let checklistToggled = false;
   let isLoading = false;
   $: type = textToggled ? 'text' : 'password';
 
@@ -65,6 +66,9 @@
   }
 
   function onPassword(event) {
+    if (!checklistToggled) {
+      checklistToggled = true;
+    }
     password = event.target.value;
   }
 
@@ -123,7 +127,7 @@
       </button>
     </div>
 
-    {#if isForSignUp}
+    {#if isForSignUp && checklistToggled}
       <div class="password-checklist" />
     {/if}
 
