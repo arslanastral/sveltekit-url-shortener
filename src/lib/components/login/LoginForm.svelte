@@ -95,23 +95,25 @@
     <div class="input-container flex">
       <input
         bind:value={email}
-        placeholder="Email"
+        placeholder=""
         name="email"
         type="email"
         required
         autocomplete="on"
       />
+      <label for="email" class="placeholder">Email</label>
     </div>
     <div class="input-container flex">
       <input
         on:input={onPassword}
         class="grow-2"
-        placeholder="Password"
+        placeholder=" "
         name="password"
         {type}
         required
         autocomplete="on"
       />
+      <label for="password" class="placeholder">Password</label>
       <button on:click={togglePassword} class="toggle-button flex">
         {#if textToggled}
           <EyeHiddenIcon />
@@ -175,6 +177,7 @@
     margin: 20px 0;
     border-radius: 6px;
     height: 50px;
+    position: relative;
   }
 
   input {
@@ -182,6 +185,23 @@
     background: none;
     border: none;
     height: 100%;
+  }
+
+  input:focus ~ .placeholder,  /* Input has focus */
+input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
+    transform: translateY(-25px) translateX(-15px) scale(0.75);
+    background-color: white;
+    padding: 2px 10px;
+    color: rgb(51, 51, 255);
+  }
+
+  .placeholder {
+    font-size: 20px;
+    color: grey;
+    transition: transform 200ms, color 200ms;
+    position: absolute;
+    left: 20px;
+    pointer-events: none;
   }
 
   input:focus {
