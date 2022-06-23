@@ -123,6 +123,8 @@
       </button>
     </div>
 
+    <div class="password-checklist" />
+
     <div class="error">{error}</div>
     <button on:click={handleSubmit} class="auth-button flex grow">
       {#if isLoading}
@@ -222,6 +224,13 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
     transform: scale(0.9);
   }
 
+  .password-checklist {
+    color: black;
+    border: 1px solid #3e5dff;
+    border-radius: 8px;
+    height: 218px;
+  }
+
   .error {
     color: red;
     font-size: 14px;
@@ -229,7 +238,7 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
   }
 
   .existing-auth {
-    margin-top: 15px;
+    margin: 15px 0;
     color: grey;
   }
 
