@@ -96,7 +96,7 @@
     <div class="input-container flex">
       <input
         bind:value={email}
-        placeholder=""
+        placeholder=" "
         name="email"
         type="email"
         required
@@ -107,7 +107,6 @@
     <div class="input-container flex">
       <input
         on:input={onPassword}
-        class="grow-2"
         placeholder=" "
         name="password"
         {type}
@@ -186,6 +185,7 @@
     background: none;
     border: none;
     height: 100%;
+    flex: 1;
   }
 
   input:focus ~ .placeholder,  /* Input has focus */
