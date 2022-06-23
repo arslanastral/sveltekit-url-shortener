@@ -1,6 +1,4 @@
 <script>
-  import { goto } from '$app/navigation';
-  import { session } from '$app/stores';
   import ButtonLoader from '$lib/assets/ButtonLoader.svelte';
   import { isValidEmail } from '$lib/utils/isValidEmail';
   import Logo from '../Logo.svelte';
@@ -17,6 +15,11 @@
   let isLoading = false;
 
   async function handleSubmit() {
+    if (isForSignUp && !name) {
+      error = 'Please enter your name';
+      return;
+    }
+
     if (!isValidEmail(email)) {
       error = 'Please enter a valid email address';
       return;
