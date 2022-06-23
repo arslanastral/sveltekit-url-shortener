@@ -46,8 +46,7 @@
       setTimeout(() => {
         isLoading = false;
       }, 700);
-      $session.user = json.user;
-      goto(redirect);
+      window.location.href = redirect;
     } else {
       // artificial delay to avoid flashing
       setTimeout(() => {
