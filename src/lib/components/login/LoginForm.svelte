@@ -84,12 +84,13 @@
       <div class="input-container flex">
         <input
           bind:value={name}
-          placeholder="Name"
+          placeholder=" "
           name="name"
           type="text"
           autocomplete="on"
           maxlength="20"
         />
+        <label for="name" class="placeholder">Name</label>
       </div>
     {/if}
     <div class="input-container flex">
