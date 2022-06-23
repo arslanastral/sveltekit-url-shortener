@@ -116,9 +116,9 @@
       <label for="password" class="placeholder">Password</label>
       <button on:click={togglePassword} class="toggle-button flex">
         {#if textToggled}
-          <EyeHiddenIcon />
+          <EyeHiddenIcon fill="grey" width="25" />
         {:else}
-          <EyeIcon />
+          <EyeIcon fill="grey" width="25" />
         {/if}
       </button>
     </div>
@@ -147,7 +147,7 @@
   .container {
     background-color: white;
     width: 400px;
-    height: 596px;
+    min-height: 596px;
     box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.25);
     border-radius: 18px;
     flex-direction: column;
@@ -172,12 +172,15 @@
   }
 
   .input-container {
-    /* border: 1px solid black; */
     border: 1px solid #dfe1e5;
     margin: 20px 0;
     border-radius: 6px;
     height: 50px;
     position: relative;
+  }
+
+  .input-container:focus-within {
+    border: 1px solid rgb(51, 51, 255);
   }
 
   input {
