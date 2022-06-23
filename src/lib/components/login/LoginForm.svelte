@@ -1,5 +1,7 @@
 <script>
   import ButtonLoader from '$lib/assets/ButtonLoader.svelte';
+  import EyeHiddenIcon from '$lib/assets/EyeHiddenIcon.svelte';
+  import EyeIcon from '$lib/assets/EyeIcon.svelte';
   import { isValidEmail } from '$lib/utils/isValidEmail';
   import Logo from '../Logo.svelte';
   export let title;
@@ -12,7 +14,9 @@
   let email = '';
   let password = '';
   let error = '';
+  let textToggled = false;
   let isLoading = false;
+  $: type = textToggled ? 'text' : 'password';
 
   async function handleSubmit() {
     if (isForSignUp && !name) {
@@ -59,6 +63,14 @@
       error = json.error;
     }
   }
+
+  function onPassword(event) {
+    password = event.target.value;
+  }
+
+  const togglePassword = () => {
+    textToggled = !textToggled;
+  };
 </script>
 
 <div class="fadeIn flex container">
@@ -69,31 +81,46 @@
 
   <div class="login-container">
     {#if isForSignUp}
-      <input
-        bind:value={name}
-        placeholder="Name"
-        name="name"
-        type="text"
-        autocomplete="on"
-        maxlength="20"
-      />
+      <div class="input-container flex">
+        <input
+          bind:value={name}
+          placeholder="Name"
+          name="name"
+          type="text"
+          autocomplete="on"
+          maxlength="20"
+        />
+      </div>
     {/if}
-    <input
-      bind:value={email}
-      placeholder="Email"
-      name="email"
-      type="email"
-      required
-      autocomplete="on"
-    />
-    <input
-      bind:value={password}
-      placeholder="Password"
-      name="password"
-      type="password"
-      required
-      autocomplete="on"
-    />
+    <div class="input-container flex">
+      <input
+        bind:value={email}
+        placeholder="Email"
+        name="email"
+        type="email"
+        required
+        autocomplete="on"
+      />
+    </div>
+    <div class="input-container flex">
+      <input
+        on:input={onPassword}
+        class="grow-2"
+        placeholder="Password"
+        name="password"
+        {type}
+        required
+        autocomplete="on"
+      />
+      <button on:click={togglePassword} class="toggle-button flex">
+        {#if textToggled}
+          <EyeHiddenIcon />
+        {:else}
+          <EyeIcon />
+        {/if}
+      </button>
+    </div>
+
     <div class="error">{error}</div>
     <button on:click={handleSubmit} class="auth-button flex grow">
       {#if isLoading}
@@ -142,13 +169,33 @@
     width: 90%;
   }
 
+  .input-container {
+    /* border: 1px solid black; */
+    border: 1px solid #dfe1e5;
+    margin: 20px 0;
+    border-radius: 6px;
+    height: 50px;
+  }
+
   input {
     font-size: 20px;
     background: none;
-    border: 1px solid #dfe1e5;
-    border-radius: 6px;
-    width: 100%;
-    margin-bottom: 20px;
+    border: none;
+    height: 100%;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .toggle-button {
+    border: none;
+    height: 100%;
+    transition: transform ease-out 0.1s;
+  }
+
+  .toggle-button:active {
+    transform: scale(0.9);
   }
 
   .error {
