@@ -3,6 +3,7 @@
   import EyeHiddenIcon from '$lib/assets/EyeHiddenIcon.svelte';
   import EyeIcon from '$lib/assets/EyeIcon.svelte';
   import { isValidEmail } from '$lib/utils/isValidEmail';
+  import { isValidPassword } from '$lib/utils/isValidPassword';
   import Logo from '../Logo.svelte';
   export let title;
   export let endpoint;
@@ -127,8 +128,15 @@
       </button>
     </div>
 
-    {#if isForSignUp && checklistToggled}
-      <div class="password-checklist" />
+    {#if isForSignUp && checklistToggled && isValidPassword(password).length}
+      <div class="password-checklist fadeIn">
+        <div class="checklist-title">Your password must contain:</div>
+        <ul>
+          {#each isValidPassword(password) as item}
+            <li>{item.info}</li>
+          {/each}
+        </ul>
+      </div>
     {/if}
 
     <div class="error">{error}</div>
@@ -235,6 +243,22 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
     border: 1px solid #3e5dff;
     border-radius: 8px;
     height: 218px;
+  }
+
+  .checklist-title {
+    margin: 8px;
+    color: #333;
+  }
+
+  ul {
+    color: #333;
+    list-style: none;
+  }
+
+  li::before {
+    content: '⚠';
+    margin-right: 8px;
+    color: grey;
   }
 
   .error {
