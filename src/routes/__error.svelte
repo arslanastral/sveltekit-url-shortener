@@ -10,7 +10,6 @@
 
 <script>
   export let error;
-  $: console.log(error);
 </script>
 
 <div class="wrapper">
@@ -27,16 +26,14 @@
 <style>
   .wrapper {
     background-repeat: repeat;
-    /* background-color: #ff6b6b; */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 90px);
+    min-height: 65vh;
   }
 
   h1 {
-    /* color: #fff; */
-    font-size: 4.5rem;
+    font-size: 5.5rem;
     font-weight: bold;
     margin: 0;
   }
@@ -48,5 +45,6 @@
   p {
     margin: 0;
     color: grey;
+    font-size: 28px;
   }
 </style>
