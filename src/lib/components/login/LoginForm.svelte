@@ -18,6 +18,7 @@
   let textToggled = false;
   let checklistToggled = false;
   let isLoading = false;
+  let isDemoLoading = false;
   $: type = textToggled ? 'text' : 'password';
 
   async function handleSubmit() {
@@ -60,6 +61,35 @@
       // artificial delay to avoid flashing
       setTimeout(() => {
         isLoading = false;
+      }, 700);
+
+      error = json.error;
+    }
+  }
+
+  async function handleDemo() {
+    isDemoLoading = true;
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: 'demo@ky.com',
+        password: 'demo'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    let json = await res.json();
+
+    if (res.ok) {
+      setTimeout(() => {
+        isDemoLoading = false;
+      }, 700);
+      window.location.href = redirect;
+    } else {
+      setTimeout(() => {
+        isDemoLoading = false;
       }, 700);
 
       error = json.error;
@@ -161,6 +191,13 @@
   <div class="demo-divider flex">
     <span class="divider-text">Or</span>
   </div>
+  <button on:click={handleDemo} class="demo-button flex">
+    {#if isDemoLoading}
+      <ButtonLoader width="100%" height="100%" />
+    {:else}
+      <span class="fadeIn">Just Demo</span>
+    {/if}</button
+  >
 </div>
 
 <style>
@@ -298,13 +335,29 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
     transition: transform ease-out 0.09s;
   }
 
+  .demo-button {
+    font-size: 18px;
+    width: 90%;
+    margin: 20px 0;
+    justify-content: center;
+    border: none;
+    background-color: #000000;
+    color: white;
+    height: 40px;
+    border-radius: 6px;
+    transition: transform ease-out 0.09s;
+  }
+
+  .demo-button:active {
+    transform: scale(0.97);
+  }
+
   .auth-button:active {
     transform: scale(0.97);
   }
 
   .demo-divider {
     width: 90%;
-    color: rgb(46, 46, 46);
     font-size: 15px;
     font-weight: 300;
     text-transform: uppercase;
@@ -314,14 +367,14 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
 
   .demo-divider:before {
     content: '';
-    border-bottom: 1px solid #838383;
+    border-bottom: 1px solid #c4c4c4;
     flex: 1 0 auto;
     margin: 0;
   }
 
   .demo-divider:after {
     content: '';
-    border-bottom: 1px solid #838383;
+    border-bottom: 1px solid #c4c4c4;
     flex: 1 0 auto;
     margin: 0;
   }
