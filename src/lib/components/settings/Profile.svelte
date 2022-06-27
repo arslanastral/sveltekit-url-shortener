@@ -8,6 +8,9 @@
   let email = '';
 
   async function handleName() {
+    if ($session.user.email === 'demo@ky.com') {
+      return;
+    }
     let nameRes;
     let emailRes;
 
