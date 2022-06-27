@@ -189,16 +189,18 @@
     {/if}
   </div>
 
-  <div class="demo-divider flex">
-    <span class="divider-text">Or</span>
+  <div class="alternative flex">
+    <div class="demo-divider flex">
+      <span class="divider-text">Or</span>
+    </div>
+    <AuthButton
+      name="Just Demo"
+      onClick={handleDemo}
+      isProcessing={isDemoLoading}
+      --width="90%"
+      --bg="black"
+    />
   </div>
-  <AuthButton
-    name="Just Demo"
-    onClick={handleDemo}
-    isProcessing={isDemoLoading}
-    --width="90%"
-    --bg="black"
-  />
 </div>
 
 <style>
@@ -210,6 +212,12 @@
     border-radius: 18px;
     flex-direction: column;
     justify-content: space-around;
+  }
+
+  .alternative {
+    flex-direction: column;
+    width: 100%;
+    margin: 30px 0;
   }
 
   .info-header {
