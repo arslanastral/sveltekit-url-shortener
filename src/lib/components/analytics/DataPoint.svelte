@@ -32,7 +32,7 @@
     font-size: 24px;
     letter-spacing: -0.045em;
     color: #6d6d6d;
-    line-height: 22px;
+    line-height: 27px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
