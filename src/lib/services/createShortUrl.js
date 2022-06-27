@@ -3,6 +3,8 @@ import bcrypt from 'bcryptjs';
 import { nanoid } from 'nanoid';
 
 export async function createShortUrl(creator, submittedURL, submittedPassword) {
+  const isDemoUser = creator === 'demo@ky.com';
+
   try {
     const collection = await useCollection('urls');
 
@@ -25,7 +27,8 @@ export async function createShortUrl(creator, submittedURL, submittedPassword) {
       secured: hash ? true : false,
       ...(submittedPassword && { pass: hash }),
       created_by: creator || 'anon',
-      ...(creator && { tags: [] })
+      ...(creator && { tags: [] }),
+      ...(isDemoUser && { demo: true })
     });
 
     const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
