@@ -147,16 +147,20 @@
         <span class="fadeIn"> {buttonTitle}</span>
       {/if}
     </button>
+    {#if isForSignUp}
+      <div class="existing-auth">
+        Already have an account? <a class="link" href="/login">Log in</a>
+      </div>
+    {:else}
+      <div class="existing-auth">
+        Dont have an account? <a class="link" href="/signup">Sign up</a>
+      </div>
+    {/if}
   </div>
-  {#if isForSignUp}
-    <div class="existing-auth">
-      Already have an account? <a class="link" href="/login">Log in</a>
-    </div>
-  {:else}
-    <div class="existing-auth">
-      Dont have an account? <a class="link" href="/signup">Sign up</a>
-    </div>
-  {/if}
+
+  <div class="demo-divider flex">
+    <span class="divider-text">Or</span>
+  </div>
 </div>
 
 <style>
@@ -296,5 +300,34 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
 
   .auth-button:active {
     transform: scale(0.97);
+  }
+
+  .demo-divider {
+    width: 90%;
+    color: rgb(46, 46, 46);
+    font-size: 15px;
+    font-weight: 300;
+    text-transform: uppercase;
+    border: none;
+    margin: 0;
+  }
+
+  .demo-divider:before {
+    content: '';
+    border-bottom: 1px solid #838383;
+    flex: 1 0 auto;
+    margin: 0;
+  }
+
+  .demo-divider:after {
+    content: '';
+    border-bottom: 1px solid #838383;
+    flex: 1 0 auto;
+    margin: 0;
+  }
+
+  .divider-text {
+    flex: 0.2 0 auto;
+    text-align: center;
   }
 </style>
