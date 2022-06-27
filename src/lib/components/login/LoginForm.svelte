@@ -70,7 +70,7 @@
 
   async function handleDemo() {
     isDemoLoading = true;
-    const res = await fetch(endpoint, {
+    const res = await fetch('/auth/login', {
       method: 'POST',
       body: JSON.stringify({
         email: 'demo@ky.com',
