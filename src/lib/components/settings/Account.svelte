@@ -8,6 +8,9 @@
   let newPass;
 
   async function handleAccountDeletion() {
+    if ($session.user.email === 'demo@ky.com') {
+      return;
+    }
     const res = await fetch('/api/user/account/delete', {
       method: 'DELETE'
     });
@@ -23,6 +26,9 @@
   }
 
   async function handlePasswordChange() {
+    if ($session.user.email === 'demo@ky.com') {
+      return;
+    }
     const res = await fetch('/api/user/account/password', {
       method: 'PUT',
       body: JSON.stringify({
