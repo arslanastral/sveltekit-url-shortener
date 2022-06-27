@@ -5,6 +5,7 @@
   import { isValidEmail } from '$lib/utils/isValidEmail';
   import { isValidPassword } from '$lib/utils/isValidPassword';
   import Logo from '../Logo.svelte';
+  import AuthButton from './AuthButton.svelte';
   export let title;
   export let endpoint;
   export let redirect = '/';
@@ -170,13 +171,13 @@
     {/if}
 
     <div class="error">{error}</div>
-    <button on:click={handleSubmit} class="auth-button flex grow">
-      {#if isLoading}
-        <ButtonLoader width="100%" height="100%" />
-      {:else}
-        <span class="fadeIn"> {buttonTitle}</span>
-      {/if}
-    </button>
+    <AuthButton
+      name={buttonTitle}
+      onClick={handleSubmit}
+      isProcessing={isLoading}
+      --width="100%"
+      --bg="#3e5dff"
+    />
     {#if isForSignUp}
       <div class="existing-auth">
         Already have an account? <a class="link" href="/login">Log in</a>
@@ -191,13 +192,13 @@
   <div class="demo-divider flex">
     <span class="divider-text">Or</span>
   </div>
-  <button on:click={handleDemo} class="demo-button flex">
-    {#if isDemoLoading}
-      <ButtonLoader width="100%" height="100%" />
-    {:else}
-      <span class="fadeIn">Just Demo</span>
-    {/if}</button
-  >
+  <AuthButton
+    name="Just Demo"
+    onClick={handleDemo}
+    isProcessing={isDemoLoading}
+    --width="90%"
+    --bg="black"
+  />
 </div>
 
 <style>
@@ -320,40 +321,6 @@ input:not(:placeholder-shown) ~ .placeholder  /* Input has a value */ {
 
   .link:hover {
     text-decoration: underline;
-  }
-
-  .auth-button {
-    font-size: 18px;
-    width: 100%;
-    margin-top: 20px;
-    justify-content: center;
-    border: none;
-    background-color: #3e5dff;
-    color: white;
-    height: 40px;
-    border-radius: 6px;
-    transition: transform ease-out 0.09s;
-  }
-
-  .demo-button {
-    font-size: 18px;
-    width: 90%;
-    margin: 20px 0;
-    justify-content: center;
-    border: none;
-    background-color: #000000;
-    color: white;
-    height: 40px;
-    border-radius: 6px;
-    transition: transform ease-out 0.09s;
-  }
-
-  .demo-button:active {
-    transform: scale(0.97);
-  }
-
-  .auth-button:active {
-    transform: scale(0.97);
   }
 
   .demo-divider {

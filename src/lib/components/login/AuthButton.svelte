@@ -17,15 +17,16 @@
 <style>
   .auth-button {
     font-size: 18px;
-    width: 100%;
+    width: var(--width);
     margin-top: 20px;
     justify-content: center;
     border: none;
-    background-color: #3e5dff;
+    background-color: var(--bg);
     color: white;
     height: 40px;
     border-radius: 6px;
     transition: transform ease-out 0.09s;
+    cursor: pointer;
   }
 
   .auth-button:active {
