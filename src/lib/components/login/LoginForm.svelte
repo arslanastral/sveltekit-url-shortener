@@ -23,6 +23,7 @@
   $: type = textToggled ? 'text' : 'password';
 
   async function handleSubmit() {
+    if (isLoading) return;
     if (isForSignUp && !name) {
       error = 'Please enter your name';
       return;
@@ -69,6 +70,7 @@
   }
 
   async function handleDemo() {
+    if (isDemoLoading) return;
     isDemoLoading = true;
     const res = await fetch('/auth/login', {
       method: 'POST',
