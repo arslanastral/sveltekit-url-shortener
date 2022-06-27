@@ -13,6 +13,7 @@ export const connectToDatabase = async () => {
       await client.connect();
       let db = client.db('ky');
       await db.collection('urls').createIndex({ short_url: 1 }, { unique: true });
+      await db.collection('urls').createIndex({ demo: 1 }, { expireAfterSeconds: 3600 });
       await db.collection('users').createIndex({ email: 1 }, { unique: true });
       await db.collection('users').createIndex({ sessionId: 1 });
       console.log('New Database Connection');
