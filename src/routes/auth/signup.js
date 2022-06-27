@@ -27,14 +27,14 @@ export async function post({ request }) {
     };
   }
 
-  if (userEmail === 'demo@ky.com') {
-    return {
-      status: 400,
-      body: {
-        error: 'This email is reserved for demo purposes'
-      }
-    };
-  }
+  // if (userEmail === 'demo@ky.com') {
+  //   return {
+  //     status: 400,
+  //     body: {
+  //       error: 'This email is reserved for demo purposes'
+  //     }
+  //   };
+  // }
 
   if (!password) {
     return {
