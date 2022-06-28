@@ -1,5 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 import { isValidEmail } from '$lib/utils/isValidEmail';
+import { insertDemoData } from '$lib/utils/insertDemoData';
 import * as cookie from 'cookie';
 import bcryptjs from 'bcryptjs';
 import { nanoid } from 'nanoid';
@@ -41,6 +42,10 @@ export async function post({ request }) {
 
     if (await bcryptjs.compare(password, user.password)) {
       const sessionId = nanoid(36);
+
+      if (email === 'demo@ky.com') {
+        await insertDemoData();
+      }
 
       await collection.updateOne(
         {
