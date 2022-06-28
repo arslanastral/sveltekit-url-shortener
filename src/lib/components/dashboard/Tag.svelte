@@ -30,7 +30,7 @@
   }
 
   .tag-name {
-    max-width: 60px;
+    max-width: 80px;
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
