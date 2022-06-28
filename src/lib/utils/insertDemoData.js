@@ -5,6 +5,12 @@ export async function insertDemoData() {
   try {
     const collection = await useCollection('urls');
 
+    const demoLinkExists = await collection.findOne({ demo: { $exists: true } });
+
+    if (demoLinkExists) {
+      return;
+    }
+
     await collection.insertOne({
       long_url: 'https://www.google.com',
       short_url: nanoid(4),
@@ -14,17 +20,7 @@ export async function insertDemoData() {
       tags: [],
       demo: new Date()
     });
-
-    return {
-      status: 200,
-      body: {
-        message: 'success'
-      }
-    };
   } catch (error) {
-    return {
-      body: { error: 'Something Went Wrong' },
-      status: 500
-    };
+    console.log(error);
   }
 }
