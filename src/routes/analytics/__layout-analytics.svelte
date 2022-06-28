@@ -27,6 +27,10 @@
 </script>
 
 <script>
+  import '$lib/styles/global.css';
+  import 'sanitize.css';
+  import 'sanitize.css/forms.css';
+  import 'sanitize.css/typography.css';
   import PageNavigation from '$lib/components/PageNavigation.svelte';
   import { page } from '$app/stores';
   import { Activity, AllActivity, CurrentSample } from '$lib/stores/ActivityStore';
