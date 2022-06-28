@@ -28,7 +28,7 @@ export async function createShortUrl(creator, submittedURL, submittedPassword) {
       ...(submittedPassword && { pass: hash }),
       created_by: creator || 'anon',
       ...(creator && { tags: [] }),
-      ...(isDemoUser && { demo: true })
+      ...(isDemoUser && { demo: new Date() })
     });
 
     const shortenedResult = await collection.findOne({ _id: shortened.insertedId });
