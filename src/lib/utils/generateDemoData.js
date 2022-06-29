@@ -2,7 +2,7 @@ import { timeDay, timeHour } from 'd3';
 
 export function generateDemoData(id) {
   let week = timeDay.range(timeDay.offset(new Date(), -7), new Date(), 1);
-  let hours = timeHour.range(timeDay.offset(new Date(), -1), new Date(), 1);
+  let hours = timeHour.range(timeDay.floor(new Date()), new Date(), 1);
 
   let dates = week.concat(hours);
 
