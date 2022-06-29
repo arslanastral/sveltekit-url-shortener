@@ -1,5 +1,4 @@
 <script>
-  import { onDestroy, onMount } from 'svelte';
   import {
     select,
     min,
