@@ -12,6 +12,7 @@
     timeFormat
   } from 'd3';
   import { page } from '$app/stores';
+  import { browser } from '$app/env';
 
   export let data = [];
 
@@ -23,7 +24,8 @@
   $: drawChart(chart, data, width - 150, height);
 
   const drawChart = (chart, data, width, height) => {
-    if (data && data.length) {
+    if (data && data.length && browser) {
+      console.log(data);
       let minDate = min(data, (d) => new Date(d.date));
       let maxDate = max(data, (d) => new Date(d.date));
 
@@ -118,6 +120,13 @@
         )
         .call((g) => g.selectAll('.tick text').attr('x', 10).attr('dy', -7));
 
+      let div = select('body')
+        .append('div')
+        .attr('class', 'tooltip')
+        .style('opacity', 0)
+        .style('left', '0px')
+        .style('top', '0px');
+
       svg
         .selectAll('.bar')
         .data(data)
@@ -136,10 +145,23 @@
         .attr('y', -height)
         .attr('width', xScale.bandwidth())
         .on('mouseover', function (event, d) {
+          let date = new Date(d.date);
           select(this).attr('fill', 'greenyellow');
+          div.transition().duration(200).style('opacity', 1);
+          div
+            .html(
+              `<span style="font-size:1rem">${timeFormat('%I:%M %p')(date)}</span>` +
+                '<br/>' +
+                `<span style="font-size:1rem">${timeFormat('%x')(date)}</span>` +
+                '<br/>' +
+                `${d.count}`
+            )
+            .style('left', event.pageX - 40 + 'px')
+            .style('top', event.pageY - 100 + 'px');
         })
         .on('mouseout', function () {
           select(this).attr('fill', 'blue');
+          div.transition().duration(100).style('opacity', 0);
         })
         .transition()
         .attr('height', (value) => height - yScale(value.count))
