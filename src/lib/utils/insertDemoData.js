@@ -22,7 +22,7 @@ export async function insertDemoData() {
     await collection.insertOne({
       long_url: 'https://www.google.com',
       short_url: id,
-      clicks: 0,
+      clicks: 31,
       secured: false,
       created_by: 'demo@ky.com',
       tags: [],
