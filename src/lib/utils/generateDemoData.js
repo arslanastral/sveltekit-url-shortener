@@ -1,8 +1,12 @@
-import { timeDay, timeHour } from 'd3';
+import { utcDay, utcHour } from 'd3';
 
 export function generateDemoData(id) {
-  let week = timeDay.range(timeDay.offset(new Date(), -7), new Date(), 1);
-  let hours = timeHour.range(timeDay.floor(new Date()), new Date(), 1);
+  let currentDate = new Date();
+  let flooredDate = utcDay.floor(currentDate);
+  let lastWeek = utcDay.offset(flooredDate, -7);
+
+  let week = utcDay.range(lastWeek, flooredDate, 1);
+  let hours = utcHour.range(flooredDate, currentDate, 1);
 
   let dates = week.concat(hours);
 
