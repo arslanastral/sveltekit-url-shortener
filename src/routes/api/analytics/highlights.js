@@ -5,6 +5,7 @@ export async function get({ locals, url }) {
   const currentUser = locals.user;
   const time = url.searchParams.get('time');
   const id = url.searchParams.get('id');
+  const isDemoUser = currentUser.email === 'demo@ky.com';
 
   if (!currentUser.authenticated) {
     return {
@@ -143,7 +144,7 @@ export async function get({ locals, url }) {
     let location = links[0].location[0].name.toString();
     let countryName;
 
-    if (import.meta.env.VITE_NODE_ENV === 'development') {
+    if (import.meta.env.VITE_NODE_ENV === 'development' || isDemoUser) {
       countryName = 'Saturn';
     } else {
       countryName = countryCodes.filter((country) => country.code === location)[0].name;
