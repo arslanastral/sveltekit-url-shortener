@@ -25,7 +25,7 @@
   let queryStrings = {
     '/analytics': '',
     '/analytics/weekly': '&time=weekly',
-    '/analytics/all': '&time=all'
+    '/analytics/all': '&time=weekly'
   };
 
   const handleSampleSelect = async (link) => {
