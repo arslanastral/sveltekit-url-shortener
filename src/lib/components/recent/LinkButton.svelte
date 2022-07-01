@@ -63,7 +63,7 @@
     border-right: 1px solid #dfe1e5;
   }
 
-  .border-multi > button:last-child {
+  div > button:last-child {
     border-left: 1px solid #dfe1e5;
   }
 
