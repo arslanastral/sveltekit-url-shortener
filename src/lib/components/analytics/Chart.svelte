@@ -150,11 +150,11 @@
           div.transition().duration(200).style('opacity', 1);
           div
             .html(
-              `<span style="font-size:1rem">${timeFormat('%I:%M %p')(date)}</span>` +
+              `<strong>Clicks</strong>: <span style="font-size:1rem">${d.count}</span>` +
                 '<br/>' +
-                `<span style="font-size:1rem">${timeFormat('%x')(date)}</span>` +
+                `<span style="font-size:0.95rem">Date: ${timeFormat('%x')(date)}</span>` +
                 '<br/>' +
-                `${d.count}`
+                `<span style="font-size:0.95rem">Last Click: ${timeFormat('%I:%M %p')(date)}</span>`
             )
             .style('left', event.pageX - 40 + 'px')
             .style('top', event.pageY - 100 + 'px');
