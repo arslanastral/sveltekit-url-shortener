@@ -13,6 +13,7 @@
   } from 'd3';
   import { page } from '$app/stores';
   import { browser } from '$app/env';
+  import { onDestroy } from 'svelte';
 
   export let data = [];
 
@@ -20,6 +21,7 @@
 
   let width = 300;
   let height = 370;
+  let tooltip;
 
   $: drawChart(chart, data, width - 150, height);
 
@@ -120,7 +122,7 @@
         )
         .call((g) => g.selectAll('.tick text').attr('x', 10).attr('dy', -7));
 
-      let div = select('body')
+      tooltip = select('body')
         .append('div')
         .attr('class', 'tooltip')
         .style('opacity', 0)
@@ -147,8 +149,8 @@
         .on('mouseover', function (event, d) {
           let date = new Date(d.date);
           select(this).attr('fill', 'greenyellow');
-          div.transition().duration(200).style('opacity', 1);
-          div
+          tooltip.transition().duration(200).style('opacity', 1);
+          tooltip
             .html(
               `<strong>Clicks</strong>: <span style="font-size:1rem">${d.count}</span>` +
                 '<br/>' +
@@ -161,13 +163,19 @@
         })
         .on('mouseout', function () {
           select(this).attr('fill', 'blue');
-          div.transition().duration(100).style('opacity', 0);
+          tooltip.transition().duration(100).style('opacity', 0);
         })
         .transition()
         .attr('height', (value) => height - yScale(value.count))
         .attr('fill', 'blue');
     }
   };
+
+  onDestroy(() => {
+    if (tooltip) {
+      tooltip.remove();
+    }
+  });
 </script>
 
 <div class="chart-container flex">
