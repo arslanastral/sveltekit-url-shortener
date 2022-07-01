@@ -23,8 +23,8 @@ export async function get({ locals, url }) {
   let timeQuery = { timestamp: { $gte: timeFilter } };
   let linkQuery = { 'metadata.short_url': id };
 
-  let hourlyData = { hour: { $hour: '$timestamp' } };
-  let weeklyData = { day: { $dayOfMonth: '$timestamp' } };
+  let hourlyData = { $hour: '$timestamp' };
+  let weeklyData = { $dayOfMonth: '$timestamp' };
 
   try {
     const collection = await useCollection('analytics');
@@ -56,9 +56,10 @@ export async function get({ locals, url }) {
             ...(time !== 'weekly' && hourlyData)
           },
           count: { $sum: 1 },
-          date: { $first: '$timestamp' }
+          date: { $last: '$timestamp' }
         }
       },
+      { $sort: { _id: -1 } },
       {
         $project: {
           _id: 0,

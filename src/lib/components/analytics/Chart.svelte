@@ -25,18 +25,18 @@
 
   const drawChart = (chart, data, width, height) => {
     if (data && data.length && browser) {
-      console.log(data);
       let minDate = min(data, (d) => new Date(d.date));
       let maxDate = max(data, (d) => new Date(d.date));
 
       let minTime = timeDay.floor(minDate);
-      let maxTime = timeDay.ceil(maxDate);
+      let maxTime = timeDay.ceil(new Date());
+      let maxHour = timeHour.ceil(new Date());
       let week = timeDay.floor(timeDay.offset(new Date(), -7));
 
       let config = {
         '/analytics': {
           tickFormat: '%I:%M %p',
-          domain: timeHour.range(minTime, maxDate, 1).map((d) => d.toString()),
+          domain: timeHour.range(minTime, maxHour, 1).map((d) => d.toString()),
           ticks: 2
         },
         '/analytics/weekly': {
@@ -168,14 +168,6 @@
         .attr('fill', 'blue');
     }
   };
-
-  // onMount(() => {
-  //   // drawChart(chart, data, width, height);
-  // });
-
-  // onDestroy(() => {
-  //   console.log('removing');
-  // });
 </script>
 
 <div class="chart-container flex">
