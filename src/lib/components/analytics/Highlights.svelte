@@ -6,8 +6,9 @@
   import SourceIcon from '$lib/assets/SourceIcon.svelte';
   import Clicks from '$lib/components/analytics/Clicks.svelte';
   import DataPoint from '$lib/components/analytics/DataPoint.svelte';
+  import { formatCount } from '$lib/utils/formatCount';
 
-  export let clickCount = '0';
+  export let clickCount = 0;
   export let clickTitle = '';
   export let topLocation = 'No Data';
   export let topSource = 'No Data';
@@ -17,7 +18,7 @@
 </script>
 
 <div class="highlights flex">
-  <Clicks clicks={clickCount} title={clickTitle} />
+  <Clicks clicks={formatCount(clickCount)} title={clickTitle} />
   <DataPoint name="Top Location" data={topLocation}><LocationIcon slot="icon" /></DataPoint>
   <DataPoint name="Top Source" data={topSource}><SourceIcon slot="icon" /></DataPoint>
   <DataPoint name="Top Device" data={topDevice}><DeviceIcon slot="icon" /></DataPoint>
