@@ -33,10 +33,10 @@
   .dropdown {
     flex-direction: column;
     align-items: flex-start;
-    top: 40px;
+    top: 60px;
     right: 0px;
     position: absolute;
-    width: 136px;
+    width: 165px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 8px;
     background-color: #fff;
