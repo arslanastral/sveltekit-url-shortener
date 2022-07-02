@@ -196,7 +196,7 @@
       <span class="divider-text">Or</span>
     </div>
     <AuthButton
-      name="Just Demo"
+      name="Just Demo ✨"
       onClick={handleDemo}
       isProcessing={isDemoLoading}
       --width="90%"
