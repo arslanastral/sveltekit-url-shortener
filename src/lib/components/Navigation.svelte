@@ -39,11 +39,18 @@
   nav a {
     text-decoration: none;
     color: black;
-    margin: 20px;
+    margin: 20px 8px;
+    padding: 8px 20px;
+    border-radius: 25px;
+  }
+
+  nav a:hover {
+    background-color: #f7f7f7;
   }
 
   .selected {
     color: blue;
+    background-color: #f7f7f7;
   }
 
   @media only screen and (max-width: 750px) {
