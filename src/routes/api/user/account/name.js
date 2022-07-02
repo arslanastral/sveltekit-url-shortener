@@ -4,12 +4,22 @@ export async function patch({ locals, request }) {
   const body = await request.json();
   const { name } = await body;
   const currentUser = locals.user.email || null;
+  const isDemoUser = currentUser === 'demo@ky.com';
 
   if (!currentUser) {
     return {
       status: 400,
       body: {
         error: 'Not logged in'
+      }
+    };
+  }
+
+  if (isDemoUser) {
+    return {
+      status: 400,
+      body: {
+        error: 'Cannot update demo user'
       }
     };
   }
