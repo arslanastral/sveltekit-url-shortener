@@ -7,7 +7,7 @@
       };
     }
 
-    const highlights = await fetch('/api/analytics/highlights?time=all');
+    const highlights = await fetch('/api/analytics/highlights?time=weekly');
     const activity = await fetch('/api/analytics/activity?time=weekly');
 
     if (highlights.ok && activity.ok) {
