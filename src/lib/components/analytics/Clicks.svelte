@@ -13,17 +13,18 @@
 
 <style>
   .container {
-    width: 120px;
+    min-width: 120px;
     height: 120px;
     background-color: #00bf41;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     border-radius: 14px;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
   }
 
   .count {
-    margin: 0px 0 5px 13px;
+    padding: 0px 18px 5px 13px;
     width: 100%;
     color: #ffd977;
     font-size: 52px;
