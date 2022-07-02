@@ -17,7 +17,7 @@ export const connectToDatabase = async () => {
         .collection('urls')
         .createIndex(
           { demo: 1 },
-          { expireAfterSeconds: 3600, partialFilterExpression: { demo: { $exists: true } } }
+          { expireAfterSeconds: 604800, partialFilterExpression: { demo: { $exists: true } } }
         );
       await db.collection('users').createIndex({ email: 1 }, { unique: true });
       await db.collection('users').createIndex({ sessionId: 1 });
