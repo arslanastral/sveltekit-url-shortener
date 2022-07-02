@@ -2,12 +2,22 @@ import { useCollection } from '$lib/utils/useCollection';
 
 export async function del({ locals }) {
   const currentUser = locals.user.email || null;
+  const isDemoUser = currentUser === 'demo@ky.com';
 
   if (!currentUser) {
     return {
       status: 400,
       body: {
         error: 'Not logged in'
+      }
+    };
+  }
+
+  if (isDemoUser) {
+    return {
+      status: 400,
+      body: {
+        error: 'Cannot delete demo user'
       }
     };
   }
