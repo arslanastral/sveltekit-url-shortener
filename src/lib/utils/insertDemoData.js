@@ -45,7 +45,7 @@ function generateDemoData(id) {
 
   let randomClicks = dates
     .map((e) => {
-      let rand = Math.floor(Math.random() * (40 - 8 + 1)) + 8;
+      let rand = Math.floor(Math.random() * (10 - 4 + 1)) + 4;
       let duplicates = [];
 
       for (let i = 0; i < rand; i++) {
