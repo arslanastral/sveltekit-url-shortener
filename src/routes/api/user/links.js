@@ -1,7 +1,9 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function get({ locals }) {
+export async function get({ locals, url }) {
   const currentUser = locals.user;
+  const page = url.searchParams.get('page') ?? 0;
+  const linksPerPage = 10;
 
   if (!currentUser.authenticated) {
     return {
@@ -16,6 +18,8 @@ export async function get({ locals }) {
     const links = await collection
       .find({ created_by: currentUser.email })
       .sort({ _id: -1 })
+      .skip(page * linksPerPage)
+      .limit(linksPerPage)
       .project({
         created_at: { $toDate: '$_id' },
         _id: 0,
