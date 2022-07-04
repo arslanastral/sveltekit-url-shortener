@@ -1,23 +1,38 @@
 <script>
   import LinksIcon from '$lib/assets/LinksIcon.svelte';
+  import LoadingIcon from '$lib/assets/LoadingIcon.svelte';
   import Links from '$lib/stores/LinkStore';
   import Stats from '../stats/Stats.svelte';
   import DashboardLink from './DashboardLink.svelte';
   export let links;
   export let error;
-  export let paginationError = '';
   export let stats;
-  export let currentPage = 1;
+
+  let currentPage = 1;
+  let paginationError = '';
+  let paginationLoading = false;
 
   const handlePagination = async () => {
+    if (paginationLoading || paginationError) {
+      return;
+    }
+    paginationLoading = true;
     const paginateLinks = await fetch(`/api/user/links?page=${currentPage}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
       $Links = [...$Links, ...paginated];
+      setTimeout(() => {
+        paginationLoading = false;
+        if (paginated.length === 0) {
+          paginationError = 'No more links to show';
+        }
+      }, 1000);
+
       currentPage++;
     } else {
       paginationError = paginateLinks.error;
+      paginationLoading = false;
     }
   };
 </script>
@@ -50,7 +65,15 @@
       {/if}
     </div>
   </div>
-  <button on:click={handlePagination} class="load-more">Load More</button>
+  {#if paginationLoading}
+    <LoadingIcon />
+  {/if}
+  {#if paginationError}
+    <div class="no-links">{paginationError}</div>
+  {/if}
+  {#if links.length >= 10 && !paginationLoading && !paginationError}
+    <button class="load-more" on:click={handlePagination}> Load More </button>
+  {/if}
 </div>
 
 <style>
