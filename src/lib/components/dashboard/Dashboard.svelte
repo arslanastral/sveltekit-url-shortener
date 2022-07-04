@@ -1,11 +1,25 @@
 <script>
   import LinksIcon from '$lib/assets/LinksIcon.svelte';
-
+  import Links from '$lib/stores/LinkStore';
   import Stats from '../stats/Stats.svelte';
   import DashboardLink from './DashboardLink.svelte';
   export let links;
   export let error;
+  export let paginationError = '';
   export let stats;
+  export let currentPage = 1;
+
+  const handlePagination = async () => {
+    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}`);
+
+    if (paginateLinks.ok) {
+      const paginated = await paginateLinks.json();
+      $Links = [...$Links, ...paginated];
+      currentPage++;
+    } else {
+      paginationError = paginateLinks.error;
+    }
+  };
 </script>
 
 <div class="flex container">
@@ -36,7 +50,7 @@
       {/if}
     </div>
   </div>
-  <button class="load-more">Load More</button>
+  <button on:click={handlePagination} class="load-more">Load More</button>
 </div>
 
 <style>
