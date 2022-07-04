@@ -36,6 +36,7 @@
       {/if}
     </div>
   </div>
+  <button class="load-more">Load More</button>
 </div>
 
 <style>
@@ -80,5 +81,20 @@
     font-size: 20px;
     color: #636363;
     margin: 20px;
+  }
+
+  .load-more {
+    border: none;
+    background: blue;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform ease-out 0.1s;
+  }
+
+  .load-more:active {
+    transform: scale(0.95);
   }
 </style>
