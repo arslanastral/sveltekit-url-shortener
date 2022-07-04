@@ -17,8 +17,6 @@ export async function insertDemoData() {
 
     let data = generateDemoData(id);
 
-    await analyticsCollection.insertMany(data);
-
     await collection.insertOne({
       long_url: 'https://www.google.com',
       short_url: id,
@@ -28,6 +26,8 @@ export async function insertDemoData() {
       tags: [],
       demo: new Date()
     });
+
+    await analyticsCollection.insertMany(data);
   } catch (error) {
     console.log(error);
   }
