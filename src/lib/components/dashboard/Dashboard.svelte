@@ -72,7 +72,7 @@
     <div class="no-links">{paginationError}</div>
   {/if}
   {#if links.length >= 10 && !paginationLoading && !paginationError}
-    <button class="load-more" on:click={handlePagination}> Load More </button>
+    <button class="load-more fadeIn" on:click={handlePagination}> Load More </button>
   {/if}
 </div>
 
@@ -124,7 +124,7 @@
     border: none;
     background: blue;
     color: #ffffff;
-    border-radius: 4px;
+    border-radius: 40px;
     padding: 10px 20px;
     margin-bottom: 20px;
     cursor: pointer;
