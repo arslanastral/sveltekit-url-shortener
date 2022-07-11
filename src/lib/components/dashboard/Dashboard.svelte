@@ -45,9 +45,16 @@
   </div>
 
   <div class="links-container">
-    <div class="flex">
-      <LinksIcon />
-      <div class="title">Your Links</div>
+    <div class="controls flex">
+      <div class="title flex">
+        <LinksIcon />
+        <div class="title">Your Links</div>
+      </div>
+
+      <div class="flex control-buttons">
+        <button class="control-button">Sort By</button>
+        <button class="control-button">Filter By</button>
+      </div>
     </div>
     <div class="grow links-wrapper">
       {#if error}
@@ -93,6 +100,24 @@
   .links-container {
     width: 100%;
     margin-top: 50px;
+  }
+
+  .controls {
+    justify-content: space-between;
+  }
+
+  .control-buttons {
+    gap: 10px;
+  }
+
+  .control-button {
+    border: none;
+    color: black;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
   }
 
   .title {
