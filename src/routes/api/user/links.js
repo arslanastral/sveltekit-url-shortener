@@ -4,6 +4,8 @@ export async function get({ locals, url }) {
   const currentUser = locals.user;
   const page = url.searchParams.get('page') ?? 0;
   const sortBy = url.searchParams.get('sort');
+  const tags = url.searchParams.get('tags');
+  const tagsArray = tags ? tags.split(',') : [];
   const linksPerPage = 10;
 
   if (!currentUser.authenticated) {
@@ -14,6 +16,11 @@ export async function get({ locals, url }) {
   }
 
   let sort;
+  let filter;
+
+  if (tags) {
+    filter = { tags: { $elemMatch: { name: { $in: tagsArray } } } };
+  }
 
   switch (sortBy) {
     case 'date':
@@ -33,7 +40,7 @@ export async function get({ locals, url }) {
     const collection = await useCollection('urls');
 
     const links = await collection
-      .find({ created_by: currentUser.email })
+      .find({ created_by: currentUser.email, ...(tags && filter) })
       .sort(sort)
       .skip(page * linksPerPage)
       .limit(linksPerPage)
