@@ -3,6 +3,7 @@ import { useCollection } from '$lib/utils/useCollection';
 export async function get({ locals, url }) {
   const currentUser = locals.user;
   const page = url.searchParams.get('page') ?? 0;
+  const sortBy = url.searchParams.get('sort');
   const linksPerPage = 10;
 
   if (!currentUser.authenticated) {
@@ -12,12 +13,28 @@ export async function get({ locals, url }) {
     };
   }
 
+  let sort;
+
+  switch (sortBy) {
+    case 'date':
+      sort = { _id: 1 };
+      break;
+    case 'clicks':
+      sort = { clicks: 1 };
+      break;
+    case '-clicks':
+      sort = { clicks: -1 };
+      break;
+    default:
+      sort = { _id: -1 };
+  }
+
   try {
     const collection = await useCollection('urls');
 
     const links = await collection
       .find({ created_by: currentUser.email })
-      .sort({ _id: -1 })
+      .sort(sort)
       .skip(page * linksPerPage)
       .limit(linksPerPage)
       .project({
