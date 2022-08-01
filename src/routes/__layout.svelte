@@ -2,7 +2,7 @@
   import { navigating, session } from '$app/stores';
   import '$lib/styles/global.css';
   import LoginButton from '$lib/components/login/LoginButton.svelte';
-  import 'sanitize.css';
+  import 'sanitize.css/sanitize.css';
   import 'sanitize.css/forms.css';
   import 'sanitize.css/typography.css';
   import UserInfo from '$lib/components/user/UserInfo.svelte';
