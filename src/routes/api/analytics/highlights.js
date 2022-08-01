@@ -1,7 +1,7 @@
 import { useCollection } from '$lib/utils/useCollection';
 import { countryCodes } from '$lib/utils/countryCodes';
 
-export async function get({ locals, url }) {
+export async function GET({ locals, url }) {
   const currentUser = locals.user;
   const time = url.searchParams.get('time');
   const id = url.searchParams.get('id');

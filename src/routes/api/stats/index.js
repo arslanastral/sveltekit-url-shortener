@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function get({ locals }) {
+export async function GET({ locals }) {
   const user = locals.user;
 
   let shortenedCountQuery;

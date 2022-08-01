@@ -6,7 +6,7 @@ const limiter = rateLimiter({
   interval: 120000
 }).check;
 
-export async function post({ locals, clientAddress, request }) {
+export async function POST({ locals, clientAddress, request }) {
   const body = await request.formData();
   const submittedURL = body.get('url');
   const submittedPassword = body.get('password');

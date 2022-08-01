@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function get({ locals, url }) {
+export async function GET({ locals, url }) {
   const currentUser = locals.user;
   const page = url.searchParams.get('page') ?? 0;
   const sortBy = url.searchParams.get('sort');

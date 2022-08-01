@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function patch({ locals, request }) {
+export async function PATCH({ locals, request }) {
   const currentUser = locals.user;
 
   if (!currentUser.authenticated) {

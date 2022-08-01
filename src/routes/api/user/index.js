@@ -1,4 +1,4 @@
-export async function get({ locals }) {
+export async function GET({ locals }) {
   const currentUser = locals.user;
 
   if (!currentUser.authenticated) {
