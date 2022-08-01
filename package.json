@@ -2,10 +2,10 @@
   "name": "03-url-shortener-microservice",
   "version": "0.0.1",
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
+    "dev": "vite dev",
+    "build": "vite build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview",
+    "preview": "vite preview",
     "prepare": "svelte-kit sync",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
