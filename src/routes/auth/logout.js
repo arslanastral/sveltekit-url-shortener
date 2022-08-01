@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function post({ locals }) {
+export async function POST({ locals }) {
   const sessionId = locals.user.sessionId;
 
   if (!sessionId) {

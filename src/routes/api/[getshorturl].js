@@ -2,7 +2,7 @@ import { useCollection } from '$lib/utils/useCollection';
 import { collectAnalytics } from '$lib/services/collectAnalytics';
 import bcrypt from 'bcryptjs';
 
-export async function get({ params, request }) {
+export async function GET({ params, request }) {
   const id = params.getshorturl;
   const referer = request.headers.get('referer');
   const host = request.headers.get('host');
@@ -61,7 +61,7 @@ export async function get({ params, request }) {
   }
 }
 
-export async function post({ request, params }) {
+export async function POST({ request, params }) {
   const body = await request.formData();
   const submittedPassword = body.get('password');
   const id = params.getshorturl;

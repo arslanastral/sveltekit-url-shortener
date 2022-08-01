@@ -5,7 +5,7 @@ import * as cookie from 'cookie';
 import bcryptjs from 'bcryptjs';
 import { nanoid } from 'nanoid';
 
-export async function post({ request }) {
+export async function POST({ request }) {
   const body = await request.json();
   const { email, password } = await body;
 

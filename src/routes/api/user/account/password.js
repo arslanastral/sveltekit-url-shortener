@@ -1,7 +1,7 @@
 import { useCollection } from '$lib/utils/useCollection';
 import bcryptjs from 'bcryptjs';
 
-export async function put({ locals, request }) {
+export async function PUT({ locals, request }) {
   const body = await request.json();
   const { oldPass, newPass } = await body;
   const currentUser = locals.user.email || null;
