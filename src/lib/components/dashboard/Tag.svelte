@@ -9,12 +9,13 @@
 </script>
 
 <div class:dropshadow={oldTag === tag} class="flex tag fadeIn">
-  <span on:click|self={() => editTag(tag, color)} class="tag-name">{tag}</span>
-
   {#if editable}
+    <span on:click|self={() => editTag(tag, color)} class="tag-name">{tag}</span>
     <button class="flex" on:click={() => deleteTag(tag)}
       ><CloseIcon width="18" height="18" /></button
     >
+  {:else}
+    <span class="tag-name">{tag}</span>
   {/if}
 </div>
 
