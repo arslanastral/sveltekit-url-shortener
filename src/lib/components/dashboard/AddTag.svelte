@@ -106,7 +106,6 @@
   };
 
   const editTag = (name, color) => {
-    console.log('i gets triggered');
     if (editing) {
       return;
     }
