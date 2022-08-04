@@ -4,6 +4,8 @@
   import Links from '$lib/stores/LinkStore';
   import Stats from '../stats/Stats.svelte';
   import DashboardLink from './DashboardLink.svelte';
+  import Filter from './Filter.svelte';
+  import Sort from './Sort.svelte';
   export let links;
   export let error;
   export let stats;
@@ -52,8 +54,8 @@
       </div>
 
       <div class="flex control-buttons">
-        <button class="control-button">Sort By</button>
-        <button class="control-button">Filter By</button>
+        <Sort />
+        <Filter />
       </div>
     </div>
     <div class="grow links-wrapper">
@@ -108,16 +110,6 @@
 
   .control-buttons {
     gap: 10px;
-  }
-
-  .control-button {
-    border: none;
-    color: black;
-    border: 1px solid grey;
-    border-radius: 10px;
-    padding: 8px 15px;
-    margin-bottom: 20px;
-    cursor: pointer;
   }
 
   .title {
