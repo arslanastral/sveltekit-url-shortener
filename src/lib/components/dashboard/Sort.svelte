@@ -1,9 +1,8 @@
 <script>
   import SortOption from './SortOption.svelte';
+  export let sort;
+  export let setSort;
   export let isToggled = false;
-  let isActive = false;
-  let currentSort = '';
-  let sortDirection = '';
 </script>
 
 <div class="container">
@@ -11,8 +10,8 @@
 
   {#if isToggled}
     <div class="menu">
-      <SortOption title="Date" sortDirection="down" isActive={true} currentSort />
-      <SortOption title="Count" currentSort />
+      <SortOption title="Date" sortValue="date" {sort} {setSort} />
+      <SortOption title="Clicks" sortValue="clicks" {sort} {setSort} />
     </div>
   {/if}
 </div>
