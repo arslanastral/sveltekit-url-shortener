@@ -15,6 +15,7 @@
   let paginationError = '';
   let sort = 'date';
   let sortDirection = 'desc';
+  let currentSort = 'date';
   let paginationLoading = false;
 
   const handlePagination = async () => {
@@ -22,7 +23,7 @@
       return;
     }
     paginationLoading = true;
-    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}sort=${sort}`);
+    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}sort=${currentSort}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
@@ -41,8 +42,20 @@
     }
   };
 
+  const sortMap = {
+    date: {
+      asc: '-date',
+      desc: 'date'
+    },
+    clicks: {
+      asc: '-clicks',
+      desc: 'clicks'
+    }
+  };
+
   const setSort = (sortBy) => {
     sort = sortBy;
+    currentSort = sortMap[sort][sortDirection];
     currentPage = 1;
     $Links = [];
     handlePagination();
@@ -50,15 +63,10 @@
 
   const setSortDirection = (direction) => {
     sortDirection = direction;
-    if (direction === 'asc') {
-      sort = `-${sort}`;
-    } else if (direction === 'desc' && sort !== '') {
-      sort = sort.substring(1);
-    }
-
-    // currentPage = 1;
-    // $Links = [];
-    // handlePagination();
+    currentSort = sortMap[sort][sortDirection];
+    currentPage = 1;
+    $Links = [];
+    handlePagination();
   };
 </script>
 

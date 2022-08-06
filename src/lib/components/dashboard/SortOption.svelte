@@ -1,27 +1,16 @@
 <script>
   export let title = '';
-  export let isActive = false;
-  export let currentSort = '';
-  export let sortDirection = 'down';
-
-  const handleSort = (sort) => {
-    if (currentSort === sort) {
-      sortDirection = sortDirection === 'down' ? 'up' : 'down';
-    } else {
-      sortDirection = 'down';
-    }
-    currentSort = sort;
-  };
-
-  const handleSortDirection = (direction) => {
-    if (currentSort === title) {
-      sortDirection = direction;
-    }
-  };
+  export let sort = '';
+  export let setSort;
+  export let sortValue = '';
 </script>
 
 <div class="type flex">
-  <button on:click={handleSort} class:active={isActive === true} class="title">{title}</button>
+  <button
+    on:click={() => setSort(sortValue)}
+    class:active={sortValue === sort || sort === `-${sortValue}`}
+    class="title">{title}</button
+  >
 </div>
 
 <style>
