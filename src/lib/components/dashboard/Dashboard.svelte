@@ -6,12 +6,15 @@
   import DashboardLink from './DashboardLink.svelte';
   import Filter from './Filter.svelte';
   import Sort from './Sort.svelte';
+  import SortDirection from './SortDirection.svelte';
   export let links;
   export let error;
   export let stats;
 
   let currentPage = 1;
   let paginationError = '';
+  let sort = '';
+  let sortDirection = 'desc';
   let paginationLoading = false;
 
   const handlePagination = async () => {
@@ -19,7 +22,7 @@
       return;
     }
     paginationLoading = true;
-    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}`);
+    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}sort=${sort}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
@@ -36,6 +39,26 @@
       paginationError = paginateLinks.error;
       paginationLoading = false;
     }
+  };
+
+  const setSort = (sortBy) => {
+    sort = sortBy;
+    currentPage = 1;
+    $Links = [];
+    handlePagination();
+  };
+
+  const setSortDirection = (direction) => {
+    sortDirection = direction;
+    if (direction === 'asc') {
+      sort = `-${sort}`;
+    } else if (direction === 'desc') {
+      sort = sort.substring(1);
+    }
+
+    // currentPage = 1;
+    // $Links = [];
+    // handlePagination();
   };
 </script>
 
@@ -54,7 +77,8 @@
       </div>
 
       <div class="flex control-buttons">
-        <Sort />
+        <SortDirection {sortDirection} {setSortDirection} />
+        <Sort {setSort} {sort} />
         <Filter />
       </div>
     </div>
