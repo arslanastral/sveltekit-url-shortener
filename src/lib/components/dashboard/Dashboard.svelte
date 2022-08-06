@@ -13,7 +13,7 @@
 
   let currentPage = 1;
   let paginationError = '';
-  let sort = '';
+  let sort = 'date';
   let sortDirection = 'desc';
   let paginationLoading = false;
 
@@ -52,7 +52,7 @@
     sortDirection = direction;
     if (direction === 'asc') {
       sort = `-${sort}`;
-    } else if (direction === 'desc') {
+    } else if (direction === 'desc' && sort !== '') {
       sort = sort.substring(1);
     }
 
