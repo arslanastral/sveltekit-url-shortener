@@ -44,12 +44,12 @@
 
   const sortMap = {
     date: {
-      asc: '-date',
-      desc: 'date'
+      desc: '-date',
+      asc: 'date'
     },
     clicks: {
-      asc: '-clicks',
-      desc: 'clicks'
+      desc: '-clicks',
+      asc: 'clicks'
     }
   };
 
