@@ -23,7 +23,7 @@ export async function GET({ locals, url }) {
   }
 
   switch (sortBy) {
-    case 'date':
+    case '-date':
       sort = { _id: 1 };
       break;
     case 'clicks':
