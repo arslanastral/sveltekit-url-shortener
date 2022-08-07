@@ -86,8 +86,10 @@
 
       <div class="flex control-buttons">
         <SortDirection {sortDirection} {setSortDirection} />
-        <Sort {setSort} {sort} />
-        <Filter />
+        <div class="flex sort-control">
+          <Sort {setSort} {sort} />
+          <Filter />
+        </div>
       </div>
     </div>
     <div class="grow links-wrapper">
@@ -141,8 +143,12 @@
   }
 
   .control-buttons {
-    gap: 10px;
+    gap: 20px;
     align-content: center;
+  }
+
+  .sort-control {
+    gap: 10px;
   }
 
   .title {
