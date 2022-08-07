@@ -84,13 +84,15 @@
         <div class="title">Your Links</div>
       </div>
 
-      <div class="flex control-buttons">
-        <SortDirection {sortDirection} {setSortDirection} />
-        <div class="flex sort-control">
-          <Sort {setSort} {sort} />
-          <Filter />
+      {#if links.length}
+        <div class="flex control-buttons">
+          <SortDirection {sortDirection} {setSortDirection} />
+          <div class="flex sort-control">
+            <Sort {setSort} {sort} />
+            <Filter />
+          </div>
         </div>
-      </div>
+      {/if}
     </div>
     <div class="grow links-wrapper">
       {#if error}
