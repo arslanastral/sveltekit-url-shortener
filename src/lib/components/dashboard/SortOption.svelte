@@ -24,19 +24,14 @@
   }
 
   .title {
-    color: white;
+    color: blue;
+    background: rgb(238, 238, 238);
     padding: 4px 10px;
-  }
-
-  .title:hover {
-    color: #333;
-    background-color: yellow;
     border-radius: 20px;
   }
 
   .active {
-    color: #333;
-    background-color: yellow;
-    border-radius: 20px;
+    color: white;
+    background-color: blue;
   }
 </style>
