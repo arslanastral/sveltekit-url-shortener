@@ -11,7 +11,6 @@
     border: 1px solid grey;
     border-radius: 10px;
     padding: 8px 15px;
-    margin-bottom: 20px;
     cursor: pointer;
   }
 </style>

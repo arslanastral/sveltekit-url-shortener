@@ -142,6 +142,7 @@
 
   .control-buttons {
     gap: 10px;
+    align-content: center;
   }
 
   .title {
