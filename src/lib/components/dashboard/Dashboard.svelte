@@ -23,7 +23,7 @@
       return;
     }
     paginationLoading = true;
-    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}sort=${currentSort}`);
+    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}&sort=${currentSort}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
@@ -53,18 +53,18 @@
     }
   };
 
-  const setSort = (sortBy) => {
+  const setSort = async (sortBy) => {
     sort = sortBy;
     currentSort = sortMap[sort][sortDirection];
-    currentPage = 1;
+    currentPage = 0;
     $Links = [];
-    handlePagination();
+    await handlePagination();
   };
 
-  const setSortDirection = (direction) => {
+  const setSortDirection = async (direction) => {
     sortDirection = direction;
     currentSort = sortMap[sort][sortDirection];
-    currentPage = 1;
+    currentPage = 0;
     $Links = [];
     handlePagination();
   };
