@@ -3,11 +3,18 @@
   export let sort = '';
   export let setSort;
   export let sortValue = '';
+
+  const handleSortValue = (value) => {
+    if (value === sort || sort === `-${value}`) {
+      return;
+    }
+    setSort(value);
+  };
 </script>
 
 <div class="type flex">
   <button
-    on:click={() => setSort(sortValue)}
+    on:click={() => handleSortValue(sortValue)}
     class:active={sortValue === sort || sort === `-${sortValue}`}
     class="title">{title}</button
   >
