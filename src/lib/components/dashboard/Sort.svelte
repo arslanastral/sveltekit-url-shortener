@@ -9,7 +9,7 @@
   <button on:click={() => (isToggled = !isToggled)} class="control-button">Sort By</button>
 
   {#if isToggled}
-    <div class="flex menu">
+    <div class="flex menu fadeIn">
       <SortOption title="Date" sortValue="date" {sort} {setSort} />
       <SortOption title="Clicks" sortValue="clicks" {sort} {setSort} />
     </div>
