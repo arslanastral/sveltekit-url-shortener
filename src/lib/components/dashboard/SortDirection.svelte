@@ -1,14 +1,22 @@
 <script>
   export let setSortDirection;
   export let sortDirection;
+
+  const handleSortDirection = (direction) => {
+    if (sortDirection === direction) {
+      return;
+    }
+    setSortDirection(direction);
+  };
 </script>
 
 <div class="flex direction">
-  <button on:click={() => setSortDirection('asc')} class:direction-active={sortDirection === 'asc'}
-    >↑</button
+  <button
+    on:click={() => handleSortDirection('asc')}
+    class:direction-active={sortDirection === 'asc'}>↑</button
   >
   <button
-    on:click={() => setSortDirection('desc')}
+    on:click={() => handleSortDirection('desc')}
     class:direction-active={sortDirection === 'desc'}>↓</button
   >
 </div>
