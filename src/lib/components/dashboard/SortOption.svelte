@@ -3,12 +3,14 @@
   export let sort = '';
   export let setSort;
   export let sortValue = '';
+  export let toggle;
 
   const handleSortValue = (value) => {
     if (value === sort || sort === `-${value}`) {
       return;
     }
     setSort(value);
+    toggle();
   };
 </script>
 
