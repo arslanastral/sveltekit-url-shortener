@@ -43,8 +43,8 @@
     right: 0px;
     background: white;
     border: 1px solid #ccc;
-    /* box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); */
     border-radius: 10px;
     padding: 10px;
+    z-index: 3;
   }
 </style>
