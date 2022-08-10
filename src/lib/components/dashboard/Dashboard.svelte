@@ -19,16 +19,22 @@
   let paginationLoading = false;
 
   const handlePagination = async () => {
+    console.log('i run');
     if (paginationLoading || paginationError) {
       return;
     }
-
+    console.log('i also run');
     paginationLoading = true;
     const paginateLinks = await fetch(`/api/user/links?page=${currentPage}&sort=${currentSort}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
-      $Links = [...$Links, ...paginated];
+      console.log(paginated);
+      if (currentPage === 0) {
+        $Links = [...paginated];
+      } else {
+        $Links = [...$Links, ...paginated];
+      }
 
       setTimeout(() => {
         paginationLoading = false;
@@ -62,7 +68,7 @@
     sort = sortBy;
     currentPage = 0;
     currentSort = sortMap[sort][sortDirection];
-    $Links = [];
+
     handlePagination();
   };
 
@@ -73,7 +79,7 @@
     sortDirection = direction;
     currentPage = 0;
     currentSort = sortMap[sort][sortDirection];
-    $Links = [];
+
     handlePagination();
   };
 </script>
