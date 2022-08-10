@@ -19,17 +19,16 @@
   let paginationLoading = false;
 
   const handlePagination = async () => {
-    console.log('i run');
     if (paginationLoading || paginationError) {
       return;
     }
-    console.log('i also run');
+
     paginationLoading = true;
     const paginateLinks = await fetch(`/api/user/links?page=${currentPage}&sort=${currentSort}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
-      console.log(paginated);
+
       if (currentPage === 0) {
         $Links = [...paginated];
       } else {
