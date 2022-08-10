@@ -3,15 +3,19 @@
   export let sort;
   export let setSort;
   export let isToggled = false;
+
+  const toggle = () => {
+    isToggled = !isToggled;
+  };
 </script>
 
 <div class="container">
-  <button on:click={() => (isToggled = !isToggled)} class="control-button">Sort By</button>
+  <button on:click={toggle} class="control-button">Sort By</button>
 
   {#if isToggled}
     <div class="flex menu fadeIn">
-      <SortOption title="Date" sortValue="date" {sort} {setSort} />
-      <SortOption title="Clicks" sortValue="clicks" {sort} {setSort} />
+      <SortOption title="Date" sortValue="date" {sort} {setSort} {toggle} />
+      <SortOption title="Clicks" sortValue="clicks" {sort} {setSort} {toggle} />
     </div>
   {/if}
 </div>
