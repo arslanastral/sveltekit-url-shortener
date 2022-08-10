@@ -22,12 +22,14 @@
     if (paginationLoading || paginationError) {
       return;
     }
+
     paginationLoading = true;
     const paginateLinks = await fetch(`/api/user/links?page=${currentPage}&sort=${currentSort}`);
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
       $Links = [...$Links, ...paginated];
+
       setTimeout(() => {
         paginationLoading = false;
         if (paginated.length === 0) {
@@ -53,18 +55,24 @@
     }
   };
 
-  const setSort = async (sortBy) => {
+  const setSort = (sortBy) => {
+    if (paginationLoading || paginationError) {
+      return;
+    }
     sort = sortBy;
-    currentSort = sortMap[sort][sortDirection];
     currentPage = 0;
+    currentSort = sortMap[sort][sortDirection];
     $Links = [];
-    await handlePagination();
+    handlePagination();
   };
 
-  const setSortDirection = async (direction) => {
+  const setSortDirection = (direction) => {
+    if (paginationLoading || paginationError) {
+      return;
+    }
     sortDirection = direction;
-    currentSort = sortMap[sort][sortDirection];
     currentPage = 0;
+    currentSort = sortMap[sort][sortDirection];
     $Links = [];
     handlePagination();
   };
@@ -95,6 +103,10 @@
       {/if}
     </div>
     <div class="grow links-wrapper">
+      {#if paginationLoading}
+        <div class="overlay" />
+      {/if}
+
       {#if error}
         <div>{error}</div>
       {/if}
@@ -166,12 +178,18 @@
 
   .links-wrapper {
     margin-bottom: 20px;
-    background: #ffffff;
+    position: relative;
     box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.25);
     border-radius: 24px;
     overflow: hidden;
   }
 
+  .overlay {
+    background: rgba(255, 255, 255, 0.75);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
   .no-links {
     font-size: 20px;
     color: #636363;
