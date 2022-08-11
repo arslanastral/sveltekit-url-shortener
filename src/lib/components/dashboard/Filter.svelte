@@ -1,4 +1,6 @@
 <script>
+  import FilterTag from './FilterTag.svelte';
+  import { TagFilter } from '$lib/stores/FilterStore';
   export let isToggled = false;
 
   const toggle = () => {
@@ -10,7 +12,13 @@
   <button on:click={toggle} class="control-button">Filter</button>
 
   {#if isToggled}
-    <div class="flex menu fadeIn" />
+    <div class="flex menu fadeIn">
+      {#if $TagFilter.length}
+        {#each $TagFilter as tag}
+          <FilterTag name={tag} />
+        {/each}
+      {/if}
+    </div>
   {/if}
 </div>
 
