@@ -19,14 +19,7 @@
   let currentSort = 'date';
   let paginationLoading = false;
   let tags = $TagFilter.join();
-
-  let tagFilter;
-
-  if ($TagFilter.length > 0) {
-    tagFilter = '&tags=' + tags;
-  } else {
-    tagFilter = '';
-  }
+  let tagFilter = $TagFilter.length ? '&tags=' + tags : '';
 
   const handlePagination = async () => {
     if (paginationLoading || paginationError) {
@@ -99,7 +92,7 @@
       return;
     }
     tags = $TagFilter.join();
-    tagFilter = '&tags=' + tags;
+    tagFilter = $TagFilter.length ? '&tags=' + tags : '';
     currentPage = 0;
     handlePagination();
   };
