@@ -1,6 +1,7 @@
 <script>
   import FilterTag from './FilterTag.svelte';
   import { TagFilter } from '$lib/stores/FilterStore';
+  import { clickOutside } from '$lib/utils/clickOutside';
   export let isToggled = false;
   export let setTags;
 
@@ -13,7 +14,7 @@
   <button on:click={toggle} class="control-button">Filter</button>
 
   {#if isToggled}
-    <div class="flex menu fadeIn">
+    <div use:clickOutside on:click_outside={() => (isToggled = false)} class="flex menu fadeIn">
       {#if $TagFilter.length}
         {#each $TagFilter as tag}
           <FilterTag name={tag} {setTags} />
