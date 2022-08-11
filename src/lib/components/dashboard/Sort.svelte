@@ -1,5 +1,6 @@
 <script>
   import SortOption from './SortOption.svelte';
+  import { clickOutside } from '$lib/utils/clickOutside';
   export let sort;
   export let setSort;
   export let isToggled = false;
@@ -13,7 +14,7 @@
   <button on:click={toggle} class="control-button">Sort By</button>
 
   {#if isToggled}
-    <div class="flex menu fadeIn">
+    <div use:clickOutside on:click_outside={() => (isToggled = false)} class="flex menu fadeIn">
       <SortOption title="Date" sortValue="date" {sort} {setSort} {toggle} />
       <SortOption title="Clicks" sortValue="clicks" {sort} {setSort} {toggle} />
     </div>
