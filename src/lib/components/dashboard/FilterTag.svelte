@@ -3,11 +3,13 @@
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
   export let name = '';
   export let setTags;
+  export let toggle;
 
   const deleteFilterTag = () => {
     let newFilter = $TagFilter.filter((t) => t !== name);
     $TagFilter = newFilter;
     setTags();
+    toggle();
   };
 </script>
 

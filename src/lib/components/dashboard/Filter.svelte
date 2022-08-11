@@ -17,7 +17,7 @@
     <div use:clickOutside on:click_outside={() => (isToggled = false)} class="flex menu fadeIn">
       {#if $TagFilter.length}
         {#each $TagFilter as tag}
-          <FilterTag name={tag} {setTags} />
+          <FilterTag name={tag} {setTags} {toggle} />
         {/each}
       {:else}
         <span>No Filter Added</span>
