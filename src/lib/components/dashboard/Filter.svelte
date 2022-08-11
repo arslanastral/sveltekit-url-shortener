@@ -2,6 +2,7 @@
   import FilterTag from './FilterTag.svelte';
   import { TagFilter } from '$lib/stores/FilterStore';
   export let isToggled = false;
+  export let setTags;
 
   const toggle = () => {
     isToggled = !isToggled;
@@ -15,7 +16,7 @@
     <div class="flex menu fadeIn">
       {#if $TagFilter.length}
         {#each $TagFilter as tag}
-          <FilterTag name={tag} />
+          <FilterTag name={tag} {setTags} />
         {/each}
       {/if}
     </div>
