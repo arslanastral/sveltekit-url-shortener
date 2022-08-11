@@ -27,22 +27,6 @@ export async function insertDemoData() {
       demo: new Date()
     });
 
-    let demoLinks = [];
-
-    for (let i = 0; i < 30; i++) {
-      demoLinks.push({
-        long_url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade',
-        short_url: nanoid(4),
-        clicks: 1,
-        secured: false,
-        created_by: 'demo@ky.com',
-        tags: [],
-        demo: new Date()
-      });
-    }
-
-    await collection.insertMany(demoLinks);
-
     await analyticsCollection.insertMany(data);
   } catch (error) {
     console.log(error);
