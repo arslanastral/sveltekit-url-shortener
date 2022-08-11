@@ -18,6 +18,8 @@
         {#each $TagFilter as tag}
           <FilterTag name={tag} {setTags} />
         {/each}
+      {:else}
+        <span>No Filter Added</span>
       {/if}
     </div>
   {/if}
