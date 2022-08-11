@@ -26,4 +26,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  button {
+    margin-left: 6px;
+    padding: 0;
+    border: 0;
+  }
 </style>
