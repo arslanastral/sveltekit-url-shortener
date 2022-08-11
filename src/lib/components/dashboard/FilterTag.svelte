@@ -1,11 +1,19 @@
 <script>
+  import { TagFilter } from '$lib/stores/FilterStore';
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
-  export let name;
+  export let name = '';
+  export let setTags;
+
+  const deleteFilterTag = () => {
+    let newFilter = $TagFilter.filter((t) => t !== name);
+    $TagFilter = newFilter;
+    setTags();
+  };
 </script>
 
 <div class="flex tag fadeIn">
   <span class="tag-name">{name}</span>
-  <button class="flex"><CloseIcon width="18" height="18" /></button>
+  <button on:click={deleteFilterTag} class="flex"><CloseIcon width="18" height="18" /></button>
 </div>
 
 <style>

@@ -124,7 +124,7 @@
           <SortDirection {sortDirection} {setSortDirection} />
           <div class="flex sort-control">
             <Sort {setSort} {sort} />
-            <Filter />
+            <Filter setTags={setTagsFilter} />
           </div>
         </div>
       {/if}
