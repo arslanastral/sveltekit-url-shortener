@@ -7,6 +7,7 @@
   import Filter from './Filter.svelte';
   import Sort from './Sort.svelte';
   import SortDirection from './SortDirection.svelte';
+  import { TagFilter } from '$lib/stores/FilterStore';
   export let links;
   export let error;
   export let stats;
@@ -17,6 +18,15 @@
   let sortDirection = 'desc';
   let currentSort = 'date';
   let paginationLoading = false;
+  let tags = $TagFilter.join();
+
+  let tagFilter;
+
+  if ($TagFilter.length > 0) {
+    tagFilter = '&tags=' + tags;
+  } else {
+    tagFilter = '';
+  }
 
   const handlePagination = async () => {
     if (paginationLoading || paginationError) {
@@ -24,7 +34,9 @@
     }
 
     paginationLoading = true;
-    const paginateLinks = await fetch(`/api/user/links?page=${currentPage}&sort=${currentSort}`);
+    const paginateLinks = await fetch(
+      `/api/user/links?page=${currentPage}&sort=${currentSort}${tagFilter}`
+    );
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
@@ -81,6 +93,16 @@
 
     handlePagination();
   };
+
+  const setTagsFilter = () => {
+    if (paginationLoading || paginationError) {
+      return;
+    }
+    tags = $TagFilter.join();
+    tagFilter = '&tags=' + tags;
+    currentPage = 0;
+    handlePagination();
+  };
 </script>
 
 <div class="flex container">
@@ -118,7 +140,7 @@
 
       {#if links.length}
         {#each links as link, i}
-          <DashboardLink index={i + 1} {...link} />
+          <DashboardLink index={i + 1} {...link} setTags={setTagsFilter} />
         {/each}
       {:else}
         <div class="no-links">

@@ -8,6 +8,7 @@
   export let short_url;
   export let long_url;
   export let secured;
+  export let setTags;
 
   let shortLink = `${$page.url.origin}/${short_url}`;
 </script>
@@ -27,7 +28,7 @@
   {#if tags && tags.length}
     <div class="flex tags">
       {#each tags as tag}
-        <Tag tag={tag.name} --bg-color={tag.color} --color={'black'} />
+        <Tag {setTags} tag={tag.name} --bg-color={tag.color} --color={'black'} />
       {/each}
     </div>
   {/if}
