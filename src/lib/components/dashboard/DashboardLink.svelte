@@ -14,6 +14,7 @@
   export let clicks;
   export let secured;
   export let tags;
+  export let setTags;
 
   let shortLink = `${$page.url.origin}/${short_url}`;
 
@@ -44,6 +45,7 @@
     {long_url}
     {secured}
     {tags}
+    {setTags}
     --margin="20px"
     --link-width="clamp(200px, 40vw, 900px)"
   />

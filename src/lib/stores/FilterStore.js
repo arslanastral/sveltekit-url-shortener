@@ -1,3 +1,3 @@
 import { writable } from 'svelte/store';
 
-export const Filter = writable([]);
+export const TagFilter = writable([]);

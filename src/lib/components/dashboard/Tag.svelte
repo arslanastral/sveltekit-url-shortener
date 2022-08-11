@@ -1,11 +1,21 @@
 <script>
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
+  import { TagFilter } from '$lib/stores/FilterStore';
   export let tag;
   export let color;
   export let editable = false;
   export let deleteTag;
   export let editTag;
   export let oldTag;
+  export let setTags;
+
+  const setFilter = () => {
+    if ($TagFilter.find((t) => t === tag)) {
+      return;
+    }
+    $TagFilter.push(tag);
+    setTags();
+  };
 </script>
 
 <div class:dropshadow={oldTag === tag} class="flex tag fadeIn">
@@ -15,7 +25,7 @@
       ><CloseIcon width="18" height="18" /></button
     >
   {:else}
-    <span class="tag-name">{tag}</span>
+    <span on:click={setFilter} class="tag-name">{tag}</span>
   {/if}
 </div>
 
