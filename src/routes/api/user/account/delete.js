@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 
-export async function del({ locals }) {
+export async function DELETE({ locals }) {
   const currentUser = locals.user.email || null;
   const isDemoUser = currentUser === 'demo@ky.com';
 
