@@ -8,7 +8,7 @@
   import Sort from './Sort.svelte';
   import SortDirection from './SortDirection.svelte';
   import { TagFilter } from '$lib/stores/FilterStore';
-  import WebIcon from '$lib/assets/WebIcon.svelte';
+  import SearchIcon from '$lib/assets/SearchIcon.svelte';
   export let links;
   export let error;
   export let stats;
@@ -117,6 +117,7 @@
         <div class="flex control-buttons">
           <div class="search flex grow-2">
             <input placeholder="Search for URL or tags" type="text" />
+            <SearchIcon />
           </div>
           <SortDirection {sortDirection} {setSortDirection} />
           <div class="flex sort-control">
