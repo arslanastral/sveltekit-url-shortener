@@ -116,8 +116,10 @@
       {#if links.length}
         <div class="flex control-buttons">
           <div class="search flex grow-2">
-            <input placeholder="Search for URL or tags" type="text" />
-            <SearchIcon />
+            <input placeholder="Search" type="text" />
+            <button class="search-button flex">
+              <SearchIcon fill="blue" />
+            </button>
           </div>
           <SortDirection {sortDirection} {setSortDirection} />
           <div class="flex sort-control">
@@ -160,9 +162,12 @@
 
 <style>
   input {
+    font-size: 16px;
+    margin-left: 5px;
     background: none;
     border: 0;
     width: 100%;
+    height: 40px;
   }
 
   input:focus {
@@ -184,10 +189,28 @@
   }
 
   .search {
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     border-radius: 40px;
     font-weight: 400;
-    font-size: 19px;
+  }
+
+  .search:focus {
+    border: 1px solid #ccc;
+  }
+
+  .search-button {
+    margin: 0 6px;
+    border: 0;
+    background: #eee;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: transform ease-in 0.1s;
+  }
+
+  .search-button:active {
+    transform: scale(0.9);
   }
 
   .links-container {
