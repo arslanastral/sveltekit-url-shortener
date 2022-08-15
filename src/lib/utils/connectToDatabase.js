@@ -13,7 +13,8 @@ export const connectToDatabase = async () => {
       await client.connect();
       let db = client.db('ky');
       await db.collection('urls').createIndex({ short_url: 1 }, { unique: true });
-      await db.collection('urls').createIndex({ long_url: 'text', 'tags.name': 'text' });
+      await db.collection('urls').createIndex({ long_url: 1 });
+      await db.collection('urls').createIndex({ 'tags.name': 1 });
       await db
         .collection('urls')
         .createIndex(
