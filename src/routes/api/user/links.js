@@ -6,6 +6,7 @@ export async function GET({ locals, url }) {
   const sortBy = url.searchParams.get('sort');
   const tags = url.searchParams.get('tags');
   const tagsArray = tags ? tags.split(',') : [];
+  const searchQuery = url.searchParams.get('s');
   const linksPerPage = 10;
 
   if (!currentUser.authenticated) {
@@ -20,6 +21,15 @@ export async function GET({ locals, url }) {
 
   if (tags) {
     filter = { tags: { $elemMatch: { name: { $in: tagsArray } } } };
+  }
+
+  if (searchQuery) {
+    filter = {
+      $or: [
+        { long_url: { $regex: searchQuery, $options: 'i' } },
+        { 'tags.name': { $regex: searchQuery, $options: 'i' } }
+      ]
+    };
   }
 
   switch (sortBy) {
@@ -40,7 +50,7 @@ export async function GET({ locals, url }) {
     const collection = await useCollection('urls');
 
     const links = await collection
-      .find({ created_by: currentUser.email, ...(tags && filter) })
+      .find({ created_by: currentUser.email, ...((tags && filter) || (searchQuery && filter)) })
       .sort(sort)
       .skip(page * linksPerPage)
       .limit(linksPerPage)
