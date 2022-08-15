@@ -1,6 +1,11 @@
 import { useCollection } from '$lib/utils/useCollection';
+import rateLimiter from 'lambda-rate-limiter';
 
-export async function GET({ locals, url }) {
+const limiter = rateLimiter({
+  interval: 120000
+}).check;
+
+export async function GET({ locals, url, clientAddress }) {
   const currentUser = locals.user;
   const page = url.searchParams.get('page') ?? 0;
   const sortBy = url.searchParams.get('sort');
@@ -8,6 +13,15 @@ export async function GET({ locals, url }) {
   const tagsArray = tags ? tags.split(',') : [];
   const searchQuery = url.searchParams.get('s');
   const linksPerPage = 10;
+
+  try {
+    await limiter(40, clientAddress);
+  } catch (error) {
+    return {
+      status: 429,
+      body: { error: 'Too many requests' }
+    };
+  }
 
   if (!currentUser.authenticated) {
     return {
