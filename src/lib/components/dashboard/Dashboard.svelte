@@ -94,6 +94,7 @@
     if (paginationLoading || paginationError) {
       return;
     }
+    searchQuery = '';
     tags = $TagFilter.join();
     tagFilter = $TagFilter.length ? '&tags=' + tags : '';
     currentPage = 0;
