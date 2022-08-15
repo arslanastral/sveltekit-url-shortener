@@ -9,6 +9,7 @@
   import SortDirection from './SortDirection.svelte';
   import { TagFilter } from '$lib/stores/FilterStore';
   import SearchIcon from '$lib/assets/SearchIcon.svelte';
+  import Button from '../Button.svelte';
   export let links;
   export let error;
   export let stats;
@@ -20,6 +21,7 @@
   let currentSort = 'date';
   let paginationLoading = false;
   let tags = $TagFilter.join();
+  let noLinksFound = false;
   let tagFilter = $TagFilter.length ? '&tags=' + tags : '';
   let searchQuery = '';
   $: search = searchQuery.length ? '&s=' + searchQuery : '';
@@ -36,6 +38,10 @@
 
     if (paginateLinks.ok) {
       const paginated = await paginateLinks.json();
+
+      if (search && paginated.length === 0 && currentPage === 0) {
+        noLinksFound = true;
+      }
 
       if (currentPage === 0) {
         $Links = [...paginated];
@@ -116,6 +122,17 @@
       handleSearchQuery();
     }
   };
+
+  const handleSearchReset = () => {
+    if (paginationLoading) {
+      return;
+    }
+    paginationError = '';
+    searchQuery = '';
+    search = '';
+    currentPage = 0;
+    handlePagination();
+  };
 </script>
 
 <div class="flex container">
@@ -166,6 +183,8 @@
         {#each links as link, i}
           <DashboardLink index={i + 1} {...link} setTags={setTagsFilter} />
         {/each}
+      {:else if noLinksFound}
+        <div class="no-links">No links found matching search term '{searchQuery}'</div>
       {:else}
         <div class="no-links">
           You haven't shortned any links yet. When you do they will show here.
@@ -176,9 +195,23 @@
   {#if paginationLoading}
     <LoadingIcon />
   {/if}
-  {#if paginationError}
+
+  {#if paginationError && noLinksFound}
+    <Button
+      onClickFunc={handleSearchReset}
+      title="Go Back"
+      --font-size="18px"
+      --bg-color="black"
+      --padding="8px 12px"
+      --border="none"
+      --color="white"
+    />
+  {:else if paginationError}
     <div class="no-links">{paginationError}</div>
+
+    <!-- else content here -->
   {/if}
+
   {#if links.length >= 10 && !paginationLoading && !paginationError}
     <button class="load-more fadeIn" on:click={handlePagination}> Load More </button>
   {/if}
