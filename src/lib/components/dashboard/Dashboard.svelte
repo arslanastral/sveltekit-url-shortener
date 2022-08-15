@@ -21,6 +21,8 @@
   let paginationLoading = false;
   let tags = $TagFilter.join();
   let tagFilter = $TagFilter.length ? '&tags=' + tags : '';
+  let searchQuery = '';
+  $: search = searchQuery.length ? '&s=' + searchQuery : '';
 
   const handlePagination = async () => {
     if (paginationLoading || paginationError) {
@@ -29,7 +31,7 @@
 
     paginationLoading = true;
     const paginateLinks = await fetch(
-      `/api/user/links?page=${currentPage}&sort=${currentSort}${tagFilter}`
+      `/api/user/links?page=${currentPage}&sort=${currentSort}${tagFilter}${search}`
     );
 
     if (paginateLinks.ok) {
@@ -97,6 +99,21 @@
     currentPage = 0;
     handlePagination();
   };
+
+  const handleSearchQuery = () => {
+    console.log(searchQuery);
+    if (paginationLoading || paginationError) {
+      return;
+    }
+    currentPage = 0;
+    handlePagination();
+  };
+
+  const handleSearchPress = (e) => {
+    if (e.code === 'Enter') {
+      handleSearchQuery();
+    }
+  };
 </script>
 
 <div class="flex container">
@@ -116,8 +133,13 @@
       {#if links.length}
         <div class="flex control-buttons">
           <div class="search flex grow-2">
-            <input placeholder="Search" type="text" />
-            <button class="search-button flex">
+            <input
+              bind:value={searchQuery}
+              placeholder="Search"
+              type="text"
+              on:keypress={(e) => handleSearchPress(e)}
+            />
+            <button class="search-button flex" on:click={handleSearchQuery}>
               <SearchIcon fill="blue" />
             </button>
           </div>
