@@ -41,5 +41,6 @@
     margin-left: 6px;
     padding: 0;
     border: 0;
+    cursor: pointer;
   }
 </style>
