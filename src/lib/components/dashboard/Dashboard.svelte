@@ -95,6 +95,7 @@
       return;
     }
     searchQuery = '';
+    search = '';
     tags = $TagFilter.join();
     tagFilter = $TagFilter.length ? '&tags=' + tags : '';
     currentPage = 0;
