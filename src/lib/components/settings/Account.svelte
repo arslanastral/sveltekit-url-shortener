@@ -16,7 +16,7 @@
     let json = await res.json();
 
     if (res.ok) {
-      $page.data.user = null;
+      window.location.href = '/logout';
     } else {
       console.log('error');
     }
