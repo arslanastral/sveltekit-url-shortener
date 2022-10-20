@@ -1,7 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 import { getStats } from '$lib/utils/getStats';
-export async function load({ session, fetch }) {
-  if (!session.user) {
+export async function load({ parent, fetch }) {
+  const { user } = await parent();
+
+  if (!user.authenticated) {
     throw redirect(302, '/login');
   }
 
@@ -11,12 +13,12 @@ export async function load({ session, fetch }) {
   if (res.ok) {
     const links = await res.json();
     return {
-  links,
-  StatsData: { shortened, clicks, secured }
-};
+      links,
+      StatsData: { shortened, clicks, secured }
+    };
   } else {
     return {
-  error: 'Error loading links'
-};
+      error: 'Error loading links'
+    };
   }
 }

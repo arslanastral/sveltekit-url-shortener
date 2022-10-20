@@ -13,7 +13,7 @@
 <header class="flex">
   <Navigation />
 
-  {#if !$page.data.user}
+  {#if !$page.data.user.authenticated}
     <LoginButton />
   {:else}
     <UserInfo name={$page.data.user.name} />

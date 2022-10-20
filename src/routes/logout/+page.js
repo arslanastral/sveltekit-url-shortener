@@ -2,8 +2,9 @@ import { redirect } from '@sveltejs/kit';
 import { browser } from '$app/environment';
 import { UserRecentStore } from '$lib/stores/RecentStore';
 
-export async function load({ fetch, session }) {
-  if (!session.user) {
+export async function load({ fetch, parent }) {
+  const { user } = await parent();
+  if (!user.authenticated) {
     throw redirect(302, '/');
   }
 
