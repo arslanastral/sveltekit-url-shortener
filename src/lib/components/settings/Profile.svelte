@@ -1,14 +1,12 @@
 <script>
-  import { goto } from '$app/navigation';
-
-  import { session } from '$app/stores';
+  import { page } from '$app/stores';
   import Button from '../Button.svelte';
 
   let name = '';
   let email = '';
 
   async function handleName() {
-    if ($session.user.email === 'demo@ky.com') {
+    if ($page.data.user.email === 'demo@ky.com') {
       return;
     }
     let nameRes;
@@ -58,12 +56,12 @@
   <div class="info-container flex">
     <div class="user-info">
       <span class="title">Name</span>
-      <input bind:value={name} type="text" placeholder={$session.user.name} />
+      <input bind:value={name} type="text" placeholder={$page.data.user.name} />
     </div>
 
     <div class="user-info">
       <span class="title">Email</span>
-      <input bind:value={email} type="email" placeholder={$session.user.email} />
+      <input bind:value={email} type="email" placeholder={$page.data.user.email} />
     </div>
 
     <Button

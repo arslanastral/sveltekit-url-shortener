@@ -4,6 +4,7 @@ import { formatDate } from '$lib/utils/formatDate';
 
 export async function handle({ event, resolve }) {
   const cookies = cookie.parse(event.request.headers.get('cookie') || '');
+  console.log('this be cookies', cookies);
   const sessionId = cookies.sessionId;
 
   event.locals.user = cookies;
@@ -28,7 +29,8 @@ export async function handle({ event, resolve }) {
     event.locals.user.authenticated = false;
   }
 
-  return await resolve(event);
+  const response = await resolve(event);
+  return response;
 }
 
 export function getSession({ locals }) {

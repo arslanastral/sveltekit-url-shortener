@@ -6,7 +6,7 @@
   import Backdrop from '$lib/components/Backdrop.svelte';
   import StatsStore from '$lib/stores/StatsStore';
   import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
-  import { session } from '$app/stores';
+  import { page } from '$app/stores';
 
   export let data;
 
@@ -17,7 +17,7 @@
   <Hero />
   <Shortener />
   <Stats {...$StatsStore} />
-  {#if $session.user}
+  {#if $page.data.user}
     <Recent data={$UserRecentStore} />
   {:else}
     <Recent data={$RecentStore} />
