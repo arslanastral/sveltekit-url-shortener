@@ -1,3 +1,4 @@
+import { parallelFetch } from '$lib/utils/parallelFetch';
 import { redirect } from '@sveltejs/kit';
 
 export async function load({ parent, fetch }) {
@@ -6,12 +7,13 @@ export async function load({ parent, fetch }) {
     throw redirect(302, '/login');
   }
 
-  const highlights = await fetch('/api/analytics/highlights?time=weekly');
-  const activity = await fetch('/api/analytics/activity?time=weekly');
+  const highlights = '/api/analytics/highlights?time=weekly';
+  const activity = '/api/analytics/activity?time=weekly';
 
-  if (highlights.ok && activity.ok) {
-    const highlightsdata = await highlights.json();
-    const activityData = await activity.json();
+  const data = await parallelFetch(fetch, highlights, activity);
+
+  if (data) {
+    const [highlightsdata, activityData] = data;
     if (Object.keys(highlightsdata).length) {
       return {
         highlightsdata,
