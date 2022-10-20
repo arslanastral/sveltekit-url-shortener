@@ -1,7 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 
-export async function load({ session, fetch }) {
-  if (!session.user) {
+export async function load({ parent, fetch }) {
+  const { user } = await parent();
+  if (!user.authenticated) {
     throw redirect(302, '/login');
   }
 
@@ -13,9 +14,9 @@ export async function load({ session, fetch }) {
     const activityData = await activity.json();
     if (Object.keys(highlightsdata).length) {
       return {
-  highlightsdata,
-  activityData
-};
+        highlightsdata,
+        activityData
+      };
     }
   }
   return {};

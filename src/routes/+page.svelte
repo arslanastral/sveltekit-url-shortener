@@ -8,6 +8,7 @@
   import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
   import { page } from '$app/stores';
 
+  console.log($page.data.user)
   export let data;
 
   $StatsStore = data;
@@ -17,7 +18,7 @@
   <Hero />
   <Shortener />
   <Stats {...$StatsStore} />
-  {#if $page.data.user}
+  {#if $page.data.user.authenticated}
     <Recent data={$UserRecentStore} />
   {:else}
     <Recent data={$RecentStore} />

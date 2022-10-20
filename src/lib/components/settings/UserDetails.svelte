@@ -4,7 +4,7 @@
   import Button from '../Button.svelte';
 </script>
 
-{#if $page.data.user}
+{#if $page.data.user.authenticated}
   <div class="container flex">
     <div class="header">
       <span class="header-title">Welcome, {$page.data.user.name}</span>

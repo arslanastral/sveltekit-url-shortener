@@ -23,7 +23,7 @@
 
 <nav class="flex">
   <Logo />
-  {#if $page.data.user}
+  {#if $page.data.user.authenticated}
     {#each pages as page}
       <a sveltekit:prefetch class="link" class:selected={path.includes(page.path)} href={page.path}
         >{page.name}</a
