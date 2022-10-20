@@ -1,20 +1,4 @@
-<script context="module">
-  throw new Error("@migration task: Check code was safely removed (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292722)");
-
-  // import { getStats } from '$lib/utils/getStats';
-  // export async function load({ fetch }) {
-  //   const { shortened, clicks, secured } = await getStats(fetch);
-  //   return {
-  //     props: {
-  //       StatsData: { shortened, clicks, secured }
-  //     }
-  //   };
-  // }
-</script>
-
 <script>
-  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
   import Hero from '$lib/components/Hero.svelte';
   import Shortener from '$lib/components/shortener/Shortener.svelte';
   import Stats from '$lib/components/stats/Stats.svelte';
@@ -24,9 +8,9 @@
   import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
   import { session } from '$app/stores';
 
-  export let StatsData;
+  export let data;
 
-  $StatsStore = StatsData;
+  $StatsStore = data;
 </script>
 
 <div class="content">
