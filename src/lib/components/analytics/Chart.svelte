@@ -12,7 +12,7 @@
     timeFormat
   } from 'd3';
   import { page } from '$app/stores';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { onDestroy } from 'svelte';
 
   export let data = [];
