@@ -16,7 +16,6 @@
     let json = await res.json();
 
     if (res.ok) {
-      console.log(json.status);
       $page.data.user = null;
     } else {
       console.log('error');

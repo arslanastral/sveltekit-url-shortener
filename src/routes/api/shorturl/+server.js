@@ -28,15 +28,9 @@ export async function POST({ locals, getClientAddress, request }) {
   if (isValidHttpUrl(submittedURL, host)) {
     const result = await createShortUrl(user, submittedURL, submittedPassword);
 
-    throw new Error(
-      '@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)'
-    );
-    // Suggestion (check for correctness before using):
-    // return new Response(result.body, { status: result.status });
-    return {
-      status: result.status,
-      body: result.body
-    };
+    return json(result.body, {
+      status: result.status
+    });
   }
 
   return json(

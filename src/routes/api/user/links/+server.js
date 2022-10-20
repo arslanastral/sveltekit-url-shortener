@@ -84,15 +84,9 @@ export async function GET({ locals, url, getClientAddress }) {
       })
       .toArray();
 
-    throw new Error(
-      '@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)'
-    );
-    // Suggestion (check for correctness before using):
-    // return json(links);
-    return {
-      status: 200,
-      body: links
-    };
+    return json(links, {
+      status: 200
+    });
   } catch (error) {
     return json(
       { error: 'Internal Server Error' },

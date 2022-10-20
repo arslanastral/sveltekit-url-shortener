@@ -1,6 +1,4 @@
 <script>
-  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
   import '$lib/styles/global.css';
   import 'sanitize.css/sanitize.css';
   import 'sanitize.css/forms.css';
@@ -12,9 +10,9 @@
   import Links from '$lib/stores/LinkStore';
   import CloseIcon from '$lib/assets/CloseIcon.svelte';
 
-  export let links;
+  export let data
 
-  $Links = links;
+  $Links = data.links;
 
   let pages = [
     {

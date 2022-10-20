@@ -25,7 +25,7 @@
   <Logo />
   {#if $page.data.user.authenticated}
     {#each pages as page}
-      <a sveltekit:prefetch class="link" class:selected={path.includes(page.path)} href={page.path}
+      <a data-sveltekit-prefetch class="link" class:selected={path.includes(page.path)} href={page.path}
         >{page.name}</a
       >
     {/each}
