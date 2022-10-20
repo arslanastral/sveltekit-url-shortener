@@ -7,7 +7,6 @@
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
   import Link from '../Link.svelte';
 
-  export let index;
   export let short_url;
   export let long_url;
   export let created_at;
@@ -39,7 +38,6 @@
 </script>
 
 <div class="flex link-container">
-  <!-- <span class="index">{index}</span> -->
   <Link
     {short_url}
     {long_url}
@@ -73,13 +71,6 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
-
-  /* .index {
-    width: 20px;
-    height: 20px;
-    font-weight: 500;
-    font-size: 19px;
-  } */
 
   .date {
     width: clamp(80px, 40vw, 100px);

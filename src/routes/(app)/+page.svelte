@@ -8,10 +8,9 @@
   import { RecentStore, UserRecentStore } from '$lib/stores/RecentStore';
   import { page } from '$app/stores';
 
-  console.log($page.data.user)
   export let data;
 
-  $StatsStore = data;
+  $StatsStore = data.StatsData;
 </script>
 
 <div class="content">

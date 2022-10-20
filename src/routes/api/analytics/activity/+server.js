@@ -7,9 +7,12 @@ export async function GET({ locals, url }) {
   const id = url.searchParams.get('id');
 
   if (!currentUser.authenticated) {
-    return json({ error: 'Unauthorized' }, {
-      status: 401
-    });
+    return json(
+      { error: 'Unauthorized' },
+      {
+        status: 401
+      }
+    );
   }
 
   let timeFilter;
@@ -33,9 +36,12 @@ export async function GET({ locals, url }) {
       let link = await collection.findOne(linkQuery);
 
       if (!link) {
-        return json({ error: 'Link not found' }, {
-          status: 404
-        });
+        return json(
+          { error: 'Link not found' },
+          {
+            status: 404
+          }
+        );
       }
     }
 
@@ -70,16 +76,15 @@ export async function GET({ locals, url }) {
 
     const activity = await collection.aggregate(analyticsPipeline).toArray();
 
-    throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-    // Suggestion (check for correctness before using):
-    // return json(activity);
-    return {
-      status: 200,
-      body: activity
-    };
-  } catch (error) {
-    return json({ error: 'Internal Server Error' }, {
-      status: 500
+    return json(activity, {
+      status: 200
     });
+  } catch (error) {
+    return json(
+      { error: 'Internal Server Error' },
+      {
+        status: 500
+      }
+    );
   }
 }

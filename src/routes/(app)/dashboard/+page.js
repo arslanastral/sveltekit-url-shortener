@@ -8,6 +8,7 @@ export async function load({ parent, fetch }) {
   }
 
   const res = await fetch('/api/user/links');
+
   const { shortened, clicks, secured } = await getStats(fetch);
 
   if (res.ok) {

@@ -1,6 +1,4 @@
 <script>
-  throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
   import { HighlightsData, AllHighlightsData } from '$lib/stores/HighlightsStore';
   import Highlights from '$lib/components/analytics/Highlights.svelte';
   import UserLinks from '$lib/components/analytics/UserLinks.svelte';
@@ -9,20 +7,19 @@
 
   $CurrentSample = '';
 
-  export let highlightsdata;
-  export let activityData;
+ export let data;
 
-  $AllHighlightsData = highlightsdata;
+  $AllHighlightsData = data.highlightsdata;
   $HighlightsData = $AllHighlightsData;
 
-  $AllActivity = activityData;
+  $AllActivity = data.activityData;
   $Activity = $AllActivity;
 </script>
 
 {#if $HighlightsData && Object.keys($HighlightsData).length}
-  <Highlights {...$HighlightsData} clickTitle="This Week" />
+  <Highlights {...$HighlightsData} clickTitle="All Time" />
 {:else}
-  <Highlights clickTitle="This Week" />
+  <Highlights clickTitle="All Time" />
 {/if}
 
 <div class="data-container flex">

@@ -109,7 +109,6 @@
   };
 
   const handleSearchQuery = () => {
-    console.log(searchQuery);
     if (paginationLoading || paginationError) {
       return;
     }
@@ -149,7 +148,7 @@
         <div class="title">Your Links</div>
       </div>
 
-      {#if links.length}
+      {#if links && links.length}
         <div class="flex control-buttons">
           <div class="search flex grow-2">
             <input
@@ -179,7 +178,7 @@
         <div>{error}</div>
       {/if}
 
-      {#if links.length}
+      {#if links && links.length}
         {#each links as link, i}
           <DashboardLink index={i + 1} {...link} setTags={setTagsFilter} />
         {/each}
@@ -208,11 +207,9 @@
     />
   {:else if paginationError}
     <div class="no-links">{paginationError}</div>
-
-    <!-- else content here -->
   {/if}
 
-  {#if links.length >= 10 && !paginationLoading && !paginationError}
+  {#if links && links.length >= 10 && !paginationLoading && !paginationError}
     <button class="load-more fadeIn" on:click={handlePagination}> Load More </button>
   {/if}
 </div>

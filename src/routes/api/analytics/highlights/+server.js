@@ -9,9 +9,12 @@ export async function GET({ locals, url }) {
   const isDemoUser = currentUser.email === 'demo@ky.com';
 
   if (!currentUser.authenticated) {
-    return json({ error: 'Unauthorized' }, {
-      status: 401
-    });
+    return json(
+      { error: 'Unauthorized' },
+      {
+        status: 401
+      }
+    );
   }
 
   let timeFilter;
@@ -32,9 +35,12 @@ export async function GET({ locals, url }) {
       let link = await collection.findOne(linkQuery);
 
       if (!link) {
-        return json({ error: 'Link not found' }, {
-          status: 404
-        });
+        return json(
+          { error: 'Link not found' },
+          {
+            status: 404
+          }
+        );
       }
     }
 
@@ -170,16 +176,15 @@ export async function GET({ locals, url }) {
       topOS: links[0].OS[0].name.toString()
     };
 
-    throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
-    // Suggestion (check for correctness before using):
-    // return json(highlights);
-    return {
-      status: 200,
-      body: highlights
-    };
-  } catch (error) {
-    return json({ error: 'Internal Server Error' }, {
-      status: 500
+    return json(highlights, {
+      status: 200
     });
+  } catch (error) {
+    return json(
+      { error: 'Internal Server Error' },
+      {
+        status: 500
+      }
+    );
   }
 }

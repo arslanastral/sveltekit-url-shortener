@@ -2,7 +2,6 @@ import { json } from '@sveltejs/kit';
 import { useCollection } from '$lib/utils/useCollection';
 
 export async function GET({ locals }) {
-  console.log('this be locals', locals);
   const user = locals.user;
 
   let shortenedCountQuery;
