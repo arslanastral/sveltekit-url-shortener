@@ -1,10 +1,10 @@
 <script>
   import { page } from '$app/stores';
-
   import ClicksIcon from '$lib/assets/ClicksIcon.svelte';
   import { CurrentSample, Activity, LinkActivity } from '$lib/stores/ActivityStore';
   import { LinkHighlightsData, HighlightsData } from '$lib/stores/HighlightsStore';
   import Links from '$lib/stores/LinkStore';
+  import { parallelFetch } from '$lib/utils/parallelFetch';
   import Link from '../Link.svelte';
 
   let pages = [
@@ -34,17 +34,17 @@
     }
     $CurrentSample = link;
 
-    const activitySample = await fetch(
-      `/api/analytics/activity?id=${link}${queryStrings[$page.url.pathname]}`
-    );
-    const highlightsSample = await fetch(
-      `/api/analytics/highlights?id=${link}${queryStrings[$page.url.pathname]}`
-    );
+    const activitySample = `/api/analytics/activity?id=${link}${queryStrings[$page.url.pathname]}`;
 
-    let activity = await activitySample.json();
-    let highlights = await highlightsSample.json();
+    const highlightsSample = `/api/analytics/highlights?id=${link}${
+      queryStrings[$page.url.pathname]
+    }`;
 
-    if (activitySample.ok && highlightsSample.ok) {
+    const data = await parallelFetch(fetch, activitySample, highlightsSample);
+
+    let [activity, highlights] = data;
+
+    if (data.ok) {
       $LinkActivity = activity;
       $Activity = $LinkActivity;
 
