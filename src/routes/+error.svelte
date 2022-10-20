@@ -1,23 +1,12 @@
-<script context="module">
-  throw new Error("@migration task: Replace error load function (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3293209)");
-
-  // export function load({ status }) {
-  //   return {
-  //     props: {
-  //       error: status
-  //     }
-  //   };
-  // }
-</script>
-
 <script>
-  export let error;
+  import { page } from '$app/stores';
+
 </script>
 
 <div class="wrapper">
-  {#if error.toString() === '404'}
+  {#if $page.status.toString() === '404'}
     <div class="not-found flex">
-      <h1>{error}</h1>
+      <h1>{$page.error.message}</h1>
       <p>The page you are looking for doesn't exist.</p>
     </div>
   {:else}
