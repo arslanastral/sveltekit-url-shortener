@@ -6,7 +6,7 @@ const limiter = rateLimiter({
   interval: 120000
 }).check;
 
-export async function GET({ locals, url, clientAddress }) {
+export async function GET({ locals, url, getClientAddress }) {
   const currentUser = locals.user;
   const page = url.searchParams.get('page') ?? 0;
   const sortBy = url.searchParams.get('sort');
@@ -16,17 +16,23 @@ export async function GET({ locals, url, clientAddress }) {
   const linksPerPage = 10;
 
   try {
-    await limiter(40, clientAddress);
+    await limiter(40, getClientAddress);
   } catch (error) {
-    return json({ error: 'Too many requests' }, {
-      status: 429
-    });
+    return json(
+      { error: 'Too many requests' },
+      {
+        status: 429
+      }
+    );
   }
 
   if (!currentUser.authenticated) {
-    return json({ error: 'Unauthorized' }, {
-      status: 401
-    });
+    return json(
+      { error: 'Unauthorized' },
+      {
+        status: 401
+      }
+    );
   }
 
   let sort;
@@ -78,7 +84,9 @@ export async function GET({ locals, url, clientAddress }) {
       })
       .toArray();
 
-    throw new Error("@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)");
+    throw new Error(
+      '@migration task: Migrate this return statement (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292701)'
+    );
     // Suggestion (check for correctness before using):
     // return json(links);
     return {
@@ -86,8 +94,11 @@ export async function GET({ locals, url, clientAddress }) {
       body: links
     };
   } catch (error) {
-    return json({ error: 'Internal Server Error' }, {
-      status: 500
-    });
+    return json(
+      { error: 'Internal Server Error' },
+      {
+        status: 500
+      }
+    );
   }
 }
