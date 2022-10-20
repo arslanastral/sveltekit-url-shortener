@@ -1,30 +1,30 @@
 <script>
   import { goto } from '$app/navigation';
-  import { session } from '$app/stores';
+  import { page } from '$app/stores';
   import Button from '../Button.svelte';
 </script>
 
-{#if $session.user}
+{#if $page.data.user}
   <div class="container flex">
     <div class="header">
-      <span class="header-title">Welcome, {$session.user.name}</span>
+      <span class="header-title">Welcome, {$page.data.user.name}</span>
       <span class="header-info">To update your info, click on the edit button</span>
     </div>
 
     <div class="info-container flex">
       <div class="user-info">
         <span class="title">Name</span>
-        <span class="detail">{$session.user.name}</span>
+        <span class="detail">{$page.data.user.name}</span>
       </div>
 
       <div class="user-info">
         <span class="title">Email</span>
-        <span class="detail">{$session.user.email}</span>
+        <span class="detail">{$page.data.user.email}</span>
       </div>
 
       <div class="user-info">
         <span class="title">Joined</span>
-        <span class="detail">{$session.user.joined}</span>
+        <span class="detail">{$page.data.user.joined}</span>
       </div>
 
       <Button

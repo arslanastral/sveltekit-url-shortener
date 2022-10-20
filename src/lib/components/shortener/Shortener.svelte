@@ -5,7 +5,7 @@
   import ErrorHandler from './ErrorHandler.svelte';
   import Shortened from './Shortened.svelte';
   import { clickOutside } from '$lib/utils/clickOutside';
-  import { session } from '$app/stores';
+  import { page } from '$app/stores';
 
   let long_url = '';
   let short_url = '';
@@ -47,7 +47,7 @@
         created_at: json.created_at,
         secured: json.secured
       };
-      if (!$session.user) {
+      if (!$page.data.user) {
         $RecentStore = [newLink, ...$RecentStore];
       } else {
         $UserRecentStore = [newLink, ...$UserRecentStore];
@@ -67,6 +67,7 @@
   };
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   on:click={() => (clicked = true)}
   use:clickOutside

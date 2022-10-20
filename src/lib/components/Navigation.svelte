@@ -1,5 +1,6 @@
 <script>
-  import { page, session } from '$app/stores';
+  import { page } from '$app/stores';
+  
   import Logo from './Logo.svelte';
 
   let pages = [
@@ -22,7 +23,7 @@
 
 <nav class="flex">
   <Logo />
-  {#if $session.user}
+  {#if $page.data.user}
     {#each pages as page}
       <a sveltekit:prefetch class="link" class:selected={path.includes(page.path)} href={page.path}
         >{page.name}</a

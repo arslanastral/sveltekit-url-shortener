@@ -1,14 +1,12 @@
 <script>
-  import { goto } from '$app/navigation';
-
-  import { session } from '$app/stores';
+  import { page } from '$app/stores';
   import Button from '../Button.svelte';
 
   let oldPass;
   let newPass;
 
   async function handleAccountDeletion() {
-    if ($session.user.email === 'demo@ky.com') {
+    if ($page.data.user.email === 'demo@ky.com') {
       return;
     }
     const res = await fetch('/api/user/account/delete', {
@@ -19,14 +17,14 @@
 
     if (res.ok) {
       console.log(json.status);
-      $session.user = null;
+      $page.data.user = null;
     } else {
       console.log('error');
     }
   }
 
   async function handlePasswordChange() {
-    if ($session.user.email === 'demo@ky.com') {
+    if ($page.data.user.email === 'demo@ky.com') {
       return;
     }
     const res = await fetch('/api/user/account/password', {

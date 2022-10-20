@@ -1,5 +1,5 @@
 <script>
-  import { navigating, session } from '$app/stores';
+  import { navigating, page } from '$app/stores';
   import '$lib/styles/global.css';
   import LoginButton from '$lib/components/login/LoginButton.svelte';
   import 'sanitize.css/sanitize.css';
@@ -13,10 +13,10 @@
 <header class="flex">
   <Navigation />
 
-  {#if !$session.user}
+  {#if !$page.data.user}
     <LoginButton />
   {:else}
-    <UserInfo name={$session.user.name} />
+    <UserInfo name={$page.data.user.name} />
   {/if}
 </header>
 <main>

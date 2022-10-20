@@ -2,6 +2,7 @@ import { json } from '@sveltejs/kit';
 import { useCollection } from '$lib/utils/useCollection';
 
 export async function GET({ locals }) {
+  console.log('this be locals', locals);
   const user = locals.user;
 
   let shortenedCountQuery;
@@ -44,18 +45,24 @@ export async function GET({ locals }) {
       ...(user.authenticated && shortenedCountQuery)
     });
 
-    return json({
-  shortened: shortened.toString(),
-  clicks: clicks.toString(),
-  secured: secured.toString()
-}, {
-      headers: {
-        'cache-control': 's-maxage=1, stale-while-revalidate=59'
+    return json(
+      {
+        shortened: shortened.toString(),
+        clicks: clicks.toString(),
+        secured: secured.toString()
+      },
+      {
+        headers: {
+          'cache-control': 's-maxage=1, stale-while-revalidate=59'
+        }
       }
-    });
+    );
   } catch (error) {
-    return json({ error: 'Error Getting Stats' }, {
-      status: 500
-    });
+    return json(
+      { error: 'Error Getting Stats' },
+      {
+        status: 500
+      }
+    );
   }
 }
