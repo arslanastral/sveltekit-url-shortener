@@ -1,6 +1,6 @@
 import { useCollection } from '$lib/utils/useCollection';
 import { collectAnalytics } from '$lib/services/collectAnalytics';
-import bcrypt from 'bcryptjs';
+import { unlockShortUrl } from '$lib/services/unlockShortUrl';
 
 export async function GET({ params, request }) {
   const id = params.getshorturl;
@@ -54,6 +54,7 @@ export async function GET({ params, request }) {
 
 export async function POST({ request, params }) {
   const body = await request.formData();
+  const userAgent = request.headers.get('user-agent');
   const submittedPassword = body.get('password');
   const id = params.getshorturl;
 
@@ -73,38 +74,7 @@ export async function POST({ request, params }) {
     return new Response('Bad Request', { status: 400 });
   }
 
-  try {
-    const collection = await useCollection('urls');
-    const link = await collection.findOne({ short_url: id });
+  let result = await unlockShortUrl(id, submittedPassword, userAgent, location);
 
-    if (link.secured) {
-      try {
-        if (await bcrypt.compare(submittedPassword, link.pass)) {
-          if (!(link.created_by === 'anon')) {
-            await collectAnalytics(
-              id,
-              link.created_by,
-              request.headers.get('user-agent'),
-              location,
-              null
-            );
-          }
-
-          await collection.updateOne({ short_url: id }, { $inc: { clicks: 1 } });
-          return new Response(undefined, { status: 301, headers: { Location: link.long_url } });
-
-          // password match
-        } else {
-          return new Response('Incorrect Password', { status: 400 });
-          // password did not match
-        }
-      } catch (err) {
-        return new Response('Something Went Wrong', { status: 500 });
-      }
-    } else {
-      return new Response('This is not a protected link', { status: 400 });
-    }
-  } catch (error) {
-    return new Response('Something Went Wrong', { status: 500 });
-  }
+  return new Response(result.body, { status: result.status, headers: result.headers });
 }
