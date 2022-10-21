@@ -39,6 +39,11 @@
       return;
     }
 
+    if (isForSignUp && isValidPassword(password) !== true) {
+      error = 'Your password must comply with above';
+      return;
+    }
+
     isLoading = true;
     const res = await fetch(endpoint, {
       method: 'POST',

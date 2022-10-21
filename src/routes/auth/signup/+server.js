@@ -1,6 +1,7 @@
 import { json as json$1 } from '@sveltejs/kit';
 import { useCollection } from '$lib/utils/useCollection';
 import { isValidEmail } from '$lib/utils/isValidEmail';
+import { isValidPassword } from '$lib/utils/isValidPassword';
 import * as cookie from 'cookie';
 import bcryptjs from 'bcryptjs';
 import { nanoid } from 'nanoid';
@@ -11,35 +12,59 @@ export async function POST({ request }) {
   const userEmail = email.toString().trim().toLowerCase();
 
   if (!name) {
-    return json$1({
-  error: 'Name cannot be empty'
-}, {
-      status: 400
-    });
+    return json$1(
+      {
+        error: 'Name cannot be empty'
+      },
+      {
+        status: 400
+      }
+    );
   }
 
   if (!userEmail) {
-    return json$1({
-  error: 'Missing email'
-}, {
-      status: 400
-    });
+    return json$1(
+      {
+        error: 'Missing email'
+      },
+      {
+        status: 400
+      }
+    );
   }
 
   if (!password) {
-    return json$1({
-  error: 'Missing password'
-}, {
-      status: 400
-    });
+    return json$1(
+      {
+        error: 'Missing password'
+      },
+      {
+        status: 400
+      }
+    );
   }
 
   if (!isValidEmail(userEmail)) {
-    return json$1({
-  error: 'Invalid email'
-}, {
-      status: 400
-    });
+    return json$1(
+      {
+        error: 'Invalid email'
+      },
+      {
+        status: 400
+      }
+    );
+  }
+
+  if (isValidPassword(password) !== true) {
+    return json$1(
+      {
+        error: 'Your password needs to comply with requirments',
+        requirments: isValidPassword(password)
+      },
+      {
+        status: 400
+      }
+    );
   }
 
   try {
@@ -47,11 +72,14 @@ export async function POST({ request }) {
     const user = await collection.findOne({ email: userEmail });
 
     if (user) {
-      return json$1({
-  error: 'Email already in use'
-}, {
-        status: 409
-      });
+      return json$1(
+        {
+          error: 'Email already in use'
+        },
+        {
+          status: 409
+        }
+      );
     }
 
     const hashedPassword = await bcryptjs.hash(password, 10);
@@ -75,21 +103,27 @@ export async function POST({ request }) {
       })
     };
 
-    return json$1({
-  user: {
-    name: name,
-    email: userEmail
-  },
-  message: 'User created'
-}, {
-      status: 201,
-      headers: headers
-    });
+    return json$1(
+      {
+        user: {
+          name: name,
+          email: userEmail
+        },
+        message: 'User created'
+      },
+      {
+        status: 201,
+        headers: headers
+      }
+    );
   } catch (error) {
-    return json$1({
-  error: 'Internal server error'
-}, {
-      status: 500
-    });
+    return json$1(
+      {
+        error: 'Internal server error'
+      },
+      {
+        status: 500
+      }
+    );
   }
 }
