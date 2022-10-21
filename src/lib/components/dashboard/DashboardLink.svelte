@@ -9,7 +9,7 @@
 
   export let short_url;
   export let long_url;
-  export let created_at;
+  export let created_at = 'just now';
   export let clicks;
   export let secured;
   export let tags;
@@ -35,6 +35,8 @@
   const toggleEditClose = () => {
     editToggle = false;
   };
+
+  $: date = timeAgo(created_at);
 </script>
 
 <div class="flex link-container">
@@ -47,7 +49,7 @@
     --margin="20px"
     --link-width="clamp(200px, 40vw, 900px)"
   />
-  <div class="date">{timeAgo(created_at)}</div>
+  <div class="date">{date}</div>
   <div class="clicks flex">
     <ClicksIcon width="30" height="30" /><span class="click-count">{clicks}</span>
   </div>
