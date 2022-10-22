@@ -44,7 +44,7 @@
 
     let [activity, highlights] = data;
 
-    if (data.ok) {
+    if (data && data.length) {
       $LinkActivity = activity;
       $Activity = $LinkActivity;
 
