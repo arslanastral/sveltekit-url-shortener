@@ -9,7 +9,7 @@
   export let shortened;
   export let clicks;
   export let secured;
-  let title = $page.data.user ? 'At a glance' : 'API Stats';
+  let title = $page.data.user.authenticated ? 'At a glance' : 'API Stats';
 </script>
 
 <div class="flex stats-container">

@@ -47,7 +47,7 @@
         created_at: json.created_at,
         secured: json.secured
       };
-      if (!$page.data.user) {
+      if (!$page.data.user.authenticated) {
         $RecentStore = [newLink, ...$RecentStore];
       } else {
         $UserRecentStore = [newLink, ...$UserRecentStore];
