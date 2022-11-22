@@ -1,8 +1,26 @@
-# URL Shortner ✔
+# 🔗 URL Shortener
 
 Live Demo: [https://ky.vercel.app/](https://ky.vercel.app/)
 
-URL shortner for freeCodeCamp Project.
+I built this to learn MongoDB & JAMstack 🔥
+
+## Features
+
+- Secure links using passwords
+- QR Code generation
+- localStorage history for anon users
+- user-agent based analytics using MongoDB's time series collection
+- Link tags
+- Click count
+
+
+## Preview:
+
+![ky-url-shortner-homepage-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/homepage.png)
+![ky-url-shortner-dashboard-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/dashboard.png)
+![ky-url-shortner-analytics-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/analytics.png)
+![ky-url-shortner-settings-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/settings.png)
+
 
 ## Local Development:
 
@@ -23,9 +41,3 @@ $`docker run --name ky -dit -p 27017:27017 --rm mongo`
 - VITE_MONGODB_URI=mongodb://localhost:27017
 - VITE_NODE_ENV=development
 
-## Preview:
-
-![ky-url-shortner-homepage-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/homepage.png)
-![ky-url-shortner-dashboard-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/dashboard.png)
-![ky-url-shortner-analytics-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/analytics.png)
-![ky-url-shortner-settings-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/settings.png)
