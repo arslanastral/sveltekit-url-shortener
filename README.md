@@ -16,10 +16,10 @@ I built this to learn MongoDB & JAMstack 🔥
 
 ## Preview:
 
-![ky-url-shortner-homepage-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/homepage.png)
-![ky-url-shortner-dashboard-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/dashboard.png)
-![ky-url-shortner-analytics-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/analytics.png)
-![ky-url-shortner-settings-preview](https://raw.githubusercontent.com/arslanastral/freeCodeCamp-Projects/main/05_APIs-and-Microservices/03_URL-Shortener-Microservice/preview/settings.png)
+![ky-url-shortner-homepage-preview](https://raw.githubusercontent.com/arslanastral/sveltekit-url-shortener/main/preview/homepage.png)
+![ky-url-shortner-dashboard-preview](https://raw.githubusercontent.com/arslanastral/sveltekit-url-shortener/main/preview/dashboard.png)
+![ky-url-shortner-analytics-preview](https://raw.githubusercontent.com/arslanastral/sveltekit-url-shortener/main/preview/analytics.png)
+![ky-url-shortner-settings-preview](https://raw.githubusercontent.com/arslanastral/sveltekit-url-shortener/main/preview/settings.png)
 
 
 ## Local Development:
@@ -32,7 +32,7 @@ $`docker run --name ky -dit -p 27017:27017 --rm mongo`
 
 ### Project Setup
 
-- `git clone` this repo and `cd` into `05_APIs-and-Microservices/03_URL-Shortener-Microservice` directory and enter below commands
+- `git clone` this repo and `cd` into it and then:
 - `npm install`
 - `npm run dev -- --open`
 
