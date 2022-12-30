@@ -31,19 +31,3 @@ export async function handle({ event, resolve }) {
   const response = await resolve(event);
   return response;
 }
-
-// export function getSession({ locals }) {
-//   if (!locals.user.authenticated) {
-//     return {
-//       user: null
-//     };
-//   }
-//   return {
-//     user: locals.user && {
-//       authenticated: locals.user.authenticated,
-//       name: locals.user.name,
-//       email: locals.user.email,
-//       joined: locals.user.createdAt
-//     }
-//   };
-// }

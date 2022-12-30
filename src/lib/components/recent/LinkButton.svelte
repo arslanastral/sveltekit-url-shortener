@@ -4,7 +4,6 @@
   import { clickToCopy } from '$lib/utils/clickToCopy';
   import QrIcon from '$lib/assets/QRIcon.svelte';
   import EditIcon from '$lib/assets/EditIcon.svelte';
-  import { session } from '$app/stores';
 
   export let short_url;
   export let toggleQR;
