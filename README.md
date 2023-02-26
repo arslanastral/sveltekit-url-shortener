@@ -1,9 +1,5 @@
 # 🔗 URL Shortener
 
-Live Demo: [https://ky.vercel.app/](https://ky.vercel.app/)
-
-I built this to learn MongoDB & JAMstack 🔥
-
 ## Features
 
 - Secure links using passwords
